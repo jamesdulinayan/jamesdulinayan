@@ -1363,8 +1363,14 @@ ul.product-tags li a{
 }
 
 
+.footer_brand{
+    
+    letter-spacing: 1px;
+    color: #352b27;
+}
 .footer_brand a{
-    color: #000000;
+    letter-spacing: 1px;
+    color: #352b27;
     transition: color .4s;
 }
 
