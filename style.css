@@ -2,6 +2,12 @@
     font-family: "Roboto Mono" ;
     src: url(fonts/RobotoMono.ttf);
   }
+
+  @font-face {
+    font-family: "Roboto Mono" ;
+    src: url(fonts/RobotoMono-Bold.ttf);
+    font-weight: bold;
+  }
   
 
 @font-face {
@@ -79,6 +85,10 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
 
 .footer-widget{
     padding: 0 !important;
+}
+
+.footer-widget p{
+    font-family: "Roboto Mono";
 }
 
 .footer_brand{
@@ -982,7 +992,7 @@ span.apl-background{
     position:fixed;
     left:25%;
     right:0;
-    bottom:20%;
+    bottom:15%;
     padding:0
 }
 .site-navigation.fullscreen ul.ulcol{
@@ -1330,9 +1340,15 @@ ul.product-tags li a{
     background:#efefec;
     border-top: 1px #000 solid;
     margin-bottom:0;
-    padding:100px 0 15px;
+    padding:75px 0 1px;
     z-index:999;
 }
+
+.footer-text{
+    font-weight: 500;
+    color: #000;
+}
+
 #footer.dark{
     background:#131313
 }
@@ -1394,6 +1410,7 @@ ul.product-tags li a{
 .footer-logo img{
     width:100%;
 }
+
 
 .footer-menu ul{
     margin:0;
@@ -2084,7 +2101,8 @@ body.light span.a-test-current,body.light span.a-test-total,body.light .a-test-p
     padding: 20px 25px;
     text-align: center;
     font-family: "Neue";
-    font-size: 24px;
+    font-size: 22px;
+    font-weight: 500;
     text-decoration: none;
     transition: 0.4s ease;
 
@@ -6916,7 +6934,6 @@ span.ac-sign{
         padding:none !important;
         text-transform: none !important;
     }
-
     h1{
         font-size:30px;
         line-height:normal;
@@ -7053,12 +7070,32 @@ span.ac-sign{
     .site-navigation.fullscreen .menu.main-menu.hovered>li.menu-item a::before{
         width:100%
     }
+    .footer-widget{
+            margin-top: 0px;
+            margin-bottom: 0px;
+        text-align: center;
+    }
+    .footer-widget-mobile{
+        margin-bottom: 20px;
+    }
+    #footer{
+        padding: 45px 0 1px !important
+    }
     .c-col-6.footer-widget{
         margin-bottom:60px
     }
     .c-col-3.footer-widget{
         width:100%
     }
+
+    .footer-text{
+        font-size: 22px !important;
+    }
+
+    .btn{
+        font-size: 20px !important;
+    }
+
     .footer-widget .big-button a{
         font-size:30px;
         letter-spacing:-.06em
@@ -7697,6 +7734,7 @@ span.ac-sign{
     }
 }
 @media(min-width:450px) and (max-width:900px){
+    
     body,html{
         overflow-x:hidden;
         width:100%
@@ -7910,6 +7948,10 @@ span.ac-sign{
         display:block
     }
     
+    .hide_desktop_footer{
+        display:none
+    }
+    
 }
 
 
@@ -7918,6 +7960,9 @@ span.ac-sign{
         display:block
     }
     .hide_desktop{
+        display:none
+    }
+    .hide_desktop_footer{
         display:none
     }
 }
