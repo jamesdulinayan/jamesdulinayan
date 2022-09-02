@@ -1345,6 +1345,8 @@ ul.product-tags li a{
 }
 
 .footer-text{
+    text-transform: none;
+    font-family: "Neue";
     font-weight: 500;
     color: #000;
 }
@@ -7090,6 +7092,8 @@ span.ac-sign{
 
     .footer-text{
         font-size: 22px !important;
+        text-transform: none !important;
+        margin: 0 30px 20px !important;
     }
 
     .btn{
@@ -7734,6 +7738,9 @@ span.ac-sign{
     }
 }
 @media(min-width:450px) and (max-width:900px){
+    .footer-text, .btn{
+        margin: 0 30px 30px !important;
+    }
     
     body,html{
         overflow-x:hidden;
@@ -7950,6 +7957,9 @@ span.ac-sign{
     
     .hide_desktop_footer{
         display:none
+    }
+    .hide_mobile_footer{
+        display: block;
     }
     
 }
