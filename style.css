@@ -679,7 +679,7 @@ span.apl-background{
     height:100%
 }
 .site-header.fullscreen_menu.menu-has-open::before{
-    height:200vh
+    height:1080px !important;
 }
 .site-header.fullscreen_menu::after{
     display:block;
