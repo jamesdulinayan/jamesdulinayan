@@ -53,12 +53,23 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
 }
 
 .service-cont{
+    font-size: 16px;
     font-weight: 500;
+}
+
+.service-cont h4{
+    font-size: 24px;
+    font-weight: normal;
 }
 
 .light{
     color: rgba(25,27,29,.6);
 }
+
+.creative-process-ul h4{
+    margin: 5px;
+}
+
 
 .typed-text{
     font-family: "Bit";
@@ -6396,7 +6407,7 @@ a.circular-button.dark:hover,body.dark a.circular-button:hover{
 .alioth-services.style_1 .service-title{
     font-size:100px;
     font-weight:700;
-    letter-spacing:-.06em;
+    letter-spacing:-.05px;
     margin-bottom:50px;
     -webkit-transform:translateX(-20%);
     -ms-transform:translateX(-20%);
@@ -6467,11 +6478,13 @@ a.circular-button.dark:hover,body.dark a.circular-button:hover{
     width:100%;
     float:left
 }
+
 .alioth-services.style_2 .service-title{
     font-size:80px;
     line-height:100px;
-    font-weight:700;
-    letter-spacing:-.07em;
+    font-weight:500;
+    letter-spacing:-4px;
+    font-family: "Neue";
     cursor:pointer;
     display:block;
     float:left;
@@ -7342,6 +7355,8 @@ span.ac-sign{
     .alioth-services.style_2 .service-title{
         font-size:35px;
         line-height:45px;
+        font-weight:500;
+        letter-spacing: -2px;
         padding:30px 0
     }
     .alioth-services.style_2 .service-toggle{
@@ -7351,8 +7366,16 @@ span.ac-sign{
         width:100%;
         padding-right:0;
         padding-top:30px;
-        padding-bottom:30px
+        padding-bottom:50px;
+        font-size: 16px;
+        font-weight: medium;
     }
+    .alioth-services.style_2 .service-cont h4{
+        font-size: 18px;
+        font-weight: normal;
+    }
+
+
     .alioth-services.style_2 .service-wrap{
         margin-left:0
     }
