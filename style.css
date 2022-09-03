@@ -98,6 +98,10 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
     padding: 0 !important;
 }
 
+.post-featured{
+    font-size: 70px;
+}
+
 .footer-widget p{
     font-family: "Roboto Mono";
 }
@@ -1462,7 +1466,7 @@ ul.product-tags li a{
 }
 .alioth-list ul li a{
     text-decoration:none;
-    color:rgba(0, 0, 0, 0.6);
+    color: rgba(42, 42, 42, 0.812);
     display:inline-block;
     position:relative;
     -webkit-transition:color .4s ease;
@@ -6949,6 +6953,11 @@ span.ac-sign{
         padding:none !important;
         text-transform: none !important;
     }
+
+    .post-featured{
+        font-size: 26px;
+    }
+
     h1{
         font-size:30px;
         line-height:normal;
