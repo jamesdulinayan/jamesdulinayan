@@ -102,6 +102,14 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
     font-size: 70px;
 }
 
+.post-title h3{
+    transition: color .4s ease;
+}
+
+.post-title h3:hover{
+    color: #6d6861;
+
+}
 .footer-widget p{
     font-family: "Roboto Mono";
 }
@@ -1388,7 +1396,7 @@ ul.product-tags li a{
     font-family: "Roboto Mono";
     display: inline-block;
     color: #352b27;
-    transition: color .4s;
+    transition: color .4s ease;
 }
 
 .social-list-widget ul li a:hover{
@@ -1626,7 +1634,12 @@ body.dark .alioth-single-project a,.alioth-single-project.dark a{
     font-weight:normal;
     letter-spacing:normal;
     display:block;
-    margin-bottom:5px
+    margin-bottom:5px;
+    transition: color .4s ease;
+}
+
+.sw-title:hover{
+    color: #6d6861;
 }
 .sw-cat{
     font-size:20px;
@@ -3687,7 +3700,7 @@ body.dark .project-meta.meta-summary h5,.project-page-header.dark .project-meta.
     object-position:center
 }
 .project-page-header.style_2 .project-featured-image{
-    height:100vh;
+    height:75vh;
     margin-bottom:50px;
     overflow:hidden
 }
@@ -3753,7 +3766,7 @@ body.dark .project-meta.meta-summary h5,.project-page-header.dark .project-meta.
 .project-page-header.style_3 .project-head{
     display:block;
     background:#ebebeb;
-    padding:15% 8.5% 20px
+    padding:5% 0 0
 }
 body.dark .project-page-header.style_3 .project-head,.project-page-header.dark.style_3 .project-head{
     background:#131313
