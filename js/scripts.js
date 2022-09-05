@@ -23,7 +23,7 @@ loadAn.to('.apl-num-wrapper',.6,{y:'-100%',ease:'power2.in',stagger:.1,},duratio
 gsap.set('.toggle-line',{width:50,})
 gsap.set('.header-widget',{x:0,opacity:1,})
 var mobileQuery=window.matchMedia('(max-width: 450px)');if(mobileQuery.matches){
-    gsap.set('.toggle-line',{width:40,})}
+    gsap.set('.toggle-line',{width:30,})}
 loader.hide();}}
 
 
@@ -90,8 +90,8 @@ gsap.set(headerWrapper,{top:'40%'})
 
 var mobileQuery=window.matchMedia('(max-width: 450px)');if(mobileQuery.matches){
 
-gsap.set(siteHeader,{position:'fixed',top:0,y:'-100%',height:60,backgroundColor:curBg,})
-gsap.set(headerWrapper,{top:'30%'})}
+gsap.set(siteHeader,{position:'fixed',top:0,y:'-100%',height:64,backgroundColor:curBg,})
+gsap.set(headerWrapper,{top:'32%'})}
 
 ScrollTrigger.create({trigger:'body',markers:false,start:'top top',end:'bottom bottom',onUpdate:function(self,direction,progress){if(self.direction==-1){gsap.to(siteHeader,{y:'0%',})}else{gsap.to(siteHeader,{y:'-100%',})}},onLeaveBack:function(self){self.kill();gsap.to(siteHeader,{position:'absolute',y:'0%',duration:.75,backgroundColor:'transparent',delay:.5,clearProps:'all',ease:'power2.out'})
 gsap.to(headerWrapper,{top:'60%',delay:.5,duration:.75,clearProps:'all',ease:'power2.out'})}})},})};}}
