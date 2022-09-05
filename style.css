@@ -738,7 +738,7 @@ span.apl-background{
 .header-wrapper{
     position:absolute;
     left:50%;
-    top:60%;
+    top:64%;
     width:83%;
     -webkit-transform:translate(-50%,-50%);
     -ms-transform:translate(-50%,-50%);
