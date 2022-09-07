@@ -2682,7 +2682,7 @@ body.dark ul.check-payments li:hover{
         margin-bottom:25px
     }
     .wrapper-full{
-        margin-bottom:100px
+        margin-bottom:20px
     }
     .c-col-1,.c-col-2,.c-col-3,.c-col-4,.c-col-5,.c-col-6,.c-col-7,.c-col-8,.c-col-9,.c-col-10,.c-col-11,.c-col-12{
         width:100%;
@@ -2955,10 +2955,10 @@ h3.next-post-title{
     max-width:60%
 }
 .blog-classic .post.alioth-post{
-    width:45%;
+    width:100%;
     float:left;
-    margin:0 2.5%;
-    margin-bottom:100px
+    margin:0;
+    margin-bottom:30px
 }
 .blog-classic .post-image{
     width:100%;
@@ -2990,7 +2990,7 @@ h3.next-post-title{
     width:40%
 }
 .blog-classic .post.alioth-post .post-title{
-    margin-top:30px;
+    margin-top:20px;
     margin-bottom:10px
 }
 .blog-classic .post-date{
@@ -7444,7 +7444,7 @@ span.ac-sign{
         padding-top:20px
     }
     .blog-classic .post.alioth-post{
-        margin-bottom:60px
+        margin-bottom:15px
     }
     .blog-list .post-images{
         width:60%
@@ -7799,6 +7799,9 @@ span.ac-sign{
     .c-col-4,.c-col-8,.c-col-9,.c-col-10{
         width:100%
     }
+    .c-col-4p{
+        width:50%
+    }
     .site-navigation.fullscreen .fs-menu-wrapper{
         height:100%
     }
@@ -8040,4 +8043,17 @@ span.ac-sign{
     100%  { background-color: #000000; }
   }
 
-
+  .embed-container {
+    padding:56.25% 0 0 0;
+    position: relative;
+  }
+   
+  .embed-container iframe,
+  .embed-container object,
+  .embed-container embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
