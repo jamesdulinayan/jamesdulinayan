@@ -1634,7 +1634,6 @@ body.dark .alioth-single-project a,.alioth-single-project.dark a{
     font-weight:normal;
     letter-spacing:normal;
     display:block;
-    margin-bottom:5px;
     transition: color .4s ease;
 }
 
@@ -2995,7 +2994,7 @@ h3.next-post-title{
 }
 .blog-classic .post.alioth-post .post-title{
     margin-top:20px;
-    margin-bottom:10px
+    margin-bottom:-10px
 }
 .blog-classic .post-date{
     display:block;
