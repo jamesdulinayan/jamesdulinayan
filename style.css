@@ -1406,6 +1406,7 @@ h4.footer-text{
 }
 
 .read-more a{
+    font-size: 30px;
     text-decoration: underline;
     color: #000000 !important;
     transition: color .4s ease;
