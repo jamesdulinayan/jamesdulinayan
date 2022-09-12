@@ -1405,6 +1405,17 @@ h4.footer-text{
     transition: color .4s ease;
 }
 
+.section-creative{
+    height:100%;
+	  background: linear-gradient(to right, 
+	                              transparent 0%, 
+	                              transparent calc(50% - 0.5px), 
+	                              black calc(50% - 0.5px), 
+	                              black calc(50% + 0.5px), 
+	                              transparent calc(50% + 0.5px), 
+	                              transparent 100%); 
+
+}
 .read-more a{
     font-size: 30px;
     text-decoration: underline;
@@ -7825,6 +7836,9 @@ span.ac-sign{
         font-size: 50px !important;
         line-height: normal;
     }
+    .show_tablet{
+        display: none;
+    }
 }
 @media(min-width:450px) and (max-width:900px){
     .project-page-header.style_2 .project-meta.project-other{
@@ -7844,6 +7858,9 @@ span.ac-sign{
     }
     .hide_tablet{
         display:none
+    }
+    .show-tablet{
+        display:block
     }
     #mouseCursor{
         display:none
@@ -8053,6 +8070,9 @@ span.ac-sign{
     .hide_desktop{
         display:block
     }
+    .hide_tablet{
+        display: none !important;
+    }
     
     .hide_desktop_footer{
         display:none
@@ -8062,10 +8082,14 @@ span.ac-sign{
     }
     
     
+    
 }
 
 
 @media only screen and (min-width:901px){
+    .show_tablet{
+        display: none;
+    }
     .hide_mobile{
         display:block
     }
