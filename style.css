@@ -8120,9 +8120,94 @@ span.ac-sign{
     100%  { background-color: #000000; }
   }
 
-
-
   video {
     width: 100%;
     height: auto;
+  }
+
+
+
+  .draggable, .draggable1, .draggable2, .draggable3, .draggable4, .draggable5, .draggable6 {
+    width: 200px;
+    height: 200px;
+    left: 20%;
+    position: relative;
+  }
+
+  .draggable.dragging, .draggable1.dragging, .draggable2.dragging, .draggable3.dragging, .draggable4.dragging, .draggable5.dragging, .draggable6.dragging      {
+    user-select: none;
+  }
+  
+  .dragger, .dragger1, .dragger2, .dragger3, .dragger4, .dragger5, .dragger6 {
+    left: 20%;
+    height: 200px;
+    background-image: url(img/favicon.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  
+  .dragger::before, .dragger1::before, .dragger2::before, .dragger3::before, .dragger4::before, .dragger5::before, .dragger6::before {
+    left: 20%;
+    color: #fff;
+    margin: 5px;
+    display: inline-block;
+  }
+
+
+  
+
+  .container {
+    background-color: white;
+    height: 400px;
+    width: 100%;
+  }
+  
+  .draggable {
+    background: url(img/collage/comp.png);
+    width: 200px;
+    height: 156px;
+    left: 300px;
+    top: 200px;
+    cursor: move;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  .draggable1 {
+    background: url(img/collage/paper.png);
+    width: 100px;
+    height: 138px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    top: 100px;
+    float: left;
+    cursor: move;
+    z-index: 2;
+  }
+
+    
+  .draggable2{
+    background: url(img/collage/normal.png);
+    width: 100px;
+    height: 243px;
+    left: 10px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    float: left;
+    cursor: move;
+    z-index: 3;
+  }
+
+      
+  .draggable3{
+    background: url(img/collage/pic.png);
+    width: 150px;
+    height: 310px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    top: -80px;
+    left: 20px;
+    z-index: 1;
+    float: left;
+    cursor: move;
   }

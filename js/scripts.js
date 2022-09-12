@@ -652,3 +652,5 @@ gsap.set(bg,{top:'unset',bottom:0})},},0)
 ppTitleOut.fromTo('.trans-text-char',1,{y:'100%'},{y:'0%',stagger:0.025,ease:'power2.out'},.45)})},enter(){var ppTitleEnd=gsap.timeline({});ppTitleEnd.fromTo(bg,.7,{height:'100%'},{height:'0%',ease:'power2.inOut',onStart:function(){gsap.set(bg,{top:0,bottom:'unset'})},},0)
 ppTitleEnd.fromTo('.trans-text-char',.4,{y:'00%'},{y:'-100%',stagger:0.02,ease:'power2.in',onComplete:function(){$('.trans-text').html(defTransText);new SplitText('.trans-text',{type:'chars',charsClass:'trans_char'})
 gsap.set(trans,{visibility:'hidden'})}},0)}}]});if(history.scrollRestoration){history.scrollRestoration='manual';};}(jQuery));
+
+
