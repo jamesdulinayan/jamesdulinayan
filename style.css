@@ -1,41 +1,41 @@
 @font-face {
     font-family: "Roboto Mono" ;
-    src: url(fonts/RobotoMono.ttf);
+    src: url(css/fonts/RobotoMono.ttf);
   }
 
   @font-face {
     font-family: "Roboto Mono" ;
-    src: url(fonts/RobotoMono-Bold.ttf);
+    src: url(css/fonts/RobotoMono-Bold.ttf);
     font-weight: bold;
   }
   
 
 @font-face {
     font-family: "Neue" ;
-    src: url(fonts/PPNeueMontreal-Bold.otf);
+    src: url(css/fonts/PPNeueMontreal-Bold.otf);
     font-weight: bold;
   }
 
 @font-face {
     font-family: "Neue" ;
-    src: url(fonts/PPNeueMontreal-Italic.otf);
+    src: url(css/fonts/PPNeueMontreal-Italic.otf);
     font-style: italic;
   }
 
 @font-face {
     font-family: "Neue" ;
-    src: url(fonts/PPNeueMontreal-Book.otf);
+    src: url(css/fonts/PPNeueMontreal-Book.otf);
   }
 
 @font-face {
     font-family: "Neue" ;
-    src: url(fonts/PPNeueMontreal-Medium.otf);
+    src: url(css/fonts/PPNeueMontreal-Medium.otf);
     font-weight: 500;
   }
 
 @font-face {
     font-family: "Bit" ;
-    src: url(fonts/PPMondwest-Regular.ttf);
+    src: url(css/fonts/PPMondwest-Regular.ttf);
   }
 
 
