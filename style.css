@@ -6988,8 +6988,110 @@ span.ac-sign{
 .anim_line{
     display:block;
     overflow:hidden
+
+    
 }
 @media only screen and (max-width:450px){
+
+.container{
+    height: 400px !important;
+    width: 100% ;
+}
+  .draggable {
+    background: url(img/stickers/1-okey-stickers.webp);
+    width: 100px !important;
+    height: 116px !important;
+    cursor: move;
+    background-size: cover;
+    background-repeat: no-repeat;
+    left: 0px;
+    top: 0px;
+  }
+
+  .draggable1 {
+    background: url(img/stickers/2-okey-stickers.webp);
+    width: 100px !important;
+    height: 90px !important;
+    cursor: move;
+    left: 20px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    top: -20px;
+  }
+
+    
+  .draggable2{
+    background: url(img/stickers/3-okey-stickers.webp);
+    width: 100px !important;
+    height: 113.5px !important;
+    cursor: move;
+    background-size: cover;
+    background-repeat: no-repeat;
+    left: 150px;
+    top: -150px;
+  }
+
+      
+  .draggable3{
+    background: url(img/stickers/4-okey-stickers.webp);
+    width: 100px !important;
+    height: 41.5px !important;
+    cursor: move;
+    background-size: cover;
+    background-repeat: no-repeat;
+    left: 130px;
+    top: -60px ;
+  }
+
+
+  .draggable4{
+    background: url(img/stickers/10-okey-stickers.webp);
+    width: 100px !important;
+    height: 75.5px !important;
+    cursor: move;
+    background-size: cover;
+    background-repeat: no-repeat;
+    left: 140px;
+    top: -200px;
+  }
+
+        
+  .draggable5{
+    background: url(img/stickers/11-okey-stickers.webp);
+    width: 100px !important;
+    height: 93.5px !important;
+    cursor: move;
+    background-size: cover;
+    background-repeat: no-repeat;
+    left: 60px;
+    top: -240px;
+  }
+
+
+        
+  .draggable6{
+    background: url(img/stickers/12-okey-stickers.webp);
+    width: 100px !important;
+    height: 99px !important;
+    cursor: move;
+    background-size: cover;
+    background-repeat: no-repeat;
+    left: 200px;
+    top: -400px ;
+  }
+
+        
+  .draggable7{
+    background: url(img/stickers/15-okey-stickers.webp);
+    width: 100px !important;
+    height: 85.5px !important;
+    cursor: move;
+    background-size: cover;
+    background-repeat: no-repeat;
+    left: 200px;
+    top: -400px;
+  }
+  
 
     .big-title-style{
         font-size: 70px !important;
@@ -8082,11 +8184,198 @@ span.ac-sign{
     }
     
     
+  .draggable {
+    background: url(img/stickers/1-okey-stickers.webp);
+    width: 200px;
+    height: 232px;
+    cursor: move;
+    background-size: cover;
+    background-repeat: no-repeat;
+    left: 0px;
+  }
+
+  .draggable1 {
+    background: url(img/stickers/2-okey-stickers.webp);
+    width: 200px;
+    height: 180px;
+    cursor: move;
+    left: 100px;
+    top: -150px;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+    
+  .draggable2{
+    background: url(img/stickers/3-okey-stickers.webp);
+    width: 200px;
+    height: 227px;
+    cursor: move;
+    background-size: cover;
+    background-repeat: no-repeat;
+    left: 300px;
+    top: -250px;
+  }
+
+      
+  .draggable3{
+    background: url(img/stickers/4-okey-stickers.webp);
+    width: 200px;
+    height: 83px;
+    cursor: move;
+    background-size: cover;
+    background-repeat: no-repeat;
+    left: 100px;
+    top: -350px;
+  }
+
+
+  .draggable4{
+    background: url(img/stickers/10-okey-stickers.webp);
+    width: 200px;
+    height: 151px;
+    cursor: move;
+    background-size: cover;
+    background-repeat: no-repeat;
+    left: 400px;
+    top: -450px;
+  }
+
+        
+  .draggable5{
+    background: url(img/stickers/11-okey-stickers.webp);
+    width: 200px;
+    height: 187px;
+    cursor: move;
+    background-size: cover;
+    background-repeat: no-repeat;
+    left: 500px;
+    top: -850px;
+  }
+
+
+        
+  .draggable6{
+    background: url(img/stickers/12-okey-stickers.webp);
+    width: 200px;
+    height: 198px;
+    cursor: move;
+    background-size: cover;
+    background-repeat: no-repeat;
+    left: 400px;
+    top: -950px;
+  }
+
+        
+  .draggable7{
+    background: url(img/stickers/15-okey-stickers.webp);
+    width: 200px;
+    height: 171px;
+    cursor: move;
+    background-size: cover;
+    background-repeat: no-repeat;
+    left: 500px;
+    top: -1050px;
+  }
     
 }
 
 
 @media only screen and (min-width:901px){
+
+  .draggable {
+    background: url(img/stickers/1-okey-stickers.webp);
+    width: 200px;
+    height: 232px;
+    cursor: move;
+    background-size: cover;
+    background-repeat: no-repeat;
+    left: 100px;
+  }
+
+  .draggable1 {
+    background: url(img/stickers/2-okey-stickers.webp);
+    width: 200px;
+    height: 180px;
+    cursor: move;
+    left: 200px;
+    top: -150px;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+    
+  .draggable2{
+    background: url(img/stickers/3-okey-stickers.webp);
+    width: 200px;
+    height: 227px;
+    cursor: move;
+    background-size: cover;
+    background-repeat: no-repeat;
+    left: 500px;
+    top: -250px;
+  }
+
+      
+  .draggable3{
+    background: url(img/stickers/4-okey-stickers.webp);
+    width: 200px;
+    height: 83px;
+    cursor: move;
+    background-size: cover;
+    background-repeat: no-repeat;
+    left: 300px;
+    top: -350px;
+  }
+
+
+  .draggable4{
+    background: url(img/stickers/10-okey-stickers.webp);
+    width: 200px;
+    height: 151px;
+    cursor: move;
+    background-size: cover;
+    background-repeat: no-repeat;
+    left: 400px;
+    top: -450px;
+  }
+
+        
+  .draggable5{
+    background: url(img/stickers/11-okey-stickers.webp);
+    width: 200px;
+    height: 187px;
+    cursor: move;
+    background-size: cover;
+    background-repeat: no-repeat;
+    left: 600px;
+    top: -850px;
+  }
+
+
+        
+  .draggable6{
+    background: url(img/stickers/12-okey-stickers.webp);
+    width: 200px;
+    height: 198px;
+    cursor: move;
+    background-size: cover;
+    background-repeat: no-repeat;
+    left: 800px;
+    top: -950px;
+  }
+
+        
+  .draggable7{
+    background: url(img/stickers/15-okey-stickers.webp);
+    width: 200px;
+    height: 171px;
+    cursor: move;
+    background-size: cover;
+    background-repeat: no-repeat;
+    left: 700px;
+    top: -1050px;
+  }
     .show_tablet{
         display: none;
     }
@@ -8099,6 +8388,7 @@ span.ac-sign{
     .hide_desktop_footer{
         display:none
     }
+    
 }
 
 
@@ -8126,27 +8416,23 @@ span.ac-sign{
   }
 
 
-
-  .draggable, .draggable1, .draggable2, .draggable3, .draggable4, .draggable5, .draggable6 {
-    width: 200px;
-    height: 200px;
-    left: 20%;
-    position: relative;
-  }
-
-  .draggable.dragging, .draggable1.dragging, .draggable2.dragging, .draggable3.dragging, .draggable4.dragging, .draggable5.dragging, .draggable6.dragging      {
+  .draggable.dragging, .draggable1.dragging, .draggable2.dragging, .draggable3.dragging, .draggable4.dragging, .draggable5.dragging, .draggable6.dragging,
+  .draggable7.dragging, .draggable8.dragging, .draggable9.dragging, .draggable10.dragging, .draggable11.dragging, .draggable12.dragging, .draggable13.dragging,
+  .draggable14.dragging         {
     user-select: none;
   }
   
-  .dragger, .dragger1, .dragger2, .dragger3, .dragger4, .dragger5, .dragger6 {
+  .dragger, .dragger1, .dragger2, .dragger3, .dragger4, .dragger5, .dragger6, .dragger7, .dragger8, .dragger9, .dragger10, .dragger11, .dragger12, .dragger14,
+  .dragger13 {
     left: 20%;
     height: 200px;
-    background-image: url(img/favicon.png);
     background-size: contain;
     background-repeat: no-repeat;
   }
   
-  .dragger::before, .dragger1::before, .dragger2::before, .dragger3::before, .dragger4::before, .dragger5::before, .dragger6::before {
+  .dragger::before, .dragger1::before, .dragger2::before, .dragger3::before, .dragger4::before, .dragger5::before, .dragger6::before,
+  .dragger7::before, .dragger8::before, .dragger9::before, .dragger10::before, .dragger11::before, .dragger12::before, .dragger13::before 
+  .dragger14::before {
     left: 20%;
     color: #fff;
     margin: 5px;
@@ -8158,56 +8444,6 @@ span.ac-sign{
 
   .container {
     background-color: white;
-    height: 400px;
+    height: 500px;
     width: 100%;
-  }
-  
-  .draggable {
-    background: url(img/collage/comp.png);
-    width: 200px;
-    height: 156px;
-    left: 300px;
-    top: 200px;
-    cursor: move;
-    background-size: cover;
-    background-repeat: no-repeat;
-  }
-
-  .draggable1 {
-    background: url(img/collage/paper.png);
-    width: 100px;
-    height: 138px;
-    background-repeat: no-repeat;
-    background-size: cover;
-    top: 100px;
-    float: left;
-    cursor: move;
-    z-index: 2;
-  }
-
-    
-  .draggable2{
-    background: url(img/collage/normal.png);
-    width: 100px;
-    height: 243px;
-    left: 10px;
-    background-repeat: no-repeat;
-    background-size: cover;
-    float: left;
-    cursor: move;
-    z-index: 3;
-  }
-
-      
-  .draggable3{
-    background: url(img/collage/pic.png);
-    width: 150px;
-    height: 310px;
-    background-repeat: no-repeat;
-    background-size: cover;
-    top: -80px;
-    left: 20px;
-    z-index: 1;
-    float: left;
-    cursor: move;
   }
