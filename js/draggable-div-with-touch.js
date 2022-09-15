@@ -112,3 +112,71 @@ $(document).ready( function() {
     containment: true
   });
 });
+
+$(document).ready( function() {
+  var $draggables = $('.draggableA').draggabilly({
+    // contain to parent element
+    containment: true
+  });
+});
+
+$(document).ready( function() {
+  var $draggables = $('.draggableB').draggabilly({
+    // contain to parent element
+    containment: true
+  });
+});
+
+$(document).ready( function() {
+  var $draggables = $('.draggableC').draggabilly({
+    // contain to parent element
+    containment: true
+  });
+});
+
+
+$(document).ready( function() {
+  var $draggables = $('.draggableD').draggabilly({
+    // contain to parent element
+    containment: true
+  });
+});
+
+
+$(document).ready( function() {
+  var $draggables = $('.draggableE').draggabilly({
+    // contain to parent element
+    containment: true
+  });
+});
+
+$(document).ready( function() {
+  var $draggables = $('.draggableF').draggabilly({
+    // contain to parent element
+    containment: true
+  });
+});
+
+
+$(document).ready( function() {
+  var $draggables = $('.draggableG').draggabilly({
+    // contain to parent element
+    containment: true
+  });
+});
+
+
+$(document).ready( function() {
+  var $draggables = $('.draggableH').draggabilly({
+    // contain to parent element
+    containment: true
+  });
+});
+
+$(document).ready( function() {
+  var $draggables = $('.draggableJ').draggabilly({
+    // contain to parent element
+    containment: true
+  });
+});
+
