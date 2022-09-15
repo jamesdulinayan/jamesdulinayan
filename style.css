@@ -2774,6 +2774,211 @@ body.dark ul.check-payments li:hover{
     }
 }
 
+
+@media screen and (min-width: 768px) and (max-width: 1030px) { 
+    
+.site-navigation.fullscreen .menu.main-menu{
+    position:fixed;
+    left:25%;
+    right:0;
+    top:10% !important;
+    padding:0
+}
+
+}
+
+@media screen and (min-width: 768px) and (max-width: 1030px) { 
+    
+    .site-navigation.fullscreen .menu.main-menu{
+        position:fixed;
+        left:25%;
+        right:0;
+        top:10% !important;
+        padding:0
+    }
+    }
+
+
+    
+@media screen and (min-width: 901px) and (max-width: 1025px) { 
+ 
+    .draggableA {
+        left: 20px !important;
+        top: 30px;
+        background: url(img/collage/comp.png);
+        width: 90px;
+        height: 71px;
+        cursor: move;
+        z-index: 3;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+    .draggableB {
+        background: url(img/collage/cam.png);
+        width: 50px;
+        left: 100px !important;
+        z-index: 5;
+        top: 120px;
+        height: 51px;
+        cursor: move;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+    .draggableC {
+        background: url(img/collage/paper.png);
+        width: 80px;
+        bottom:50px;
+        height: 88px;
+        left:300px !important;
+        z-index: 2;
+        cursor: move;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+    
+    .draggableD {
+        background: url(img/collage/me.png);
+        left: 160px !important; 
+        bottom: 170px;
+        width: 90px;
+        height: 287px;
+        cursor: move;
+        z-index: 4;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+    
+    .draggableE {
+        background: url(img/collage/heart.png);
+        bottom: 370px;
+        left:40px !important;
+        width: 50px;
+        z-index: 2;
+        height: 51px;
+        cursor: move;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+    .draggableF {
+        background: url(img/collage/disk.png);
+        left:300px !important;
+        bottom: 370px;
+        width: 50px;
+        height: 54px;
+        z-index: 7;
+        cursor: move;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+    .draggableG {
+        background: url(img/collage/circle.png);
+        bottom: 360px;
+        left: 120px !important;
+        width: 200px;
+        height: 126px;
+        cursor: move;
+        z-index: 1;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+}
+
+ 
+@media screen and (min-width: 1026px) and (max-width: 1200px) { 
+ 
+    .draggableA {
+        left: 60px !important;
+        top: 40px;
+        background: url(img/collage/comp.png);
+        width: 90px;
+        height: 71px;
+        cursor: move;
+        z-index: 3;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+    .draggableB {
+        background: url(img/collage/cam.png);
+        width: 50px;
+        left: 130px !important;
+        z-index: 5;
+        top: 120px;
+        height: 51px;
+        cursor: move;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+    .draggableC {
+        background: url(img/collage/paper.png);
+        width: 80px;
+        bottom:50px;
+        height: 88px;
+        left:360px !important;
+        z-index: 2;
+        cursor: move;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+    
+    .draggableD {
+        background: url(img/collage/me.png);
+        left: 220px !important; 
+        bottom: 170px;
+        width: 90px;
+        height: 287px;
+        cursor: move;
+        z-index: 4;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+    
+    .draggableE {
+        background: url(img/collage/heart.png);
+        bottom: 370px;
+        left:70px !important;
+        width: 50px;
+        z-index: 2;
+        height: 51px;
+        cursor: move;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+    .draggableF {
+        background: url(img/collage/disk.png);
+        left:350px !important;
+        bottom: 370px;
+        width: 50px;
+        height: 54px;
+        z-index: 7;
+        cursor: move;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+    .draggableG {
+        background: url(img/collage/circle.png);
+        bottom: 360px;
+        left: 180px !important;
+        width: 200px;
+        height: 126px;
+        cursor: move;
+        z-index: 1;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+}
+
 @media only screen and (min-width:1600px){
     .wrapper{
         max-width:1500px
