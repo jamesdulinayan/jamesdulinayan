@@ -175,8 +175,8 @@ InertiaPlugin.track(apWrapper,"x");var apcDrag=Draggable.create(apWrapper,{type:
 gsap.fromTo(cat,{y:'100%'},{y:'0%',stagger:0.2,delay:1.5,duration:.8,ease:'power1.out',scrollTrigger:{trigger:$this,}})}
 cat.on('click',function(){let $this=$(this),dataCat='.cat_'+$this.data('category'),filterAn=gsap.timeline();cat.removeClass('active');$this.addClass('active');filterAn.fromTo('.product-ov',{width:'0%'},{width:'100%',ease:'power2.inOut',onProgress:function(){cats.addClass('locked')},onStart:function(){gsap.set('.product-ov',{right:0,left:'unset'})},onComplete:function(){products.addClass('hide');$(dataCat).removeClass('hide');let draggable=Draggable.get(apWrapper);draggable.update(true);}})
 filterAn.fromTo('.product-ov',{width:'100%'},{width:'0%',delay:0,ease:'power2.inOut',onStart:function(){gsap.set('.product-ov',{left:0,right:'unset'})},onComplete:function(){cats.removeClass('locked')}})})})}
-function aliothAwards(){var awards=$('.alioth-awards')
-awards.each(function(){let $this=$(this),award=$this.find('.a-award'),willAnim=$this.data('anim');if(willAnim==true){award.each(function(){let $this=$(this),title=$this.find('.award-title'),loc=$this.find('.award-loc'),date=$this.find('.award-date');title.wrapInner('<span></span>')
+function aliothAwards(){var awards=$('.alioth-awards1')
+awards.each(function(){let $this=$(this),award=$this.find('.a-award1'),willAnim=$this.data('');if(willAnim==true){award.each(function(){let $this=$(this),title=$this.find('.award-title1'),loc=$this.find('.award-loc1'),date=$this.find('.award-date1');title.wrapInner('<span></span>')
 loc.wrapInner('<span></span>')
 date.wrapInner('<span></span>')
 let spans=$this.find('span');gsap.fromTo(spans,{y:'100%'},{y:'0%',duration:.75,stagger:0.1,ease:'power2.Out',scrollTrigger:{trigger:$this,onEnter:function(){$this.addClass('is_inview')},}})})}});};function aliothSingleProduct(){if($('.product-page').length){let firstImage=$('.sp-image:first-child > img'),firstHeight=firstImage.outerHeight(),slider=$('.sp-slider');gsap.set(slider,{height:firstHeight})

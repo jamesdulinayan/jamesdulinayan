@@ -181,12 +181,8 @@
 			scrollbarContainer: !1,
 			scrollbarClass: "c-scrollbar",
 			scrollingClass: "has-scroll-scrolling",
-			draggingClass: "has-scroll-dragging",
 			smoothClass: "has-scroll-smooth",
 			initClass: "has-scroll-init",
-			getSpeed: !1,
-			getDirection: !1,
-			scrollFromAnywhere: !1,
 			multiplier: 1,
 			firefoxMultiplier: 50,
 			touchMultiplier: 2,
@@ -452,10 +448,6 @@
 						return "Y" === e ? t.clientHeight + l < t.scrollHeight : "X" === e ? t.clientWidth + l < t.scrollWidth : void 0
 					}
 
-					function h(e, i) {
-						var s = t.getComputedStyle(e, null)["overflow" + i];
-						return "auto" === s || "scroll" === s
-					}
 
 					function d(t) {
 						var e = c(t, "Y") && h(t, "Y"),
@@ -473,18 +465,6 @@
 						l = r = r > 1 ? 1 : r, i = .5 * (1 - Math.cos(Math.PI * l)), s = e.startX + (e.x - e.startX) * i, n = e.startY + (e.y - e.startY) * i, e.method.call(e.scrollable, s, n), s === e.x && n === e.y || t.requestAnimationFrame(f.bind(t, e))
 					}
 
-					function p(i, s, l) {
-						var a, c, h, d, u = o();
-						i === e.body ? (a = t, c = t.scrollX || t.pageXOffset, h = t.scrollY || t.pageYOffset, d = n.scroll) : (a = i, c = i.scrollLeft, h = i.scrollTop, d = r), f({
-							scrollable: a,
-							method: d,
-							startTime: u,
-							startX: c,
-							startY: h,
-							x: s,
-							y: l
-						})
-					}
 				}
 			}
 		})),

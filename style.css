@@ -8953,3 +8953,77 @@ span.ac-sign{
     70% {transform: translate(9%,4%);}
     90% {transform: translate(-1%,7%);}
   }
+
+  
+  .about {
+    font-family: "Neue";
+    position: relative;
+    display: flex;
+    flex-flow: row wrap;
+}
+     
+        .about .about-info .about-info_content > figure {
+          opacity: 0;
+          transition: opacity 3.5s cubic-bezier(0.215, 0.61, 0.355, 1);
+          transition-delay: .2s; }
+          .about .about-info .about-info_content > figure.is-inview {
+            opacity: 1; }
+        .about .about-info .about-info_content h2 {
+          position: relative;
+          font-size: calc(2px + 3.5vw);
+          line-height: 100%;
+          opacity: 0;
+          transition: opacity 1s cubic-bezier(0.215, 0.61, 0.355, 1);
+          transition-delay: .0s; }
+          .about .about-info .about-info_content h2.is-inview {
+            opacity: 1; }
+          .about .about-info .about-info_content h2 figure {
+            position: relative;
+            display: inline-block;
+            vertical-align: bottom;
+            width: 5%;
+            min-width: 40px;
+            transition: transform 0.3s cubic-bezier(0.215, 0.61, 0.355, 1); }
+            .about .about-info .about-info_content h2 figure img {
+              display: block;
+              transition: transform 1.2s cubic-bezier(0.215, 0.61, 0.355, 1);
+              transition-delay: 0.1s; }
+            .about .about-info .about-info_content h2 figure:hover {
+              z-index: 2;
+              transform: scale3d(4, 4, 4); }
+              .about .about-info .about-info_content h2 figure:hover img {
+                transform: scale3d(1.2, 1.2, 1.2); }
+
+                .services{
+                    font-size: calc(2px + 3.5vw);}
+  
+  
+  @media (max-width: 1024px) {
+    .services{
+       
+        font-size: calc(18px + 3.5vw);}
+    .o-scroll {
+      position: relative; } 
+      .about .about-info .about-info_content h2{
+        position: relative;
+        font-size: calc(18px + 3.5vw);
+        line-height: 100%;
+        opacity: 0;
+        transition: opacity 1s cubic-bezier(0.215, 0.61, 0.355, 1);
+        transition-delay: .0s; }}
+  
+  @media (max-width: 450px) {
+    
+    .services{
+        font-size: calc(12px + 3.5vw);}
+    .about .about-info .about-info_content h2 {
+      position: relative;
+      font-size: calc(12px + 3.5vw);
+      line-height: 100%;
+      opacity: 0;
+      transition: opacity 1s cubic-bezier(0.215, 0.61, 0.355, 1);
+      transition-delay: .0s; }
+ 
+      }
+   
+    
