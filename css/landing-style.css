@@ -1885,7 +1885,7 @@ html.is-ready .loaded {
 
 .o-scroll {
   width: 100%;
-  background-color: #faf9f6;
+  background-color:  #ebebeb;
   cursor: default; }
 
 .loader {
@@ -4183,4 +4183,31 @@ input[type=number]::-webkit-outer-spin-button {
   background-color: rgb(28, 26, 26);
   color: white;
   border: 1px solid black;
+}
+
+
+
+.grain {
+  background-color: transparent;
+  position: relative;
+}
+ 
+.grain:after {
+  animation: grain 8s steps(10) infinite;
+  background-image: url("https://assets.website-files.com/5dff182dc3faab4c98b08388/5dff21c5e65e0610a8d38b86_noisy-texture-100x100-o5-d10-c-FFFFFA-t1.png");
+  content: "";
+  height: 300%;
+  left: -50%;
+  position: fixed;
+  top: -100%;
+  width: 300%;
+}
+ 
+@keyframes grain {
+  0%, 100% {transform: translate(0,0);}
+  10% {transform: translate(-5%,-10%);}
+  30% {transform: translate(3%,-15%);}
+  50% {transform: translate(12%,9%);}
+  70% {transform: translate(9%,4%);}
+  90% {transform: translate(-1%,7%);}
 }
