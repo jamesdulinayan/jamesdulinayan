@@ -717,7 +717,7 @@ span.apl-background{
     height:100%
 }
 .site-header.fullscreen_menu.menu-has-open::before{
-    height:1080px !important;
+    height:100vh !important;  
 }
 .site-header.fullscreen_menu::after{
     display:block;
@@ -1020,7 +1020,7 @@ span.apl-background{
     position:fixed;
     left:25%;
     right:0;
-    bottom:15%;
+    bottom:8%;
     padding:0
 }
 .site-navigation.fullscreen ul.ulcol{
@@ -2782,23 +2782,11 @@ body.dark ul.check-payments li:hover{
     position:fixed;
     left:25%;
     right:0;
-    top:10% !important;
+    top:17% !important;
     padding:0
 }
 
 }
-
-@media screen and (min-width: 768px) and (max-width: 1030px) { 
-    
-    .site-navigation.fullscreen .menu.main-menu{
-        position:fixed;
-        left:25%;
-        right:0;
-        top:10% !important;
-        padding:0
-    }
-    }
-
 
     
 @media screen and (min-width: 901px) and (max-width: 1025px) { 
@@ -7510,7 +7498,7 @@ span.ac-sign{
     .site-navigation.fullscreen .menu.main-menu{
         left:0;
         bottom:unset;
-        top:15%;
+        top:22%;
         -webkit-transform:none;
         -ms-transform:none;
         transform:none
