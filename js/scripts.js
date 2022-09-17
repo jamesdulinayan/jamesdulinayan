@@ -125,7 +125,7 @@ $('.site-header').addClass('dark')}else if(menuLayout==='dark'){$('.site-header'
 $('.site-header').addClass('light')}}
 disableScroll();$this.addClass('is-active');siteNav.addClass('menu-opened');headerWrapper.addClass('menu-opened');$('.site-header').addClass('menu-has-open');var menuHeight=$('.main-menu').outerHeight(),siteHeader=$('.site-header'),winHeight=$(window).outerHeight(),winWidth=$(window).outerWidth(),plusHeight=winHeight/100*25,menuTop=$('.main-menu').position().top,wWidth=$(window).outerWidth()/100*17/2;let mobileQuery=window.matchMedia('(max-width: 1024px)')
 if(!mobileQuery.matches){gsap.set('.sub-back',{top:menuTop})}
-var rule=CSSRulePlugin.getRule(".site-header.fullscreen_menu.menu-has-open::before");if(mobileQuery.matches){gsap.set(rule,{cssRule:{height:'100vh'}});}else{gsap.set(menuWrapper,{height:menuHeight+plusHeight})
+var rule=CSSRulePlugin.getRule(".site-header.fullscreen_menu.menu-has-open::before");if(mobileQuery.matches){gsap.set(rule,{cssRule:{height:'100vh'}});}else{gsap.set(rule,{cssRule:{height:'100vh'}})
 gsap.set(rule,{cssRule:{height:menuHeight+plusHeight+50}});}
 let menuUls=$('.site-navigation').find('ul');menuUls.each(function(){let $this=$(this),selfHeight=$this.outerHeight();if(selfHeight>menuHeight){$this.addClass('ulcol')}})
 menuAin.restart(true);socialListAnim.restart(true);gitButtonAnim.restart(true);}
