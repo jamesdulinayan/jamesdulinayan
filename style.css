@@ -717,7 +717,7 @@ span.apl-background{
     height:100%
 }
 .site-header.fullscreen_menu.menu-has-open::before{
-    height:120vh !important;  
+    height:100vh !important;  
 }
 .site-header.fullscreen_menu::after{
     display:block;
@@ -753,7 +753,7 @@ span.apl-background{
     -webkit-transform:translateX(-50%);
     -ms-transform:translateX(-50%);
     transform:translateX(-50%);
-    height:84vh
+    height:100vh
 }
 .site-header.header_sticked{
     position:fixed;
@@ -1020,7 +1020,7 @@ span.apl-background{
     position:fixed;
     left:25%;
     right:0;
-    bottom:8%;
+    top:15%;
     padding:0
 }
 .site-navigation.fullscreen ul.ulcol{
@@ -2773,16 +2773,13 @@ body.dark ul.check-payments li:hover{
     .hide{
         display: none;
     }
-}
 
-
-@media screen and (min-width: 768px) and (max-width: 1030px) { 
     
 .site-navigation.fullscreen .menu.main-menu{
     position:fixed;
     left:25%;
     right:0;
-    top:17% !important;
+    top:10% !important;
     padding:0
 }
 
@@ -7498,7 +7495,7 @@ span.ac-sign{
     .site-navigation.fullscreen .menu.main-menu{
         left:0;
         bottom:unset;
-        top:22%;
+        top:20%;
         -webkit-transform:none;
         -ms-transform:none;
         transform:none
@@ -8264,7 +8261,7 @@ span.ac-sign{
     }
     .site-navigation.fullscreen .menu.main-menu{
         bottom:unset;
-        top:20%;
+        top:20% !important;
         left:0;
         width:100%
     }
@@ -9014,3 +9011,4 @@ span.ac-sign{
  
       }
    
+
