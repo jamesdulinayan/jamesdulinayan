@@ -717,7 +717,7 @@ span.apl-background{
     height:100%
 }
 .site-header.fullscreen_menu.menu-has-open::before{
-    height:3000px !important;  
+    height:100vh !important;  
 }
 .site-header.fullscreen_menu::after{
     display:block;
@@ -955,7 +955,7 @@ span.apl-background{
 .site-navigation.fullscreen{
     position:fixed;
     width:100%;
-    height:85%;
+    height:100%;
     top:0;
     left:0;
     z-index:888
@@ -964,7 +964,7 @@ span.apl-background{
     display:block;
     width:100%;
     position:fixed;
-    height:85%;
+    height:100%;
     top:0;
     left:50%;
     -webkit-transform:translateX(-50%);
@@ -7495,7 +7495,7 @@ span.ac-sign{
     .site-navigation.fullscreen .menu.main-menu{
         left:0;
         bottom:unset;
-        top:20%;
+        top:15%;
         -webkit-transform:none;
         -ms-transform:none;
         transform:none
