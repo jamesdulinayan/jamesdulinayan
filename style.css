@@ -714,10 +714,10 @@ span.apl-background{
     transition:all .55s cubic-bezier(.25,.74,.22,.99)
 }
 .site-header.anim_start .site-header.fullscreen_menu::before{
-    height:2000px !important; 
+    height:100%
 }
 .site-header.fullscreen_menu.menu-has-open::before{
-    height:2000px !important;  
+    height:100vh !important;  
 }
 .site-header.fullscreen_menu::after{
     display:block;
