@@ -8973,7 +8973,7 @@ span.ac-sign{
           font-size: calc(2px + 3.5vw);
           line-height: 100%;
           opacity: 0;
-          transition: opacity 1s cubic-bezier(0.215, 0.61, 0.355, 1);
+          transition: opacity 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
           transition-delay: .0s; }
           .about .about-info .about-info_content h2.is-inview {
             opacity: 1; }
@@ -9026,4 +9026,3 @@ span.ac-sign{
  
       }
    
-    

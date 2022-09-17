@@ -12,11 +12,13 @@ svg {
   svg[width],
   svg[height] {
     /* [4] */
-    max-width: none; }
+    max-width: none; 
+  }
 
 img {
   font-style: italic;
-  /* [4] */ }
+  /* [4] */ 
+}
 
 
 

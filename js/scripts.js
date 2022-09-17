@@ -654,3 +654,20 @@ ppTitleEnd.fromTo('.trans-text-char',.4,{y:'00%'},{y:'-100%',stagger:0.02,ease:'
 gsap.set(trans,{visibility:'hidden'})}},0)}}]});if(history.scrollRestoration){history.scrollRestoration='manual';};}(jQuery));
 
 
+window.scroll({
+    top: 2500, 
+    left: 0, 
+    behavior: 'smooth'
+  });
+  
+  // Scroll certain amounts from current position 
+  window.scrollBy({ 
+    top: 100, // could be negative value
+    left: 0, 
+    behavior: 'smooth' 
+  });
+  
+  // Scroll to a certain element
+  document.querySelector('.hello').scrollIntoView({ 
+    behavior: 'smooth' 
+  });
