@@ -717,7 +717,7 @@ span.apl-background{
     height:100%
 }
 .site-header.fullscreen_menu.menu-has-open::before{
-    height:100vh !important;  
+    height:1500px !important;  
 }
 .site-header.fullscreen_menu::after{
     display:block;
@@ -753,7 +753,7 @@ span.apl-background{
     -webkit-transform:translateX(-50%);
     -ms-transform:translateX(-50%);
     transform:translateX(-50%);
-    height:100vh
+    height:100vh !important
 }
 .site-header.header_sticked{
     position:fixed;
