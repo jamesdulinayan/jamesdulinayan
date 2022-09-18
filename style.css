@@ -697,7 +697,7 @@ span.apl-background{
     display:block;
     position:absolute;
     width:100%;
-    height:100px;
+    height:93px;
     z-index:9999
 }
 .site-header.fullscreen_menu::before{
@@ -1194,7 +1194,7 @@ span.apl-background{
     width:0;
     height:2px;
     display:block;
-    background:#191b1d;
+    background:rgb(0, 0, 0);
     -webkit-transition:all .3s cubic-bezier(.475,.425,0,.995);
     -o-transition:all .3s cubic-bezier(.475,.425,0,.995);
     transition:all .3s cubic-bezier(.475,.425,0,.995);
@@ -8789,8 +8789,8 @@ span.ac-sign{
     background: url(img/collage/me.png);
     left: 270px;
     bottom: 120px;
-    width: 110px;
-    height: 351px;
+    width: 120px;
+    height: 383px;
     cursor: move;
     z-index: 4;
     background-size: cover;
@@ -8812,8 +8812,8 @@ span.ac-sign{
 
   .draggableF {
     background: url(img/collage/disk.png);
-    left:400px;
-    bottom: 520px;
+    left:420px;
+    bottom: 550px;
     width: 50px;
     height: 54px;
     z-index: 7;
