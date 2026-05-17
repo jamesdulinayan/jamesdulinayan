@@ -204,10 +204,6 @@ video {
     transition: color .4s ease;
 }
 
-.post-title h3:hover {
-    color: #6d6861;
-
-}
 
 .footer-widget p {
     font-family: "Roboto Mono", ui-monospace, monospace;
@@ -310,7 +306,7 @@ body {
 }
 
 body.dark {
-    background: #191b1d;
+    background: #000000;
     color: #fff
 }
 
@@ -748,7 +744,7 @@ span.apl-background {
     position: fixed;
     top: 0;
     left: 0;
-    background: #191b1d;
+    background: #000000;
     width: 100%;
     height: 100%;
     z-index: -15
@@ -1722,7 +1718,8 @@ ul.product-tags li a {
     display: block;
     clear: both;
     background: #efefec;
-    border-top: 1px #000 solid;
+    border-top: 1px rgba(0, 0, 0, 0.5) solid !important;
+    /* Muted transparent black outline */
     margin-bottom: 0;
     padding: 75px 0 1px;
     z-index: 999;
@@ -1738,7 +1735,9 @@ h4.footer-text {
 
 
 #footer.dark {
-    background: #131313
+    background: #131313;
+    border-top: 1px solid #9a9a9a !important;
+    /* Visible silver-grey top border in dark mode */
 }
 
 .copyright-text {
@@ -10209,6 +10208,16 @@ html.draggabilly-grabbing * {
     }
 }
 
+/* Dark Mode Draggable Text Labels Color */
+body.dark .draggableA::after,
+body.dark .draggableB::after,
+body.dark .draggableC::after,
+body.dark .draggableD::after,
+body.dark .draggableE::after,
+body.dark .draggableF::after {
+    color: #ffffff !important;
+}
+
 .draggablee-tooltip {
     position: fixed;
     top: 0;
@@ -10626,14 +10635,31 @@ html.draggabilly-grabbing * {
 
 .creative-media-col {
     border-top: 0;
-    border-left: 1px solid #000;
+    border-left: 1px solid rgba(0, 0, 0, 0.5) !important;
+    /* Muted transparent black outline */
     border-right: 0;
 }
 
 @media (max-width: 991px) {
     .creative-media-col {
-        border-top: 1px solid #000;
+        border-top: 1px solid rgba(0, 0, 0, 0.5) !important;
+        /* Muted transparent black outline */
         border-left: 0;
+    }
+}
+
+/* Dark Mode Layout Borders for Homepage Columns */
+body.dark .creative-media-col {
+    border-left: 1px solid #9a9a9a !important;
+    /* Premium silver grey border outline */
+    border-top: 0 !important;
+}
+
+@media (max-width: 991px) {
+    body.dark .creative-media-col {
+        border-top: 1px solid #9a9a9a !important;
+        /* Premium silver grey border outline */
+        border-left: 0 !important;
     }
 }
 
@@ -10667,6 +10693,10 @@ html.draggabilly-grabbing * {
     font-family: "Roboto Mono", ui-monospace, monospace;
     line-height: 1.1;
     margin-bottom: 1rem;
+}
+
+body.dark .creative-copy-title {
+    color: #f1f1f1 !important;
 }
 
 .creative-copy-text {
@@ -10750,7 +10780,8 @@ html.draggabilly-grabbing * {
     max-width: none;
     margin: 0 auto;
     padding: clamp(10px, 1.2vw, 14px) clamp(18px, 3vw, 42px);
-    border: 1px solid #000;
+    border: 1px solid rgba(0, 0, 0, 0.5) !important;
+    /* Muted transparent black outline */
     border-radius: 9999px;
     box-sizing: border-box;
     display: flex;
@@ -10893,7 +10924,7 @@ html.draggabilly-grabbing * {
     margin: 0;
     font-family: "Neue", system-ui, sans-serif;
     font-weight: 500;
-    color: rgba(0, 0, 0, 0.88);
+    color: #393334;
     line-height: 1.35;
     font-size: clamp(0.95rem, 0.55vw + 0.8rem, 1.08rem);
     text-decoration: none;
@@ -10905,9 +10936,9 @@ html.draggabilly-grabbing * {
 }
 
 .cta-footer__col-value:hover {
-    color: #000;
     border-bottom-color: rgba(0, 0, 0, 0.35);
 }
+
 
 .cta-footer__col-value:focus-visible {
     outline: 2px solid #000;
@@ -10916,16 +10947,29 @@ html.draggabilly-grabbing * {
 }
 
 body.dark .cta-footer__col-label {
-    color: rgba(255, 255, 255, 0.45) !important;
+    color: #a7a7a7 !important;
 }
 
 body.dark .cta-footer__col-value {
-    color: rgba(255, 255, 255, 0.88) !important;
+    color: #eeeeee !important;
 }
 
 body.dark .cta-footer__col-value:hover {
-    color: #ffffff !important;
     border-bottom-color: rgba(255, 255, 255, 0.35) !important;
+}
+
+
+body.dark .cta-footer__icon-link {
+    color: #eeeeee !important;
+}
+
+body.dark .cta-footer__icon-link:hover {
+    color: #ffffff !important;
+}
+
+body.dark .cta-footer__inner {
+    border-color: #9a9a9a !important;
+    /* Visible capsule border outline in dark mode */
 }
 
 @media (max-width: 720px) {
@@ -11221,7 +11265,8 @@ body.dark .cta-footer__col-value:hover {
 }
 
 .works-page-content .blog-classic .post.alioth-post {
-    margin-bottom: 0 !important; /* Eliminates redundant duplicate bottom margin */
+    margin-bottom: 0 !important;
+    /* Eliminates redundant duplicate bottom margin */
 }
 
 
@@ -11231,8 +11276,10 @@ body.dark .cta-footer__col-value:hover {
     padding: 0 !important;
     display: flex !important;
     flex-direction: row !important;
-    justify-content: flex-start !important; /* Align everything flush-left side-by-side */
-    align-items: center !important; /* Perfect vertical centering of text and line */
+    justify-content: flex-start !important;
+    /* Align everything flush-left side-by-side */
+    align-items: center !important;
+    /* Perfect vertical centering of text and line */
     width: 100% !important;
     margin-top: 20px !important;
 }
@@ -11241,7 +11288,8 @@ body.dark .cta-footer__col-value:hover {
     margin: 0 !important;
     display: inline-block !important;
     width: auto !important;
-    order: 1 !important; /* Title goes first */
+    order: 1 !important;
+    /* Title goes first */
     flex-shrink: 1 !important;
     min-width: 0 !important;
 }
@@ -11254,27 +11302,36 @@ body.dark .cta-footer__col-value:hover {
 /* Elegant short horizontal connector line */
 .works-page-content .post-meta::after {
     content: "" !important;
-    order: 2 !important; /* Line goes in the middle */
-    flex-grow: 0 !important; /* Does not stretch full width */
-    width: 35px !important; /* Premium fixed short length */
+    order: 2 !important;
+    /* Line goes in the middle */
+    flex-grow: 0 !important;
+    /* Does not stretch full width */
+    width: 35px !important;
+    /* Premium fixed short length */
     height: 1px !important;
-    background: rgba(0, 0, 0, 0.2) !important; /* Clean soft line */
-    margin: 0 15px !important; /* Perfect spacing around the line */
+    background: rgba(0, 0, 0, 0.5) !important;
+    /* Clean soft line */
+    margin: 0 15px !important;
+    /* Perfect spacing around the line */
     align-self: center !important;
 }
 
 body.dark .works-page-content .post-meta::after {
-    background: rgba(255, 255, 255, 0.25) !important; /* Subtle line for dark theme */
+    background: #9a9a9a !important;
+    /* Subtle line for dark theme */
 }
 
 .works-page-content .blog-classic .post-cat {
     margin: 0 !important;
     float: none !important;
     display: inline-block !important;
-    order: 3 !important; /* Year goes last */
+    order: 3 !important;
+    /* Year goes last */
     flex-shrink: 0 !important;
-    font-size: clamp(0.9rem, 0.3vw + 0.8rem, 1.25rem) !important; /* Sleek, matching brand size */
-    color: rgba(0, 0, 0, 0.42) !important;  /* Premium soft brand grey */
+    font-size: clamp(0.9rem, 0.3vw + 0.8rem, 1.25rem) !important;
+    /* Sleek, matching brand size */
+    color: rgba(0, 0, 0, 0.42) !important;
+    /* Premium soft brand grey */
     font-weight: 500 !important;
     line-height: 1 !important;
 }
@@ -11298,8 +11355,8 @@ body.dark .works-page-content .post-meta::after {
     font-size: clamp(1.35rem, 1.2vw + 1.1rem, 2rem) !important;
 }
 
-.works-page-content .post-title h3:hover {
-    color: #000000 !important;
+body.dark .works-page-content .post-title h3 {
+    color: rgba(255, 255, 255, 0.88) !important;
 }
 
 .works-page-content .blog-classic .post-date,
@@ -11309,7 +11366,15 @@ body.dark .works-page-content .post-meta::after {
 }
 
 .works-page-content .blog-classic h5.post-date::after {
-    background: rgba(0, 0, 0, 0.42) !important;
+    background: rgba(0, 0, 0, 0.5) !important;
+}
+
+body.dark .works-page-content .blog-classic .post-cat {
+    color: #a7a7a7 !important;
+}
+
+body.dark .works-page-content .blog-classic h5.post-date::after {
+    background: #9a9a9a !important;
 }
 
 /* -----------------------------------------
@@ -11349,6 +11414,20 @@ body.dark .works-page-content .post-meta::after {
     font-weight: 500;
 }
 
+/* Dark Mode Works Page Filters */
+body.dark .filter-btn {
+    color: #eeeeee !important;
+}
+
+body.dark .filter-btn:hover {
+    color: #ffffff !important;
+}
+
+body.dark .filter-btn.active {
+    border-color: #ffffff !important;
+    color: #ffffff !important;
+}
+
 /* Premium Sticky Back to Home Navigation */
 .back-to-home-sticky {
     height: 40px !important;
@@ -11359,28 +11438,37 @@ body.dark .works-page-content .post-meta::after {
 .back-to-home-sticky a {
     position: fixed !important;
     top: 30px !important;
-    left: 40px !important; /* Perfectly aligned flush-left with desktop columns */
-    background: #ebebeb !important; /* Solid background to completely hide grain texture */
+    left: 40px !important;
+    /* Perfectly aligned flush-left with desktop columns */
+    background: #ebebeb !important;
+    /* Solid background to completely hide grain texture */
     padding: 10px 20px !important;
     border-radius: 50px !important;
-    border: 1px solid rgba(25, 27, 29, 0.08) !important;
+    border: 1px solid rgba(0, 0, 0, 0.15) !important;
+    /* Soft transparent black outline */
     z-index: 1000 !important;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03) !important;
-    color: #191b1d !important;
+    color: #000000 !important;
+    /* Pure black to match creative-copy-title */
     font-weight: 500 !important;
     text-decoration: none !important;
 }
 
 @media (max-width: 720px) {
     .back-to-home-sticky a {
-        left: clamp(16px, 4vw, 30px) !important; /* Symmetrical mobile left alignment */
+        left: clamp(16px, 4vw, 30px) !important;
+        /* Symmetrical mobile left alignment */
     }
 }
 
 .back-to-home-sticky a:hover {
-    background: #f3f3f3 !important; /* Smooth soft light gray transition */
-    border-color: rgba(25, 27, 29, 0.15) !important;
+    background: #f3f3f3 !important;
+    /* Restore subtle light grey hover background */
+    border-color: rgba(0, 0, 0, 0.5) !important;
+    /* Only on hover matches strong layout grid border */
+    color: #000000 !important;
+    /* Keep pure black text color */
 }
 
 .back-to-home-sticky a .back-arrow {
@@ -11390,19 +11478,26 @@ body.dark .works-page-content .post-meta::after {
 }
 
 .back-to-home-sticky a:hover .back-arrow {
-    transform: translateX(-4px) !important; /* Premium gentle hover nudge */
+    transform: translateX(-4px) !important;
+    /* Premium gentle hover nudge */
 }
 
 body.dark .back-to-home-sticky a {
-    background: #131313 !important; /* Solid dark background to completely hide grain texture */
-    border-color: rgba(255, 255, 255, 0.08) !important;
+    background: #131313 !important;
+    /* Solid dark background to completely hide grain texture */
+    border-color: rgba(255, 255, 255, 0.15) !important;
+    /* Soft weightless border in default state */
     color: #ffffff !important;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2) !important;
 }
 
 body.dark .back-to-home-sticky a:hover {
-    background: #1a1a1a !important; /* Smooth soft dark slate transition */
-    border-color: rgba(255, 255, 255, 0.15) !important;
+    background: #1a1a1a !important;
+    /* Restore subtle dark slate hover background */
+    border-color: #9a9a9a !important;
+    /* Only on hover matches strong layout grid border */
+    color: #ffffff !important;
+    /* Text turns clean white */
 }
 
 /* -----------------------------------------
@@ -11411,7 +11506,8 @@ body.dark .back-to-home-sticky a:hover {
 -------------------------------------------- */
 .project-details-grid {
     display: grid;
-    grid-template-columns: 4.2fr 5.8fr; /* 42% left column, 58% right column */
+    grid-template-columns: 4.2fr 5.8fr;
+    /* 42% left column, 58% right column */
     gap: clamp(40px, 5vw, 80px);
     align-items: start;
     margin-bottom: 0 !important;
@@ -11420,7 +11516,8 @@ body.dark .back-to-home-sticky a:hover {
 .project-info-col {
     position: -webkit-sticky;
     position: sticky;
-    top: 100px; /* Sticks title and description while scrolling images! */
+    top: 100px;
+    /* Sticks title and description while scrolling images! */
     height: calc(100vh - 200px);
     display: flex;
     flex-direction: column;
@@ -11443,16 +11540,8 @@ body.dark .back-to-home-sticky a:hover {
     transition: color .4s ease;
 }
 
-.project-info-col .post-title h3:hover {
-    color: #000000 !important;
-}
-
 body.dark .project-info-col .post-title h3 {
     color: rgba(255, 255, 255, 0.88) !important;
-}
-
-body.dark .project-info-col .post-title h3:hover {
-    color: #ffffff !important;
 }
 
 .project-details-desc {
@@ -11479,15 +11568,19 @@ body.dark .project-details-desc {
     font-weight: 500 !important;
     line-height: 1 !important;
     border-radius: 100px !important;
-    background-color: #f1f1f1 !important; /* Solid opaque light-grey to hide grain */
+    background-color: #f1f1f1 !important;
+    /* Solid opaque light-grey to hide grain */
     color: rgba(0, 0, 0, 0.88) !important;
-    border: 1px solid #e1e1e1 !important;     /* Crisp solid border */
+    border: 1px solid #e1e1e1 !important;
+    /* Crisp solid border */
 }
 
 body.dark .meta-pill {
-    background-color: #27282a !important; /* Solid opaque charcoal to hide grain */
+    background-color: #27282a !important;
+    /* Solid opaque charcoal to hide grain */
     color: rgba(255, 255, 255, 0.88) !important;
-    border: 1px solid #3c3d3f !important;     /* Crisp solid border */
+    border: 1px solid #3c3d3f !important;
+    /* Crisp solid border */
 }
 
 .project-gallery-col {
@@ -11523,13 +11616,15 @@ body.dark .meta-pill {
     height: auto !important;
     display: block !important;
     object-fit: cover !important;
-    border-radius: 0 !important; /* Premium flush clean-cut images */
+    border-radius: 0 !important;
+    /* Premium flush clean-cut images */
 }
 
 @media (min-width: 992px) {
     .project-first-card {
         padding-left: 0 !important;
     }
+
     .project-last-card {
         padding-right: 0 !important;
     }
@@ -11540,6 +11635,7 @@ body.dark .meta-pill {
         padding-left: 0 !important;
         padding-right: 15px !important;
     }
+
     .works-page-content .wrapper-full .project-last-card {
         padding-left: 15px !important;
         padding-right: 0 !important;
@@ -11549,7 +11645,8 @@ body.dark .meta-pill {
 @media (max-width: 991px) {
 
     .project-details-grid {
-        grid-template-columns: 1fr; /* Stack layout on tablet/mobile */
+        grid-template-columns: 1fr;
+        /* Stack layout on tablet/mobile */
         gap: 50px;
     }
 
@@ -11571,22 +11668,23 @@ body.dark .meta-pill {
         display: inline-block !important;
         width: 35px !important;
         height: 1px !important;
-        background: rgba(0, 0, 0, 0.2) !important;
+        background: rgba(0, 0, 0, 0.5) !important;
         margin-right: 15px !important;
         vertical-align: middle !important;
         margin-bottom: 2px !important;
     }
 
     body.dark .works-page-content .blog-classic .post-cat::before {
-        background: rgba(255, 255, 255, 0.25) !important;
+        background: #9a9a9a !important;
     }
-    
+
     .project-info-col {
-        position: static !important; /* Disable sticky on stacked views */
+        position: static !important;
+        /* Disable sticky on stacked views */
         height: auto !important;
         display: block !important;
     }
-    
+
     .project-details-desc {
         max-width: 100% !important;
     }
@@ -11596,13 +11694,13 @@ body.dark .meta-pill {
 .project-separator {
     clear: both !important;
     width: 100% !important;
-    border-top: 1px solid rgba(0, 0, 0, 0.15) !important;
+    border-top: 1px solid rgba(0, 0, 0, 0.5) !important;
     margin-top: clamp(40px, 6vw, 80px) !important;
     margin-bottom: clamp(40px, 6vw, 80px) !important;
 }
 
 body.dark .project-separator {
-    border-top: 1px solid rgba(255, 255, 255, 0.15) !important;
+    border-top: 1px solid #9a9a9a !important;
 }
 
 /* Other Works Grid Responsiveness matching Works Page Breakpoints */
@@ -11612,14 +11710,17 @@ body.dark .project-separator {
         display: block !important;
         margin-bottom: 0 !important;
     }
+
     .project-page .wrapper-full .project-first-card {
         padding-left: 0 !important;
         padding-right: 15px !important;
     }
+
     .project-page .wrapper-full .c-col-4p:not(.project-first-card):not(.project-last-card) {
         padding-left: 15px !important;
         padding-right: 15px !important;
     }
+
     .project-page .wrapper-full .project-last-card {
         padding-left: 15px !important;
         padding-right: 0 !important;
@@ -11630,17 +11731,21 @@ body.dark .project-separator {
     .project-page .wrapper-full .c-col-4p {
         width: 50% !important;
         display: block !important;
-        margin-bottom: 0 !important; /* Keep the bottom clean as there is only 1 row */
+        margin-bottom: 0 !important;
+        /* Keep the bottom clean as there is only 1 row */
     }
+
     .project-page .wrapper-full .c-col-4p.hide_tablet {
-        display: none !important; /* Hide on tablet */
+        display: none !important;
+        /* Hide on tablet */
     }
-    
+
     /* Card 1 (left) */
     .project-page .wrapper-full .project-first-card {
         padding-left: 0 !important;
         padding-right: 15px !important;
     }
+
     /* Card 3 (right) */
     .project-page .wrapper-full .project-last-card {
         padding-left: 15px !important;
@@ -11656,11 +11761,14 @@ body.dark .project-separator {
         padding-left: 0 !important;
         padding-right: 0 !important;
     }
+
     .project-page .wrapper-full .c-col-4p.hide_tablet {
         display: block !important;
     }
+
     .project-page .wrapper-full .project-last-card {
-        margin-bottom: 0 !important; /* Keep the last item clean at the bottom */
+        margin-bottom: 0 !important;
+        /* Keep the last item clean at the bottom */
     }
 }
 
@@ -11694,16 +11802,30 @@ body.dark .project-separator {
     font-size: clamp(1.35rem, 1.2vw + 1.1rem, 2rem) !important;
 }
 
-.project-page .post-title h3:hover {
-    color: #000000 !important;
-}
-
 body.dark .project-page .post-title h3 {
     color: rgba(255, 255, 255, 0.88) !important;
 }
 
-body.dark .project-page .post-title h3:hover {
-    color: #ffffff !important;
+.project-page .post-title a,
+.project-page .post-title a h3 {
+    text-decoration: none !important;
+    color: rgba(0, 0, 0, 0.88) !important;
+}
+
+body.dark .project-page .post-title a,
+body.dark .project-page .post-title a h3 {
+    color: rgba(255, 255, 255, 0.88) !important;
+}
+
+.project-page .post-title a:hover,
+.project-page .post-title a:hover h3 {
+    color: rgba(0, 0, 0, 0.88) !important;
+    text-decoration: none !important;
+}
+
+body.dark .project-page .post-title a:hover,
+body.dark .project-page .post-title a:hover h3 {
+    color: rgba(255, 255, 255, 0.88) !important;
 }
 
 .project-page .post-meta::after {
@@ -11712,13 +11834,13 @@ body.dark .project-page .post-title h3:hover {
     flex-grow: 0 !important;
     width: 35px !important;
     height: 1px !important;
-    background: rgba(0, 0, 0, 0.2) !important;
+    background: rgba(0, 0, 0, 0.5) !important;
     margin: 0 15px !important;
     align-self: center !important;
 }
 
 body.dark .project-page .post-meta::after {
-    background: rgba(255, 255, 255, 0.25) !important;
+    background: #9a9a9a !important;
 }
 
 .project-page .blog-classic .post-cat {
@@ -11734,7 +11856,7 @@ body.dark .project-page .post-meta::after {
 }
 
 body.dark .project-page .blog-classic .post-cat {
-    color: rgba(255, 255, 255, 0.42) !important;
+    color: #a7a7a7 !important;
 }
 
 @media (max-width: 991px) {
@@ -11742,23 +11864,127 @@ body.dark .project-page .blog-classic .post-cat {
         flex-direction: column !important;
         align-items: flex-start !important;
     }
+
     .project-page .post-meta::after {
         display: none !important;
     }
+
     .project-page .blog-classic .post-cat {
         margin-top: 6px !important;
     }
+
     .project-page .blog-classic .post-cat::before {
         content: "" !important;
         display: inline-block !important;
         width: 35px !important;
         height: 1px !important;
-        background: rgba(0, 0, 0, 0.2) !important;
+        background: rgba(0, 0, 0, 0.5) !important;
         margin-right: 15px !important;
         vertical-align: middle !important;
         margin-bottom: 2px !important;
     }
+
     body.dark .project-page .blog-classic .post-cat::before {
-        background: rgba(255, 255, 255, 0.25) !important;
+        background: #9a9a9a !important;
     }
+}
+
+/* Premium Floating Theme Toggle Sticky Button */
+.theme-toggle-sticky {
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: block !important;
+}
+
+.theme-toggle-btn {
+    position: fixed !important;
+    top: 30px !important;
+    right: 40px !important;
+    /* Pinned to top-right corner */
+    background: #ebebeb !important;
+    /* Solid background to completely hide grain texture */
+    padding: 0 !important;
+    border-radius: 100px !important;
+    border: 1px solid rgba(0, 0, 0, 0.15) !important;
+    /* Soft transparent black outline */
+    z-index: 2000 !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03) !important;
+    color: #000000 !important;
+    /* Pure black to match creative-copy-title */
+    cursor: pointer !important;
+    font-size: 1.1rem !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 44px !important;
+    height: 44px !important;
+    outline: none !important;
+}
+
+@media (max-width: 720px) {
+    .theme-toggle-btn {
+        right: clamp(16px, 4vw, 30px) !important;
+        /* Mobile right alignment */
+    }
+}
+
+.theme-toggle-btn:hover {
+    background: #000000 !important;
+    /* Pure black background on hover */
+    border-color: rgba(0, 0, 0, 0.5) !important;
+    /* Only on hover matches strong layout grid border */
+    color: #ffffff !important;
+    /* Icon turns clean white */
+}
+
+.theme-toggle-btn .fa-moon {
+    color: #000000 !important;
+    /* Pure black moon icon color in default state */
+    transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.theme-toggle-btn:hover .fa-moon {
+    color: #ffffff !important;
+    /* Transitions to white on hover against charcoal */
+}
+
+/* Dark Mode Theme Toggle Styles */
+body.dark .theme-toggle-btn {
+    background: #131313 !important;
+    /* Visible dark slate background against OLED pure black body */
+    border-color: rgba(255, 255, 255, 0.15) !important;
+    /* Soft weightless border in default state */
+    color: #ffffff !important;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2) !important;
+}
+
+body.dark .theme-toggle-btn:hover {
+    background: #ebebeb !important;
+    /* Soft capsule moon grey on hover */
+    border-color: #9a9a9a !important;
+    /* Only on hover matches strong layout grid border */
+    color: #000000 !important;
+    /* Icon turns black */
+}
+
+/* Inline Header Text GIFs Color Inversion in Dark Mode */
+.creative-copy-title img {
+    transition: filter .4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+body.dark .creative-copy-title img {
+    filter: invert(1) brightness(1.5) !important;
+}
+
+/* Remove Layout Grid Dividers from Contact Page Hero */
+.contact-col-right {
+    border-left: 0 !important;
+    border-top: 0 !important;
+}
+
+body.dark .contact-col-right {
+    border-left: 0 !important;
+    border-top: 0 !important;
 }
