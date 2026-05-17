@@ -10990,6 +10990,9 @@ html.draggabilly-grabbing * {
     .creative-layout__row .container {
         height: 100%;
         flex: 1 1 auto;
+        overflow: visible !important;
+        align-items: flex-start !important;
+        justify-content: center !important;
     }
 }
 
@@ -11027,6 +11030,13 @@ html.draggabilly-grabbing * {
 @media (max-width: 991px) {
     .contact-col-right {
         border-top: none !important;
+        min-height: 50vh;
+        height: 100cqw;
+    }
+
+    .contact-hero-composition {
+        width: 100cqw !important;
+        height: 100cqw !important;
     }
 }
 
