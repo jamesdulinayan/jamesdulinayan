@@ -83,35 +83,54 @@ $(document).ready(function () {
   var $tooltip = $('<div class="draggablee-tooltip">click to open</div>');
   $('body').append($tooltip);
 
-  function positionTooltipAbove(el) {
-    var rect = el.getBoundingClientRect();
+  var lastTouchTime = 0;
+  function isTouchEventRecently() {
+    return (Date.now() - lastTouchTime) < 1000;
+  }
+
+  function updateTooltipPosition(clientX, clientY) {
     $tooltip.css({
-      left: (rect.left + rect.width / 2 - $tooltip.outerWidth() / 2) + 'px',
-      top: (rect.top - $tooltip.outerHeight() - 10) + 'px'
+      left: (clientX + 14) + 'px',
+      top: (clientY + 14) + 'px'
     });
   }
 
   $(collageSelectors)
     .on('mouseenter', function () {
-      if ($(this).hasClass('is-dragging')) {
+      if (isTouchEventRecently() || $(this).hasClass('is-dragging')) {
         return;
       }
       $tooltip.addClass('is-visible');
     })
     .on('mousemove', function (e) {
-      if (e.pointerType === 'touch' || e.pointerType === 'pen') {
+      if (isTouchEventRecently()) {
         return;
       }
-      $tooltip.css({
-        left: (e.clientX + 14) + 'px',
-        top: (e.clientY + 14) + 'px'
-      });
+      updateTooltipPosition(e.clientX, e.clientY);
     })
-    .on('touchstart pointerdown dragStart dragMove', function () {
-      $tooltip.addClass('is-visible');
-      positionTooltipAbove(this);
+    .on('mouseleave mousedown dragStart', function () {
+      $tooltip.removeClass('is-visible');
     })
-    .on('mouseleave mousedown dragEnd touchend touchcancel pointerup', function () {
+    .on('touchstart', function (e) {
+      lastTouchTime = Date.now();
+      if ($(this).hasClass('is-dragging')) {
+        return;
+      }
+      var touch = e.originalEvent.touches[0];
+      if (touch) {
+        $tooltip.addClass('is-visible');
+        updateTooltipPosition(touch.clientX, touch.clientY);
+      }
+    })
+    .on('touchmove', function (e) {
+      lastTouchTime = Date.now();
+      var touch = e.originalEvent.touches[0];
+      if (touch) {
+        updateTooltipPosition(touch.clientX, touch.clientY);
+      }
+    })
+    .on('touchend touchcancel dragEnd', function () {
+      lastTouchTime = Date.now();
       $tooltip.removeClass('is-visible');
     })
     .on('dblclick staticClick', function (e) {
