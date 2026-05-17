@@ -84,7 +84,7 @@ $(document).ready(function () {
     $('.draggablee-tooltip').removeClass('is-visible');
   });
 
-  var $tooltip = $('<div class="draggablee-tooltip">double click to open</div>');
+  var $tooltip = $('<div class="draggablee-tooltip">click to open</div>');
   $('body').append($tooltip);
 
   $(collageSelectors)
@@ -103,7 +103,7 @@ $(document).ready(function () {
     .on('mouseleave mousedown touchstart pointerdown dragStart', function () {
       $tooltip.removeClass('is-visible');
     })
-    .on('dblclick', function (e) {
+    .on('dblclick staticClick', function (e) {
       e.preventDefault();
       if ($(this).hasClass('draggableA')) {
         window.location.href = 'about.html';
