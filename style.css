@@ -8579,10 +8579,6 @@ body.dark .ac-title {
 
 @media only screen and (max-width:450px) {
 
-    .container {
-        width: 100%;
-    }
-
 
     .big-title-style {
         font-size: 70px !important;
@@ -10348,7 +10344,7 @@ html.draggabilly-grabbing * {
 
 @media (max-width: 991px) {
     .container .draggableA {
-        left: 75%;
+        left: 80%;
         top: 40%;
     }
 
@@ -10373,8 +10369,8 @@ html.draggabilly-grabbing * {
     }
 
     .container .draggableF {
-        left: 20%;
-        top: 25%;
+        left: 15%;
+        top: 20%;
     }
 }
 
@@ -10477,13 +10473,6 @@ html.draggabilly-grabbing * {
     display: inline-block;
 }
 
-
-
-
-.container {
-    height: 500px;
-    width: 100%;
-}
 
 .grain {
     background-color: transparent;
@@ -10746,6 +10735,7 @@ html.draggabilly-grabbing * {
 .creative-layout__row .container {
     height: 100%;
     min-height: 0;
+    width: 100%;
 }
 
 .cta-footer {
@@ -10963,12 +10953,21 @@ html.draggabilly-grabbing * {
     }
 
     .creative-100vh {
+        min-height: 100vh;
+        min-height: 100dvh;
         height: auto;
         overflow: visible;
+        display: flex;
+        flex-direction: column;
     }
 
     .creative-layout {
+        min-height: 100vh;
+        min-height: 100dvh;
         height: auto;
+        flex: 1 1 auto;
+        display: flex;
+        flex-direction: column;
     }
 
     .creative-layout__row {
@@ -10981,29 +10980,32 @@ html.draggabilly-grabbing * {
         flex: 0 0 auto;
     }
 
-    .creative-media-col {
-        height: 45vh;
+    .creative-layout__row>.creative-media-col {
+        display: flex;
+        flex-direction: column;
+        flex: 1 1 auto;
         min-height: 45vh;
     }
 
     .creative-layout__row .container {
         height: 100%;
+        flex: 1 1 auto;
     }
 }
 
 @media (max-width: 720px) {
 
     .creative-copy-col {
-        padding: 40px clamp(14px, 2.2vw, 26px);
+        padding: 40px clamp(16px, 4vw, 30px);
     }
 
     .creative-media-col {
-        padding: 40px clamp(14px, 2.2vw, 26px);
+        padding: 40px clamp(16px, 4vw, 30px);
         padding-top: 0;
     }
 
     .cta-footer {
-        padding: 40px clamp(14px, 2.2vw, 26px);
+        padding: 40px clamp(16px, 4vw, 30px);
         padding-top: 0;
     }
 }
