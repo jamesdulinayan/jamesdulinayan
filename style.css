@@ -6,7 +6,7 @@ only screen and (min-device-pixel-ratio: 1.5) {
     html,
     body {
         width: 100%;
-        overflow-x: hidden;
+        overflow-x: clip;
     }
 
 }
@@ -318,7 +318,7 @@ body,
 html {
     font-weight: normal;
     font-size: 20px;
-    overflow-x: hidden
+    overflow-x: clip
 }
 
 main {
@@ -8648,7 +8648,7 @@ body.dark .ac-title {
 
     html,
     body {
-        overflow-x: hidden
+        overflow-x: clip
     }
 
     .hide_mobile {
@@ -9654,7 +9654,7 @@ body.dark .ac-title {
 
     body,
     html {
-        overflow-x: hidden;
+        overflow-x: clip;
         width: 100%
     }
 
@@ -10915,6 +10915,19 @@ html.draggabilly-grabbing * {
     border-radius: 2px;
 }
 
+body.dark .cta-footer__col-label {
+    color: rgba(255, 255, 255, 0.45) !important;
+}
+
+body.dark .cta-footer__col-value {
+    color: rgba(255, 255, 255, 0.88) !important;
+}
+
+body.dark .cta-footer__col-value:hover {
+    color: #ffffff !important;
+    border-bottom-color: rgba(255, 255, 255, 0.35) !important;
+}
+
 @media (max-width: 720px) {
 
     .cta-footer__inner {
@@ -11165,4 +11178,587 @@ html.draggabilly-grabbing * {
 .contact-img-denji:hover img {
     transform: rotate(3deg);
     /* Swings to the side on hover */
+}
+
+/* -----------------------------------------
+   Works Page Custom Padding & Gutters
+-------------------------------------------- */
+.works-page-content {
+    padding: clamp(14px, 2.2vw, 26px) 40px !important;
+}
+
+.works-page-content .wrapper-full {
+    margin: 0 !important;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* Set fluid bottom spacing on grid columns and remove duplicate post margin */
+.works-page-content .wrapper-full .c-col-6 {
+    margin-bottom: clamp(35px, 5vw, 65px) !important;
+    padding-left: 15px;
+    padding-right: 15px;
+    box-sizing: border-box;
+}
+
+/* Dynamic responsive column scaling: 3 columns on desktop, 2 on tablet, 1 on mobile */
+@media (min-width: 992px) {
+    .works-page-content .wrapper-full .c-col-6[data-category] {
+        width: 33.333333% !important;
+    }
+}
+
+@media (min-width: 721px) and (max-width: 991px) {
+    .works-page-content .wrapper-full .c-col-6[data-category] {
+        width: 50% !important;
+    }
+}
+
+@media (max-width: 720px) {
+    .works-page-content .wrapper-full .c-col-6[data-category] {
+        width: 100% !important;
+    }
+}
+
+.works-page-content .blog-classic .post.alioth-post {
+    margin-bottom: 0 !important; /* Eliminates redundant duplicate bottom margin */
+}
+
+
+
+/* Centered title and year separated by an elegant short horizontal line */
+.works-page-content .post-meta {
+    padding: 0 !important;
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: flex-start !important; /* Align everything flush-left side-by-side */
+    align-items: center !important; /* Perfect vertical centering of text and line */
+    width: 100% !important;
+    margin-top: 20px !important;
+}
+
+.works-page-content .blog-classic .post.alioth-post .post-title {
+    margin: 0 !important;
+    display: inline-block !important;
+    width: auto !important;
+    order: 1 !important; /* Title goes first */
+    flex-shrink: 1 !important;
+    min-width: 0 !important;
+}
+
+.works-page-content .post-title h3 {
+    margin: 0 !important;
+    line-height: 1.2 !important;
+}
+
+/* Elegant short horizontal connector line */
+.works-page-content .post-meta::after {
+    content: "" !important;
+    order: 2 !important; /* Line goes in the middle */
+    flex-grow: 0 !important; /* Does not stretch full width */
+    width: 35px !important; /* Premium fixed short length */
+    height: 1px !important;
+    background: rgba(0, 0, 0, 0.2) !important; /* Clean soft line */
+    margin: 0 15px !important; /* Perfect spacing around the line */
+    align-self: center !important;
+}
+
+body.dark .works-page-content .post-meta::after {
+    background: rgba(255, 255, 255, 0.25) !important; /* Subtle line for dark theme */
+}
+
+.works-page-content .blog-classic .post-cat {
+    margin: 0 !important;
+    float: none !important;
+    display: inline-block !important;
+    order: 3 !important; /* Year goes last */
+    flex-shrink: 0 !important;
+    font-size: clamp(0.9rem, 0.3vw + 0.8rem, 1.25rem) !important; /* Sleek, matching brand size */
+    color: rgba(0, 0, 0, 0.42) !important;  /* Premium soft brand grey */
+    font-weight: 500 !important;
+    line-height: 1 !important;
+}
+
+@media (max-width: 991px) {
+    .works-page-content {
+        padding: 40px !important;
+    }
+}
+
+@media (max-width: 720px) {
+    .works-page-content {
+        padding: 40px clamp(16px, 4vw, 30px) !important;
+    }
+}
+
+/* Post title and subtitle colors match contact/index CTA details */
+.works-page-content .post-title h3 {
+    color: rgba(0, 0, 0, 0.88) !important;
+    font-weight: 500 !important;
+    font-size: clamp(1.35rem, 1.2vw + 1.1rem, 2rem) !important;
+}
+
+.works-page-content .post-title h3:hover {
+    color: #000000 !important;
+}
+
+.works-page-content .blog-classic .post-date,
+.works-page-content .blog-classic .post-cat {
+    color: rgba(0, 0, 0, 0.42) !important;
+    font-size: clamp(0.7rem, 0.35vw + 0.6rem, 0.88rem) !important;
+}
+
+.works-page-content .blog-classic h5.post-date::after {
+    background: rgba(0, 0, 0, 0.42) !important;
+}
+
+/* -----------------------------------------
+   Works Page Category Filter
+-------------------------------------------- */
+.works-filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: clamp(30px, 5vw, 55px);
+    font-family: "Neue", system-ui, sans-serif;
+}
+
+.filter-btn {
+    background: transparent;
+    border: 1px solid transparent;
+    padding: 9px 26px;
+    font-size: clamp(1.15rem, 1vw + 0.95rem, 1.75rem) !important;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 50px;
+    color: #393334;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    outline: none;
+    font-family: inherit;
+    text-transform: none;
+    text-align: left;
+}
+
+.filter-btn:hover {
+    color: #585152;
+}
+
+.filter-btn.active {
+    border-color: #393334;
+    color: #393334;
+    font-weight: 500;
+}
+
+/* Premium Sticky Back to Home Navigation */
+.back-to-home-sticky {
+    height: 40px !important;
+    margin-bottom: 40px !important;
+    display: block !important;
+}
+
+.back-to-home-sticky a {
+    position: fixed !important;
+    top: 30px !important;
+    left: 40px !important; /* Perfectly aligned flush-left with desktop columns */
+    background: #ebebeb !important; /* Solid background to completely hide grain texture */
+    padding: 10px 20px !important;
+    border-radius: 50px !important;
+    border: 1px solid rgba(25, 27, 29, 0.08) !important;
+    z-index: 1000 !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03) !important;
+    color: #191b1d !important;
+    font-weight: 500 !important;
+    text-decoration: none !important;
+}
+
+@media (max-width: 720px) {
+    .back-to-home-sticky a {
+        left: clamp(16px, 4vw, 30px) !important; /* Symmetrical mobile left alignment */
+    }
+}
+
+.back-to-home-sticky a:hover {
+    background: #f3f3f3 !important; /* Smooth soft light gray transition */
+    border-color: rgba(25, 27, 29, 0.15) !important;
+}
+
+.back-to-home-sticky a .back-arrow {
+    display: inline-block !important;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    margin-right: 4px !important;
+}
+
+.back-to-home-sticky a:hover .back-arrow {
+    transform: translateX(-4px) !important; /* Premium gentle hover nudge */
+}
+
+body.dark .back-to-home-sticky a {
+    background: #131313 !important; /* Solid dark background to completely hide grain texture */
+    border-color: rgba(255, 255, 255, 0.08) !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2) !important;
+}
+
+body.dark .back-to-home-sticky a:hover {
+    background: #1a1a1a !important; /* Smooth soft dark slate transition */
+    border-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+/* -----------------------------------------
+   Project Details Refactored Layout
+   (Mockup-Perfect Two-Column Layout)
+-------------------------------------------- */
+.project-details-grid {
+    display: grid;
+    grid-template-columns: 4.2fr 5.8fr; /* 42% left column, 58% right column */
+    gap: clamp(40px, 5vw, 80px);
+    align-items: start;
+    margin-bottom: 0 !important;
+}
+
+.project-info-col {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 100px; /* Sticks title and description while scrolling images! */
+    height: calc(100vh - 200px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.project-info-col .post-title {
+    margin: 0 0 1rem 0 !important;
+    display: inline-block !important;
+    width: auto !important;
+    flex-shrink: 0 !important;
+}
+
+.project-info-col .post-title h3 {
+    font-family: "Neue", system-ui, sans-serif !important;
+    font-size: clamp(1.35rem, 1.2vw + 1.1rem, 2rem) !important;
+    font-weight: 500 !important;
+    line-height: 1.2 !important;
+    color: rgba(0, 0, 0, 0.88) !important;
+    transition: color .4s ease;
+}
+
+.project-info-col .post-title h3:hover {
+    color: #000000 !important;
+}
+
+body.dark .project-info-col .post-title h3 {
+    color: rgba(255, 255, 255, 0.88) !important;
+}
+
+body.dark .project-info-col .post-title h3:hover {
+    color: #ffffff !important;
+}
+
+.project-details-desc {
+    font-family: "Neue", system-ui, sans-serif !important;
+    font-size: clamp(0.9rem, 1vw + 0.5rem, 1.4rem) !important;
+    line-height: 1.35 !important;
+    color: rgba(25, 27, 29, 0.88) !important;
+    font-weight: 400 !important;
+    margin-bottom: 24px !important;
+    max-width: 95% !important;
+}
+
+body.dark .project-details-desc {
+    color: rgba(255, 255, 255, 0.85) !important;
+}
+
+.meta-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.35rem 0.85rem !important;
+    font-family: "Neue", system-ui, sans-serif !important;
+    font-size: clamp(0.75rem, 0.3vw + 0.7rem, 0.88rem) !important;
+    font-weight: 500 !important;
+    line-height: 1 !important;
+    border-radius: 100px !important;
+    background-color: rgba(0, 0, 0, 0.05) !important;
+    color: rgba(0, 0, 0, 0.88) !important;
+    border: 1px solid rgba(0, 0, 0, 0.03) !important;
+}
+
+body.dark .meta-pill {
+    background-color: rgba(255, 255, 255, 0.08) !important;
+    color: rgba(255, 255, 255, 0.88) !important;
+    border: 1px solid rgba(255, 255, 255, 0.03) !important;
+}
+
+.project-gallery-col {
+    display: flex;
+    flex-flow: row wrap;
+    gap: clamp(15px, 2vw, 30px);
+}
+
+.gallery-item-full {
+    width: 100% !important;
+}
+
+.gallery-item-half {
+    width: calc(50% - clamp(7.5px, 1vw, 15px)) !important;
+}
+
+@media (max-width: 767px) {
+    .gallery-item-half.mobile-stack {
+        width: 100% !important;
+    }
+}
+
+/* Remove bottom margin on recommended works columns to eliminate extra footer space */
+.works-page-content .wrapper-full .c-col-4 {
+    margin-bottom: 0 !important;
+}
+
+.gallery-item-full img,
+.gallery-item-half img,
+.gallery-item-full video,
+.gallery-item-half video {
+    width: 100% !important;
+    height: auto !important;
+    display: block !important;
+    object-fit: cover !important;
+    border-radius: 0 !important; /* Premium flush clean-cut images */
+}
+
+@media (min-width: 992px) {
+    .project-first-card {
+        padding-left: 0 !important;
+    }
+    .project-last-card {
+        padding-right: 0 !important;
+    }
+}
+
+@media (max-width: 991px) {
+    .works-page-content .wrapper-full .project-first-card {
+        padding-left: 0 !important;
+        padding-right: 15px !important;
+    }
+    .works-page-content .wrapper-full .project-last-card {
+        padding-left: 15px !important;
+        padding-right: 0 !important;
+    }
+}
+
+@media (max-width: 991px) {
+
+    .project-details-grid {
+        grid-template-columns: 1fr; /* Stack layout on tablet/mobile */
+        gap: 50px;
+    }
+
+    .works-page-content .post-meta {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+    }
+
+    .works-page-content .post-meta::after {
+        display: none !important;
+    }
+
+    .works-page-content .blog-classic .post-cat {
+        margin-top: 6px !important;
+    }
+
+    .works-page-content .blog-classic .post-cat::before {
+        content: "" !important;
+        display: inline-block !important;
+        width: 35px !important;
+        height: 1px !important;
+        background: rgba(0, 0, 0, 0.2) !important;
+        margin-right: 15px !important;
+        vertical-align: middle !important;
+        margin-bottom: 2px !important;
+    }
+
+    body.dark .works-page-content .blog-classic .post-cat::before {
+        background: rgba(255, 255, 255, 0.25) !important;
+    }
+    
+    .project-info-col {
+        position: static !important; /* Disable sticky on stacked views */
+        height: auto !important;
+        display: block !important;
+    }
+    
+    .project-details-desc {
+        max-width: 100% !important;
+    }
+}
+
+/* Individual Project Separator Line */
+.project-separator {
+    clear: both !important;
+    width: 100% !important;
+    border-top: 1px solid rgba(0, 0, 0, 0.15) !important;
+    margin-top: clamp(40px, 6vw, 80px) !important;
+    margin-bottom: clamp(40px, 6vw, 80px) !important;
+}
+
+body.dark .project-separator {
+    border-top: 1px solid rgba(255, 255, 255, 0.15) !important;
+}
+
+/* Other Works Grid Responsiveness matching Works Page Breakpoints */
+@media (min-width: 992px) {
+    .project-page .wrapper-full .c-col-4p {
+        width: 33.333333% !important;
+        display: block !important;
+        margin-bottom: 0 !important;
+    }
+    .project-page .wrapper-full .project-first-card {
+        padding-left: 0 !important;
+        padding-right: 15px !important;
+    }
+    .project-page .wrapper-full .c-col-4p:not(.project-first-card):not(.project-last-card) {
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+    }
+    .project-page .wrapper-full .project-last-card {
+        padding-left: 15px !important;
+        padding-right: 0 !important;
+    }
+}
+
+@media (min-width: 721px) and (max-width: 991px) {
+    .project-page .wrapper-full .c-col-4p {
+        width: 50% !important;
+        display: block !important;
+        margin-bottom: 0 !important; /* Keep the bottom clean as there is only 1 row */
+    }
+    .project-page .wrapper-full .c-col-4p.hide_tablet {
+        display: none !important; /* Hide on tablet */
+    }
+    
+    /* Card 1 (left) */
+    .project-page .wrapper-full .project-first-card {
+        padding-left: 0 !important;
+        padding-right: 15px !important;
+    }
+    /* Card 3 (right) */
+    .project-page .wrapper-full .project-last-card {
+        padding-left: 15px !important;
+        padding-right: 0 !important;
+    }
+}
+
+@media (max-width: 720px) {
+    .project-page .wrapper-full .c-col-4p {
+        width: 100% !important;
+        display: block !important;
+        margin-bottom: clamp(35px, 5vw, 65px) !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+    .project-page .wrapper-full .c-col-4p.hide_tablet {
+        display: block !important;
+    }
+    .project-page .wrapper-full .project-last-card {
+        margin-bottom: 0 !important; /* Keep the last item clean at the bottom */
+    }
+}
+
+/* -----------------------------------------
+   Other Works Card Design (Matches Works Page)
+-------------------------------------------- */
+.project-page .post-meta {
+    padding: 0 !important;
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: flex-start !important;
+    align-items: center !important;
+    width: 100% !important;
+    margin-top: 20px !important;
+}
+
+.project-page .blog-classic .post.alioth-post .post-title {
+    margin: 0 !important;
+    display: inline-block !important;
+    width: auto !important;
+    order: 1 !important;
+    flex-shrink: 1 !important;
+    min-width: 0 !important;
+}
+
+.project-page .post-title h3 {
+    margin: 0 !important;
+    line-height: 1.2 !important;
+    color: rgba(0, 0, 0, 0.88) !important;
+    font-weight: 500 !important;
+    font-size: clamp(1.35rem, 1.2vw + 1.1rem, 2rem) !important;
+}
+
+.project-page .post-title h3:hover {
+    color: #000000 !important;
+}
+
+body.dark .project-page .post-title h3 {
+    color: rgba(255, 255, 255, 0.88) !important;
+}
+
+body.dark .project-page .post-title h3:hover {
+    color: #ffffff !important;
+}
+
+.project-page .post-meta::after {
+    content: "" !important;
+    order: 2 !important;
+    flex-grow: 0 !important;
+    width: 35px !important;
+    height: 1px !important;
+    background: rgba(0, 0, 0, 0.2) !important;
+    margin: 0 15px !important;
+    align-self: center !important;
+}
+
+body.dark .project-page .post-meta::after {
+    background: rgba(255, 255, 255, 0.25) !important;
+}
+
+.project-page .blog-classic .post-cat {
+    margin: 0 !important;
+    float: none !important;
+    display: inline-block !important;
+    order: 3 !important;
+    flex-shrink: 0 !important;
+    font-size: clamp(0.7rem, 0.35vw + 0.6rem, 0.88rem) !important;
+    color: rgba(0, 0, 0, 0.42) !important;
+    font-weight: 500 !important;
+    line-height: 1 !important;
+}
+
+body.dark .project-page .blog-classic .post-cat {
+    color: rgba(255, 255, 255, 0.42) !important;
+}
+
+@media (max-width: 991px) {
+    .project-page .post-meta {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+    }
+    .project-page .post-meta::after {
+        display: none !important;
+    }
+    .project-page .blog-classic .post-cat {
+        margin-top: 6px !important;
+    }
+    .project-page .blog-classic .post-cat::before {
+        content: "" !important;
+        display: inline-block !important;
+        width: 35px !important;
+        height: 1px !important;
+        background: rgba(0, 0, 0, 0.2) !important;
+        margin-right: 15px !important;
+        vertical-align: middle !important;
+        margin-bottom: 2px !important;
+    }
+    body.dark .project-page .blog-classic .post-cat::before {
+        background: rgba(255, 255, 255, 0.25) !important;
+    }
 }

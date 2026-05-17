@@ -10,11 +10,12 @@
 <meta name="description" content="James Dulinayan">
 <meta name="keywords" content="James Dulinayan">
 <meta name="viewport" content="width=device-width, initial-scale=1"> 
-<link href="style.css" rel="stylesheet">
-
 <link href="css/plugins.css" rel="stylesheet">
+<link href="style.css" rel="stylesheet">
+<link rel="stylesheet" href="css/landing-style.css">
 <link rel="shortcut icon" href="img/favicon.png" />
 <link rel="apple-touch-icon" href="img/favicon.png" />
+<link rel="stylesheet" href="https://use.typekit.net/dht2lod.css">
 
 </head>
 
@@ -26,91 +27,45 @@
 
 
 
-<div class="site-header">
-<div class="header-wrapper grain">
-
-<div class="site-branding">
-
-<div class="site-logo">
-<a href="https://jamesdulinayan.github.io/jamesdulinayan/index">
-<img alt="Site Logo" class="dark-logo" src="img/site-logo.png">
-</a>
-</div>
-
-</div>
 
 
-<div class="site-navigation">
 
-    <ul class="menu main-menu">
-    <li class="menu-item">&nbsp</li>
-    <li class="menu-item"><a href="https://jamesdulinayan.github.io/jamesdulinayan/index">Home</a></li>
-        
-    <li class="menu-item has-children"><a href="#.">Info</a>
-        
-    
-        <ul class="sub-menu">    
-        <li class="menu-item">&nbsp</li>
-        <li class="menu-item"><a href="https://jamesdulinayan.github.io/jamesdulinayan/about">About</a></li>
-        <li class="menu-item"><a href="https://jamesdulinayan.github.io/jamesdulinayan/services">Services&nbsp</a></li>
-        <li class="menu-item"><a href="https://jamesdulinayan.github.io/jamesdulinayan/contact">Contact</a></li>
-        
-        <span class="sub-back"><i class="icofont-long-arrow-left"></i></span>
-        </ul>
-        
-        </li>
-        
-    <li class="menu-item"><a href="https://jamesdulinayan.github.io/jamesdulinayan/works">Works</a></li>
-    <li class="menu-item">&nbsp</li>
-    <li class="menu-item">&nbsp</li>
-    
-    
-    </ul>
-    
-    
+<div id="page" data-barba="container" class="grain">
+
+
+
+
+<div id="content" class="page-content works-page-content">
+
+<div class="works-hero" style="margin-bottom: clamp(30px, 4vw, 50px);">
+    <div class="back-to-home-sticky">
+        <a href="index.html" class="cta-footer__col-value"><span class="back-arrow">←</span> Back to Home</a>
     </div>
-
-
-<div class="header-widgets">
-
-<div class="header-widget">
-
+    <h1 class="creative-copy-title">Selected Works</h1>
+    <h2 class="creative-copy-text" style="max-width: 680px; margin-bottom: 0;">
+        A showcase of design, development, and interactive experiments crafted with precision, motion, and purpose.
+    </h2>
 </div>
 
+<div class="works-filter">
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="web-development">Web Development</button>
+    <button class="filter-btn" data-filter="motion-graphics">Motion & Graphics Design</button>
+    <button class="filter-btn" data-filter="video-editing">Video Editing</button>
 </div>
 
- </div>
-</div>
-
-
-<div id="page" data-barba="container">
-
-<div class="page-header" data-anim="true">
-<div class="page-header-wrap wrapper-small">
-
-<h1 class="big-title" style="font-family: Roboto Mono; line-height: normal">Works</h1>
-
-
-</div>
-</div>
-
-
-<div id="content" class="page-content">
-
-<div class="section">
-
-<div class="wrapper">
+<div class="wrapper-full">
 
 
 
     
-<div class="c-col-6 c-col-6p">
+<div class="c-col-6 c-col-6p" data-category="web-development">
 
     <div class="alioth-blog blog-classic">
 
 <div class="post alioth-post">
 
-    <a href="https://jamesdulinayan.github.io/jamesdulinayan/works/caliz-music-studio">
+    <a href="works/caliz-music-studio.html">
         
 
 <div class="post-image">
@@ -123,11 +78,6 @@
 <div class="post-title">
 <h3>Caliz Music Studio</h3>
 </div>
-
-
-<h5 class="post-date">Worry-free Jam Studio</h5>
-
-
 <h5 class="post-cat">2022</h5>
 
 </div>
@@ -138,13 +88,13 @@
 </div>
 </div>
 
-<div class="c-col-6 c-col-6p">
+<div class="c-col-6 c-col-6p" data-category="web-development">
 
     <div class="alioth-blog blog-classic">
 
 <div class="post alioth-post">
 
-    <a href="https://jamesdulinayan.github.io/jamesdulinayan/works/the-ocean-project">
+    <a href="works/the-ocean-project.html">
 
         <div class="post-image">
         <img alt="Post Image" src="img/projects/ocean-project/ocean-featured.png">
@@ -156,11 +106,6 @@
 <div class="post-title">
 <h3>The Ocean Project</h3>
 </div>
-
-
-<h5 class="post-date">Saving Our World's Wonders</h5>
-
-
 <h5 class="post-cat">2022</h5>
 
 </div>
@@ -172,13 +117,13 @@
 </div>
 
 
-<div class="c-col-6 c-col-6p">
+<div class="c-col-6 c-col-6p" data-category="motion-graphics">
 
 <div class="alioth-blog blog-classic">
 
 <div class="post alioth-post">
 
-    <a href="https://jamesdulinayan.github.io/jamesdulinayan/works/enuf-proj">
+    <a href="works/enuf-proj.html">
 
 <div class="post-image">
 <img alt="Post Image" src="img/projects/enuf-proj/enuf-featured.jpg">
@@ -190,11 +135,6 @@
 <div class="post-title">
 <h3>enuf-proj</h3>
 </div>
-
-
-<h5 class="post-date">Being Happy with Enough</h5>
-
-
 <h5 class="post-cat">2022</h5>
 
 </div>
@@ -208,13 +148,13 @@
 
 
 
-<div class="c-col-6 c-col-6p">
+<div class="c-col-6 c-col-6p" data-category="web-development">
 
     <div class="alioth-blog blog-classic">
 
 <div class="post alioth-post">
 
-    <a href="https://jamesdulinayan.github.io/jamesdulinayan/works/lqfclinic">
+    <a href="works/lqfclinic.html">
         
 
 <div class="post-image">
@@ -227,11 +167,6 @@
 <div class="post-title">
 <h3>Lagman Family Clinic</h3>
 </div>
-
-
-<h5 class="post-date">Providing Best Medical Care</h5>
-
-
 <h5 class="post-cat">2022</h5>
 
 </div>
@@ -242,13 +177,13 @@
 </div>
 </div>
 
-<div class="c-col-6 c-col-6p">
+<div class="c-col-6 c-col-6p" data-category="motion-graphics">
 
     <div class="alioth-blog blog-classic">
 
 <div class="post alioth-post">
 
-    <a href="https://jamesdulinayan.github.io/jamesdulinayan/works/kapampangan-folk">
+    <a href="works/kapampangan-folk.html">
         
 
 <div class="post-image">
@@ -261,12 +196,7 @@
 <div class="post-title">
 <h3 class="post-works">Kapampangan Folk</h3>
 </div>
-
-
-<h5 class="post-date">Digital Collage Series</h5>
-
-
-<h5 class="post-cat">2021</h5>
+<h5 class="post-cat">2022</h5>
 
 </div>
 
@@ -276,13 +206,13 @@
 </div>
 </div>
 
-<div class="c-col-6 c-col-6p">
+<div class="c-col-6 c-col-6p" data-category="motion-graphics">
 
     <div class="alioth-blog blog-classic">
 
 <div class="post alioth-post">
 
-    <a href="https://jamesdulinayan.github.io/jamesdulinayan/works/ad-infinitum">
+    <a href="works/ad-infinitum.html">
         
 
 <div class="post-image">
@@ -295,12 +225,7 @@
 <div class="post-title">
 <h3>Ad Infinitum</h3>
 </div>
-
-
-<h5 class="post-date">Endless Legacies, Boundless Victories</h5>
-
-
-<h5 class="post-cat">2021</h5>
+<h5 class="post-cat">2020</h5>
 
 </div>
 
@@ -310,13 +235,13 @@
 </div>
 </div>
 
-<div class="c-col-6 c-col-6p">
+<div class="c-col-6 c-col-6p" data-category="motion-graphics">
 
     <div class="alioth-blog blog-classic">
 
 <div class="post alioth-post">
 
-    <a href="https://jamesdulinayan.github.io/jamesdulinayan/works/wreck-it-hau">
+    <a href="works/wreck-it-hau.html">
         
 
 <div class="post-image">
@@ -329,11 +254,6 @@
 <div class="post-title">
 <h3>Wreck-It HAU</h3>
 </div>
-
-
-<h5 class="post-date">Youth Breaks Boundaries</h5>
-
-
 <h5 class="post-cat">2020</h5>
 
 </div>
@@ -345,13 +265,13 @@
 </div>
 
 
-<div class="c-col-6 c-col-6p">
+<div class="c-col-6 c-col-6p" data-category="video-editing">
 
     <div class="alioth-blog blog-classic">
 
 <div class="post alioth-post">
 
-    <a href="https://jamesdulinayan.github.io/jamesdulinayan/works/kaleidoscope">
+    <a href="works/kaleidoscope.html">
         
 
 <div class="post-image">
@@ -364,11 +284,6 @@
 <div class="post-title">
 <h3>Kaleidoscope</h3>
 </div>
-
-
-<h5 class="post-date">An Art for Heart</h5>
-
-
 <h5 class="post-cat">2020</h5>
 
 </div>
@@ -379,13 +294,13 @@
 </div>
 </div>
 
-<div class="c-col-6 c-col-6p">
+<div class="c-col-6 c-col-6p" data-category="motion-graphics">
 
     <div class="alioth-blog blog-classic">
 
 <div class="post alioth-post">
 
-    <a href="https://jamesdulinayan.github.io/jamesdulinayan/works/hauwak-kamay">
+    <a href="works/hauwak-kamay.html">
         
 
 <div class="post-image">
@@ -398,11 +313,6 @@
 <div class="post-title">
 <h3>HAUwak Kamay</h3>
 </div>
-
-
-<h5 class="post-date">Sabay Abutin Ang Pangarap</h5>
-
-
 <h5 class="post-cat">2020</h5>
 
 </div>
@@ -413,13 +323,13 @@
 </div>
 </div>
 
-<div class="c-col-6 c-col-6p">
+<div class="c-col-6 c-col-6p" data-category="motion-graphics">
 
     <div class="alioth-blog blog-classic">
 
 <div class="post alioth-post">
 
-    <a href="https://jamesdulinayan.github.io/jamesdulinayan/works/ivy-league">
+    <a href="works/ivy-league.html">
         
 
 <div class="post-image">
@@ -432,11 +342,6 @@
 <div class="post-title">
 <h3>I.V.Y. League</h3>
 </div>
-
-
-<h5 class="post-date">I Volunteer for Youth</h5>
-
-
 <h5 class="post-cat">2020</h5>
 
 </div>
@@ -464,123 +369,6 @@
 
 </div>
 
-</div>
-
-
-<div id="footer" class="section">
-
-    <center>
-    <div class="wrapper-full hide_desktop" style="border-bottom: 1px solid #000; margin-bottom: 50px;">
-        <div class="footer-widget footer_brand" style="margin-bottom: 40px;" >
-            
-            <h4 class="footer-text">
-            
-                Living, learning, & improving one at a time.
-            
-                </h4>
-        
-                
-                <a href="https://jamesdulinayan.github.io/jamesdulinayan/contact">
-                    <button class="btn grab" style="cursor: pointer;">Let's Work Together 
-                       <i class="icofont-long-arrow-right"></i></button></a>
-        </div>
-    </div></center>
-
-    <div class="wrapper" style="margin-bottom: 50px !important;" >
-    
-    <div class="c-col-4 c-col-4s-full footer-widget footer-widget-mobile hide_mobile">
-    
-        <h4 class="footer-text"> 
-            
-            Living, learning, & improving <br>one at a time.
-    
-        </h4>
-
-        
-        <a href="https://jamesdulinayan.github.io/jamesdulinayan/contact">
-            <button class="btn grab" style="cursor: pointer;">Let's Work Together 
-               <i class="icofont-long-arrow-right"></i></button></a>
-    </div>
-
-
-    <div class="c-col-2 c-col-2s hide footer-widget" style="width:10% !important">
-        
-    </div>
-    
-    <div class="c-col-2 c-col-2s footer-widget">
-        
-        <p style="color: #a39a90; font-weight: bold; 
-        font-size: 18px; margin-bottom: 20px;">
-            INFO
-        </p>
-        <div class="social-list-widget" style="margin-bottom: 20px;">
-            <ul>
-            <li><a href="https://jamesdulinayan.github.io/jamesdulinayan/about">About</a></li>
-            <li><a href="https://jamesdulinayan.github.io/jamesdulinayan/services">Services</a></li>
-            <li><a href="https://jamesdulinayan.github.io/jamesdulinayan/contact">Contact</a></li>
-            <li><a href="https://jamesdulinayan.github.io/jamesdulinayan/works">Works</a></li>
-            </ul>
-            </div>
-    </div>
-    
-    <div class="c-col-2 c-col-2s footer-widget">
-        
-
-        <p style="color: #a39a90; font-weight: bold; 
-        font-size: 18px; margin-bottom: 20px;">
-            SOCIAL
-        </p>
-        <div class="social-list-widget">
-            <ul>
-            <li><a target="_blank" href="https://www.facebook.com/jamesdulinayan">Facebook</a></li>
-            <li><a target="_blank" href="https://www.instagram.com/jamesdulinayan">Instagram</a></li>
-            <li><a target="_blank" href="https://www.twitter.com/jamesdulinayan">Twitter</a></li>
-            <li><a target="_blank" href="https://www.linkedin.com/in/james-dulinayan-a22226235/">LinkedIn</a></li>
-            </ul>
-            </div>
-    </div>
-    
-    
-    <div class="c-col-2 c-col-2s footer-widget footer_brand hide_mobile hide_mobile_footer">
-        
-        <div class="footer-logo">
-            <a href="https://jamesdulinayan.github.io/jamesdulinayan/index"><img alt="Footer Logo" src="img/site-logo.png"></a>
-            </div>
-        <p style="color: #000000; font-weight: bold; 
-        font-size: 16px;">
-         <a href="tel:+639563620905" style="text-decoration: none;">(+639) 563 620 905</a>
-        
-            <br>
-            <a href="mailto:jamesdulinayah@gmail.com" style="text-decoration: none;">JAMESDULINAYAN@GMAIL.COM</a>  
-            <br>PAMPANGA, PHILIPPINES
-        </p>
-    </div>
-
-
-    </div>
-
-    <div class="wrapper-full no-margin hide_desktop_footer" style="border-top: 1px solid #000;">
-    <div class="c-col-12 c-col-12s footer-widget footer_brand" style="margin-bottom: 40px; margin-top:30px" >
-        
-        <center>
-        <div class="footer-logo">
-            <a href="https://jamesdulinayan.github.io/jamesdulinayan/index"><img alt="Footer Logo" src="img/site-logo.png"></a>
-            </div>
-        <p style="color: #000000; font-weight: bold; 
-        font-size: 16px;">
-         <a href="tel:+639563620905" style="text-decoration: none;">(+639) 563 620 905</a>
-        
-            <br>
-            <a href="mailto:jamesdulinayah@gmail.com" style="text-decoration: none;">JAMESDULINAYAN@GMAIL.COM</a>  
-            <br>PAMPANGA, PHILIPPINES
-        </p>
-        </center>
-    </div>
-    </div>
-
-    
-    
-    </div>
 
     <script src="js/jquery.min.js"></script>
 <script src="js/plugins.js"></script>
@@ -588,6 +376,135 @@
 <script src="js/locomotive-scroll.min.js"></script>
 <script src="js/gsap.js"></script>
 <script src="js/scripts.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const buttons = document.querySelectorAll('.filter-btn');
+    const items = document.querySelectorAll('.works-page-content .wrapper-full > .c-col-6p');
+
+    function updateGridGutters() {
+        const visibleItems = Array.from(items).filter(item => item.style.display !== 'none');
+        
+        let cols = 3;
+        if (window.innerWidth <= 720) {
+            cols = 1;
+        } else if (window.innerWidth <= 991) {
+            cols = 2;
+        }
+
+        visibleItems.forEach((item, index) => {
+            // Reset paddings and bottom margins
+            item.style.paddingLeft = '';
+            item.style.paddingRight = '';
+            item.style.setProperty('margin-bottom', '', 'important');
+            
+            if (cols === 3) {
+                const mod = index % 3;
+                if (mod === 0) {
+                    item.style.setProperty('padding-left', '0px', 'important');
+                    item.style.setProperty('padding-right', '20px', 'important');
+                } else if (mod === 1) {
+                    item.style.setProperty('padding-left', '10px', 'important');
+                    item.style.setProperty('padding-right', '10px', 'important');
+                } else {
+                    item.style.setProperty('padding-right', '0px', 'important');
+                    item.style.setProperty('padding-left', '20px', 'important');
+                }
+            } else if (cols === 2) {
+                const mod = index % 2;
+                if (mod === 0) {
+                    item.style.setProperty('padding-left', '0px', 'important');
+                    item.style.setProperty('padding-right', '15px', 'important');
+                } else {
+                    item.style.setProperty('padding-right', '0px', 'important');
+                    item.style.setProperty('padding-left', '15px', 'important');
+                }
+            } else {
+                item.style.setProperty('padding-left', '0px', 'important');
+                item.style.setProperty('padding-right', '0px', 'important');
+            }
+        });
+
+        // Dynamically reset bottom margins on the last visible row
+        const len = visibleItems.length;
+        if (len > 0) {
+            const lastRowStart = len - 1 - ((len - 1) % cols);
+            for (let i = lastRowStart; i < len; i++) {
+                visibleItems[i].style.setProperty('margin-bottom', '0px', 'important');
+            }
+        }
+
+        // Notify Locomotive Scroll & ScrollTrigger to refresh heights
+        if (typeof locoScroll !== 'undefined' && locoScroll) {
+            locoScroll.update();
+        }
+        if (typeof ScrollTrigger !== 'undefined') {
+            ScrollTrigger.refresh();
+        }
+    }
+
+    buttons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            buttons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            const filter = btn.getAttribute('data-filter');
+
+            if (typeof gsap !== 'undefined') {
+                // Smooth GSAP scaling transition
+                gsap.to(items, {
+                    duration: 0.25,
+                    opacity: 0,
+                    scale: 0.95,
+                    onComplete: () => {
+                        items.forEach(item => {
+                            const cat = item.getAttribute('data-category');
+                            if (filter === 'all' || cat === filter) {
+                                item.style.display = 'block';
+                            } else {
+                                item.style.display = 'none';
+                            }
+                        });
+
+                        updateGridGutters();
+
+                        gsap.to(items, {
+                            duration: 0.35,
+                            opacity: 1,
+                            scale: 1,
+                            clearProps: 'transform'
+                        });
+                    }
+                });
+            } else {
+                // Instant fallback
+                items.forEach(item => {
+                    const cat = item.getAttribute('data-category');
+                    if (filter === 'all' || cat === filter) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+                updateGridGutters();
+            }
+        });
+    });
+
+    // Run gutter styling on first load and window resize
+    updateGridGutters();
+    window.addEventListener('resize', updateGridGutters);
+
+    // Parse URL filter parameter if present to auto-trigger the category
+    const urlParams = new URLSearchParams(window.location.search);
+    const initialFilter = urlParams.get('filter');
+    if (initialFilter) {
+        const targetBtn = document.querySelector(`.filter-btn[data-filter="${initialFilter}"]`);
+        if (targetBtn) {
+            targetBtn.click();
+        }
+    }
+});
+</script>
 </body>
 
 </html>
