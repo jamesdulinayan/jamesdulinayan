@@ -3744,14 +3744,15 @@ h3.next-post-title {
 
 .blog-classic .post-image {
     width: 100%;
-    height: 100%
+    height: auto !important;
 }
 
 .blog-classic .post-image img {
     width: 100%;
+    aspect-ratio: 14 / 9 !important;
     -o-object-fit: cover;
     object-fit: cover;
-    height: 100%
+    height: auto !important;
 }
 
 .alioth-blog.blog-classic {
@@ -11500,7 +11501,56 @@ body.dark .back-to-home-sticky a:hover {
     /* Text turns clean white */
 }
 
-/* -----------------------------------------
+/* Reusable Project CTA button - styled like 'Back to Projects' */
+.project-cta-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    background: #ebebeb !important;
+    padding: 10px 22px !important;
+    border-radius: 50px !important;
+    border: 1px solid rgba(0, 0, 0, 0.15) !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03) !important;
+    color: #000000 !important;
+    font-weight: 500 !important;
+    text-decoration: none !important;
+    font-family: "Neue", system-ui, sans-serif !important;
+    font-size: clamp(0.9rem, 0.3vw + 0.75rem, 1.02rem) !important;
+    margin-top: 5px !important;
+    line-height: 1 !important;
+}
+
+.project-cta-btn:hover {
+    background: #f3f3f3 !important;
+    border-color: rgba(0, 0, 0, 0.5) !important;
+    color: #000000 !important;
+}
+
+.project-cta-btn .btn-arrow {
+    display: inline-block !important;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    margin-left: 6px !important;
+    font-weight: 500 !important;
+}
+
+.project-cta-btn:hover .btn-arrow {
+    transform: translateX(4px) !important;
+}
+
+body.dark .project-cta-btn {
+    background: #131313 !important;
+    border-color: rgba(255, 255, 255, 0.15) !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2) !important;
+}
+
+body.dark .project-cta-btn:hover {
+    background: #1a1a1a !important;
+    border-color: #9a9a9a !important;
+    color: #ffffff !important;
+}
+
+/* ---------------------------------------------------------
    Project Details Refactored Layout
    (Mockup-Perfect Two-Column Layout)
 -------------------------------------------- */
@@ -11713,16 +11763,16 @@ body.dark .project-separator {
 
     .project-page .wrapper-full .project-first-card {
         padding-left: 0 !important;
-        padding-right: 15px !important;
+        padding-right: 20px !important;
     }
 
     .project-page .wrapper-full .c-col-4p:not(.project-first-card):not(.project-last-card) {
-        padding-left: 15px !important;
-        padding-right: 15px !important;
+        padding-left: 10px !important;
+        padding-right: 10px !important;
     }
 
     .project-page .wrapper-full .project-last-card {
-        padding-left: 15px !important;
+        padding-left: 20px !important;
         padding-right: 0 !important;
     }
 }
@@ -11987,4 +12037,20 @@ body.dark .creative-copy-title img {
 body.dark .contact-col-right {
     border-left: 0 !important;
     border-top: 0 !important;
+}
+
+/* Ensure all project cards on works page and project subpages have identical image heights */
+.project-page .blog-classic .post-image,
+.works-page-content .blog-classic .post-image {
+    width: 100% !important;
+    height: auto !important;
+}
+
+.project-page .blog-classic .post-image img,
+.works-page-content .blog-classic .post-image img {
+    width: 100% !important;
+    aspect-ratio: 14 / 9 !important;
+    -o-object-fit: cover !important;
+    object-fit: cover !important;
+    height: auto !important;
 }
