@@ -9,11 +9,28 @@ $(document).ready(function () {
     containment: true
   });
 
+  $('.draggable-eye').draggabilly({
+    // Completely unrestricted movement across the entire screen!
+  }).on('dragEnd', function () {
+    var eyeEl = this;
+    var parent = eyeEl.offsetParent;
+    if (!parent) return;
+    var parentRect = parent.getBoundingClientRect();
+    var eyeRect = eyeEl.getBoundingClientRect();
+
+    var pctX = (eyeRect.left - parentRect.left) / parentRect.width;
+    var pctY = (eyeRect.top - parentRect.top) / parentRect.height;
+
+    eyeEl.setAttribute('data-pct-x', pctX);
+    eyeEl.setAttribute('data-pct-y', pctY);
+  });
+
   // While dragging, cursor must stay "grabbing" even if the pointer moves off the element.
-  $(allDraggableSelectors).on('dragStart', function () {
+  var grabbingSelectors = allDraggableSelectors + ', .draggable-eye';
+  $(grabbingSelectors).on('dragStart', function () {
     document.documentElement.classList.add('draggabilly-grabbing');
   });
-  $(allDraggableSelectors).on('dragEnd', function () {
+  $(grabbingSelectors).on('dragEnd', function () {
     document.documentElement.classList.remove('draggabilly-grabbing');
   });
 
@@ -74,10 +91,45 @@ $(document).ready(function () {
     });
   }
 
+  function handleResizeDraggableEye() {
+    var $eye = $('.draggable-eye');
+    if ($eye.length === 0) return;
+    var eyeEl = $eye[0];
+
+    var pctXStr = eyeEl.getAttribute('data-pct-x');
+    var pctYStr = eyeEl.getAttribute('data-pct-y');
+    if (pctXStr === null || pctYStr === null) return;
+
+    var pctX = parseFloat(pctXStr);
+    var pctY = parseFloat(pctYStr);
+
+    var parent = eyeEl.offsetParent;
+    if (!parent) return;
+    var parentRect = parent.getBoundingClientRect();
+
+    var isMobile = window.innerWidth <= 991;
+    var initPctX = isMobile ? 0.40 : 1.08;
+    var initPctY = isMobile ? 1.02 : 0.02;
+
+    var tx = (pctX - initPctX) * parentRect.width;
+    var ty = (pctY - initPctY) * parentRect.height;
+
+    eyeEl.style.transform = 'translate(' + tx + 'px, ' + ty + 'px)';
+
+    var draggie = $eye.data('draggabilly');
+    if (draggie) {
+      draggie.position.x = tx;
+      draggie.position.y = ty;
+    }
+  }
+
   var resizeTimer;
   $(window).on('resize', function () {
     window.clearTimeout(resizeTimer);
-    resizeTimer = window.setTimeout(clampTransformsToContainer, 80);
+    resizeTimer = window.setTimeout(function () {
+      clampTransformsToContainer();
+      handleResizeDraggableEye();
+    }, 80);
   });
 
   var $tooltip = $('<div class="draggablee-tooltip">click to open</div>');
