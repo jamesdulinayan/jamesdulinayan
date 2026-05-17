@@ -8580,7 +8580,6 @@ body.dark .ac-title {
 @media only screen and (max-width:450px) {
 
     .container {
-        height: 400px !important;
         width: 100%;
     }
 
@@ -10182,7 +10181,6 @@ html.draggabilly-grabbing * {
     color: #000;
     pointer-events: none;
 }
-
 
 
 /* Fix shrink-to-fit wrapping for absolute ::after labels */
