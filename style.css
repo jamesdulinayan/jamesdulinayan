@@ -11409,7 +11409,7 @@ body.dark .works-page-content .blog-classic h5.post-date::after {
 }
 
 .filter-btn.active {
-    border-color: #393334;
+    border-color: rgba(0, 0, 0, 0.5) !important;
     color: #393334;
     font-weight: 500;
 }
@@ -11424,7 +11424,7 @@ body.dark .filter-btn:hover {
 }
 
 body.dark .filter-btn.active {
-    border-color: #ffffff !important;
+    border-color: #9a9a9a !important;
     color: #ffffff !important;
 }
 
@@ -11518,10 +11518,10 @@ body.dark .back-to-home-sticky a:hover {
     position: sticky;
     top: 100px;
     /* Sticks title and description while scrolling images! */
-    height: calc(100vh - 200px);
+    height: auto;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
 }
 
 .project-info-col .post-title {

@@ -18,7 +18,8 @@
     <link rel="apple-touch-icon" href="../img/favicon.png" />
     <link rel="stylesheet" href="https://use.typekit.net/dht2lod.css">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        crossorigin="anonymous" referrerpolicy="no-referrer">
 </head>
 
 <body data-menu-style="classic">
@@ -51,7 +52,8 @@
         <div id="content" class="page-content works-page-content">
 
             <div class="back-to-home-sticky">
-                <a href="../works.html?filter=motion-graphics" class="cta-footer__col-value"><span class="back-arrow">←</span> Back to Projects</a>
+                <a href="../works.html?filter=motion-graphics" class="cta-footer__col-value"><span
+                        class="back-arrow">←</span> Back to Projects</a>
             </div>
 
             <div class="section">
@@ -67,17 +69,14 @@
                             </div>
 
                             <h2 class="creative-copy-text" style="font-weight: normal; margin-bottom: 24px;">
-                                An event held by the university student council of HAU for the 2021 university days of
-                                Holy Angel University. The decades that honed countless students in their future
-                                endeavors encompassing years of holistic excellence, exceeding beyond boundaries and
-                                capabilities while showcasing and competing with outmost talents, and creativity,
-                                alongside camaraderie and unity.
+                                An event organized by the University Student Council of HAU for the 2021 University Days of
+                                Holy Angel University. For decades, HAU has honed countless students in their future
+                                endeavors, encompassing years of holistic excellence, exceeding boundaries and
+                                capabilities, and showcasing utmost talent and creativity alongside camaraderie and unity.
+                                <br><br>
+                                As part of the creative team, the challenge was to establish a cohesive visual language that captured the energy and heritage of the university. This was achieved by designing dynamic motion graphics and social media content that engaged the student body across digital platforms, celebrating the spirit of the university days while pushing the boundaries of traditional campus branding.
                             </h2>
 
-                            <h2 class="creative-copy-text" style="font-weight: normal; margin-bottom: 24px;">
-                                Here are few visual posters that I made for this event. The posters are leveled up by
-                                incorporating animation.
-                            </h2>
 
                             <div style="margin-top: 35px;">
                                 <div style="margin-bottom: 5px;"><span class="cta-footer__col-label">Role</span></div>
@@ -211,30 +210,30 @@
     <script src="../js/gsap.js"></script>
     <script src="../js/scripts.js"></script>
 
-        <script>
-            const themeToggleBtn = document.getElementById('theme-toggle');
-            const body = document.body;
+    <script>
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const body = document.body;
 
-            const currentTheme = localStorage.getItem('theme');
-            if (currentTheme === 'dark') {
-                body.classList.add('dark');
+        const currentTheme = localStorage.getItem('theme');
+        if (currentTheme === 'dark') {
+            body.classList.add('dark');
+            themeToggleBtn.innerHTML = '<i class="fa-solid fa-sun"></i>';
+        } else {
+            themeToggleBtn.innerHTML = '<i class="fa-solid fa-moon"></i>';
+        }
+
+        themeToggleBtn.addEventListener('click', () => {
+            body.classList.toggle('dark');
+
+            if (body.classList.contains('dark')) {
+                localStorage.setItem('theme', 'dark');
                 themeToggleBtn.innerHTML = '<i class="fa-solid fa-sun"></i>';
             } else {
+                localStorage.setItem('theme', 'light');
                 themeToggleBtn.innerHTML = '<i class="fa-solid fa-moon"></i>';
             }
-
-            themeToggleBtn.addEventListener('click', () => {
-                body.classList.toggle('dark');
-                
-                if (body.classList.contains('dark')) {
-                    localStorage.setItem('theme', 'dark');
-                    themeToggleBtn.innerHTML = '<i class="fa-solid fa-sun"></i>';
-                } else {
-                    localStorage.setItem('theme', 'light');
-                    themeToggleBtn.innerHTML = '<i class="fa-solid fa-moon"></i>';
-                }
-            });
-        </script>
+        });
+    </script>
 </body>
 
 </html>

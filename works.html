@@ -60,8 +60,7 @@
 </div>
 
 <div class="works-filter">
-    <button class="filter-btn active" data-filter="all">All</button>
-    <button class="filter-btn" data-filter="web-development">Web Development</button>
+    <button class="filter-btn active" data-filter="web-development">Web Development</button>
     <button class="filter-btn" data-filter="motion-graphics">Motion & Graphics Design</button>
     <button class="filter-btn" data-filter="video-editing">Video Editing</button>
 </div>
@@ -513,6 +512,11 @@ document.addEventListener('DOMContentLoaded', function() {
         const targetBtn = document.querySelector(`.filter-btn[data-filter="${initialFilter}"]`);
         if (targetBtn) {
             targetBtn.click();
+        }
+    } else {
+        const activeBtn = document.querySelector('.filter-btn.active');
+        if (activeBtn) {
+            activeBtn.click();
         }
     }
 });

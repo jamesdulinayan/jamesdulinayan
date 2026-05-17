@@ -19,7 +19,8 @@
     <link rel="apple-touch-icon" href="../img/favicon.png" />
     <link rel="stylesheet" href="https://use.typekit.net/dht2lod.css">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        crossorigin="anonymous" referrerpolicy="no-referrer">
 </head>
 
 <body data-menu-style="classic">
@@ -35,7 +36,6 @@
         </button>
     </div>
 
-    
 
 
 
@@ -44,7 +44,8 @@
 
 
 
-    
+
+
 
 
     <div id="page" class="project-page grain" data-barba="container" data-barba-namespace="pph-video">
@@ -52,7 +53,8 @@
         <div id="content" class="page-content works-page-content">
 
             <div class="back-to-home-sticky">
-                <a href="../works.html?filter=web-development" class="cta-footer__col-value"><span class="back-arrow">←</span> Back to Projects</a>
+                <a href="../works.html?filter=web-development" class="cta-footer__col-value"><span
+                        class="back-arrow">←</span> Back to Projects</a>
             </div>
 
             <div class="section">
@@ -68,18 +70,14 @@
                             </div>
 
                             <h2 class="creative-copy-text" style="font-weight: normal; margin-bottom: 24px;">
-                                Caliz Music Studio, located at Angeles City in Pampanga, serves as a space for
+                                Caliz Music Studio, located in Angeles City, Pampanga, offers a space for
                                 worry-free jamming. It serves as a musical sanctuary for musicians and bands, and a
-                                place for singers and songwriters to enjoy music. The challenge was to build the Caliz
-                                Music experience online through their website and brand elements.
+                                welcoming place for singers and songwriters to enjoy music. The challenge was to bring the Caliz
+                                Music experience online through their website and digital brand elements.
+                                <br><br>
+                                To bring their physical vibe to life on the web, I focused on creating an immersive visual narrative. By combining a modern web layout with dark-mode aesthetic branding elements, the resulting digital experience accurately reflects the cool, creative sanctuary that their local music community enjoys, turning visitors into regular jamming patrons.
                             </h2>
 
-                            <h2 class="creative-copy-text" style="font-weight: normal; margin-bottom: 24px;">
-                                A design that's responsive for mobile and desktop, it was crafted to communicate Caliz
-                                Music Studio's mission without compromising usability and experience. The design
-                                captures the attention of musicians and bands through straightforward key visual
-                                elements, clean typography, and a convenient, intuitive, and functional user journey.
-                            </h2>
 
                             <div style="margin-top: 35px;">
                                 <div style="margin-bottom: 5px;"><span class="cta-footer__col-label">Role</span></div>
@@ -108,15 +106,15 @@
                         <!-- Right Gallery Column: Scrollable Images -->
                         <div class="project-gallery-col">
                             <div class="gallery-item-full">
-                                <img src="../img/projects/caliz-music-studio/caliz-header.gif"
+                                <img src="../img/projects/caliz-music-studio/caliz-featured.gif"
                                     alt="Caliz Jam Studio Animated Header">
                             </div>
 
-                            <div class="gallery-item-half">
+                            <div class="gallery-item-full">
                                 <img src="../img/projects/caliz-music-studio/1.png" alt="Caliz Music Web Showcase 1">
                             </div>
 
-                            <div class="gallery-item-half">
+                            <div class="gallery-item-full">
                                 <img src="../img/projects/caliz-music-studio/3.png" alt="Caliz Music Web Showcase 2">
                             </div>
 
@@ -134,8 +132,11 @@
 
                 <div class="project-separator"></div>
                 <div class="wrapper-full">
-                    <div class="c-col-12 c-col-12p" style="padding-left: 0 !important; margin-bottom: clamp(30px, 4vw, 50px) !important;">
-                        <h1 class="creative-copy-title" style="margin-left: 0 !important; padding-left: 0 !important; margin-bottom: 0 !important;">Other Works</h1>
+                    <div class="c-col-12 c-col-12p"
+                        style="padding-left: 0 !important; margin-bottom: clamp(30px, 4vw, 50px) !important;">
+                        <h1 class="creative-copy-title"
+                            style="margin-left: 0 !important; padding-left: 0 !important; margin-bottom: 0 !important;">
+                            Other Works</h1>
                     </div>
                     <!-- Card: The Ocean Project -->
                     <div class="c-col-4 c-col-4p project-first-card">
@@ -207,30 +208,30 @@
     <script src="../js/gsap.js"></script>
     <script src="../js/scripts.js"></script>
 
-        <script>
-            const themeToggleBtn = document.getElementById('theme-toggle');
-            const body = document.body;
+    <script>
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const body = document.body;
 
-            const currentTheme = localStorage.getItem('theme');
-            if (currentTheme === 'dark') {
-                body.classList.add('dark');
+        const currentTheme = localStorage.getItem('theme');
+        if (currentTheme === 'dark') {
+            body.classList.add('dark');
+            themeToggleBtn.innerHTML = '<i class="fa-solid fa-sun"></i>';
+        } else {
+            themeToggleBtn.innerHTML = '<i class="fa-solid fa-moon"></i>';
+        }
+
+        themeToggleBtn.addEventListener('click', () => {
+            body.classList.toggle('dark');
+
+            if (body.classList.contains('dark')) {
+                localStorage.setItem('theme', 'dark');
                 themeToggleBtn.innerHTML = '<i class="fa-solid fa-sun"></i>';
             } else {
+                localStorage.setItem('theme', 'light');
                 themeToggleBtn.innerHTML = '<i class="fa-solid fa-moon"></i>';
             }
-
-            themeToggleBtn.addEventListener('click', () => {
-                body.classList.toggle('dark');
-                
-                if (body.classList.contains('dark')) {
-                    localStorage.setItem('theme', 'dark');
-                    themeToggleBtn.innerHTML = '<i class="fa-solid fa-sun"></i>';
-                } else {
-                    localStorage.setItem('theme', 'light');
-                    themeToggleBtn.innerHTML = '<i class="fa-solid fa-moon"></i>';
-                }
-            });
-        </script>
+        });
+    </script>
 </body>
 
 </html>
