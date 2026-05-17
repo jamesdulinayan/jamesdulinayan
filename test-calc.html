@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.box {
+    width: 200px;
+    height: 200px;
+    background: red;
+    /* If invalid, it will stay red. If valid, it should scale to 0.5 and maybe we can see it */
+    transform: scale(calc(50vw / 1000px));
+}
+.box2 {
+    width: 200px;
+    height: 200px;
+    background: blue;
+    transform: scale(0.5);
+}
+</style>
+</head>
+<body>
+<div class="box"></div>
+<div class="box2"></div>
+</body>
+</html>

@@ -1,0 +1,238 @@
+img,
+svg {
+  max-width: 100%;
+  /* [2] */
+  height: auto;
+}
+
+img[width],
+img[height],
+svg[width],
+svg[height] {
+  /* [4] */
+  max-width: none;
+}
+
+img {
+  font-style: italic;
+  /* [4] */
+}
+
+
+
+h2,
+.o-h2 {
+  font-size: 2rem;
+}
+
+h3,
+.o-h3 {
+  font-size: 1.5rem;
+}
+
+
+
+
+.o-scroll {
+  width: 100%;
+  background-color: #ffffff;
+  cursor: default;
+}
+
+/* About hero — no full viewport height; stack uses natural content height */
+.about-hero-creative {
+  height: auto;
+  min-height: 0;
+  overflow: visible;
+}
+
+.about-hero-creative .creative-layout {
+  height: auto;
+  min-height: 0;
+}
+
+.about-hero-creative .creative-layout__row {
+  flex: 0 1 auto;
+  min-height: 0;
+  overflow: visible;
+}
+
+.about-hero-creative .creative-layout__row>.c-col-6 {
+  flex: 1 1 50%;
+  min-height: 0;
+}
+
+.about-hero-creative .creative-media-col {
+  min-height: 0;
+}
+
+/* Media column is on the left: vertical rule sits on the right edge (between columns) */
+@media (min-width: 992px) {
+  .about-hero-creative .creative-media-col {
+    border-left: 0;
+    border-right: 1px solid #000;
+  }
+}
+
+@media (max-width: 991px) {
+  .about-hero-creative .creative-media-col {
+    border-top: 0;
+    border-left: 0;
+    border-bottom: 1px solid #000;
+  }
+}
+
+/* About hero — keychain images positioned like index 2 collage (absolute top/left in .container) */
+.about-hero-creative .creative-media-col .container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 0;
+  height: auto;
+  min-height: clamp(280px, 48vw, 520px);
+}
+
+.about-hero__eyebrow {
+  margin: 0 0 0.5rem;
+  font-family: "Roboto Mono", ui-monospace, monospace;
+  font-size: clamp(0.7rem, 0.25vw + 0.62rem, 0.8rem);
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.45);
+}
+
+
+
+.about-keychain {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-65%);
+  display: inline-block;
+  max-width: 65%;
+  margin: 0;
+  z-index: 1;
+}
+
+.about-keychain__hook {
+  position: relative;
+  display: block;
+  max-width: 100%;
+  max-height: 75vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  margin: 0;
+  filter: drop-shadow(0 18px 36px rgba(0, 0, 0, 0.14));
+}
+
+.about-keychain__hang {
+  position: absolute;
+  top: 25%;
+  left: 55%;
+  z-index: 2;
+  display: block;
+  height: 52%;
+  width: auto;
+  margin: 0;
+}
+
+.about-keychain__graphic {
+  display: block;
+  height: 100%;
+  width: auto;
+  max-height: none;
+  object-fit: contain;
+  transform: rotate(-3deg);
+  transform-origin: 50% 0;
+  filter: drop-shadow(0 22px 44px rgba(0, 0, 0, 0.16));
+  transition: transform 2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.about-keychain__graphic:hover {
+  transform: rotate(9deg);
+}
+
+@media (max-width: 991px) {
+  .about-hero-creative .creative-layout__row .container {
+    min-height: clamp(260px, 58vw, 400px);
+  }
+
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-keychain__graphic:hover {
+    transform: rotate(-3deg);
+  }
+}
+
+/* Hover Content Switcher for Graphic Design */
+.about-hero-creative .creative-copy-col {
+  display: grid !important;
+  align-items: center;
+  justify-items: start;
+  align-content: center;
+}
+
+.copy-default,
+.copy-graphic-design {
+  grid-column: 1;
+  grid-row: 1;
+  width: 100%;
+  transition: opacity 0.5s ease, transform 0.5s ease, visibility 0.5s ease;
+}
+
+.copy-default {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.copy-graphic-design {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-20px);
+  pointer-events: none;
+}
+
+.creative-layout__row:has(.about-keychain__graphic:hover) .copy-default {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  pointer-events: none;
+}
+
+.creative-layout__row:has(.about-keychain__graphic:hover) .copy-graphic-design {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* Skills Pills Styling */
+.skills-pill-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 1rem;
+}
+
+.skill-pill {
+  padding: 8px 18px;
+  border-radius: 50px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  font-family: "Neue", system-ui, sans-serif;
+  font-size: 0.85rem;
+  color: #000;
+  background-color: transparent;
+  transition: all 0.3s ease;
+  cursor: default;
+}
+
+.skill-pill:hover {
+  background-color: #000;
+  color: #fff;
+  border-color: #000;
+}
