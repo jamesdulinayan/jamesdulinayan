@@ -139,6 +139,10 @@ $(document).ready(function () {
         window.location.href = 'about.html';
         return;
       }
+      if ($(this).hasClass('draggableB')) {
+        window.open('https://drive.google.com/file/d/10ii56-tnkABTpTJusGkihwxdihyR6zFY/view?usp=sharing', '_blank');
+        return;
+      }
       if ($(this).hasClass('draggableF')) {
         window.location.href = 'contact.html';
         return;
@@ -162,6 +166,10 @@ $(document).ready(function () {
         e.preventDefault();
         if ($(this).hasClass('draggableA')) {
           window.open('about.html', '_blank');
+          return;
+        }
+        if ($(this).hasClass('draggableB')) {
+          window.open('https://drive.google.com/file/d/10ii56-tnkABTpTJusGkihwxdihyR6zFY/view?usp=sharing', '_blank');
           return;
         }
         if ($(this).hasClass('draggableF')) {
