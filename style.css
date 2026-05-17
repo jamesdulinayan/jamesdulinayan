@@ -10075,8 +10075,7 @@ html.draggabilly-grabbing * {
     position: absolute;
     top: 100%;
     left: 50%;
-    transform: translateX(-50%);
-    margin-top: 3px;
+    transform: translate(-50%, 4px);
     white-space: nowrap;
     font-size: clamp(8px, 1.5vw, 12px);
     line-height: 1.2;
@@ -10096,8 +10095,7 @@ html.draggabilly-grabbing * {
     position: absolute;
     top: 100%;
     left: 50%;
-    transform: translateX(-50%);
-    margin-top: 3px;
+    transform: translate(-50%, 4px);
     white-space: nowrap;
     font-size: clamp(8px, 1.5vw, 12px);
     line-height: 1.2;
@@ -10117,8 +10115,7 @@ html.draggabilly-grabbing * {
     position: absolute;
     top: 100%;
     left: 50%;
-    transform: translateX(-50%);
-    margin-top: 0px;
+    transform: translate(-50%, 0px);
     white-space: nowrap;
     font-size: clamp(8px, 1.5vw, 12px);
     line-height: 1.2;
@@ -10138,8 +10135,7 @@ html.draggabilly-grabbing * {
     position: absolute;
     top: 100%;
     left: 50%;
-    transform: translateX(-50%);
-    margin-top: 0px;
+    transform: translate(-50%, 0px);
     white-space: nowrap;
     font-size: clamp(8px, 1.5vw, 12px);
     line-height: 1.2;
@@ -10159,8 +10155,7 @@ html.draggabilly-grabbing * {
     position: absolute;
     top: 100%;
     left: 50%;
-    transform: translateX(-50%);
-    margin-top: 0px;
+    transform: translate(-50%, 0px);
     white-space: nowrap;
     font-size: clamp(8px, 1.5vw, 12px);
     line-height: 1.2;
@@ -10180,14 +10175,15 @@ html.draggabilly-grabbing * {
     position: absolute;
     top: 100%;
     left: 50%;
-    transform: translateX(-50%);
-    margin-top: -6px;
+    transform: translate(-50%, -6px);
     white-space: nowrap;
     font-size: clamp(8px, 1.5vw, 12px);
     line-height: 1.2;
     color: #000;
     pointer-events: none;
 }
+
+
 
 /* Fix shrink-to-fit wrapping for absolute ::after labels */
 .draggableA::after,
@@ -10295,8 +10291,8 @@ html.draggabilly-grabbing * {
 
 .container .draggableB {
     position: absolute;
-    width: clamp(45px, 6.5vw, 75px);
-    height: clamp(45px, 6.5vw, 75px);
+    width: clamp(40px, 6vw, 70px);
+    height: clamp(40px, 6vw, 70px);
     background: url(img/collage/resume.png);
     background-size: contain;
     background-position: center;
