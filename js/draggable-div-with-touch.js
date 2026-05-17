@@ -80,12 +80,16 @@ $(document).ready(function () {
     resizeTimer = window.setTimeout(clampTransformsToContainer, 80);
   });
 
-  $(collageSelectors).on('dragStart dragMove', function () {
-    $('.draggablee-tooltip').removeClass('is-visible');
-  });
-
   var $tooltip = $('<div class="draggablee-tooltip">click to open</div>');
   $('body').append($tooltip);
+
+  function positionTooltipAbove(el) {
+    var rect = el.getBoundingClientRect();
+    $tooltip.css({
+      left: (rect.left + rect.width / 2 - $tooltip.outerWidth() / 2) + 'px',
+      top: (rect.top - $tooltip.outerHeight() - 10) + 'px'
+    });
+  }
 
   $(collageSelectors)
     .on('mouseenter', function () {
@@ -95,12 +99,19 @@ $(document).ready(function () {
       $tooltip.addClass('is-visible');
     })
     .on('mousemove', function (e) {
+      if (e.pointerType === 'touch' || e.pointerType === 'pen') {
+        return;
+      }
       $tooltip.css({
         left: (e.clientX + 14) + 'px',
         top: (e.clientY + 14) + 'px'
       });
     })
-    .on('mouseleave mousedown touchstart pointerdown dragStart', function () {
+    .on('touchstart pointerdown dragStart dragMove', function () {
+      $tooltip.addClass('is-visible');
+      positionTooltipAbove(this);
+    })
+    .on('mouseleave mousedown dragEnd touchend touchcancel pointerup', function () {
       $tooltip.removeClass('is-visible');
     })
     .on('dblclick staticClick', function (e) {
