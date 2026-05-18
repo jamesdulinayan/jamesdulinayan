@@ -10058,13 +10058,6 @@ html.draggabilly-grabbing * {
     cursor: grab;
 }
 
-.draggableA {
-    position: absolute;
-    top: 40%;
-    left: 80%;
-    overflow: visible;
-}
-
 .draggableA::after {
     content: "about me";
     position: absolute;
@@ -10076,13 +10069,6 @@ html.draggabilly-grabbing * {
     line-height: 1.2;
     color: #000;
     pointer-events: none;
-}
-
-.draggableB {
-    position: absolute;
-    top: 20%;
-    left: 50%;
-    overflow: visible;
 }
 
 .draggableB::after {
@@ -10098,12 +10084,6 @@ html.draggabilly-grabbing * {
     pointer-events: none;
 }
 
-.draggableC {
-    position: absolute;
-    top: 30%;
-    left: 65%;
-    overflow: visible;
-}
 
 .draggableC::after {
     content: "web development";
@@ -10118,12 +10098,6 @@ html.draggabilly-grabbing * {
     pointer-events: none;
 }
 
-.draggableD {
-    position: absolute;
-    top: 60%;
-    left: 15%;
-    overflow: visible;
-}
 
 .draggableD::after {
     content: "video editing";
@@ -10138,13 +10112,6 @@ html.draggabilly-grabbing * {
     pointer-events: none;
 }
 
-.draggableE {
-    position: absolute;
-    top: 30%;
-    left: 35%;
-    overflow: visible;
-}
-
 .draggableE::after {
     content: "motion & graphic design";
     position: absolute;
@@ -10156,13 +10123,6 @@ html.draggabilly-grabbing * {
     line-height: 1.2;
     color: #000;
     pointer-events: none;
-}
-
-.draggableF {
-    position: absolute;
-    top: 35%;
-    left: 15%;
-    overflow: visible;
 }
 
 .draggableF::after {
@@ -10421,7 +10381,7 @@ body.dark .draggableF::after {
 
 @media (max-width: 591px) {
     .container .draggableA {
-        left: 80%;
+        left: 81%;
         top: 47%;
     }
 
