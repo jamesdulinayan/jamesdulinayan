@@ -492,7 +492,7 @@ welcomeAnim.fromTo('.showcase-footer',1,{opacity:0},{opacity:1,ease:'power2.out'
 fsWallWelcome.fromTo(dashs,1.5,{cssRule:{y:'150%',}},{cssRule:{y:'0%',},stagger:0.1,ease:'power2.out',},1)
 fsWallWelcome.fromTo('.showcase-footer',.75,{opacity:0},{opacity:1,ease:'power2.out',},2)}}}
 function initPages(){aliothPageHeader()
-if($('.project-page').length){aliothProjectPage();};if($('.alioth-blog').length){aliothBlog();}
+if($('.project-page').length){aliothProjectPage();$('.project-page img').attr('draggable', 'false');};if($('.alioth-blog').length){aliothBlog();}
 if($('.alioth-works').length){aliothWorks();}
 if($('.cart-page').length){aliothShoppingCart()}
 if($('.alioth-products').length){aliothShop();}}

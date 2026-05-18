@@ -242,6 +242,9 @@ $(document).ready(function () {
         }
         window.open('works.html', '_blank');
       }
+    })
+    .on('click', function (e) {
+      e.preventDefault();
     });
 
 });

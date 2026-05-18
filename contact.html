@@ -115,31 +115,31 @@
                                 <div class="contact-hero-composition"
                                     style="position: relative; width: min(100cqw, 100cqh, 800px); height: min(100cqw, 100cqh, 800px);">
                                     <div class="contact-img-hook-copy">
-                                        <img src="img/hook-copy.png" alt="Hook" decoding="async">
+                                        <img src="img/hook-copy.png" alt="Hook" decoding="async" draggable="false">
                                     </div>
 
                                     <div class="contact-img-hook">
-                                        <img src="img/hook.png" alt="Hook" decoding="async">
+                                        <img src="img/hook.png" alt="Hook" decoding="async" draggable="false">
                                     </div>
 
                                     <div class="contact-img-rope">
-                                        <img src="img/rope.png" alt="Rope" decoding="async">
+                                        <img src="img/rope.png" alt="Rope" decoding="async" draggable="false">
                                     </div>
 
                                     <div class="contact-img-kodak">
-                                        <img src="img/kodak.png" alt="Rope" decoding="async">
+                                        <img src="img/kodak.png" alt="Rope" decoding="async" draggable="false">
                                     </div>
 
                                     <div class="contact-img-pager">
-                                        <img src="img/pager.gif" alt="Rope" decoding="async">
+                                        <img src="img/pager.gif" alt="Rope" decoding="async" draggable="false">
                                     </div>
 
                                     <div class="contact-img-code">
-                                        <img src="img/code.gif" alt="Rope" decoding="async">
+                                        <img src="img/code.gif" alt="Rope" decoding="async" draggable="false">
                                     </div>
 
                                     <div class="contact-img-denji">
-                                        <img src="img/denji.png" alt="Rope" decoding="async">
+                                        <img src="img/denji.png" alt="Rope" decoding="async" draggable="false">
                                     </div>
 
                                 </div>
@@ -185,6 +185,14 @@
                 } else {
                     localStorage.setItem('theme', 'light');
                     themeToggleBtn.innerHTML = '<i class="fa-solid fa-moon"></i>';
+                }
+            });
+
+            // Prevent right-click context menu specifically on contact page composition images
+            document.addEventListener('contextmenu', (e) => {
+                const isContactImg = e.target.closest('.contact-hero-composition img');
+                if (isContactImg) {
+                    e.preventDefault();
                 }
             });
         </script>
