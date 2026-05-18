@@ -3416,7 +3416,7 @@ section:after {
     }
 }
 
-@media only screen and (min-width:992px) {
+@media only screen and (min-width:1025px) {
     .wrapper {
         max-width: 1014px
     }
@@ -10352,7 +10352,7 @@ body.dark .draggableF::after {
 
 /* Tablet layout removed so scattered layout applies globally */
 
-@media (max-width: 991px) {
+@media (max-width: 1024px) {
     .container .draggableA {
         left: 80%;
         top: 40%;
@@ -10422,27 +10422,27 @@ body.dark .draggableF::after {
 @media (max-width: 591px) {
     .container .draggableA {
         left: 80%;
-        top: 45%;
+        top: 47%;
     }
 
     .container .draggableB {
         left: 58%;
-        top: 15%;
+        top: 14%;
     }
 
     .container .draggableC {
         left: 75%;
-        top: 25%;
+        top: 24%;
     }
 
     .container .draggableD {
         left: 10%;
-        top: 45%;
+        top: 46%;
     }
 
     .container .draggableE {
         left: 32%;
-        top: 10%;
+        top: 8%;
     }
 
     .container .draggableF {
@@ -10641,7 +10641,7 @@ body.dark .draggableF::after {
     border-right: 0;
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1024px) {
     .creative-media-col {
         border-top: 1px solid rgba(0, 0, 0, 0.5) !important;
         /* Muted transparent black outline */
@@ -10656,7 +10656,7 @@ body.dark .creative-media-col {
     border-top: 0 !important;
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1024px) {
     body.dark .creative-media-col {
         border-top: 1px solid #9a9a9a !important;
         /* Premium silver grey border outline */
@@ -10675,13 +10675,13 @@ body.dark .creative-media-col {
     pointer-events: none;
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1024px) {
     .center-me-img {
         transform: translate(-50%, -30%);
     }
 }
 
-@media (min-width: 591px) and (max-width: 991px) {
+@media (min-width: 591px) and (max-width: 1024px) {
     .center-me-img {
         max-width: 70%;
         max-height: 70%;
@@ -10707,7 +10707,7 @@ body.dark .creative-copy-title {
     overflow-wrap: anywhere;
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1024px) {
     .creative-copy-col {
         height: auto !important;
         min-height: 0;
@@ -10987,7 +10987,7 @@ body.dark .cta-footer__inner {
     }
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1024px) {
 
     .creative-copy-col {
         padding: 40px;
@@ -11039,9 +11039,10 @@ body.dark .cta-footer__inner {
     }
 
     .creative-layout__row .container {
-        height: 100%;
+        height: 100% !important;
+        margin-bottom: 0 !important;
         flex: 1 1 auto;
-        overflow: visible !important;
+        overflow: hidden !important;
         align-items: flex-start !important;
         justify-content: center !important;
     }
@@ -11067,7 +11068,7 @@ body.dark .cta-footer__inner {
 /* -----------------------------------------
    Contact Page Hero - Fixed Image Positioning 
 -------------------------------------------- */
-@media (min-width: 992px) {
+@media (min-width: 1025px) {
     .contact-col-left {
         flex: 4 !important;
     }
@@ -11078,7 +11079,7 @@ body.dark .cta-footer__inner {
     }
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1024px) {
     .contact-col-right {
         border-top: none !important;
         min-height: 50vh;
@@ -11240,13 +11241,13 @@ body.dark .cta-footer__inner {
 }
 
 /* Dynamic responsive column scaling: 3 columns on desktop, 2 on tablet, 1 on mobile */
-@media (min-width: 992px) {
+@media (min-width: 1025px) {
     .works-page-content .wrapper-full .c-col-6[data-category] {
         width: 33.333333% !important;
     }
 }
 
-@media (min-width: 721px) and (max-width: 991px) {
+@media (min-width: 721px) and (max-width: 1024px) {
     .works-page-content .wrapper-full .c-col-6[data-category] {
         width: 50% !important;
     }
@@ -11330,7 +11331,7 @@ body.dark .works-page-content .post-meta::after {
     line-height: 1 !important;
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1024px) {
     .works-page-content {
         padding: 40px !important;
     }
@@ -11567,7 +11568,7 @@ body.dark .project-cta-btn:hover {
     margin-bottom: 0 !important;
 }
 
-@media (min-width: 992px) {
+@media (min-width: 1025px) {
     .project-details-grid--swapped {
         grid-template-columns: 4.2fr 5.8fr;
     }
@@ -11695,7 +11696,7 @@ body.dark .meta-pill {
     /* Premium flush clean-cut images */
 }
 
-@media (min-width: 992px) {
+@media (min-width: 1025px) {
     .project-first-card {
         padding-left: 0 !important;
     }
@@ -11705,7 +11706,7 @@ body.dark .meta-pill {
     }
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1024px) {
     .works-page-content .wrapper-full .project-first-card {
         padding-left: 0 !important;
         padding-right: 15px !important;
@@ -11717,7 +11718,7 @@ body.dark .meta-pill {
     }
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1024px) {
 
     .project-details-grid {
         grid-template-columns: 1fr;
@@ -11779,7 +11780,7 @@ body.dark .project-separator {
 }
 
 /* Other Works Grid Responsiveness matching Works Page Breakpoints */
-@media (min-width: 992px) {
+@media (min-width: 1025px) {
     .project-page .wrapper-full .c-col-4p {
         width: 33.333333% !important;
         display: block !important;
@@ -11802,7 +11803,7 @@ body.dark .project-separator {
     }
 }
 
-@media (min-width: 721px) and (max-width: 991px) {
+@media (min-width: 721px) and (max-width: 1024px) {
     .project-page .wrapper-full .c-col-4p {
         width: 50% !important;
         display: block !important;
@@ -11934,7 +11935,7 @@ body.dark .project-page .blog-classic .post-cat {
     color: #a7a7a7 !important;
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1024px) {
     .project-page .post-meta {
         flex-direction: column !important;
         align-items: flex-start !important;
@@ -12081,7 +12082,7 @@ body.dark .contact-col-right {
 }
 
 /* Tablet Portrait and Mobile Floating Controls Positioning Adjustments */
-@media (max-width: 991px) {
+@media (max-width: 1024px) {
     .back-to-home-sticky a {
         top: 15px !important;
     }
@@ -12122,7 +12123,7 @@ body.dark .contact-col-right {
     margin-bottom: 0 !important;
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1024px) {
     .draggable-eye {
         left: 40%;
         top: 102%;

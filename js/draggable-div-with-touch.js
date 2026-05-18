@@ -107,7 +107,7 @@ $(document).ready(function () {
     if (!parent) return;
     var parentRect = parent.getBoundingClientRect();
 
-    var isMobile = window.innerWidth <= 991;
+    var isMobile = window.innerWidth <= 1024;
     var initPctX = isMobile ? 0.40 : 1.08;
     var initPctY = isMobile ? 1.02 : 0.02;
 

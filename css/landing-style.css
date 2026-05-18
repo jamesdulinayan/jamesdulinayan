@@ -67,14 +67,14 @@ h3,
 }
 
 /* Media column is on the left: vertical rule sits on the right edge (between columns) */
-@media (min-width: 992px) {
+@media (min-width: 1024px) {
   .about-hero-creative .creative-media-col {
     border-left: 0;
     border-right: 1px solid #000;
   }
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1024px) {
   .about-hero-creative .creative-media-col {
     border-top: 0;
     border-left: 0;
@@ -154,7 +154,7 @@ h3,
   transform: rotate(9deg);
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1024px) {
   .about-hero-creative .creative-layout__row .container {
     min-height: clamp(260px, 58vw, 400px);
   }
