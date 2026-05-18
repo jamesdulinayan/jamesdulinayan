@@ -10320,7 +10320,7 @@ body.dark .draggableF::after {
 
     .container .draggableB {
         left: 55%;
-        top: 8%;
+        top: 7%;
     }
 
     .container .draggableC {
@@ -10339,7 +10339,7 @@ body.dark .draggableF::after {
     }
 
     .container .draggableF {
-        left: 15%;
+        left: 14%;
         top: 20%;
     }
 }
@@ -10348,7 +10348,7 @@ body.dark .draggableF::after {
 @media (max-width: 791px) {
     .container .draggableA {
         left: 80%;
-        top: 40%;
+        top: 39%;
     }
 
     .container .draggableB {
@@ -10373,7 +10373,7 @@ body.dark .draggableF::after {
 
     .container .draggableF {
         left: 15%;
-        top: 15%;
+        top: 14%;
     }
 }
 
@@ -10382,7 +10382,7 @@ body.dark .draggableF::after {
 @media (max-width: 591px) {
     .container .draggableA {
         left: 81%;
-        top: 46%;
+        top: 45%;
     }
 
     .container .draggableB {
