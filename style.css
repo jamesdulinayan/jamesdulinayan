@@ -10855,7 +10855,6 @@ body.dark .creative-copy-title {
     gap: 0.5rem;
     min-width: 0;
     flex: 0 1 auto;
-    padding-top: 0.15rem;
 }
 
 .cta-footer__col-label {
@@ -11260,7 +11259,7 @@ body.dark .cta-footer__inner {
     align-items: center !important;
     /* Perfect vertical centering of text and line */
     width: 100% !important;
-    margin-top: 20px !important;
+    margin-top: 10px !important;
 }
 
 .works-page-content .blog-classic .post.alioth-post .post-title {
@@ -11363,7 +11362,8 @@ body.dark .works-page-content .blog-classic h5.post-date::after {
     display: flex;
     flex-wrap: wrap;
     gap: 12px;
-    margin-bottom: clamp(30px, 5vw, 55px);
+    margin-top: clamp(40px, 6vw, 70px);
+    margin-bottom: clamp(40px, 6vw, 70px);
     font-family: "Neue", system-ui, sans-serif;
 }
 
@@ -11755,8 +11755,8 @@ body.dark .meta-pill {
     clear: both !important;
     width: 100% !important;
     border-top: 1px solid rgba(0, 0, 0, 0.5) !important;
-    margin-top: clamp(40px, 6vw, 80px) !important;
-    margin-bottom: clamp(40px, 6vw, 80px) !important;
+    margin-top: clamp(60px, 8vw, 100px) !important;
+    margin-bottom: clamp(60px, 8vw, 100px) !important;
 }
 
 body.dark .project-separator {
@@ -11840,9 +11840,11 @@ body.dark .project-separator {
     display: flex !important;
     flex-direction: row !important;
     justify-content: flex-start !important;
+    /* Align everything flush-left side-by-side */
     align-items: center !important;
+    /* Perfect vertical centering of text and line */
     width: 100% !important;
-    margin-top: 20px !important;
+    margin-top: 10px !important;
 }
 
 .project-page .blog-classic .post.alioth-post .post-title {

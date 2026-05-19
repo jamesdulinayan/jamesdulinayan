@@ -32,7 +32,8 @@
     </script>
 
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        crossorigin="anonymous" referrerpolicy="no-referrer">
 </head>
 
 <body data-menu-style="classic">
@@ -71,7 +72,8 @@
 
 
 
-                            <div class="back-to-home-sticky"><a href="index.html" class="cta-footer__col-value"><span class="back-arrow">←</span> Back to Home</a></div>
+                            <div class="back-to-home-sticky"><a href="index.html" class="cta-footer__col-value"><span
+                                        class="back-arrow">←</span> Back to Home</a></div>
 
                             <h1 class="creative-copy-title">
                                 Let’s Build Something Great and Meaningful</h1>
@@ -80,13 +82,13 @@
                                 brand to build, or a project that needs strong visual direction, feel free to get in
                                 touch through my social media channels, email, or phone number.</h2>
 
-                            <div style="margin-bottom: 5px;"><span class="cta-footer__col-label">Based in</span>
+                            <div style="margin-bottom: 0.5rem;"><span class="cta-footer__col-label">Based in</span>
                             </div>
-                            <div style="margin-bottom: 32px;"><span class="cta-footer__col-value"
+                            <div style="margin-bottom: 24px;"><span class="cta-footer__col-value"
                                     style="border-bottom-color: transparent !important; cursor: text;">Philippines</span>
                             </div>
 
-                            <div style="margin-bottom: 5px;"><span class="cta-footer__col-label">Find me on</span>
+                            <div style="margin-bottom: 0.5rem;"><span class="cta-footer__col-label">Find me on</span>
                             </div>
                             <div style="margin-bottom: 4px;"><a href="https://www.facebook.com/jamesdulinayan"
                                     target="_blank" class="cta-footer__col-value">Facebook</a>
@@ -94,11 +96,11 @@
                             <div style="margin-bottom: 4px;"><a href="https://www.instagram.com/jamesdulinayan/"
                                     target="_blank" class="cta-footer__col-value">Instagram</a>
                             </div>
-                            <div style="margin-bottom: 32px;"><a href="https://ph.linkedin.com/in/jamesdulinayan"
+                            <div style="margin-bottom: 24px;"><a href="https://ph.linkedin.com/in/jamesdulinayan"
                                     target="_blank" class="cta-footer__col-value">LinkedIn</a>
                             </div>
 
-                            <div style="margin-bottom: 5px;"><span class="cta-footer__col-label">Let's
+                            <div style="margin-bottom: 0.5rem;"><span class="cta-footer__col-label">Let's
                                     Connect</span></div>
                             <div style="margin-bottom: 4px;"><a href="mailto:jamesdulinayan@gmail.com"
                                     class="cta-footer__col-value">jamesdulinayan@gmail.com</a></div>
@@ -164,38 +166,38 @@
     <script src="js/gsap.js"></script>
     <script src="js/scripts.js"></script>
 
-        <script>
-            const themeToggleBtn = document.getElementById('theme-toggle');
-            const body = document.body;
+    <script>
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const body = document.body;
 
-            const currentTheme = localStorage.getItem('theme');
-            if (currentTheme === 'dark') {
-                body.classList.add('dark');
+        const currentTheme = localStorage.getItem('theme');
+        if (currentTheme === 'dark') {
+            body.classList.add('dark');
+            themeToggleBtn.innerHTML = '<i class="fa-solid fa-sun"></i>';
+        } else {
+            themeToggleBtn.innerHTML = '<i class="fa-solid fa-moon"></i>';
+        }
+
+        themeToggleBtn.addEventListener('click', () => {
+            body.classList.toggle('dark');
+
+            if (body.classList.contains('dark')) {
+                localStorage.setItem('theme', 'dark');
                 themeToggleBtn.innerHTML = '<i class="fa-solid fa-sun"></i>';
             } else {
+                localStorage.setItem('theme', 'light');
                 themeToggleBtn.innerHTML = '<i class="fa-solid fa-moon"></i>';
             }
+        });
 
-            themeToggleBtn.addEventListener('click', () => {
-                body.classList.toggle('dark');
-                
-                if (body.classList.contains('dark')) {
-                    localStorage.setItem('theme', 'dark');
-                    themeToggleBtn.innerHTML = '<i class="fa-solid fa-sun"></i>';
-                } else {
-                    localStorage.setItem('theme', 'light');
-                    themeToggleBtn.innerHTML = '<i class="fa-solid fa-moon"></i>';
-                }
-            });
-
-            // Prevent right-click context menu specifically on contact page composition images
-            document.addEventListener('contextmenu', (e) => {
-                const isContactImg = e.target.closest('.contact-hero-composition img');
-                if (isContactImg) {
-                    e.preventDefault();
-                }
-            });
-        </script>
+        // Prevent right-click context menu specifically on contact page composition images
+        document.addEventListener('contextmenu', (e) => {
+            const isContactImg = e.target.closest('.contact-hero-composition img');
+            if (isContactImg) {
+                e.preventDefault();
+            }
+        });
+    </script>
 </body>
 
 </html>

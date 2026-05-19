@@ -73,14 +73,18 @@
                             style="box-sizing: border-box; margin-bottom: 0; padding: 0; position: relative; z-index: 1;">
 
                             <div class="container" style="height: 100%; position: relative;">
-                                <img src="img/me-day.png" alt="James" class="center-me-img me-day-img" draggable="false">
-                                <img src="img/me-night.png" alt="James" class="center-me-img me-night-img" draggable="false">
-                                <img src="img/me-main.png" alt="James" class="center-me-img me-main-img" draggable="false">
+                                <img src="img/me-day.png" alt="James" class="center-me-img me-day-img"
+                                    draggable="false">
+                                <img src="img/me-night.png" alt="James" class="center-me-img me-night-img"
+                                    draggable="false">
+                                <img src="img/me-main.png" alt="James" class="center-me-img me-main-img"
+                                    draggable="false">
                                 <a href="about.html" class="draggableA"></a>
-                                <a href="https://drive.google.com/file/d/10ii56-tnkABTpTJusGkihwxdihyR6zFY/view?usp=sharing" target="_blank" class="draggableB"></a>
-                                <a href="works.html?filter=web-development" class="draggableC"></a>
-                                <a href="works.html?filter=video-editing" class="draggableD"></a>
-                                <a href="works.html?filter=motion-graphics" class="draggableE"></a>
+                                <a href="https://drive.google.com/file/d/10ii56-tnkABTpTJusGkihwxdihyR6zFY/view?usp=sharing"
+                                    target="_blank" class="draggableB"></a>
+                                <a href="projects.html?filter=web-development" class="draggableC"></a>
+                                <a href="projects.html?filter=video-editing" class="draggableD"></a>
+                                <a href="projects.html?filter=motion-graphics" class="draggableE"></a>
                                 <a href="contact.html" class="draggableF"></a>
                             </div>
 
@@ -179,7 +183,7 @@
             document.addEventListener('contextmenu', (e) => {
                 const isMeImg = e.target.classList.contains('center-me-img');
                 const isTitleImg = e.target.closest('.creative-copy-title img');
-                
+
                 if (isMeImg || isTitleImg) {
                     e.preventDefault();
                 }
