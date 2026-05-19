@@ -11409,9 +11409,22 @@ body.dark .filter-btn.active {
 
 /* Premium Sticky Back to Home Navigation */
 .back-to-home-sticky {
-    height: 40px !important;
-    margin-bottom: 40px !important;
+    margin-bottom: 5.5rem !important;
     display: block !important;
+}
+
+@media (max-width: 1024px) {
+    .back-to-home-sticky {
+        margin-bottom: 4rem !important;
+    }
+
+}
+
+@media (max-width: 720px) {
+    .back-to-home-sticky {
+        margin-bottom: 3.5rem !important;
+    }
+
 }
 
 .back-to-home-sticky a {
