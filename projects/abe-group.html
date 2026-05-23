@@ -11,9 +11,10 @@
     <meta name="keywords" content="James Dulinayan">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <link href="../../fonts.googleapis.com/css2fb67.css?family=Inter:wght@400;500;600;700&amp;display=swap"
+        rel="stylesheet">
     <link href="../css/plugins.css" rel="stylesheet">
     <link href="../style.css" rel="stylesheet">
-    <link href="../css/landing-style.css" rel="stylesheet">
     <link rel="shortcut icon" href="../img/favicon.png" />
     <link rel="apple-touch-icon" href="../img/favicon.png" />
     <link rel="stylesheet" href="https://use.typekit.net/dht2lod.css">
@@ -22,17 +23,102 @@
         crossorigin="anonymous" referrerpolicy="no-referrer">
 </head>
 
-<body data-menu-style="classic">
+<body>
     <script>
         if (localStorage.getItem('theme') === 'dark') {
             document.body.classList.add('dark');
         }
     </script>
 
-    <div class="theme-toggle-sticky">
-        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Dark Mode">
-            <i class="fa-solid fa-moon"></i>
-        </button>
+    <header class="index-header">
+        <div class="index-logo-col">
+            <a href="../index.html">
+                <img src="../img/site-logo.png" alt="James Dulinayan" class="index-logo-img">
+            </a>
+        </div>
+        <div class="index-controls-col">
+            <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Dark Mode">
+                <i class="fa-solid fa-moon"></i>
+            </button>
+            <button id="index-hamburger" class="index-hamburger-btn" aria-label="Toggle Navigation Menu">
+                <div class="hamburger-inner">
+                    <span class="hamburger-line line-1"></span>
+                    <span class="hamburger-line line-2"></span>
+                    <span class="hamburger-line line-3"></span>
+                </div>
+            </button>
+
+        </div>
+    </header>
+
+    <!-- Custom Full-Page Overlay Menu -->
+    <div id="index-menu-overlay" class="index-menu-overlay grain">
+        <div class="index-menu-bg-grain"></div>
+        <div class="index-menu-content">
+            <!-- Navigation Links -->
+            <nav class="index-menu-nav">
+                <ul class="index-menu-list">
+                    <li class="index-menu-item" style="--item-index: 1;">
+                        <a href="../index.html" class="index-menu-link">
+                            <span class="index-menu-text" data-hover="Home">Home</span>
+                        </a>
+                    </li>
+                    <li class="index-menu-item" style="--item-index: 2;">
+                        <a href="../about.html" class="index-menu-link">
+                            <span class="index-menu-text" data-hover="About">About</span>
+                        </a>
+                    </li>
+                    <li class="index-menu-item has-sparkle" style="--item-index: 3;">
+                        <a href="../projects.html" class="index-menu-link">
+                            <span class="index-menu-text" data-hover="Projects">Projects</span>
+                        </a>
+                    </li>
+                    <li class="index-menu-item" style="--item-index: 4;">
+                        <a href="../contact.html" class="index-menu-link">
+                            <span class="index-menu-text" data-hover="Contact">Contact</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Bottom Metadata Rows -->
+            <div class="index-menu-meta-row">
+                <div class="index-menu-meta-col">
+                    <span class="cta-footer__col-label">Social</span>
+                    <ul class="cta-footer__icon-row">
+                        <li>
+                            <a href="https://www.facebook.com/jamesdulinayan" target="_blank"
+                                class="cta-footer__icon-link" aria-label="Facebook">
+                                <i class="fa-brands fa-facebook-f" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.instagram.com/jamesdulinayan/" target="_blank"
+                                class="cta-footer__icon-link" aria-label="Instagram">
+                                <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://ph.linkedin.com/in/jamesdulinayan" target="_blank"
+                                class="cta-footer__icon-link" aria-label="LinkedIn">
+                                <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="index-menu-meta-col">
+                    <span class="cta-footer__col-label">Let's Connect
+                    </span>
+                    <a href="mailto:james.dulinayan@gmail.com"
+                        class="cta-footer__col-value">jamesdulinayan@gmail.com</a>
+                </div>
+                <div class="index-menu-meta-col">
+                    <span class="cta-footer__col-label">Contact</span>
+                    <a href="tel:+639563620905" class="cta-footer__col-value">+63 956 362 0905</a>
+                </div>
+
+            </div>
+        </div>
     </div>
 
 
@@ -51,10 +137,6 @@
 
         <div id="content" class="page-content works-page-content">
 
-            <div class="back-to-home-sticky">
-                <a href="../projects.html?filter=web-development" class="cta-footer__col-value"><span
-                        class="back-arrow">←</span> Back to Projects</a>
-            </div>
 
             <div class="section">
 
@@ -228,6 +310,77 @@
             } else {
                 localStorage.setItem('theme', 'light');
                 themeToggleBtn.innerHTML = '<i class="fa-solid fa-moon"></i>';
+            }
+        });
+
+        // Custom Hamburger and Full-Page Overlay Menu Toggling with Scroll Lock
+        const hamburgerBtn = document.getElementById('index-hamburger');
+        const menuOverlay = document.getElementById('index-menu-overlay');
+        const menuLinks = document.querySelectorAll('.index-menu-link');
+
+        function preventDefault(e) {
+            e.preventDefault();
+        }
+
+        const wheelOpt = { passive: false };
+        const wheelEvent = 'onwheel' in document.createElement('div') ? 'wheel' : 'mousewheel';
+
+        function openMenu() {
+            hamburgerBtn.classList.add('is-active');
+            menuOverlay.classList.add('is-open');
+            body.classList.add('menu-open-lock');
+            document.documentElement.classList.add('menu-open-lock');
+            
+            // Intercept scroll actions (mousewheel, touchmove, keys)
+            window.addEventListener('DOMMouseScroll', preventDefault, false);
+            window.addEventListener(wheelEvent, preventDefault, wheelOpt);
+            window.addEventListener('touchmove', preventDefault, wheelOpt);
+        }
+
+        function closeMenu() {
+            hamburgerBtn.classList.remove('is-active');
+            menuOverlay.classList.remove('is-open');
+            body.classList.remove('menu-open-lock');
+            document.documentElement.classList.remove('menu-open-lock');
+            
+            // Restore standard scrolling
+            window.removeEventListener('DOMMouseScroll', preventDefault, false);
+            window.removeEventListener(wheelEvent, preventDefault, wheelOpt);
+            window.removeEventListener('touchmove', preventDefault, wheelOpt);
+        }
+
+        function toggleMenu() {
+            const isOpen = menuOverlay.classList.contains('is-open');
+            if (isOpen) {
+                closeMenu();
+            } else {
+                openMenu();
+            }
+        }
+
+        hamburgerBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            toggleMenu();
+        });
+
+        // Close menu when a link is clicked
+        menuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                closeMenu();
+            });
+        });
+
+        // Close menu if clicking outside the menu content (e.g. background overlay area)
+        menuOverlay.addEventListener('click', (e) => {
+            if (e.target === menuOverlay) {
+                closeMenu();
+            }
+        });
+
+        // Close menu on Escape key press
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && menuOverlay.classList.contains('is-open')) {
+                closeMenu();
             }
         });
     </script>
