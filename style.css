@@ -10892,7 +10892,8 @@ body.dark .creative-copy-title {
     text-decoration: none;
     font-size: 1.1rem;
     line-height: 1;
-    transition: color 0.2s ease, opacity 0.2s ease;
+    transition: color 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    /* Fast snappy timing */
 }
 
 .cta-footer__icon-link:hover {
@@ -10934,7 +10935,8 @@ body.dark .creative-copy-title {
     /* Soft semi-transparent black matching original light mode design */
     transform: scaleX(0) !important;
     transform-origin: right !important;
-    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1) !important;
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+    /* Fast snappy timing */
 }
 
 .cta-footer__col-value:hover::after {
@@ -11397,7 +11399,8 @@ body.dark .works-page-content .blog-classic h5.post-date::after {
     border-radius: 50px;
     color: #3b3737;
     /* Matches social icon hover/inactive color in light mode */
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    /* Match other animations */
     outline: none;
     font-family: inherit;
     text-transform: none;
@@ -11520,7 +11523,8 @@ body.dark .back-to-home-sticky a:hover {
     padding: 10px 22px !important;
     border-radius: 50px !important;
     border: 1px solid rgba(0, 0, 0, 0.35) !important;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+    /* Match other animations */
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03) !important;
     color: #1d1b1c !important;
     font-weight: 500 !important;
@@ -11539,7 +11543,8 @@ body.dark .back-to-home-sticky a:hover {
 .project-cta-btn .btn-arrow,
 .cta-footer__col-value .btn-arrow {
     display: inline-block !important;
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+    /* Match other animations */
     margin-left: 6px !important;
     font-weight: 500 !important;
 }
@@ -12017,8 +12022,8 @@ body.dark .project-page .blog-classic .post-cat {
     display: block !important;
     width: 48px !important;
     height: 28px !important;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
-    /* Unified smooth color transition */
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+    /* Fast snappy timing */
 }
 
 /* Theme Toggle Button Hover States (perfectly matching Back to Home design system) */
@@ -12628,16 +12633,21 @@ body.dark .skill-desc {
 /* 1. Header Layout */
 .index-header {
     position: fixed !important;
-    top: 30px !important;
-    left: 40px !important;
-    right: 40px !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    padding: 20px 40px !important;
     display: flex !important;
     justify-content: space-between !important;
     align-items: center !important;
     z-index: 2100 !important;
     /* Above the overlay menu */
     pointer-events: none !important;
-    transition: all 0.3s ease !important;
+    transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+}
+
+.index-header.hidden {
+    transform: translateY(-100%);
 }
 
 .index-logo-col {
@@ -12713,7 +12723,8 @@ body.dark .index-logo-img {
     width: 100%;
     background-color: #1d1b1c !important;
     border-radius: 2px;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    /* Fast snappy timing */
 }
 
 /* Dark Mode styles for Hamburger */
@@ -12907,8 +12918,8 @@ body.dark .index-menu-link {
     display: inline-block;
     backface-visibility: hidden !important;
     will-change: transform;
-    transition: transform .75s cubic-bezier(.63, .03, .21, 1) !important;
-    /* Exact match transition timing */
+    transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+    /* Match header animation timing */
 }
 
 body.dark .index-menu-text {
@@ -12931,8 +12942,8 @@ body.dark .index-menu-text {
     white-space: nowrap !important;
     backface-visibility: hidden !important;
     will-change: width;
-    transition: width .75s cubic-bezier(.63, .03, .21, 1) !important;
-    /* Exact match transition timing */
+    transition: width 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+    /* Match header/menu animation timing */
 }
 
 body.dark .index-menu-text::before {
@@ -13019,9 +13030,7 @@ html.menu-open-lock {
 /* 5. Responsiveness */
 @media (max-width: 1024px) {
     .index-header {
-        top: 20px !important;
-        left: 30px !important;
-        right: 30px !important;
+        padding: 15px 30px !important;
     }
 
     .index-menu-overlay {
@@ -13033,9 +13042,7 @@ html.menu-open-lock {
 
 @media (max-width: 768px) {
     .index-header {
-        top: 15px !important;
-        left: 20px !important;
-        right: 20px !important;
+        padding: 12px 20px !important;
     }
 
     .index-logo-img {

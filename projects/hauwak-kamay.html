@@ -358,6 +358,24 @@
                 closeMenu();
             }
         });
+
+        // Header scroll detection - hide on scroll down, show on scroll up
+        const header = document.querySelector('.index-header');
+        let lastScrollY = window.scrollY;
+
+        window.addEventListener('scroll', () => {
+            const currentScrollY = window.scrollY;
+
+            if (currentScrollY > lastScrollY && currentScrollY > 50) {
+                // Scrolling down - hide header
+                header.classList.add('hidden');
+            } else {
+                // Scrolling up - show header
+                header.classList.remove('hidden');
+            }
+
+            lastScrollY = currentScrollY;
+        });
     </script>
 </body>
 
