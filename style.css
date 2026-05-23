@@ -11800,6 +11800,7 @@ body.dark .project-separator {
     border-top: 1px solid #9a9a9a !important;
 }
 
+
 /* Other Works Grid Responsiveness matching Works Page Breakpoints */
 @media (min-width: 1025px) {
     .project-page .wrapper-full .c-col-4p {

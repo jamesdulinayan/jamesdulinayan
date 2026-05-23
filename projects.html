@@ -145,7 +145,8 @@
             </h2>
 
             <div class="works-filter">
-                <button class="filter-btn active" data-filter="web-development">Web Development</button>
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="web-development">Web Development</button>
                 <button class="filter-btn" data-filter="motion-graphics">Motion & Graphics Design</button>
                 <button class="filter-btn" data-filter="video-editing">Video Editing</button>
             </div>
@@ -587,6 +588,15 @@
                     btn.classList.add('active');
 
                     const filter = btn.getAttribute('data-filter');
+
+                    // Update URL with filter parameter
+                    const url = new URL(window.location);
+                    if (filter === 'all') {
+                        url.searchParams.delete('filter');
+                    } else {
+                        url.searchParams.set('filter', filter);
+                    }
+                    window.history.pushState({}, '', url);
 
                     if (typeof gsap !== 'undefined') {
                         // Smooth GSAP scaling transition
