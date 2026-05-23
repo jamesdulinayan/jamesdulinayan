@@ -13043,7 +13043,7 @@ html.menu-open-lock {
     }
 
     .index-menu-overlay {
-        padding: 90px 8% 30px 8% !important;
+        padding: 90px 6% 30px 6% !important;
     }
 
     .index-menu-text {
@@ -13070,25 +13070,12 @@ html.menu-open-lock {
 
 @media (max-height: 600px) {
     .index-menu-overlay {
-        padding: 80px 4% 24px 4% !important;
+        padding-top: 80px!important;
         overflow-y: auto !important;
         /* Enable responsive scroll on short screen heights */
     }
 
-    .index-menu-content {
-        gap: 20px !important;
-    }
 
-    .index-menu-text {
-        font-size: clamp(1.8rem, 7vh, 2.4rem) !important;
-    }
-
-    .index-menu-meta-row {
-        margin-top: 15px !important;
-        gap: 15px !important;
-        flex-direction: row !important;
-        flex-wrap: wrap !important;
-    }
 }
 
 @media (max-height: 750px) {
