@@ -12170,7 +12170,7 @@ body:not(.dark) .me-night-img {
 .project-info-col .alioth-services.style_2 {
     margin-top: 30px;
     margin-bottom: 30px;
-    border-top: 1px solid rgba(128,128,128,0.2);
+    border-top: 1px solid rgba(128, 128, 128, 0.2);
 }
 
 .project-info-col .alioth-services.style_2 .service {
@@ -12428,14 +12428,14 @@ body.dark .education-degree {
     background-color: #1d1b1c !important;
     border-color: #1d1b1c !important;
     color: #ffffff !important;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
 }
 
 body.dark .certifications-pills .meta-pill:hover {
     background-color: #eeeeee !important;
     border-color: #eeeeee !important;
     color: #131313 !important;
-    box-shadow: 0 4px 15px rgba(255,255,255,0.12);
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.12);
 }
 
 /* Skills / Services Grid Layout */
@@ -12537,13 +12537,23 @@ body.dark .skill-desc {
 }
 
 @keyframes marquee-scroll {
-    0%   { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
 }
 
 @keyframes marquee-scroll-reverse {
-    0%   { transform: translateX(-50%); }
-    100% { transform: translateX(0); }
+    0% {
+        transform: translateX(-50%);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
 }
 
 
@@ -12551,4 +12561,367 @@ body.dark .skill-desc {
 .skill-marquee-wrap .meta-pill {
     flex-shrink: 0;
     white-space: nowrap;
+}
+
+/* ==========================================================================
+   Custom Header and Full-Page Menu Overlay for index.html
+   ========================================================================== */
+
+/* 1. Header Layout */
+.index-header {
+    position: fixed !important;
+    top: 30px !important;
+    left: 40px !important;
+    right: 40px !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    z-index: 2100 !important;
+    /* Above the overlay menu */
+    pointer-events: none !important;
+    transition: all 0.3s ease !important;
+}
+
+.index-logo-col {
+    pointer-events: auto !important;
+}
+
+.index-logo-img {
+    height: 32px !important;
+    width: auto !important;
+    display: block !important;
+    transition: filter 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* Invert Logo on Dark Mode */
+body.dark .index-logo-img {
+    filter: invert(1) brightness(1.5) !important;
+}
+
+.index-controls-col {
+    display: flex !important;
+    align-items: center !important;
+    gap: 15px !important;
+    pointer-events: auto !important;
+}
+
+/* Override fixed position of theme-toggle-btn inside index-header */
+.index-header .theme-toggle-btn {
+    position: static !important;
+    margin: 0 !important;
+}
+
+/* 2. Hamburger Button */
+.index-hamburger-btn {
+    background: #ebebeb !important;
+    padding: 0 !important;
+    border-radius: 100px !important;
+    border: 1px solid rgba(0, 0, 0, 0.15) !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03) !important;
+    cursor: pointer !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 44px !important;
+    height: 44px !important;
+    outline: none !important;
+}
+
+/* Hamburger lines styling */
+.hamburger-inner {
+    width: 18px;
+    height: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+}
+
+.hamburger-line {
+    display: block;
+    height: 2px;
+    width: 100%;
+    background-color: #1d1b1c !important;
+    border-radius: 2px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Dark Mode styles for Hamburger */
+body.dark .index-hamburger-btn {
+    background: #131313 !important;
+    border-color: rgba(255, 255, 255, 0.15) !important;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2) !important;
+}
+
+body.dark .hamburger-line {
+    background-color: #eeeeee !important;
+}
+
+/* Hamburger Hover states */
+.index-hamburger-btn:hover {
+    background: #1d1b1c !important;
+    border-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+.index-hamburger-btn:hover .hamburger-line {
+    background-color: #ffffff !important;
+}
+
+body.dark .index-hamburger-btn:hover {
+    background: #ebebeb !important;
+    border-color: rgba(0, 0, 0, 0.15) !important;
+}
+
+body.dark .index-hamburger-btn:hover .hamburger-line {
+    background-color: #1d1b1c !important;
+}
+
+/* Hamburger Active / Morph Transitions */
+.index-hamburger-btn.is-active .line-1 {
+    transform: translateY(5px) rotate(45deg);
+}
+
+.index-hamburger-btn.is-active .line-2 {
+    opacity: 0;
+    transform: scaleX(0);
+}
+
+.index-hamburger-btn.is-active .line-3 {
+    transform: translateY(-5px) rotate(-45deg);
+}
+
+/* 3. Overlay Menu Navigation */
+.index-menu-overlay {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    background-color: #f0eff2 !important;
+    z-index: 2050 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-end !important;
+    align-items: flex-start !important;
+    padding: 0 0 4% 4% !important;
+    box-sizing: border-box !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.6s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.index-menu-overlay.is-open {
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+}
+
+/* Dark Mode Mesh Gradient nebula */
+body.dark .index-menu-overlay {
+    background-color: #0a090c !important;
+}
+
+/* Bg Grain for Menu */
+.index-menu-bg-grain {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    pointer-events: none !important;
+    z-index: 1 !important;
+}
+
+.index-menu-bg-grain:after {
+    animation: grain 8s steps(10) infinite !important;
+    background-image: url("https://assets.website-files.com/5dff182dc3faab4c98b08388/5dff21c5e65e0610a8d38b86_noisy-texture-100x100-o5-d10-c-FFFFFA-t1.png") !important;
+    content: "" !important;
+    height: 300% !important;
+    left: -50% !important;
+    position: absolute !important;
+    top: -100% !important;
+    width: 300% !important;
+    pointer-events: none !important;
+    opacity: 0.08 !important;
+}
+
+body.dark .index-menu-bg-grain:after {
+    opacity: 0.04 !important;
+}
+
+.index-menu-content {
+    width: 100% !important;
+    max-width: 1400px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 40px !important;
+    position: relative !important;
+    z-index: 2 !important;
+}
+
+.index-menu-nav {
+    margin-bottom: 10px !important;
+}
+
+.index-menu-list {
+    list-style: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.index-menu-item {
+    overflow: visible !important;
+}
+
+.index-menu-item:last-child {
+    margin-bottom: 0 !important;
+}
+
+.index-menu-link {
+    display: inline-flex !important;
+    align-items: center !important;
+    text-decoration: none !important;
+    color: #1d1b1c !important;
+    transform: translateY(30px) !important;
+    opacity: 0 !important;
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+body.dark .index-menu-link {
+    color: #eeeeee !important;
+}
+
+/* Stagger reveal when active */
+.index-menu-overlay.is-open .index-menu-link {
+    transform: translateY(0) !important;
+    opacity: 1 !important;
+    transition-delay: calc(var(--item-index) * 0.08s + 0.15s) !important;
+}
+
+.index-menu-text {
+    font-size: clamp(2.75rem, 3vw + 1.8rem, 3.8rem);
+    font-family: "Roboto Mono", ui-monospace, monospace;
+    line-height: 1.1;
+    letter-spacing: -1.5px;
+    text-transform: uppercase !important;
+    /* Tight letter spacing */
+    color: #1d1b1c !important;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), color 0.4s ease !important;
+}
+
+body.dark .index-menu-text {
+    color: #eeeeee !important;
+}
+
+/* Sparkle Icons Wrapper */
+.menu-link-icon-wrap {
+    width: 80px !important;
+    height: 80px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin-left: -95px !important;
+    /* Push outside to the left of link container */
+    margin-right: 15px !important;
+    opacity: 0 !important;
+    transform: scale(0.5) rotate(-30deg) !important;
+    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    pointer-events: none !important;
+}
+
+.menu-sparkle-icon {
+    width: 48px !important;
+    height: 48px !important;
+    color: #1d1b1c !important;
+    stroke-width: 1 !important;
+}
+
+body.dark .menu-sparkle-icon {
+    color: #eeeeee !important;
+}
+
+
+body.dark .index-menu-link:hover .index-menu-text {
+    color: #ffffff !important;
+}
+
+/* Meta column styles aligned at bottom left */
+.index-menu-meta-row {
+    display: flex !important;
+    gap: 60px !important;
+    margin-top: 40px !important;
+    opacity: 0 !important;
+    transform: translateY(20px) !important;
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    transition-delay: 0.45s !important;
+}
+
+.index-menu-overlay.is-open .index-menu-meta-row {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}
+
+.index-menu-meta-col {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 6px !important;
+}
+
+/* 4. Scroll Lock when Menu Open */
+body.menu-open-lock {
+    overflow: hidden !important;
+    height: 100vh !important;
+}
+
+/* 5. Responsiveness */
+@media (max-width: 1024px) {
+    .index-header {
+        top: 20px !important;
+        left: 30px !important;
+        right: 30px !important;
+    }
+
+    .index-menu-overlay {
+        padding: 0 0 8% 6% !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .index-header {
+        top: 15px !important;
+        left: 20px !important;
+        right: 20px !important;
+    }
+
+    .index-logo-img {
+        height: 26px !important;
+    }
+
+    .index-menu-overlay {
+        padding: 0 0 10% 8% !important;
+        justify-content: flex-end !important;
+    }
+
+    .index-menu-text {
+        font-size: clamp(2.5rem, 11vw, 4rem) !important;
+    }
+
+    .menu-link-icon-wrap {
+        width: 50px !important;
+        height: 50px !important;
+        margin-left: -60px !important;
+    }
+
+    .menu-sparkle-icon {
+        width: 32px !important;
+        height: 32px !important;
+    }
+
+    .index-menu-meta-row {
+        flex-direction: column !important;
+        gap: 24px !important;
+        margin-top: 30px !important;
+    }
 }
