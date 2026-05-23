@@ -10914,12 +10914,32 @@ body.dark .creative-copy-title {
     text-decoration: none;
     word-break: break-word;
     transition: color 0.2s ease, opacity 0.2s ease;
-    border-bottom: 1px solid transparent;
+    border-bottom: none !important;
+    /* Remove static border */
+    padding-bottom: 1px !important;
+    /* Offset border height perfectly */
+    position: relative !important;
     align-self: flex-start;
 }
 
-.cta-footer__col-value:hover {
-    border-bottom-color: rgba(0, 0, 0, 0.15);
+/* Premium expanding underline animation */
+.cta-footer__col-value::after {
+    content: '' !important;
+    position: absolute !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 1px !important;
+    background-color: rgba(0, 0, 0, 0.35) !important;
+    /* Soft semi-transparent black matching original light mode design */
+    transform: scaleX(0) !important;
+    transform-origin: right !important;
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1) !important;
+}
+
+.cta-footer__col-value:hover::after {
+    transform: scaleX(1) !important;
+    transform-origin: left !important;
 }
 
 body.dark .cta-footer__col-label {
@@ -10930,9 +10950,9 @@ body.dark .cta-footer__col-value {
     color: #eeeeee !important;
 }
 
-body.dark .cta-footer__col-value:hover {
-
-    border-bottom-color: rgba(255, 255, 255, 0.15) !important
+body.dark .cta-footer__col-value::after {
+    background-color: rgba(255, 255, 255, 0.35) !important;
+    /* Soft semi-transparent white matching original dark mode design */
 }
 
 
@@ -11287,7 +11307,7 @@ body.dark .cta-footer__inner {
     width: 35px !important;
     /* Premium fixed short length */
     height: 1px !important;
-    background: rgba(0, 0, 0, 0.15) !important;
+    background: rgba(0, 0, 0, 0.35) !important;
     /* Clean soft line */
     margin: 0 15px !important;
     /* Perfect spacing around the line */
@@ -11295,7 +11315,7 @@ body.dark .cta-footer__inner {
 }
 
 body.dark .works-page-content .post-meta::after {
-    background: rgba(255, 255, 255, 0.15) !important;
+    background: rgba(255, 255, 255, 0.35) !important;
     /* Subtle line for dark theme */
 }
 
@@ -11308,8 +11328,8 @@ body.dark .works-page-content .post-meta::after {
     flex-shrink: 0 !important;
     font-size: clamp(0.9rem, 0.3vw + 0.8rem, 1.25rem) !important;
     /* Sleek, matching brand size */
-    color: rgba(0, 0, 0, 0.42) !important;
-    /* Premium soft brand grey */
+    color: #3b3737 !important;
+    /* Premium soft brand grey matching social links */
     font-weight: 500 !important;
     line-height: 1 !important;
 }
@@ -11339,7 +11359,7 @@ body.dark .works-page-content .post-title h3 {
 
 .works-page-content .blog-classic .post-date,
 .works-page-content .blog-classic .post-cat {
-    color: rgba(0, 0, 0, 0.42) !important;
+    color: #3b3737 !important;
     font-size: clamp(0.7rem, 0.35vw + 0.6rem, 0.88rem) !important;
 }
 
@@ -11348,7 +11368,7 @@ body.dark .works-page-content .post-title h3 {
 }
 
 body.dark .works-page-content .blog-classic .post-cat {
-    color: #a7a7a7 !important;
+    color: #bdbdbd !important;
 }
 
 body.dark .works-page-content .blog-classic h5.post-date::after {
@@ -11375,7 +11395,8 @@ body.dark .works-page-content .blog-classic h5.post-date::after {
     font-weight: 500;
     cursor: pointer;
     border-radius: 50px;
-    color: #504a4a;
+    color: #3b3737;
+    /* Matches social icon hover/inactive color in light mode */
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     outline: none;
     font-family: inherit;
@@ -11385,25 +11406,28 @@ body.dark .works-page-content .blog-classic h5.post-date::after {
 
 .filter-btn:hover {
     color: #1d1b1c;
+    /* Matches active social color */
 }
 
 .filter-btn.active {
-    border-color: rgba(0, 0, 0, 0.5) !important;
+    border-color: rgba(0, 0, 0, 0.35) !important;
     color: #1d1b1c;
     font-weight: 500;
 }
 
 /* Dark Mode Works Page Filters */
 body.dark .filter-btn {
-    color: #ebe9e9 !important;
+    color: #bdbdbd !important;
+    /* Matches social icon hover/inactive color in dark mode */
 }
 
 body.dark .filter-btn:hover {
     color: #eeeeee !important;
+    /* Matches active social color */
 }
 
 body.dark .filter-btn.active {
-    border-color: #9a9a9a !important;
+    border-color: rgba(255, 255, 255, 0.35) !important;
     color: #eeeeee !important;
 }
 
@@ -11436,7 +11460,7 @@ body.dark .filter-btn.active {
     /* Solid background to completely hide grain texture */
     padding: 10px 20px !important;
     border-radius: 50px !important;
-    border: 1px solid rgba(0, 0, 0, 0.15) !important;
+    border: 1px solid rgba(0, 0, 0, 0.35) !important;
     /* Soft transparent black outline */
     z-index: 1000 !important;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
@@ -11475,7 +11499,7 @@ body.dark .filter-btn.active {
 body.dark .back-to-home-sticky a {
     background: #131313 !important;
     /* Solid dark background to completely hide grain texture */
-    border-color: rgba(255, 255, 255, 0.15) !important;
+    border-color: rgba(255, 255, 255, 0.35) !important;
     /* Soft weightless border in default state */
     color: #eeeeee !important;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2) !important;
@@ -11495,7 +11519,7 @@ body.dark .back-to-home-sticky a:hover {
     background: #ebebeb !important;
     padding: 10px 22px !important;
     border-radius: 50px !important;
-    border: 1px solid rgba(0, 0, 0, 0.15) !important;
+    border: 1px solid rgba(0, 0, 0, 0.35) !important;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03) !important;
     color: #1d1b1c !important;
@@ -11527,7 +11551,7 @@ body.dark .back-to-home-sticky a:hover {
 
 body.dark .project-cta-btn {
     background: #131313 !important;
-    border-color: rgba(255, 255, 255, 0.15) !important;
+    border-color: rgba(255, 255, 255, 0.35) !important;
     color: #eeeeee !important;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2) !important;
 }
@@ -11909,13 +11933,13 @@ body.dark .project-page .post-title a:hover h3 {
     flex-grow: 0 !important;
     width: 35px !important;
     height: 1px !important;
-    background: rgba(0, 0, 0, 0.15) !important;
+    background: rgba(0, 0, 0, 0.35) !important;
     margin: 0 15px !important;
     align-self: center !important;
 }
 
 body.dark .project-page .post-meta::after {
-    background: rgba(255, 255, 255, 0.15) !important
+    background: rgba(255, 255, 255, 0.35) !important
 }
 
 .project-page .blog-classic .post-cat {
@@ -11925,13 +11949,13 @@ body.dark .project-page .post-meta::after {
     order: 3 !important;
     flex-shrink: 0 !important;
     font-size: clamp(0.7rem, 0.35vw + 0.6rem, 0.88rem) !important;
-    color: rgba(0, 0, 0, 0.42) !important;
+    color: #3b3737 !important;
     font-weight: 500 !important;
     line-height: 1 !important;
 }
 
 body.dark .project-page .blog-classic .post-cat {
-    color: #a7a7a7 !important;
+    color: #bdbdbd !important;
 }
 
 @media (max-width: 1024px) {
@@ -11976,26 +12000,32 @@ body.dark .project-page .blog-classic .post-cat {
     position: fixed !important;
     top: 30px !important;
     right: 40px !important;
-    /* Pinned to top-right corner */
-    background: #ebebeb !important;
-    /* Solid background to completely hide grain texture */
+    /* Pinned to top-right corner on other pages */
+    background-color: #ebebeb !important;
+    /* Matches Back to Home background in light mode */
+    border: 1px solid rgba(0, 0, 0, 0.35) !important;
+    /* Matches Back to Home border in light mode */
     padding: 0 !important;
-    border-radius: 100px !important;
-    border: 1px solid rgba(0, 0, 0, 0.15) !important;
-    /* Soft transparent black outline */
+    border-radius: 50px !important;
+    /* Pill shape */
     z-index: 2000 !important;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03) !important;
-    color: #000000 !important;
-    /* Pure black to match creative-copy-title */
+    /* Matches Back to Home shadow in light mode */
     cursor: pointer !important;
-    font-size: 1.1rem !important;
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    width: 44px !important;
-    height: 44px !important;
     outline: none !important;
+    display: block !important;
+    width: 48px !important;
+    height: 28px !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    /* Unified smooth color transition */
+}
+
+/* Theme Toggle Button Hover States (perfectly matching Back to Home design system) */
+.theme-toggle-btn:hover {
+    background-color: #f3f3f3 !important;
+    /* Restore subtle light grey hover background */
+    border-color: rgba(0, 0, 0, 0.5) !important;
+    /* Elegant black border hover state */
 }
 
 @media (max-width: 720px) {
@@ -12005,43 +12035,70 @@ body.dark .project-page .blog-classic .post-cat {
     }
 }
 
-.theme-toggle-btn:hover {
-    background: #1d1b1c !important;
-    /* Pure black background on hover */
-    border-color: rgba(255, 255, 255, 0.15) !important;
-    /* Only on hover matches strong layout grid border */
-    color: #ffffff !important;
-    /* Icon turns clean white */
-}
-
-.theme-toggle-btn .fa-moon {
+/* Custom switch thumb using the fontawesome icon inside the toggle button */
+.theme-toggle-btn i {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 20px !important;
+    height: 20px !important;
+    position: absolute !important;
+    top: 3px !important;
+    /* Centered inside 28px height with 1px border */
+    left: 4px !important;
+    font-size: 13px !important;
+    /* Sized perfectly to act as thumb */
     color: #1d1b1c !important;
-    /* Pure black moon icon color in default state */
-    transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    /* Solid charcoal sun icon in light mode */
+    background: transparent !important;
+    border-radius: 0 !important;
+    transition: transform 0.4s cubic-bezier(0.65, 0, 0.35, 1), color 0.4s cubic-bezier(0.65, 0, 0.35, 1) !important;
+    transform: translateX(0) !important;
+    /* Placed on the left in light mode */
+    margin: 0 !important;
+    padding: 0 !important;
 }
 
-.theme-toggle-btn:hover .fa-moon {
-    color: #eeeeee !important;
-    /* Transitions to white on hover against charcoal */
+/* Ensure the FontAwesome icon glyph is fully visible and swap them via content */
+.theme-toggle-btn i::before {
+    display: block !important;
+    position: static !important;
+    font-size: inherit !important;
+    color: inherit !important;
+}
+
+/* Force Light Mode (which has fa-moon in HTML) to show the Sun icon */
+.theme-toggle-btn i.fa-moon::before {
+    content: "\f185" !important;
 }
 
 /* Dark Mode Theme Toggle Styles */
 body.dark .theme-toggle-btn {
-    background: #131313 !important;
-    /* Visible dark slate background against OLED pure black body */
-    border-color: rgba(255, 255, 255, 0.15) !important;
-    /* Soft weightless border in default state */
-    color: #eeeeee !important;
+    background-color: #131313 !important;
+    /* Matches Back to Home background in dark mode */
+    border-color: rgba(255, 255, 255, 0.35) !important;
+    /* Matches Back to Home border in dark mode */
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2) !important;
+    /* Matches Back to Home shadow in dark mode */
 }
 
 body.dark .theme-toggle-btn:hover {
-    background: #ebebeb !important;
-    /* Soft capsule moon grey on hover */
-    border-color: rgba(0, 0, 0, 0.15) !important;
-    /* Only on hover matches strong layout grid border */
-    color: #1d1b1c !important;
-    /* Icon turns black */
+    background-color: #1a1a1a !important;
+    /* Restore subtle dark slate hover background */
+    border-color: #9a9a9a !important;
+    /* Pure white/light grey border hover state */
+}
+
+body.dark .theme-toggle-btn i {
+    color: #eeeeee !important;
+    /* Solid warm white moon icon in dark mode to match Back to Home */
+    transform: translateX(20px) !important;
+    /* Slides to the right in dark mode */
+}
+
+/* Force Dark Mode (which has fa-sun in HTML) to show the Moon icon */
+body.dark .theme-toggle-btn i.fa-sun::before {
+    content: "\f186" !important;
 }
 
 /* Inline Header Text GIFs Color Inversion in Dark Mode */
@@ -12270,7 +12327,7 @@ body.dark .timeline-item::before {
     background: #1d1b1c;
     border-color: #1d1b1c;
     transform: scale(1.3);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.35);
 }
 
 body.dark .timeline-item:hover::before {
@@ -12607,31 +12664,42 @@ body.dark .index-logo-img {
 
 /* Override fixed position of theme-toggle-btn inside index-header */
 .index-header .theme-toggle-btn {
-    position: static !important;
+    position: relative !important;
+    top: auto !important;
+    right: auto !important;
     margin: 0 !important;
 }
 
 /* 2. Hamburger Button */
 .index-hamburger-btn {
-    background: #ebebeb !important;
+    background: transparent !important;
+    /* Bare transparent background */
     padding: 0 !important;
-    border-radius: 100px !important;
-    border: 1px solid rgba(0, 0, 0, 0.15) !important;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03) !important;
+    border-radius: 0 !important;
+    /* Remove circle shape */
+    border: none !important;
+    /* Remove circle border outline */
+    transition: none !important;
+    /* Remove scale transform animation */
+    box-shadow: none !important;
+    /* Remove the drop shadow */
     cursor: pointer !important;
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
     width: 44px !important;
+    /* Larger premium snug width for bare layout */
     height: 44px !important;
+    /* Larger premium snug height */
     outline: none !important;
 }
 
 /* Hamburger lines styling */
 .hamburger-inner {
-    width: 18px;
-    height: 12px;
+    width: 24px;
+    /* Larger icon lines width */
+    height: 14px;
+    /* Larger icon lines height */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -12649,9 +12717,9 @@ body.dark .index-logo-img {
 
 /* Dark Mode styles for Hamburger */
 body.dark .index-hamburger-btn {
-    background: #131313 !important;
-    border-color: rgba(255, 255, 255, 0.15) !important;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2) !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
 }
 
 body.dark .hamburger-line {
@@ -12660,26 +12728,29 @@ body.dark .hamburger-line {
 
 /* Hamburger Hover states */
 .index-hamburger-btn:hover {
-    background: #1d1b1c !important;
-    border-color: rgba(255, 255, 255, 0.15) !important;
+    background: transparent !important;
+    border: none !important;
 }
 
 .index-hamburger-btn:hover .hamburger-line {
-    background-color: #ffffff !important;
+    background-color: #3b3737 !important;
+    /* Elegant color transition to faded dark on hover matching social links */
 }
 
 body.dark .index-hamburger-btn:hover {
-    background: #ebebeb !important;
-    border-color: rgba(0, 0, 0, 0.15) !important;
+    background: transparent !important;
+    border: none !important;
 }
 
 body.dark .index-hamburger-btn:hover .hamburger-line {
-    background-color: #1d1b1c !important;
+    background-color: #bdbdbd !important;
+    /* Elegant color transition to faded light on hover matching social links */
 }
 
 /* Hamburger Active / Morph Transitions */
 .index-hamburger-btn.is-active .line-1 {
-    transform: translateY(5px) rotate(45deg);
+    transform: translateY(6px) rotate(45deg);
+    /* Centered transform for 14px height */
 }
 
 .index-hamburger-btn.is-active .line-2 {
@@ -12688,7 +12759,8 @@ body.dark .index-hamburger-btn:hover .hamburger-line {
 }
 
 .index-hamburger-btn.is-active .line-3 {
-    transform: translateY(-5px) rotate(-45deg);
+    transform: translateY(-6px) rotate(-45deg);
+    /* Centered transform for 14px height */
 }
 
 /* 3. Overlay Menu Navigation */
@@ -12698,18 +12770,36 @@ body.dark .index-hamburger-btn:hover .hamburger-line {
     left: 0 !important;
     width: 100vw !important;
     height: 100vh !important;
-    background-color: #f0eff2 !important;
+    background-color: #ffffff !important;
     z-index: 2050 !important;
     display: flex !important;
     flex-direction: column !important;
-    justify-content: flex-end !important;
+    justify-content: flex-start !important;
+    /* Fix flex-end overflow clipping */
     align-items: flex-start !important;
-    padding: 0 0 4% 4% !important;
+    padding: 120px 4% 60px 4% !important;
+    /* Proper top padding to clear fixed header */
     box-sizing: border-box !important;
     opacity: 0 !important;
     visibility: hidden !important;
     pointer-events: none !important;
+    overflow: hidden !important;
+    /* Locked and non-scrollable by default on desktop */
+    overflow-x: hidden !important;
+    -webkit-overflow-scrolling: touch;
+    /* Smooth iOS momentum scroll */
     transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.6s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    -ms-overflow-style: none !important;
+    /* Hide scrollbar on IE and Edge */
+    scrollbar-width: none !important;
+    /* Hide scrollbar on Firefox */
+}
+
+/* Hide scrollbar completely on Chrome, Safari, Opera */
+.index-menu-overlay::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
 }
 
 .index-menu-overlay.is-open {
@@ -12720,7 +12810,7 @@ body.dark .index-hamburger-btn:hover .hamburger-line {
 
 /* Dark Mode Mesh Gradient nebula */
 body.dark .index-menu-overlay {
-    background-color: #0a090c !important;
+    background-color: #000000 !important;
 }
 
 /* Bg Grain for Menu */
@@ -12759,10 +12849,8 @@ body.dark .index-menu-bg-grain:after {
     gap: 40px !important;
     position: relative !important;
     z-index: 2 !important;
-}
-
-.index-menu-nav {
-    margin-bottom: 10px !important;
+    margin-top: auto !important;
+    /* Bottom-align on large screens, scrollable on short screens */
 }
 
 .index-menu-list {
@@ -12773,6 +12861,8 @@ body.dark .index-menu-bg-grain:after {
 
 .index-menu-item {
     overflow: visible !important;
+    width: fit-content !important;
+    /* Limit hover boundaries strictly to the text area */
 }
 
 .index-menu-item:last-child {
@@ -12786,7 +12876,10 @@ body.dark .index-menu-bg-grain:after {
     color: #1d1b1c !important;
     transform: translateY(30px) !important;
     opacity: 0 !important;
+    width: fit-content !important;
+    /* Limit hover boundaries strictly to the text area */
     transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    /* Elegant original entrance timing */
 }
 
 body.dark .index-menu-link {
@@ -12798,6 +12891,7 @@ body.dark .index-menu-link {
     transform: translateY(0) !important;
     opacity: 1 !important;
     transition-delay: calc(var(--item-index) * 0.08s + 0.15s) !important;
+    /* Original elegant stagger sequence */
 }
 
 .index-menu-text {
@@ -12806,13 +12900,63 @@ body.dark .index-menu-link {
     line-height: 1.1;
     letter-spacing: -1.5px;
     text-transform: uppercase !important;
-    /* Tight letter spacing */
-    color: #1d1b1c !important;
-    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), color 0.4s ease !important;
+    color: #3b3737 !important;
+    /* Faded inactive base color in light mode matching social links */
+    position: relative;
+    display: inline-block;
+    backface-visibility: hidden !important;
+    will-change: transform;
+    transition: transform .75s cubic-bezier(.63, .03, .21, 1) !important;
+    /* Exact match transition timing */
 }
 
 body.dark .index-menu-text {
+    color: #bdbdbd !important;
+    /* Faded base color in dark mode matching category filters and social links precisely */
+}
+
+/* Signature sliding mask color wipe overlay (matches index 2.html exactly) */
+.index-menu-text::before {
+    content: attr(data-hover) !important;
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 100% !important;
+    /* Default 100% so it looks solid in non-hovered list state */
+    height: 100% !important;
+    overflow: hidden !important;
+    color: #1d1b1c !important;
+    /* Solid charcoal text color in light mode */
+    white-space: nowrap !important;
+    backface-visibility: hidden !important;
+    will-change: width;
+    transition: width .75s cubic-bezier(.63, .03, .21, 1) !important;
+    /* Exact match transition timing */
+}
+
+body.dark .index-menu-text::before {
     color: #eeeeee !important;
+    /* Solid warm white text color in dark mode */
+}
+
+/* Wipe solid colors to 0% width for all items when any navigation link is hovered, except the hovered item itself */
+.index-menu-list:has(.index-menu-link:hover) .index-menu-link:not(:hover) .index-menu-text::before {
+    width: 0% !important;
+}
+
+/* Slide in the solid wipe color for the currently hovered item */
+.index-menu-link:hover .index-menu-text::before {
+    width: 100% !important;
+    color: #1d1b1c !important;
+}
+
+body.dark .index-menu-link:hover .index-menu-text::before {
+    color: #eeeeee !important;
+}
+
+/* Menu link hover transitions (Smooth right-shift - exact match ease/duration, NO underline) */
+.index-menu-link:hover .index-menu-text {
+    transform: translateX(15px) !important;
 }
 
 /* Sparkle Icons Wrapper */
@@ -12842,11 +12986,6 @@ body.dark .menu-sparkle-icon {
     color: #eeeeee !important;
 }
 
-
-body.dark .index-menu-link:hover .index-menu-text {
-    color: #ffffff !important;
-}
-
 /* Meta column styles aligned at bottom left */
 .index-menu-meta-row {
     display: flex !important;
@@ -12870,7 +13009,8 @@ body.dark .index-menu-link:hover .index-menu-text {
 }
 
 /* 4. Scroll Lock when Menu Open */
-body.menu-open-lock {
+body.menu-open-lock,
+html.menu-open-lock {
     overflow: hidden !important;
     height: 100vh !important;
 }
@@ -12884,7 +13024,9 @@ body.menu-open-lock {
     }
 
     .index-menu-overlay {
-        padding: 0 0 8% 6% !important;
+        padding: 100px 6% 40px 6% !important;
+        overflow-y: auto !important;
+        /* Enable responsive scroll on tablets & mobile */
     }
 }
 
@@ -12900,12 +13042,11 @@ body.menu-open-lock {
     }
 
     .index-menu-overlay {
-        padding: 0 0 10% 8% !important;
-        justify-content: flex-end !important;
+        padding: 90px 8% 30px 8% !important;
     }
 
     .index-menu-text {
-        font-size: clamp(2.5rem, 11vw, 4rem) !important;
+        font-size: clamp(2rem, 9vw, 3.2rem) !important;
     }
 
     .menu-link-icon-wrap {
@@ -12921,7 +13062,37 @@ body.menu-open-lock {
 
     .index-menu-meta-row {
         flex-direction: column !important;
-        gap: 24px !important;
-        margin-top: 30px !important;
+        gap: 20px !important;
+        margin-top: 24px !important;
+    }
+}
+
+@media (max-height: 600px) {
+    .index-menu-overlay {
+        padding: 80px 4% 24px 4% !important;
+        overflow-y: auto !important;
+        /* Enable responsive scroll on short screen heights */
+    }
+
+    .index-menu-content {
+        gap: 20px !important;
+    }
+
+    .index-menu-text {
+        font-size: clamp(1.8rem, 7vh, 2.4rem) !important;
+    }
+
+    .index-menu-meta-row {
+        margin-top: 15px !important;
+        gap: 15px !important;
+        flex-direction: row !important;
+        flex-wrap: wrap !important;
+    }
+}
+
+@media (max-height: 750px) {
+    .index-menu-overlay {
+        overflow-y: auto !important;
+        /* Enable responsive scroll if height is short */
     }
 }
