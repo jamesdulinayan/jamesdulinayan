@@ -11375,7 +11375,7 @@ body.dark .works-page-content .blog-classic h5.post-date::after {
     font-weight: 500;
     cursor: pointer;
     border-radius: 50px;
-    color: #393334;
+    color: #504a4a;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     outline: none;
     font-family: inherit;
@@ -12587,7 +12587,7 @@ body.dark .skill-desc {
 }
 
 .index-logo-img {
-    height: 32px !important;
+    height: 22px !important;
     width: auto !important;
     display: block !important;
     transition: filter 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
@@ -12896,7 +12896,7 @@ body.menu-open-lock {
     }
 
     .index-logo-img {
-        height: 26px !important;
+        height: 16px !important;
     }
 
     .index-menu-overlay {
