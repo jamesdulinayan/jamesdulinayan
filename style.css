@@ -310,6 +310,33 @@ body.dark {
     color: #fff
 }
 
+/* Premium smooth transitions between dark and light themes for all text, backgrounds, and borders */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span,
+a,
+i,
+.creative-copy-title,
+.creative-copy-text,
+.post-title h3,
+.meta-pill,
+.filter-btn,
+.service-cont,
+.service-toggle,
+.index-header,
+.index-hamburger-btn,
+.theme-toggle-btn {
+    transition: background-color 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+        color 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+        border-color 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+}
+
 body,
 html {
     font-weight: normal;
@@ -10601,6 +10628,118 @@ body.dark .draggableF::after {
     border-right: 0;
 }
 
+/* About Page: reverse column order (media left, text right) */
+.about-page .creative-layout__row {
+    flex-direction: row-reverse !important;
+}
+
+/* About Page specific: remove left border divider (now on right side after reversal) */
+.about-page .creative-media-col,
+.about-page.dark .creative-media-col {
+    border-left: 0 !important;
+    border-right: 1px solid rgba(0, 0, 0, 0.5) !important;
+}
+
+body.dark .about-page .creative-media-col {
+    border-right: 1px solid #9a9a9a !important;
+    border-left: 0 !important;
+}
+
+/* About Page: lock to 100vh and make text column independently scrollable */
+.about-page .section-creative.creative-scrollable {
+    height: 100vh !important;
+    min-height: 100vh !important;
+    overflow: hidden !important;
+}
+
+.about-page .creative-layout {
+    height: 100vh !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
+}
+
+.about-page .creative-layout__row {
+    height: 100% !important;
+    overflow: hidden !important;
+}
+
+/* Media col: fixed, no scroll */
+.about-page .creative-media-col {
+    overflow: hidden !important;
+    height: 100% !important;
+}
+
+/* Text col: independently scrollable */
+.about-page .creative-copy-col {
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    height: 100% !important;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Hide scrollbar but keep scroll functionality */
+.about-page .creative-copy-col::-webkit-scrollbar {
+    display: none;
+}
+
+.about-page .creative-copy-col {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* Mobile: reset about-page layout overrides — let columns stack normally */
+@media (max-width: 1024px) {
+    .about-page .section-creative.creative-scrollable {
+        height: auto !important;
+        min-height: auto !important;
+        overflow: visible !important;
+    }
+
+    .about-page .creative-layout {
+        height: auto !important;
+        min-height: 0 !important;
+        overflow: visible !important;
+    }
+
+    .about-page .creative-layout__row {
+        height: auto !important;
+        overflow: visible !important;
+        flex-direction: column-reverse !important;
+    }
+
+    .about-page .creative-media-col {
+        overflow: hidden !important;
+        height: 60vw !important;
+        min-height: 280px !important;
+        max-height: 500px !important;
+        position: relative !important;
+    }
+
+    /* Reset video container to fill the defined height */
+    .about-page .creative-media-col .container {
+        position: relative !important;
+        height: 100% !important;
+        width: 100% !important;
+        overflow: hidden !important;
+    }
+
+    /* Reset video to cover mode within the fixed-height container */
+    .about-page .creative-media-col video {
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+    }
+
+    .about-page .creative-copy-col {
+        overflow-y: visible !important;
+        overflow-x: visible !important;
+        height: auto !important;
+    }
+}
+
 @media (max-width: 1024px) {
     .creative-media-col {
         border-top: 1px solid rgba(0, 0, 0, 0.5) !important;
@@ -10614,6 +10753,11 @@ body.dark .creative-media-col {
     border-left: 1px solid #9a9a9a !important;
     /* Premium silver grey border outline */
     border-top: 0 !important;
+}
+
+/* About Page override for dark mode */
+body.dark .about-page .creative-media-col {
+    border-left: 0 !important;
 }
 
 @media (max-width: 1024px) {
@@ -11361,7 +11505,6 @@ body.dark .works-page-content .post-meta::after {
     transition: color 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-.works-page-content .post-title h3:hover,
 .works-page-content .post.alioth-post a:hover .post-title h3 {
     color: #1d1b1c !important;
 }
@@ -11371,7 +11514,6 @@ body.dark .project-info-col .alioth-services.style_2 .post-title h3 {
     color: #bdbdbd !important;
 }
 
-body.dark .works-page-content .post-title h3:hover,
 body.dark .works-page-content .post.alioth-post a:hover .post-title h3 {
     color: #eeeeee !important;
 }
@@ -11458,9 +11600,11 @@ body.dark .filter-btn.active {
     overflow-x: auto !important;
     overflow-y: hidden !important;
     -webkit-overflow-scrolling: touch !important;
-    touch-action: pan-x !important; /* Prevents scroll hijacking on touch gestures */
+    touch-action: pan-x !important;
+    /* Prevents scroll hijacking on touch gestures */
     position: relative !important;
-    z-index: 10 !important; /* Keeps container clickable and swipeable above overlays */
+    z-index: 10 !important;
+    /* Keeps container clickable and swipeable above overlays */
     padding-bottom: 12px !important;
     margin-top: clamp(25px, 4vw, 40px) !important;
     margin-bottom: clamp(25px, 4vw, 40px) !important;
@@ -11470,6 +11614,22 @@ body.dark .filter-btn.active {
     cursor: grab !important;
     user-select: none !important;
     -webkit-user-select: none !important;
+
+    /* Breakout margin and padding to occupy edge-to-edge width of the screen */
+    margin-left: -40px !important;
+    margin-right: -40px !important;
+    padding-left: 40px !important;
+    padding-right: 40px !important;
+    box-sizing: border-box !important;
+}
+
+@media (max-width: 720px) {
+    .works-filter.is-scrollable {
+        margin-left: calc(-1 * clamp(16px, 4vw, 30px)) !important;
+        margin-right: calc(-1 * clamp(16px, 4vw, 30px)) !important;
+        padding-left: clamp(16px, 4vw, 30px) !important;
+        padding-right: clamp(16px, 4vw, 30px) !important;
+    }
 }
 
 .works-filter.is-scrollable.dragging {
@@ -11687,7 +11847,16 @@ body.dark .project-cta-btn:hover {
     flex-shrink: 0 !important;
 }
 
-.project-info-col .post-title h3,
+.project-info-col .post-title h3 {
+    font-family: "Neue", system-ui, sans-serif !important;
+    font-size: clamp(1.35rem, 1.2vw + 1.1rem, 2rem) !important;
+    font-weight: 500 !important;
+    line-height: 1.2 !important;
+    color: #1d1b1c !important;
+    /* Active brand color for static header */
+    transition: color 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
 .project-info-col .alioth-services.style_2 .post-title h3 {
     font-family: "Neue", system-ui, sans-serif !important;
     font-size: clamp(1.35rem, 1.2vw + 1.1rem, 2rem) !important;
@@ -11695,7 +11864,7 @@ body.dark .project-cta-btn:hover {
     line-height: 1.2 !important;
     color: #474343 !important;
     transition: color 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    cursor: pointer !important;
+    margin: 0 !important; /* Resets base margin so it aligns vertically */
 }
 
 .project-info-col .alioth-services.style_2 .service:hover .post-title h3 {
@@ -11706,7 +11875,11 @@ body.dark .project-cta-btn:hover {
     color: #1d1b1c !important;
 }
 
-body.dark .project-info-col .post-title h3,
+body.dark .project-info-col .post-title h3 {
+    color: #eeeeee !important;
+    /* Active dark mode brand color */
+}
+
 body.dark .project-info-col .alioth-services.style_2 .post-title h3 {
     color: #bdbdbd !important;
 }
@@ -11975,22 +12148,29 @@ body.dark .project-separator {
 .project-page .post-title h3 {
     margin: 0 !important;
     line-height: 1.2 !important;
-    color: #474343 !important;
+    color: #1d1b1c !important;
+    /* Active brand color */
     font-weight: 500 !important;
     font-size: clamp(1.35rem, 1.2vw + 1.1rem, 2rem) !important;
     transition: color 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    cursor: text !important;
+    /* Text selection cursor for static heading */
 }
 
-.project-page .post-title h3:hover,
+/* Restore pointer cursor specifically for clickable accordion list item headers */
+.project-page .alioth-services.style_2 .post-title h3 {
+    cursor: pointer !important;
+}
+
 .project-page .post.alioth-post a:hover .post-title h3 {
     color: #1d1b1c !important;
 }
 
 body.dark .project-page .post-title h3 {
-    color: #bdbdbd !important;
+    color: #eeeeee !important;
+    /* Active dark mode brand color */
 }
 
-body.dark .project-page .post-title h3:hover,
 body.dark .project-page .post.alioth-post a:hover .post-title h3 {
     color: #eeeeee !important;
 }
@@ -12315,45 +12495,100 @@ body:not(.dark) .me-night-img {
    ========================================================================== */
 
 /* About Page Services Accordion Scaling Override */
-.project-info-col .alioth-services.style_2 {
-    margin-top: 30px;
-    margin-bottom: 30px;
+.project-info-col .alioth-services.style_2,
+.creative-copy-col .alioth-services.style_2 {
     border-top: 1px solid rgba(128, 128, 128, 0.2);
 }
 
-.project-info-col .alioth-services.style_2 .service {
+.project-info-col .alioth-services.style_2 .service,
+.creative-copy-col .alioth-services.style_2 .service {
     width: 100%;
     cursor: pointer !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    align-items: center !important;
+    float: none !important;
 }
 
-.project-info-col .alioth-services.style_2 .service:hover .post-title h3 {
+.project-info-col .alioth-services.style_2 .post-title,
+.creative-copy-col .alioth-services.style_2 .post-title {
+    margin: 0 !important;
+    float: none !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    flex-grow: 1 !important;
+}
+
+/* Restore original large accordion title font for About page */
+.creative-copy-col .alioth-services.style_2 .post-title h3 {
+    font-size: clamp(1.35rem, 1.2vw + 1.1rem, 2rem) !important;
+    line-height: 1.2 !important;
+    letter-spacing: normal !important;
+    font-weight: 500 !important;
+    font-family: "Neue" !important;
+    cursor: pointer !important;
+    color: #474343 !important;
+    transition: color 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+body.dark .creative-copy-col .alioth-services.style_2 .post-title h3 {
+    color: #bdbdbd !important;
+}
+
+.project-info-col .alioth-services.style_2 .service:hover .post-title h3,
+.creative-copy-col .alioth-services.style_2 .service:hover .post-title h3 {
     color: #1d1b1c !important;
 }
 
-body.dark .project-info-col .alioth-services.style_2 .service:hover .post-title h3 {
+body.dark .project-info-col .alioth-services.style_2 .service:hover .post-title h3,
+body.dark .creative-copy-col .alioth-services.style_2 .service:hover .post-title h3 {
     color: #eeeeee !important;
 }
 
-.project-info-col .alioth-services.style_2 .service-toggle {
-    padding: 24px 0 !important;
+.project-info-col .alioth-services.style_2 .service-toggle,
+.creative-copy-col .alioth-services.style_2 .service-toggle {
+    margin: 0 !important;
+    padding: 40px 0 !important;
+    float: none !important;
+    display: inline-flex !important;
+    align-items: center !important;
 }
 
-.project-info-col .alioth-services.style_2 .service-toggle i {
+.project-info-col .alioth-services.style_2 .service-toggle i,
+.creative-copy-col .alioth-services.style_2 .service-toggle i {
     font-size: clamp(16px, 1.5vw + 4px, 20px) !important;
+    display: block !important;
+    float: none !important;
 }
 
-.project-info-col .alioth-services.style_2 .service-cont {
+.project-info-col .alioth-services.style_2 .service-wrap,
+.creative-copy-col .alioth-services.style_2 .service-wrap {
     width: 100% !important;
-    padding-top: 10px !important;
-    padding-bottom: 30px !important;
-    padding-right: 0 !important;
+    float: none !important;
+    margin-left: 0 !important;
 }
 
-.project-info-col .alioth-services.style_2 .service-cont h4 {
-    font-size: clamp(1rem, 0.2vw + 0.9rem, 1.15rem) !important;
-    line-height: 1.5 !important;
+.project-info-col .alioth-services.style_2 .service-cont,
+.creative-copy-col .alioth-services.style_2 .service-cont {
+    width: 100% !important;
+    padding: 0 !important;
+}
+
+.project-info-col .alioth-services.style_2 .service-cont h4,
+.project-info-col .alioth-services.style_2 .service-cont h2.creative-copy-text,
+.creative-copy-col .alioth-services.style_2 .service-cont h4,
+.creative-copy-col .alioth-services.style_2 .service-cont h2.creative-copy-text {
+    font-size: clamp(0.9rem, 1vw + 0.5rem, 1.4rem) !important;
+    line-height: 1.35 !important;
     font-weight: 400 !important;
     opacity: 0.85;
+    margin: 0 !important;
+    width: 100% !important;
+}
+
+body.dark .project-info-col .alioth-services.style_2 .service-cont,
+body.dark .creative-copy-col .alioth-services.style_2 .service-cont {
+    color: #eeeeee !important;
 }
 
 .project-info-col .alioth-services.style_2 .service-cont .tools-list {
@@ -12364,7 +12599,8 @@ body.dark .project-info-col .alioth-services.style_2 .service:hover .post-title 
 }
 
 /* Fix duplicated underlines */
-.project-info-col .alioth-services.style_2 .service-wrap::before {
+.project-info-col .alioth-services.style_2 .service-wrap::before,
+.creative-copy-col .alioth-services.style_2 .service-wrap::before {
     display: none;
 }
 
@@ -12596,8 +12832,15 @@ body.dark .certifications-pills .meta-pill:hover {
 .skills-grid {
     display: block;
     width: 100%;
-    margin-top: 25px;
-    margin-bottom: 40px;
+}
+
+.project-info-col .skills-grid,
+.creative-copy-col .skills-grid {
+    margin-top: clamp(40px, 6vw, 70px) !important;
+}
+
+.project-info-col .skills-grid .alioth-services.style_2 {
+    margin-top: 0 !important;
 }
 
 .skill-box {
@@ -12890,7 +13133,7 @@ body.dark .index-hamburger-btn:hover .hamburger-line {
     overflow-x: hidden !important;
     -webkit-overflow-scrolling: touch;
     /* Smooth iOS momentum scroll */
-    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.6s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.6s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
     -ms-overflow-style: none !important;
     /* Hide scrollbar on IE and Edge */
     scrollbar-width: none !important;
@@ -12988,7 +13231,7 @@ body.dark .index-menu-bg-grain:after {
     opacity: 0 !important;
     width: fit-content !important;
     /* Limit hover boundaries strictly to the text area */
-    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), color 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
     /* Elegant original entrance timing */
 }
 
@@ -13105,7 +13348,7 @@ body.dark .menu-sparkle-icon {
     /* Fluid margin adjusts with device height */
     opacity: 0 !important;
     transform: translateY(20px) !important;
-    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), color 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
     transition-delay: 0.45s !important;
 }
 

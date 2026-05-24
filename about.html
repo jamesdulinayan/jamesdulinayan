@@ -132,33 +132,19 @@
 
 
 
-    <div id="page" class="project-page grain" data-barba="container" data-barba-namespace="pph-video">
+    <div id="page" class="about-page" data-barba="container">
 
-        <div id="content" class="page-content works-page-content">
+        <div id="content" class="page-content">
 
+            <section class="section section-creative creative-scrollable grain">
 
-            <div class="section">
+                <div class="wrapper-full creative-layout" style="margin: 0;">
 
-                <div class="wrapper-full">
-                    <div class="project-details-grid project-details-grid--swapped" id="sticky-container" style="align-items: stretch;">
+                    <div class="creative-layout__row">
+                        <div class="c-col-6 creative-copy-col"
+                            style="display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start; margin-bottom: 0; position: relative; z-index: 3;">
 
-                        <!-- Left Gallery Column: Single Image (Swapped) -->
-                        <div class="project-gallery-col" data-scroll data-scroll-sticky
-                            data-scroll-target="#sticky-container">
-                            <div class="gallery-item-full">
-                                <video autoplay loop muted playsinline style="width: 100%; height: auto;">
-                                    <source src="img/header-mobile.mp4" type="video/mp4">
-                                </video>
-
-                            </div>
-                        </div>
-
-                        <!-- Right Sticky Column: Copy & Metadata (Swapped) -->
-                        <div class="project-info-col" style="position: relative; display: flex; flex-direction: column; justify-content: flex-start;">
-                            <div class="post-title"
-                                style="position: relative; display: flex; align-items: center; gap: 15px;">
-                                <h1 class="creative-copy-title">About Me</h1>
-                            </div>
+                            <h1 class="creative-copy-title">About Me</h1>
 
                             <h2 class="creative-copy-text">
                                 Web developer and designer based in the Philippines with a degree in Information Technology and Web Development.<br><br>
@@ -166,12 +152,10 @@
                             </h2>
 
                             <!-- Services Section -->
-
-
-                                <div class="skills-grid" style="margin-top: 60px;">
-                                    <div data-anim="true" class="alioth-services style_2">
-                                        <div class="services">
-                                            <div class="service">
+                            <div class="skills-grid">
+                                <div data-anim="true" class="alioth-services style_2">
+                                    <div class="services">
+                                         <div class="service">
                                                 <div class="post-title">
                                                     <h3>Web Development</h3>
                                                 </div>
@@ -180,13 +164,13 @@
                                                 </div>
                                                 <div class="service-wrap">
                                                     <div class="service-cont" style="color: rgba(42, 42, 42, 0.812)">
-                                                        <h4>By using my expertise in Web 2.0, I make sure that the output can be used to its full extent throughout all touchpoints in an accessible way. Not just timeless, but usable in todays digital world.</h4>
-                                                        <br><br><div style="display: flex; flex-wrap: wrap; gap: 8px;"><span class="meta-pill">HTML</span><span class="meta-pill">CSS</span><span class="meta-pill">JavaScript</span><span class="meta-pill">jQuery</span><span class="meta-pill">React</span><span class="meta-pill">Webflow</span><span class="meta-pill">WordPress</span><span class="meta-pill">GSAP</span><span class="meta-pill">Barba.js</span></div>
+                                                        <h2 class="creative-copy-text">By using my expertise in Web 2.0, I make sure that the output can be used to its full extent throughout all touchpoints in an accessible way. Not just timeless, but usable in todays digital world.</h2>
+                                                        <div style="margin-top: 40px; margin-bottom: 30px; display: flex; flex-wrap: wrap; gap: 8px;"><span class="meta-pill">HTML</span><span class="meta-pill">CSS</span><span class="meta-pill">JavaScript</span><span class="meta-pill">jQuery</span><span class="meta-pill">React</span><span class="meta-pill">Webflow</span><span class="meta-pill">WordPress</span><span class="meta-pill">GSAP</span><span class="meta-pill">Barba.js</span></div>
                                                     </div>
                                                 </div>
                                             </div>
 
-                                            <div class="service">
+                                             <div class="service">
                                                 <div class="post-title">
                                                     <h3>Motion &amp; Graphics Design</h3>
                                                 </div>
@@ -195,13 +179,13 @@
                                                 </div>
                                                 <div class="service-wrap">
                                                     <div class="service-cont" style="color: rgba(42, 42, 42, 0.812)">
-                                                        <h4>The art and practice of planning and projecting ideas and experiences with visual and textual content. I started creating motion graphics as a way to communicate with the viewer, and add depth to the story. Together with music and effective design, it can give us a more in-depth message.</h4>
-                                                        <br><br><div style="display: flex; flex-wrap: wrap; gap: 8px;"><span class="meta-pill">Adobe Photoshop</span><span class="meta-pill">Adobe Illustrator</span><span class="meta-pill">Adobe After Effects</span><span class="meta-pill">Adobe Premiere Pro</span><span class="meta-pill">Lottie</span><span class="meta-pill">Storyboarding</span><span class="meta-pill">Motion Design</span><span class="meta-pill">Visual Effects</span></div>
+                                                        <h2 class="creative-copy-text">The art and practice of planning and projecting ideas and experiences with visual and textual content. I started creating motion graphics as a way to communicate with the viewer, and add depth to the story. Together with music and effective design, it can give us a more in-depth message.</h2>
+                                                        <div style="margin-top: 40px; margin-bottom: 30px; display: flex; flex-wrap: wrap; gap: 8px;"><span class="meta-pill">Adobe Photoshop</span><span class="meta-pill">Adobe Illustrator</span><span class="meta-pill">Adobe After Effects</span><span class="meta-pill">Adobe Premiere Pro</span><span class="meta-pill">Lottie</span><span class="meta-pill">Storyboarding</span><span class="meta-pill">Motion Design</span><span class="meta-pill">Visual Effects</span></div>
                                                     </div>
                                                 </div>
                                             </div>
 
-                                            <div class="service">
+                                             <div class="service">
                                                 <div class="post-title">
                                                     <h3>Video Editing</h3>
                                                 </div>
@@ -210,30 +194,40 @@
                                                 </div>
                                                 <div class="service-wrap">
                                                     <div class="service-cont" style="color: rgba(42, 42, 42, 0.812)">
-                                                        <h4>Manages material such as footage, dialogue, sound effects, graphics and special effects to produce a final film or video product.</h4>
-                                                        <br><br><div style="display: flex; flex-wrap: wrap; gap: 8px;"><span class="meta-pill">Adobe After Effects</span><span class="meta-pill">Adobe Premiere Pro</span><span class="meta-pill">DaVinci Resolve</span><span class="meta-pill">Color Grading</span><span class="meta-pill">Sound Design</span><span class="meta-pill">Transitions</span><span class="meta-pill">VFX</span><span class="meta-pill">Subtitling</span></div>
+                                                        <h2 class="creative-copy-text">Manages material such as footage, dialogue, sound effects, graphics and special effects to produce a final film or video product.</h2>
+                                                        <div style="margin-top: 40px; margin-bottom: 30px; display: flex; flex-wrap: wrap; gap: 8px;"><span class="meta-pill">Adobe After Effects</span><span class="meta-pill">Adobe Premiere Pro</span><span class="meta-pill">DaVinci Resolve</span><span class="meta-pill">Color Grading</span><span class="meta-pill">Sound Design</span><span class="meta-pill">Transitions</span><span class="meta-pill">VFX</span><span class="meta-pill">Subtitling</span></div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
                                     </div>
-                                </div>
-                            
-
                                 </div>
                             </div>
 
+                        </div>
+
+                        <!-- Right Column: Media (Video) -->
+                        <div class="c-col-6 creative-media-col"
+                            style="box-sizing: border-box; margin-bottom: 0; padding: 0; position: relative; z-index: 1;">
+
+                            <div class="container"
+                                style="position: relative; height: 100%; width: 100%; overflow: hidden;">
+                                <video autoplay loop muted playsinline
+                                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; display: block;">
+                                    <source src="img/header-mobile.mp4" type="video/mp4">
+                                </video>
+                            </div>
 
                         </div>
 
                     </div>
+
                 </div>
 
+            </section>
 
+        </div>
 
-            </div> <!-- Closing .section -->
-        </div> <!-- Closing #content -->
-    </div> <!-- Closing #page -->
+    </div>
 
     <script src="js/jquery.min.js"></script>
     <script src="js/plugins.js"></script>
