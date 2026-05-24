@@ -13120,7 +13120,7 @@ body.dark .index-hamburger-btn:hover .hamburger-line {
     justify-content: flex-start !important;
     /* Fix flex-end overflow clipping */
     align-items: flex-start !important;
-    padding: clamp(80px, 8vh, 120px) clamp(20px, 4%, 60px) clamp(50px, 4vh, 60px) clamp(20px, 4%, 60px) !important;
+    padding: clamp(80px, 8vh, 120px) clamp(20px, 4%, 60px) clamp(50px, 5vh, 60px) clamp(20px, 4%, 60px) !important;
     /* Fluid top/bottom/left/right padding based on device size */
     box-sizing: border-box !important;
     opacity: 0 !important;
