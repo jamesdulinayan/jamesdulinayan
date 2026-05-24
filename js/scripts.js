@@ -1,4 +1,19 @@
-(function($){"use strict";console.clear();gsap.registerPlugin(DrawSVGPlugin,ScrollTrigger,CSSRulePlugin,ScrollToPlugin,MorphSVGPlugin,CustomEase,InertiaPlugin);var pageSet,pageCursor,siteLoader,headerStick,smoothScroll,siteHeader,locoScroll,pageLayout,headerLayout,footerLayout,menuLayout,menuStyle;function pageSettings(){pageSet=$('body');pageSet.find('.site-header').remove();pageCursor=pageSet.data('cursor');siteLoader=pageSet.data('page-loader');headerStick=false;smoothScroll=pageSet.data('smoothScroll');menuStyle=pageSet.data('menu-style');pageLayout=pageSet.data('page-layout');headerLayout=pageSet.data('header-layout');menuLayout=pageSet.data('menu-layout');footerLayout=pageSet.data('footer-layout');pageSet.addClass(pageLayout)
+(function($){"use strict";
+// Sync dark mode class from body to html for root scrollbar styling
+const observer = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+        if (mutation.attributeName === 'class') {
+            const isDark = document.body.classList.contains('dark');
+            document.documentElement.classList.toggle('dark', isDark);
+        }
+    });
+});
+observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+if (document.body.classList.contains('dark')) {
+    document.documentElement.classList.add('dark');
+}
+
+console.clear();gsap.registerPlugin(DrawSVGPlugin,ScrollTrigger,CSSRulePlugin,ScrollToPlugin,MorphSVGPlugin,CustomEase,InertiaPlugin);var pageSet,pageCursor,siteLoader,headerStick,smoothScroll,siteHeader,locoScroll,pageLayout,headerLayout,footerLayout,menuLayout,menuStyle;function pageSettings(){pageSet=$('body');pageSet.find('.site-header').remove();pageCursor=pageSet.data('cursor');siteLoader=pageSet.data('page-loader');headerStick=false;smoothScroll=pageSet.data('smoothScroll');menuStyle=pageSet.data('menu-style');pageLayout=pageSet.data('page-layout');headerLayout=pageSet.data('header-layout');menuLayout=pageSet.data('menu-layout');footerLayout=pageSet.data('footer-layout');pageSet.addClass(pageLayout)
 $('.site-footer').addClass(footerLayout);}
 pageSettings()
 var keys={37:1,38:1,39:1,40:1};function preventDefault(e){e.preventDefault();}
@@ -236,7 +251,7 @@ let chars=$this.find('.ser_tit_char')
 gsap.fromTo(chars,{y:'100%'},{y:'0%',stagger:0.02,duration:1,ease:'power2.Out',scrollTrigger:{trigger:$this,}})}})
 service.on('click',function(){let $this=$(this),content=$this.children('.service-wrap'),contentInner=content.children('.service-cont'),contHeight=$this.data('height');if($this.hasClass('active')){$this.removeClass('active');gsap.to(content,.4,{height:0,ease:'power2.Out',delay:.4})
 gsap.to(contentInner,.4,{opacity:0})}else{service.removeClass('active')
-$this.addClass('active');let other=service.not('.active'),otherContent=other.children('.service-wrap'),otherInner=other.children('.service-cont');gsap.to(content,.4,{height:contHeight,ease:'power2.In',onComplete:function(){let scTop=$this.offset().top;gsap.to(window,.8,{scrollTo:scTop-100,ease:'power3.In'})}})
+$this.addClass('active');let other=service.not('.active'),otherContent=other.children('.service-wrap'),otherInner=other.children('.service-cont');gsap.to(content,.4,{height:contHeight,ease:'power2.In'})
 gsap.to(contentInner,.4,{opacity:1,delay:.2})
 gsap.to(otherContent,.4,{height:0,ease:'power2.Out',},.15)
 gsap.to(otherInner,.4,{opacity:0})}})}}

@@ -26,13 +26,14 @@
     <script>
         if (localStorage.getItem('theme') === 'dark') {
             document.body.classList.add('dark');
+            document.documentElement.classList.add('dark');
         }
     </script>
 
     <header class="index-header">
         <div class="index-logo-col">
             <a href="index.html">
-                <img src="img/site-logo.png" alt="James Dulinayan" class="index-logo-img">
+                <img src="img/site-logo.png" alt="James Dulinayan" class="index-logo-img" draggable="false">
             </a>
         </div>
         <div class="index-controls-col">
@@ -730,6 +731,7 @@
         const currentTheme = localStorage.getItem('theme');
         if (currentTheme === 'dark') {
             body.classList.add('dark');
+            document.documentElement.classList.add('dark');
             themeToggleBtn.innerHTML = '<i class="fa-solid fa-sun"></i>';
         } else {
             themeToggleBtn.innerHTML = '<i class="fa-solid fa-moon"></i>';
@@ -737,6 +739,7 @@
 
         themeToggleBtn.addEventListener('click', () => {
             body.classList.toggle('dark');
+            document.documentElement.classList.toggle('dark');
 
             if (body.classList.contains('dark')) {
                 localStorage.setItem('theme', 'dark');

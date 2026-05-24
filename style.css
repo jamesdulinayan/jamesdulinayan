@@ -341,7 +341,11 @@ body,
 html {
     font-weight: normal;
     font-size: 20px;
-    overflow-x: clip
+    overflow-x: hidden !important;
+}
+
+body {
+    scrollbar-width: none !important; /* Hide scrollbar on body for Firefox */
 }
 
 main {
@@ -10628,54 +10632,64 @@ body.dark .draggableF::after {
     border-right: 0;
 }
 
-/* About Page: reverse column order (media left, text right) */
-.about-page .creative-layout__row {
-    flex-direction: row-reverse !important;
-}
-
-
-/* About Page: lock to 100vh and make text column independently scrollable */
+/* About Page: desktop layout with fixed left video column and natively scrolling right copy column */
 .about-page .section-creative.creative-scrollable {
-    height: 100vh !important;
+    height: auto !important;
     min-height: 100vh !important;
-    overflow: hidden !important;
+    overflow: visible !important;
 }
 
 .about-page .creative-layout {
-    height: 100vh !important;
-    min-height: 0 !important;
-    overflow: hidden !important;
+    height: auto !important;
+    min-height: 100vh !important;
+    overflow: visible !important;
 }
 
 .about-page .creative-layout__row {
-    height: 100% !important;
-    overflow: hidden !important;
+    height: auto !important;
+    overflow: visible !important;
+    display: block !important;
 }
 
-/* Media col: fixed, no scroll */
+/* Left column: fixed on screen, no scroll, taking up left 50% */
 .about-page .creative-media-col {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 50% !important;
+    height: 100vh !important;
     overflow: hidden !important;
-    height: 100% !important;
     border: none !important;
+    z-index: 1 !important;
+    padding: 0 !important; /* reset default paddings since it is full height */
 }
 
-/* Text col: independently scrollable */
-.about-page .creative-copy-col {
-    overflow-y: auto !important;
-    overflow-x: hidden !important;
+/* Ensure the video container and video behave perfectly inside the fixed column */
+.about-page .creative-media-col .container {
     height: 100% !important;
-    -webkit-overflow-scrolling: touch;
+    width: 100% !important;
+    position: relative !important;
 }
 
-/* Hide scrollbar but keep scroll functionality */
-.about-page .creative-copy-col::-webkit-scrollbar {
-    display: none;
+.about-page .creative-media-col video {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
 }
 
+/* Right column: scrolls natively with the page, shifted by 50% to the right */
 .about-page .creative-copy-col {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+    margin-left: 50% !important;
+    width: 50% !important;
+    height: auto !important;
+    overflow: visible !important;
+    position: relative !important;
+    z-index: 2 !important;
 }
+
 
 /* Mobile: reset about-page layout overrides — let columns stack normally */
 @media (max-width: 1024px) {
@@ -10694,7 +10708,8 @@ body.dark .draggableF::after {
     .about-page .creative-layout__row {
         height: auto !important;
         overflow: visible !important;
-        flex-direction: column-reverse !important;
+        flex-direction: column !important;
+        display: flex !important;
     }
 
     .about-page .creative-media-col {
@@ -10728,6 +10743,8 @@ body.dark .draggableF::after {
         overflow-y: visible !important;
         overflow-x: visible !important;
         height: auto !important;
+        margin-left: 0 !important;
+        width: 100% !important;
     }
 }
 
@@ -12989,6 +13006,8 @@ body.dark .skill-desc {
     width: auto !important;
     display: block !important;
     transition: filter 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    -webkit-user-drag: none !important;
+    user-drag: none !important;
 }
 
 /* Invert Logo on Dark Mode */
@@ -13425,4 +13444,115 @@ html.menu-open-lock {
 .works-page-content .post-meta::after,
 .project-page .post-meta::after {
     display: none !important;
+}
+
+/* -----------------------------------------
+   Global Premium Scrollbar Styles 
+-------------------------------------------- */
+/* Scrollbar width and height (Viewport only) */
+::-webkit-scrollbar,
+html::-webkit-scrollbar {
+    width: 8px !important;
+    height: 8px !important;
+}
+
+/* Scrollbar track - completely transparent (no solid gray container track) */
+::-webkit-scrollbar-track,
+html::-webkit-scrollbar-track {
+    background: transparent !important;
+    background-color: transparent !important;
+}
+
+/* Scrollbar thumb (Light Mode) */
+::-webkit-scrollbar-thumb,
+html::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.15) !important;
+    border-radius: 10px !important;
+    border: 2px solid transparent !important;
+    background-clip: padding-box !important;
+}
+
+::-webkit-scrollbar-thumb:hover,
+html::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.3) !important;
+    border: 2px solid transparent !important;
+    background-clip: padding-box !important;
+}
+
+/* Scrollbar thumb (Dark Mode) */
+html.dark::-webkit-scrollbar-thumb,
+.dark ::-webkit-scrollbar-thumb,
+.dark::-webkit-scrollbar-thumb,
+html:has(body.dark)::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.15) !important;
+    border: 2px solid transparent !important;
+    background-clip: padding-box !important;
+}
+
+html.dark::-webkit-scrollbar-thumb:hover,
+.dark ::-webkit-scrollbar-thumb:hover,
+.dark::-webkit-scrollbar-thumb:hover,
+html:has(body.dark)::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3) !important;
+    border: 2px solid transparent !important;
+    background-clip: padding-box !important;
+}
+
+/* Explicitly hide scrollbar on body element to prevent double/buggy scrollbars */
+body::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+}
+
+/* Universal fallback for non-Webkit browsers (Firefox) */
+html {
+    scrollbar-width: thin !important;
+    scrollbar-color: rgba(0, 0, 0, 0.15) transparent !important;
+}
+
+body.dark,
+html.dark,
+html:has(body.dark) {
+    scrollbar-color: rgba(255, 255, 255, 0.15) transparent !important;
+}
+
+/* -----------------------------------------
+   Locomotive Scroll Custom Scrollbar Overrides
+-------------------------------------------- */
+/* Base scrollbar track (align thickness with native scrollbar) */
+.c-scrollbar {
+    width: 8px !important;
+    background: transparent !important;
+}
+
+/* Scrollbar thumb (Light Mode) */
+.c-scrollbar_thumb {
+    background-color: rgba(0, 0, 0, 0.15) !important;
+    opacity: 1 !important;
+    width: 4px !important;
+    border-radius: 10px !important;
+    margin: 2px !important; /* Centered in the 8px track */
+    transition: background-color 0.2s ease, opacity 0.2s ease !important;
+}
+
+.c-scrollbar:hover .c-scrollbar_thumb,
+.c-scrollbar_thumb:hover {
+    background-color: rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Scrollbar thumb (Dark Mode) */
+body.dark .c-scrollbar_thumb,
+html.dark .c-scrollbar_thumb,
+html:has(body.dark) .c-scrollbar_thumb {
+    background-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+body.dark .c-scrollbar:hover .c-scrollbar_thumb,
+body.dark .c-scrollbar_thumb:hover,
+html.dark .c-scrollbar:hover .c-scrollbar_thumb,
+html.dark .c-scrollbar_thumb:hover,
+html:has(body.dark) .c-scrollbar:hover .c-scrollbar_thumb,
+html:has(body.dark) .c-scrollbar_thumb:hover {
+    background-color: rgba(255, 255, 255, 0.3) !important;
 }
