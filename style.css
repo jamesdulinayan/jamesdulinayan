@@ -10897,7 +10897,7 @@ body.dark .creative-copy-title {
 }
 
 .cta-footer__icon-link:hover {
-    color: #3b3737;
+    color: #474343;
 }
 
 .cta-footer__icon-link:focus-visible {
@@ -11280,7 +11280,7 @@ body.dark .cta-footer__inner {
     /* Align everything flush-left side-by-side */
     align-items: center !important;
     /* Perfect vertical centering of text and line */
-    width: 100% !important;
+    width: auto !important;
     margin-top: 10px !important;
 }
 
@@ -11331,7 +11331,7 @@ body.dark .works-page-content .post-meta::after {
     flex-shrink: 0 !important;
     font-size: clamp(0.9rem, 0.3vw + 0.8rem, 1.25rem) !important;
     /* Sleek, matching brand size */
-    color: #3b3737 !important;
+    color: #474343 !important;
     /* Premium soft brand grey matching social links */
     font-weight: 500 !important;
     line-height: 1 !important;
@@ -11352,13 +11352,14 @@ body.dark .works-page-content .post-meta::after {
 /* Post title and subtitle colors match contact/index CTA details */
 .works-page-content .post-title h3,
 .project-info-col .alioth-services.style_2 .post-title h3 {
-    color: #3b3737 !important;
+    color: #474343 !important;
     font-weight: 500 !important;
     font-size: clamp(1.35rem, 1.2vw + 1.1rem, 2rem) !important;
     transition: color 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-.works-page-content .post-title h3:hover {
+.works-page-content .post-title h3:hover,
+.works-page-content .post.alioth-post a:hover .post-title h3 {
     color: #1d1b1c !important;
 }
 
@@ -11367,13 +11368,14 @@ body.dark .project-info-col .alioth-services.style_2 .post-title h3 {
     color: #bdbdbd !important;
 }
 
-body.dark .works-page-content .post-title h3:hover {
+body.dark .works-page-content .post-title h3:hover,
+body.dark .works-page-content .post.alioth-post a:hover .post-title h3 {
     color: #eeeeee !important;
 }
 
 .works-page-content .blog-classic .post-date,
 .works-page-content .blog-classic .post-cat {
-    color: #3b3737 !important;
+    color: #474343 !important;
     font-size: clamp(0.7rem, 0.35vw + 0.6rem, 0.88rem) !important;
 }
 
@@ -11409,7 +11411,7 @@ body.dark .works-page-content .blog-classic h5.post-date::after {
     font-weight: 500;
     cursor: pointer;
     border-radius: 50px;
-    color: #3b3737;
+    color: #474343;
     /* Matches social icon hover/inactive color in light mode */
     transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     /* Match other animations */
@@ -11651,7 +11653,7 @@ body.dark .project-cta-btn:hover {
     font-size: clamp(1.35rem, 1.2vw + 1.1rem, 2rem) !important;
     font-weight: 500 !important;
     line-height: 1.2 !important;
-    color: #3b3737 !important;
+    color: #474343 !important;
     transition: color 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     cursor: pointer !important;
 }
@@ -11933,7 +11935,7 @@ body.dark .project-separator {
 .project-page .post-title h3 {
     margin: 0 !important;
     line-height: 1.2 !important;
-    color: #3b3737 !important;
+    color: #474343 !important;
     font-weight: 500 !important;
     font-size: clamp(1.35rem, 1.2vw + 1.1rem, 2rem) !important;
     transition: color 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -11997,7 +11999,7 @@ body.dark .project-page .post-meta::after {
     order: 3 !important;
     flex-shrink: 0 !important;
     font-size: clamp(0.7rem, 0.35vw + 0.6rem, 0.88rem) !important;
-    color: #3b3737 !important;
+    color: #474343 !important;
     font-weight: 500 !important;
     line-height: 1 !important;
 }
@@ -12793,7 +12795,7 @@ body.dark .hamburger-line {
 }
 
 .index-hamburger-btn:hover .hamburger-line {
-    background-color: #3b3737 !important;
+    background-color: #474343 !important;
     /* Elegant color transition to faded dark on hover matching social links */
 }
 
@@ -12837,14 +12839,14 @@ body.dark .index-hamburger-btn:hover .hamburger-line {
     justify-content: flex-start !important;
     /* Fix flex-end overflow clipping */
     align-items: flex-start !important;
-    padding: 120px 4% 60px 4% !important;
-    /* Proper top padding to clear fixed header */
+    padding: clamp(80px, 8vh, 120px) clamp(20px, 4%, 60px) clamp(40px, 4vh, 60px) clamp(20px, 4%, 60px) !important;
+    /* Fluid top/bottom/left/right padding based on device size */
     box-sizing: border-box !important;
     opacity: 0 !important;
     visibility: hidden !important;
     pointer-events: none !important;
-    overflow: hidden !important;
-    /* Locked and non-scrollable by default on desktop */
+    overflow-y: auto !important;
+    /* Enable scrolling on any device if height/width causes overflow */
     overflow-x: hidden !important;
     -webkit-overflow-scrolling: touch;
     /* Smooth iOS momentum scroll */
@@ -12906,11 +12908,19 @@ body.dark .index-menu-bg-grain:after {
     max-width: 1400px !important;
     display: flex !important;
     flex-direction: column !important;
-    gap: 40px !important;
+    gap: clamp(20px, 4.5vh, 40px) !important;
+    /* Responsive gap dynamically adjusts with height */
     position: relative !important;
     z-index: 2 !important;
-    margin-top: auto !important;
-    /* Bottom-align on large screens, scrollable on short screens */
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+@media (min-height: 700px) {
+    .index-menu-content {
+        margin-top: auto !important;
+        /* Bottom-align elegantly when there is plenty of room */
+    }
 }
 
 .index-menu-list {
@@ -12960,7 +12970,7 @@ body.dark .index-menu-link {
     line-height: 1.1;
     letter-spacing: -1.5px;
     text-transform: uppercase !important;
-    color: #3b3737 !important;
+    color: #474343 !important;
     /* Faded inactive base color in light mode matching social links */
     position: relative;
     display: inline-block;
@@ -13049,8 +13059,10 @@ body.dark .menu-sparkle-icon {
 /* Meta column styles aligned at bottom left */
 .index-menu-meta-row {
     display: flex !important;
-    gap: 60px !important;
-    margin-top: 40px !important;
+    gap: clamp(30px, 4vw, 60px) !important;
+    /* Fluid gap adjusts with device width */
+    margin-top: clamp(20px, 3vh, 40px) !important;
+    /* Fluid margin adjusts with device height */
     opacity: 0 !important;
     transform: translateY(20px) !important;
     transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) !important;
@@ -13082,9 +13094,7 @@ html.menu-open-lock {
     }
 
     .index-menu-overlay {
-        padding: 100px 6% 40px 6% !important;
-        overflow-y: auto !important;
-        /* Enable responsive scroll on tablets & mobile */
+        padding: clamp(80px, 8vh, 100px) clamp(20px, 6%, 60px) clamp(40px, 4vh, 40px) clamp(20px, 6%, 60px) !important;
     }
 }
 
@@ -13098,7 +13108,7 @@ html.menu-open-lock {
     }
 
     .index-menu-overlay {
-        padding: 90px 6% 30px 6% !important;
+        padding: clamp(70px, 8vh, 90px) clamp(16px, 6%, 40px) clamp(30px, 4vh, 30px) clamp(16px, 6%, 40px) !important;
     }
 
     .index-menu-text {
@@ -13125,17 +13135,6 @@ html.menu-open-lock {
 
 @media (max-height: 600px) {
     .index-menu-overlay {
-        padding-top: 80px!important;
-        overflow-y: auto !important;
-        /* Enable responsive scroll on short screen heights */
-    }
-
-
-}
-
-@media (max-height: 750px) {
-    .index-menu-overlay {
-        overflow-y: auto !important;
-        /* Enable responsive scroll if height is short */
+        padding-top: clamp(60px, 6vh, 80px) !important;
     }
 }
