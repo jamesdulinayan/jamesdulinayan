@@ -10633,17 +10633,6 @@ body.dark .draggableF::after {
     flex-direction: row-reverse !important;
 }
 
-/* About Page specific: remove left border divider (now on right side after reversal) */
-.about-page .creative-media-col,
-.about-page.dark .creative-media-col {
-    border-left: 0 !important;
-    border-right: 1px solid rgba(0, 0, 0, 0.5) !important;
-}
-
-body.dark .about-page .creative-media-col {
-    border-right: 1px solid #9a9a9a !important;
-    border-left: 0 !important;
-}
 
 /* About Page: lock to 100vh and make text column independently scrollable */
 .about-page .section-creative.creative-scrollable {
@@ -11864,7 +11853,8 @@ body.dark .project-cta-btn:hover {
     line-height: 1.2 !important;
     color: #474343 !important;
     transition: color 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    margin: 0 !important; /* Resets base margin so it aligns vertically */
+    margin: 0 !important;
+    /* Resets base margin so it aligns vertically */
 }
 
 .project-info-col .alioth-services.style_2 .service:hover .post-title h3 {
