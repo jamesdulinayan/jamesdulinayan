@@ -10656,6 +10656,7 @@ body.dark .draggableF::after {
 .about-page .creative-media-col {
     overflow: hidden !important;
     height: 100% !important;
+    border: none !important;
 }
 
 /* Text col: independently scrollable */
@@ -10747,7 +10748,7 @@ body.dark .creative-media-col {
 
 /* About Page override for dark mode */
 body.dark .about-page .creative-media-col {
-    border-left: 0 !important;
+    border: none !important;
 }
 
 @media (max-width: 1024px) {
@@ -10755,6 +10756,11 @@ body.dark .about-page .creative-media-col {
         border-top: 1px solid #9a9a9a !important;
         /* Premium silver grey border outline */
         border-left: 0 !important;
+    }
+
+    /* Keep about page media column completely borderless on mobile in dark mode */
+    body.dark .about-page .creative-media-col {
+        border: none !important;
     }
 }
 
@@ -13106,6 +13112,7 @@ body.dark .index-hamburger-btn:hover .hamburger-line {
     left: 0 !important;
     width: 100vw !important;
     height: 100vh !important;
+    height: 100dvh !important;
     background-color: #ffffff !important;
     z-index: 2050 !important;
     display: flex !important;
@@ -13179,7 +13186,6 @@ body.dark .index-menu-bg-grain:after {
 
 .index-menu-content {
     width: 100% !important;
-    max-width: 1400px !important;
     display: flex !important;
     flex-direction: column !important;
     gap: clamp(20px, 4.5vh, 40px) !important;
@@ -13361,7 +13367,7 @@ html.menu-open-lock {
     }
 
     .index-menu-overlay {
-        padding: clamp(80px, 8vh, 100px) clamp(20px, 6%, 60px) clamp(40px, 4vh, 40px) clamp(20px, 6%, 60px) !important;
+        padding: clamp(80px, 8vh, 100px) clamp(20px, 6%, 60px) clamp(50px, 6vh, 60px) clamp(20px, 6%, 60px) !important;
     }
 }
 
@@ -13375,7 +13381,7 @@ html.menu-open-lock {
     }
 
     .index-menu-overlay {
-        padding: clamp(70px, 8vh, 90px) clamp(16px, 6%, 40px) clamp(30px, 4vh, 30px) clamp(16px, 6%, 40px) !important;
+        padding: clamp(70px, 8vh, 90px) clamp(16px, 6%, 40px) clamp(50px, 6vh, 60px) clamp(16px, 6%, 40px) !important;
     }
 
     .index-menu-text {
