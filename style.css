@@ -10697,29 +10697,30 @@ body.dark .draggableF::after {
     }
 
     .about-page .creative-media-col {
-        overflow: hidden !important;
-        height: 60vw !important;
-        min-height: 280px !important;
-        max-height: 500px !important;
+        overflow: visible !important;
+        height: auto !important;
+        min-height: 0 !important;
+        max-height: none !important;
         position: relative !important;
     }
 
-    /* Reset video container to fill the defined height */
+    /* Reset video container to scale to the video's natural height */
     .about-page .creative-media-col .container {
         position: relative !important;
-        height: 100% !important;
+        height: auto !important;
         width: 100% !important;
-        overflow: hidden !important;
+        overflow: visible !important;
     }
 
-    /* Reset video to cover mode within the fixed-height container */
+    /* Reset video to display at full width and auto height (completely uncropped) */
     .about-page .creative-media-col video {
-        position: absolute !important;
-        top: 0 !important;
-        left: 0 !important;
+        position: relative !important;
+        top: auto !important;
+        left: auto !important;
         width: 100% !important;
-        height: 100% !important;
-        object-fit: cover !important;
+        height: auto !important;
+        object-fit: contain !important;
+        display: block !important;
     }
 
     .about-page .creative-copy-col {
@@ -13185,15 +13186,9 @@ body.dark .index-menu-bg-grain:after {
     /* Responsive gap dynamically adjusts with height */
     position: relative !important;
     z-index: 2 !important;
-    margin-top: 0 !important;
+    margin-top: auto !important;
+    /* Bottom-align elegantly, leaving premium breathing space under logo */
     margin-bottom: 0 !important;
-}
-
-@media (min-height: 700px) {
-    .index-menu-content {
-        margin-top: auto !important;
-        /* Bottom-align elegantly when there is plenty of room */
-    }
 }
 
 .index-menu-list {
@@ -13205,7 +13200,6 @@ body.dark .index-menu-bg-grain:after {
 .index-menu-item {
     overflow: visible !important;
     width: fit-content !important;
-    /* Limit hover boundaries strictly to the text area */
 }
 
 .index-menu-item:last-child {
@@ -13410,4 +13404,19 @@ html.menu-open-lock {
     .index-menu-overlay {
         padding-top: clamp(60px, 6vh, 80px) !important;
     }
+}
+
+/* -----------------------------------------
+   Projects: Remove Years and Connector Lines
+-------------------------------------------- */
+.works-page-content .blog-classic .post-cat,
+.project-page .blog-classic .post-cat,
+.works-page-content .blog-classic .post-cat::before,
+.project-page .blog-classic .post-cat::before {
+    display: none !important;
+}
+
+.works-page-content .post-meta::after,
+.project-page .post-meta::after {
+    display: none !important;
 }
