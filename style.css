@@ -13120,7 +13120,7 @@ body.dark .index-hamburger-btn:hover .hamburger-line {
     justify-content: flex-start !important;
     /* Fix flex-end overflow clipping */
     align-items: flex-start !important;
-    padding: clamp(80px, 8vh, 120px) clamp(20px, 4%, 60px) clamp(40px, 4vh, 60px) clamp(20px, 4%, 60px) !important;
+    padding: clamp(80px, 8vh, 120px) clamp(20px, 4%, 60px) clamp(50px, 4vh, 60px) clamp(20px, 4%, 60px) !important;
     /* Fluid top/bottom/left/right padding based on device size */
     box-sizing: border-box !important;
     opacity: 0 !important;
@@ -13367,7 +13367,7 @@ html.menu-open-lock {
     }
 
     .index-menu-overlay {
-        padding: clamp(80px, 8vh, 100px) clamp(20px, 6%, 60px) clamp(30px, 4vh, 40px) clamp(20px, 6%, 60px) !important;
+        padding: clamp(80px, 8vh, 100px) clamp(20px, 6%, 60px) clamp(40px, 4vh, 50px) clamp(20px, 6%, 60px) !important;
     }
 }
 
@@ -13381,7 +13381,7 @@ html.menu-open-lock {
     }
 
     .index-menu-overlay {
-        padding: clamp(70px, 8vh, 90px) clamp(16px, 6%, 40px) clamp(20px, 3vh, 30px) clamp(16px, 6%, 40px) !important;
+        padding: clamp(70px, 8vh, 90px) clamp(16px, 6%, 40px) clamp(30px, 3vh, 40px) clamp(16px, 6%, 40px) !important;
     }
 
     .index-menu-text {
