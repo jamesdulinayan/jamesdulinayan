@@ -10713,6 +10713,10 @@ body.dark .draggableF::after {
     }
 
     .about-page .creative-media-col {
+        width: 100% !important;
+        left: auto !important;
+        top: auto !important;
+        padding: 0 !important;
         overflow: visible !important;
         height: auto !important;
         min-height: 0 !important;
@@ -13446,113 +13450,3 @@ html.menu-open-lock {
     display: none !important;
 }
 
-/* -----------------------------------------
-   Global Premium Scrollbar Styles 
--------------------------------------------- */
-/* Scrollbar width and height (Viewport only) */
-::-webkit-scrollbar,
-html::-webkit-scrollbar {
-    width: 8px !important;
-    height: 8px !important;
-}
-
-/* Scrollbar track - completely transparent (no solid gray container track) */
-::-webkit-scrollbar-track,
-html::-webkit-scrollbar-track {
-    background: transparent !important;
-    background-color: transparent !important;
-}
-
-/* Scrollbar thumb (Light Mode) */
-::-webkit-scrollbar-thumb,
-html::-webkit-scrollbar-thumb {
-    background: rgba(0, 0, 0, 0.15) !important;
-    border-radius: 10px !important;
-    border: 2px solid transparent !important;
-    background-clip: padding-box !important;
-}
-
-::-webkit-scrollbar-thumb:hover,
-html::-webkit-scrollbar-thumb:hover {
-    background: rgba(0, 0, 0, 0.3) !important;
-    border: 2px solid transparent !important;
-    background-clip: padding-box !important;
-}
-
-/* Scrollbar thumb (Dark Mode) */
-html.dark::-webkit-scrollbar-thumb,
-.dark ::-webkit-scrollbar-thumb,
-.dark::-webkit-scrollbar-thumb,
-html:has(body.dark)::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.15) !important;
-    border: 2px solid transparent !important;
-    background-clip: padding-box !important;
-}
-
-html.dark::-webkit-scrollbar-thumb:hover,
-.dark ::-webkit-scrollbar-thumb:hover,
-.dark::-webkit-scrollbar-thumb:hover,
-html:has(body.dark)::-webkit-scrollbar-thumb:hover {
-    background: rgba(255, 255, 255, 0.3) !important;
-    border: 2px solid transparent !important;
-    background-clip: padding-box !important;
-}
-
-/* Explicitly hide scrollbar on body element to prevent double/buggy scrollbars */
-body::-webkit-scrollbar {
-    display: none !important;
-    width: 0 !important;
-    height: 0 !important;
-}
-
-/* Universal fallback for non-Webkit browsers (Firefox) */
-html {
-    scrollbar-width: thin !important;
-    scrollbar-color: rgba(0, 0, 0, 0.15) transparent !important;
-}
-
-body.dark,
-html.dark,
-html:has(body.dark) {
-    scrollbar-color: rgba(255, 255, 255, 0.15) transparent !important;
-}
-
-/* -----------------------------------------
-   Locomotive Scroll Custom Scrollbar Overrides
--------------------------------------------- */
-/* Base scrollbar track (align thickness with native scrollbar) */
-.c-scrollbar {
-    width: 8px !important;
-    background: transparent !important;
-}
-
-/* Scrollbar thumb (Light Mode) */
-.c-scrollbar_thumb {
-    background-color: rgba(0, 0, 0, 0.15) !important;
-    opacity: 1 !important;
-    width: 4px !important;
-    border-radius: 10px !important;
-    margin: 2px !important; /* Centered in the 8px track */
-    transition: background-color 0.2s ease, opacity 0.2s ease !important;
-}
-
-.c-scrollbar:hover .c-scrollbar_thumb,
-.c-scrollbar_thumb:hover {
-    background-color: rgba(0, 0, 0, 0.3) !important;
-}
-
-/* Scrollbar thumb (Dark Mode) */
-body.dark .c-scrollbar_thumb,
-html.dark .c-scrollbar_thumb,
-html:has(body.dark) .c-scrollbar_thumb {
-    background-color: rgba(255, 255, 255, 0.15) !important;
-}
-
-body.dark .c-scrollbar:hover .c-scrollbar_thumb,
-body.dark .c-scrollbar_thumb:hover,
-html.dark .c-scrollbar:hover .c-scrollbar_thumb,
-html.dark .c-scrollbar_thumb:hover,
-html:has(body.dark) .c-scrollbar:hover .c-scrollbar_thumb,
-html:has(body.dark) .c-scrollbar_thumb:hover {
-    background-color: rgba(255, 255, 255, 0.3) !important;
-}
