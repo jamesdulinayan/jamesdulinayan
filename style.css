@@ -6057,7 +6057,7 @@ body.dark .creative-copy-title {
     text-decoration: none;
     font-size: 1.1rem;
     line-height: 1;
-    transition: color 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: color 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1);
     /* Fast snappy timing */
 }
 
@@ -6100,7 +6100,7 @@ body.dark .creative-copy-title {
     /* Soft semi-transparent black matching original light mode design */
     transform: scaleX(0) !important;
     transform-origin: right !important;
-    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+    transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
     /* Fast snappy timing */
 }
 
@@ -6512,7 +6512,7 @@ body.dark .works-page-content .post-meta::after {
     color: #474343 !important;
     font-weight: 500 !important;
     font-size: clamp(1.35rem, 1.2vw + 1.1rem, 2rem) !important;
-    transition: color 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: color 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .works-page-content .post.alioth-post a:hover .post-title h3 {
@@ -6560,7 +6560,7 @@ body.dark .works-page-content .blog-classic .post-cat {
     border-radius: 50px;
     color: #474343;
     /* Matches social icon hover/inactive color in light mode */
-    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
     /* Match other animations */
     outline: none;
     font-family: inherit;
@@ -6706,7 +6706,7 @@ body.dark .filter-btn.active {
     line-height: 1.2 !important;
     color: #1d1b1c !important;
     /* Active brand color for static header */
-    transition: color 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: color 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .project-info-col .alioth-services.style_2 .post-title h3 {
@@ -6715,7 +6715,7 @@ body.dark .filter-btn.active {
     font-weight: 500 !important;
     line-height: 1.2 !important;
     color: #474343 !important;
-    transition: color 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: color 0.8s cubic-bezier(0.16, 1, 0.3, 1);
     margin: 0 !important;
     /* Resets base margin so it aligns vertically */
 }
@@ -6746,6 +6746,9 @@ body.dark .project-info-col .alioth-services.style_2 .service.active .post-title
 }
 
 .meta-pill {
+    position: relative;
+    z-index: 1;
+    cursor: text !important;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -6754,20 +6757,30 @@ body.dark .project-info-col .alioth-services.style_2 .service.active .post-title
     font-size: clamp(0.75rem, 0.3vw + 0.7rem, 0.88rem) !important;
     font-weight: 500 !important;
     line-height: 1 !important;
+    color: #393334 !important;
+}
+
+.meta-pill::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
     border-radius: 100px !important;
     background-color: #f1f1f1 !important;
-    /* Solid opaque light-grey to hide grain */
-    color: #393334 !important;
     border: 1px solid #e1e1e1 !important;
-    /* Crisp solid border */
+    cursor: default !important;
 }
 
 body.dark .meta-pill {
-    background-color: #27282a !important;
-    /* Solid opaque charcoal to hide grain */
     color: #ebe9e9 !important;
+}
+
+body.dark .meta-pill::before {
+    background-color: #27282a !important;
     border: 1px solid #3c3d3f !important;
-    /* Crisp solid border */
 }
 
 .project-gallery-col {
@@ -6987,7 +7000,7 @@ body.dark .project-separator {
     /* Active brand color */
     font-weight: 500 !important;
     font-size: clamp(1.35rem, 1.2vw + 1.1rem, 2rem) !important;
-    transition: color 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: color 0.8s cubic-bezier(0.16, 1, 0.3, 1);
     cursor: text !important;
     /* Text selection cursor for static heading */
 }
@@ -7115,7 +7128,7 @@ body.dark .project-page .blog-classic .post-cat {
     display: block !important;
     width: 48px !important;
     height: 28px !important;
-    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1) !important;
     /* Fast snappy timing */
 }
 
@@ -7297,11 +7310,18 @@ body:not(.dark) .me-night-img {
 .project-info-col .alioth-services.style_2 .service,
 .creative-copy-col .alioth-services.style_2 .service {
     width: 100%;
-    cursor: pointer !important;
+    cursor: default !important;
     display: flex !important;
     flex-wrap: wrap !important;
     align-items: center !important;
     float: none !important;
+}
+
+.project-info-col .alioth-services.style_2 .service .post-title,
+.creative-copy-col .alioth-services.style_2 .service .post-title,
+.project-info-col .alioth-services.style_2 .service .service-toggle,
+.creative-copy-col .alioth-services.style_2 .service .service-toggle {
+    cursor: pointer !important;
 }
 
 .project-info-col .alioth-services.style_2 .post-title,
@@ -7366,6 +7386,7 @@ body.dark .creative-copy-col .alioth-services.style_2 .service:hover .post-title
 .creative-copy-col .alioth-services.style_2 .service-cont {
     width: 100% !important;
     padding: 0 !important;
+    cursor: default !important;
 }
 
 
@@ -7377,6 +7398,7 @@ body.dark .creative-copy-col .alioth-services.style_2 .service:hover .post-title
     opacity: 0.85;
     margin: 0 !important;
     width: 100% !important;
+    cursor: text !important;
 }
 
 body.dark .project-info-col .alioth-services.style_2 .service-cont,
@@ -7532,7 +7554,7 @@ body.dark .index-logo-img {
     width: 100%;
     background-color: #1d1b1c !important;
     border-radius: 2px;
-    transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1) !important;
     /* background-color handled by global theme block */
 }
 
@@ -7600,7 +7622,7 @@ body.dark .index-hamburger-btn:hover .hamburger-line {
     overflow-x: hidden !important;
     -webkit-overflow-scrolling: touch;
     /* Smooth iOS momentum scroll */
-    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.6s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.8s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.8s cubic-bezier(0.16, 1, 0.3, 1) !important;
     -ms-overflow-style: none !important;
     /* Hide scrollbar on IE and Edge */
     scrollbar-width: none !important;
@@ -7690,7 +7712,7 @@ body.dark .index-menu-bg-grain:after {
     opacity: 0 !important;
     width: fit-content !important;
     /* Limit hover boundaries strictly to the text area */
-    transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+    transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1) !important;
     /* Elegant original entrance timing */
 }
 
@@ -7782,7 +7804,7 @@ body.dark .index-menu-link:hover .index-menu-text::before {
     /* Fluid margin adjusts with device height */
     opacity: 0 !important;
     transform: translateY(20px) !important;
-    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), color 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+    transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), color 0.8s cubic-bezier(0.16, 1, 0.3, 1) !important;
     transition-delay: 0.45s !important;
 }
 

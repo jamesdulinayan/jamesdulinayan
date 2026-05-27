@@ -379,13 +379,9 @@
             });
         });
 
-        // Close menu if clicking outside the menu content (e.g. background overlay area)
-        menuOverlay.addEventListener('click', (e) => {
-            if (e.target === menuOverlay) {
-                closeMenu();
-            }
-        });
 
+
+        
         // Close menu on Escape key press
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && menuOverlay.classList.contains('is-open')) {
