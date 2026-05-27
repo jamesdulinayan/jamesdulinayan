@@ -1666,9 +1666,7 @@ body.dark a:hover .page-title {
     -webkit-box-sizing: content-box;
     box-sizing: content-box;
     z-index: 1;
-    -webkit-transition: all .7s ease;
-    -o-transition: all .7s ease;
-    transition: all .7s ease;
+    transition: width 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), background-color 0.8s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.8s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
 .linked-text.loaded a:hover::before {
@@ -8446,7 +8444,7 @@ body.dark .project-page .blog-classic .post-cat {
     /* Solid charcoal sun icon in light mode */
     background: transparent !important;
     border-radius: 0 !important;
-    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
     transform: translateX(0) !important;
     /* Placed on the left in light mode */
     margin: 0 !important;
@@ -8857,7 +8855,7 @@ body.dark .index-logo-img {
     width: 100%;
     background-color: #1d1b1c !important;
     border-radius: 2px;
-    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
     /* background-color handled by global theme block */
 }
 
@@ -8872,20 +8870,10 @@ body.dark .hamburger-line {
     background-color: #eeeeee !important;
 }
 
-/* Hamburger Hover states */
-.index-hamburger-btn:hover {
-    background: transparent !important;
-    border: none !important;
-}
-
-.index-hamburger-btn:hover .hamburger-line {
+/* Hamburger Hover states with high specificity to override !important base values */
+body .index-hamburger-btn:hover .hamburger-line {
     background-color: #474343 !important;
     /* Elegant color transition to faded dark on hover matching social links */
-}
-
-body.dark .index-hamburger-btn:hover {
-    background: transparent !important;
-    border: none !important;
 }
 
 body.dark .index-hamburger-btn:hover .hamburger-line {
