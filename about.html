@@ -14,6 +14,14 @@
         rel="stylesheet">
     <link href="css/plugins.css" rel="stylesheet">
     <link href="style.css" rel="stylesheet">
+    <style>
+        /* Always invert the logo on the About page (desktop only), regardless of light/dark mode */
+        @media (min-width: 769px) {
+            .page-about .index-logo-img {
+                filter: invert(1) brightness(1.5) !important;
+            }
+        }
+    </style>
     <link rel="shortcut icon" href="img/favicon.png" />
     <link rel="apple-touch-icon" href="img/favicon.png" />
     <link rel="stylesheet" href="https://use.typekit.net/dht2lod.css">
@@ -22,7 +30,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer">
 </head>
 
-<body>
+<body class="page-about">
     <script>
         if (localStorage.getItem('theme') === 'dark') {
             document.body.classList.add('dark');
