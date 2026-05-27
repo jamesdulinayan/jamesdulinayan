@@ -249,12 +249,12 @@ gsap.set(content,{height:0,})
 if(willanim==true){new SplitText(title,{type:'lines, chars',charsClass:'ser_tit_char',linesClass:'ser_tit_line'})
 let chars=$this.find('.ser_tit_char')
 gsap.fromTo(chars,{y:'100%'},{y:'0%',stagger:0.02,duration:1,ease:'power2.Out',scrollTrigger:{trigger:$this,}})}})
-service.on('click',function(){let $this=$(this),content=$this.children('.service-wrap'),contentInner=content.children('.service-cont'),contHeight=$this.data('height');if($this.hasClass('active')){$this.removeClass('active');gsap.to(content,.4,{height:0,ease:'power2.Out',delay:.4})
-gsap.to(contentInner,.4,{opacity:0})}else{service.removeClass('active')
-$this.addClass('active');let other=service.not('.active'),otherContent=other.children('.service-wrap'),otherInner=other.children('.service-cont');gsap.to(content,.4,{height:contHeight,ease:'power2.In'})
-gsap.to(contentInner,.4,{opacity:1,delay:.2})
-gsap.to(otherContent,.4,{height:0,ease:'power2.Out',},.15)
-gsap.to(otherInner,.4,{opacity:0})}})}}
+service.on('click',function(){let $this=$(this),content=$this.children('.service-wrap'),contentInner=content.children('.service-cont'),contHeight=$this.data('height');if($this.hasClass('active')){$this.removeClass('active');gsap.to(content,0.8,{height:0,ease:'power1.out',delay:0.1})
+gsap.to(contentInner,0.8,{opacity:0,ease:'power1.out'})}else{service.removeClass('active')
+$this.addClass('active');let other=service.not('.active'),otherContent=other.children('.service-wrap'),otherInner=other.children('.service-cont');gsap.to(content,0.8,{height:contHeight,ease:'power1.out'})
+gsap.to(contentInner,0.8,{opacity:1,delay:0.1,ease:'power1.out'})
+gsap.to(otherContent,0.8,{height:0,ease:'power1.out',},0.1)
+gsap.to(otherInner,0.8,{opacity:0,ease:'power1.out'})}})}}
 function aliothPersonalHead(){let aph=$('.alioth-personal-head');aph.each(function(){let $this=$(this),name=$this.children('.aph-name'),image=$this.children('.aph-image'),willAnim=$this.data('animate');name.clone().addClass('back').insertAfter(name);if(willAnim==true){let mobileQuery=window.matchMedia('(max-width: 1024px)')
 if(mobileQuery.matches){var nameFront=$('.name-front, .name-back'),nameBack=$('.aph-name.back .name-back');}else{var nameFront=$('.name-front'),nameBack=$('.aph-name.back .name-back');}
 new SplitText(nameFront,{type:'chars',charsClass:'name_char'})

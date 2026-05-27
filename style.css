@@ -164,7 +164,6 @@ video {
 
 .post-title h3 {
     font-size: 32px !important;
-    transition: color .4s ease;
 }
 
 
@@ -813,9 +812,6 @@ span.apl-background {
     background: #ff0000;
     width: 100%;
     height: 0%;
-    -webkit-transition: all .55s cubic-bezier(.25, .74, .22, .99);
-    -o-transition: all .55s cubic-bezier(.25, .74, .22, .99);
-    transition: all .55s cubic-bezier(.25, .74, .22, .99)
 }
 
 .site-header.fullscreen_menu.menu-has-open::before {
@@ -834,9 +830,6 @@ span.apl-background {
     left: 0;
     opacity: 0;
     visibility: hidden;
-    -webkit-transition: opacity .4s ease, visibility .4s ease;
-    -o-transition: opacity .4s ease, visibility .4s ease;
-    transition: opacity .4s ease, visibility .4s ease;
     pointer-events: none
 }
 
@@ -964,10 +957,10 @@ span.apl-background {
 
 .site-navigation.classic .sub-menu {
     position: absolute;
-    display: block;
-    z-index: -1;
-    opacity: 0;
+    top: 100%;
+    z-index: 1000;
     visibility: hidden;
+    opacity: 0;
     padding: 40px 0 40px 50px;
     background: #e0e0e0;
     left: -25px;
@@ -975,9 +968,6 @@ span.apl-background {
     -webkit-transform: translateY(30px);
     -ms-transform: translateY(30px);
     transform: translateY(30px);
-    -webkit-transition: all .4s ease;
-    -o-transition: all .4s ease;
-    transition: all .4s ease
 }
 
 .site-header.light .site-navigation.classic .sub-menu {
@@ -1009,9 +999,6 @@ span.apl-background {
     transform: translateY(10px);
     opacity: 0;
     visibility: hidden;
-    -webkit-transition: all .6s ease;
-    -o-transition: all .6s ease;
-    transition: all .6s ease;
     font-weight: 400;
     font-size: 16px;
     letter-spacing: 0, 45em;
@@ -1022,9 +1009,6 @@ span.apl-background {
 }
 
 .site-navigation.classic .sub-menu li.menu-item a {
-    -webkit-transition: all .3s ease;
-    -o-transition: all .3s ease;
-    transition: all .3s ease
 }
 
 .site-navigation.classic .sub-menu li.menu-item:hover a {
@@ -8644,7 +8628,7 @@ body:not(.dark) .me-night-img {
     font-family: "Neue" !important;
     cursor: pointer !important;
     color: #474343 !important;
-    transition: color 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: color 0.8s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
 body.dark .creative-copy-col .alioth-services.style_2 .post-title h3 {
