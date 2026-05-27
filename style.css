@@ -271,6 +271,7 @@ i,
 .service-toggle,
 .index-header,
 .index-hamburger-btn,
+.hamburger-line,
 .theme-toggle-btn {
     transition: background-color 0.8s cubic-bezier(0.16, 1, 0.3, 1),
         color 0.8s cubic-bezier(0.16, 1, 0.3, 1),
@@ -8445,7 +8446,7 @@ body.dark .project-page .blog-classic .post-cat {
     /* Solid charcoal sun icon in light mode */
     background: transparent !important;
     border-radius: 0 !important;
-    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), color 0.8s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) !important;
     transform: translateX(0) !important;
     /* Placed on the left in light mode */
     margin: 0 !important;
@@ -8856,8 +8857,8 @@ body.dark .index-logo-img {
     width: 100%;
     background-color: #1d1b1c !important;
     border-radius: 2px;
-    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.8s cubic-bezier(0.16, 1, 0.3, 1) !important;
-    /* Aligned perfectly with menu items entrance transition (0.8s cubic-bezier(0.16, 1, 0.3, 1)) */
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    /* background-color handled by global theme block */
 }
 
 /* Dark Mode styles for Hamburger */
@@ -9024,7 +9025,7 @@ body.dark .index-menu-bg-grain:after {
     opacity: 0 !important;
     width: fit-content !important;
     /* Limit hover boundaries strictly to the text area */
-    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), color 0.8s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
     /* Elegant original entrance timing */
 }
 
