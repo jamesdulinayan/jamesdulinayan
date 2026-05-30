@@ -459,6 +459,14 @@
                 });
             });
         }
+
+        // Prevent right-click context menu specifically on about page hero images
+        document.addEventListener('contextmenu', (e) => {
+            const isAboutImg = e.target.classList.contains('about-img-light') || e.target.classList.contains('about-img-dark');
+            if (isAboutImg) {
+                e.preventDefault();
+            }
+        });
     </script>
 </body>
 
