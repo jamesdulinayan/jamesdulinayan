@@ -13,14 +13,7 @@
     <link href="../../fonts.googleapis.com/css2fb67.css?family=Inter:wght@400;500;600;700&amp;display=swap"
         rel="stylesheet">
     <link href="style.css" rel="stylesheet">
-    <style>
-        /* Always invert the logo on the About page (desktop only), regardless of light/dark mode */
-        @media (min-width: 769px) {
-            .page-about .index-logo-img {
-                filter: invert(1) brightness(1.5) !important;
-            }
-        }
-    </style>
+
     <link rel="shortcut icon" href="img/favicon.png" />
     <link rel="apple-touch-icon" href="img/favicon.png" />
     <link rel="stylesheet" href="https://use.typekit.net/dht2lod.css">
@@ -190,7 +183,8 @@
                                                             class="meta-pill">Webflow</span><span
                                                             class="meta-pill">WordPress</span><span
                                                             class="meta-pill">GSAP</span><span
-                                                            class="meta-pill">Barba.js</span></div>
+                                                            class="meta-pill">Barba.js</span>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -219,7 +213,8 @@
                                                             class="meta-pill">Lottie</span><span
                                                             class="meta-pill">Storyboarding</span><span
                                                             class="meta-pill">Motion Design</span><span
-                                                            class="meta-pill">Visual Effects</span></div>
+                                                            class="meta-pill">Visual Effects</span>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -245,7 +240,8 @@
                                                             class="meta-pill">Sound Design</span><span
                                                             class="meta-pill">Transitions</span><span
                                                             class="meta-pill">VFX</span><span
-                                                            class="meta-pill">Subtitling</span></div>
+                                                            class="meta-pill">Subtitling</span>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -255,16 +251,37 @@
 
                         </div>
 
-                        <!-- Right Column: Media (Video) -->
+                        <!-- Right Column: Media -->
                         <div class="c-col-6 creative-media-col"
                             style="box-sizing: border-box; margin-bottom: 0; padding: 0; position: relative; z-index: 1;">
 
                             <div class="container"
-                                style="position: relative; height: 100%; width: 100%; overflow: hidden;">
-                                <video autoplay loop muted playsinline
-                                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; display: block;">
-                                    <source src="img/about-me.mp4" type="video/mp4">
-                                </video>
+                                style="position: relative; height: 100%; width: 100%; display: flex; align-items: center; justify-content: center; overflow: hidden; container-type: size;">
+                                
+                                <div class="about-hero-composition"
+                                    style="position: relative; width: 100%; height: 100%; overflow: hidden;">
+                                    
+                                    <img src="img/about-light.jpg" alt="James Dulinayan" class="about-img-light" draggable="false">
+                                    <img src="img/about-dark.jpg" alt="James Dulinayan" class="about-img-dark" draggable="false">
+                                    
+                                    <!-- Floating Tooltips -->
+                                    <div class="tooltip-wrapper float-dev-anim">
+                                        <div class="about-tooltip tooltip-developer">
+                                            <span class="tooltip-text">Developer</span>
+                                            <svg class="tooltip-arrow-svg arrow-dev" width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="position: absolute; right: -15px; top: -13px; transform: rotate(-35deg);">
+                                                <path d="M 1.5,1.5 L 14.5,8 L 1.5,14.5 L 5.5,8 Z" stroke-width="1"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <div class="tooltip-wrapper float-des-anim">
+                                        <div class="about-tooltip tooltip-designer">
+                                            <span class="tooltip-text">Designer</span>
+                                            <svg class="tooltip-arrow-svg arrow-des" width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="position: absolute; left: -15px; top: -13px; transform: rotate(-145deg);">
+                                                <path d="M 1.5,1.5 L 14.5,8 L 1.5,14.5 L 5.5,8 Z" stroke-width="1"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
 
                         </div>
@@ -374,7 +391,7 @@
 
 
 
-        
+
         // Close menu on Escape key press
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && menuOverlay.classList.contains('is-open')) {
@@ -399,6 +416,49 @@
 
             lastScrollY = currentScrollY;
         });
+
+        // Interactive Mouse-Movement Parallax Effect for About Tooltips
+        const mediaContainer = document.querySelector('.about-hero-composition');
+        const tooltipDev = document.querySelector('.tooltip-developer');
+        const tooltipDes = document.querySelector('.tooltip-designer');
+
+        if (mediaContainer && tooltipDev && tooltipDes) {
+            mediaContainer.addEventListener('mousemove', (e) => {
+                const rect = mediaContainer.getBoundingClientRect();
+                
+                // Get normalized coordinates [-0.5, 0.5] relative to media container
+                const x = (e.clientX - rect.left) / rect.width - 0.5;
+                const y = (e.clientY - rect.top) / rect.height - 0.5;
+
+                // Move tooltips dynamically in perfect synchronization (same speed, same displacement)
+                gsap.to(tooltipDev, {
+                    x: x * 20,
+                    y: y * 20,
+                    duration: 1.5,
+                    ease: 'power2.out',
+                    overwrite: 'auto'
+                });
+
+                gsap.to(tooltipDes, {
+                    x: x * 20,
+                    y: y * 20,
+                    duration: 1.5,
+                    ease: 'power2.out',
+                    overwrite: 'auto'
+                });
+            });
+
+            // Smoothly return tooltips to center when mouse leaves the image
+            mediaContainer.addEventListener('mouseleave', () => {
+                gsap.to([tooltipDev, tooltipDes], {
+                    x: 0,
+                    y: 0,
+                    duration: 1.5,
+                    ease: 'power2.out',
+                    overwrite: 'auto'
+                });
+            });
+        }
     </script>
 </body>
 
