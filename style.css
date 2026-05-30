@@ -7991,10 +7991,19 @@ body.dark .about-img-dark {
     font-family: "PPMondwest-Regular", system-ui, sans-serif !important;
     font-size: clamp(0.85rem, 0.4vw + 0.8rem, 1.05rem) !important;
     line-height: 1 !important;
-    user-select: none;
+    user-select: text !important;
+    -webkit-user-select: text !important;
     border-radius: 0 !important;
     pointer-events: auto;
+    cursor: default !important;
+}
+
+.about-tooltip .tooltip-text {
     cursor: text !important;
+}
+
+.tooltip-arrow-svg {
+    cursor: default !important;
 }
 
 /* Tooltip Developer - Light Mode (Default) */
