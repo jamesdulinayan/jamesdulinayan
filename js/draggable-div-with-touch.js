@@ -222,9 +222,9 @@ $(document).ready(function () {
         if ($el.hasClass('draggableA')) href = 'about.html';
         else if ($el.hasClass('draggableB')) href = 'https://drive.google.com/file/d/10ii56-tnkABTpTJusGkihwxdihyR6zFY/view?usp=sharing';
         else if ($el.hasClass('draggableF')) href = 'contact.html';
-        else if ($el.hasClass('draggableC')) href = 'projects.html?filter=web-development';
+        else if ($el.hasClass('draggableC')) href = 'projects.html?filter=graphic-and-motion';
         else if ($el.hasClass('draggableD')) href = 'projects.html?filter=video-editing';
-        else if ($el.hasClass('draggableE')) href = 'projects.html?filter=motion-graphics';
+        else if ($el.hasClass('draggableE')) href = 'projects.html?filter=web-development-and-design';
         else href = 'projects.html';
       }
       
@@ -245,9 +245,9 @@ $(document).ready(function () {
           if ($el.hasClass('draggableA')) href = 'about.html';
           else if ($el.hasClass('draggableB')) href = 'https://drive.google.com/file/d/10ii56-tnkABTpTJusGkihwxdihyR6zFY/view?usp=sharing';
           else if ($el.hasClass('draggableF')) href = 'contact.html';
-          else if ($el.hasClass('draggableC')) href = 'projects.html?filter=web-development';
+          else if ($el.hasClass('draggableC')) href = 'projects.html?filter=graphic-and-motion';
           else if ($el.hasClass('draggableD')) href = 'projects.html?filter=video-editing';
-          else if ($el.hasClass('draggableE')) href = 'projects.html?filter=motion-graphics';
+          else if ($el.hasClass('draggableE')) href = 'projects.html?filter=web-development-and-design';
           else href = 'projects.html';
         }
         if (href) {
