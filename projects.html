@@ -157,6 +157,25 @@
 
 
                 <div class="c-col-6 c-col-6p" data-category="web-development-and-design">
+                    <div class="alioth-blog blog-classic">
+                        <div class="post alioth-post">
+                            <a href="/projects/fleur">
+                                <div class="post-image">
+                                    <img alt="fleur. Project Thumbnail" src="img/projects/fleur/fleur-featured.gif"
+                                        draggable="false">
+                                </div>
+                                <div class="post-meta">
+                                    <div class="post-title">
+                                        <h3>fleur.</h3>
+                                    </div>
+                                    <h5 class="post-cat">2026</h5>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="c-col-6 c-col-6p" data-category="web-development-and-design">
 
                     <div class="alioth-blog blog-classic">
 
@@ -532,16 +551,16 @@
                 function checkFilterWrap() {
                     // Temporarily remove scrollable styling to measure natural flow
                     worksFilter.classList.remove('is-scrollable');
-                    
+
                     const firstButton = buttons[0];
                     const lastButton = buttons[buttons.length - 1];
-                    
+
                     if (lastButton.offsetTop > firstButton.offsetTop) {
                         // Elements would naturally wrap! Force them to scrollable single row
                         worksFilter.classList.add('is-scrollable');
                     }
                 }
-                
+
                 // Run on layout resize and page load
                 window.addEventListener('resize', checkFilterWrap);
                 checkFilterWrap();
@@ -766,7 +785,7 @@
             menuOverlay.classList.add('is-open');
             body.classList.add('menu-open-lock');
             document.documentElement.classList.add('menu-open-lock');
-            
+
             // Intercept scroll actions (mousewheel, touchmove, keys)
             window.addEventListener('DOMMouseScroll', preventDefault, false);
             window.addEventListener(wheelEvent, preventDefault, wheelOpt);
@@ -778,7 +797,7 @@
             menuOverlay.classList.remove('is-open');
             body.classList.remove('menu-open-lock');
             document.documentElement.classList.remove('menu-open-lock');
-            
+
             // Restore standard scrolling
             window.removeEventListener('DOMMouseScroll', preventDefault, false);
             window.removeEventListener(wheelEvent, preventDefault, wheelOpt);
@@ -808,7 +827,7 @@
 
 
 
-        
+
         // Close menu on Escape key press
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && menuOverlay.classList.contains('is-open')) {

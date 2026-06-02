@@ -9612,10 +9612,12 @@ body.dark .meta-pill::before {
 
 .gallery-item-full {
     width: 100% !important;
+    overflow: hidden !important;
 }
 
 .gallery-item-half {
     width: calc(50% - clamp(7.5px, 1vw, 15px)) !important;
+    overflow: hidden !important;
 }
 
 @media (max-width: 767px) {
@@ -9638,8 +9640,11 @@ body.dark .meta-pill::before {
     display: block !important;
     object-fit: cover !important;
     border-radius: 0 !important;
+    background: transparent !important;
+    transform: scale(1.01);
     /* Premium flush clean-cut images */
 }
+
 
 @media (min-width: 1025px) {
     .project-first-card {
