@@ -245,6 +245,31 @@
             content: "access_denied" !important;
         }
 
+        .error-img {
+            z-index: 2 !important;
+            pointer-events: none !important;
+            --base-translate-y: -20%;
+            transform: translate(calc(-50% + var(--shake-x, 0px)), calc(var(--base-translate-y) + var(--shake-y, 0px))) scale(var(--shake-scale, 1)) rotate(var(--shake-rotate, 0deg)) !important;
+            will-change: transform;
+            filter: drop-shadow(0 0 12px rgba(0, 0, 0, 0.15)) !important;
+        }
+
+        @media (max-width: 1024px) {
+            .error-img {
+                --base-translate-y: -30% !important;
+            }
+        }
+
+        @media (min-width: 591px) and (max-width: 1024px) {
+            .error-img {
+                --base-translate-y: -40% !important;
+            }
+        }
+
+        body.dark .error-img {
+            filter: invert(53%) sepia(88%) saturate(3015%) hue-rotate(357deg) brightness(101%) contrast(107%) drop-shadow(0 0 15px rgba(255, 87, 34, 0.8)) !important;
+        }
+
         /* Large 404 Watermark background */
         .watermark-404 {
             position: absolute;
@@ -468,7 +493,9 @@
                                     draggable="false">
                                 <img src="img/me-night.png" alt="James" class="center-me-img me-night-img"
                                     draggable="false">
-                                <img src="img/me-main-404.png" alt="James" class="center-me-img me-main-img"
+                                <img src="img/me-main.png" alt="James" class="center-me-img me-main-img"
+                                    draggable="false">
+                                <img src="img/error.png" alt="Error" class="center-me-img error-img"
                                     draggable="false">
                                 <div class="watermark-404">404</div>
                                 <!-- Draggable Interactive Elements matching Home Page positions -->
@@ -595,6 +622,28 @@
                 e.preventDefault();
             }
         });
+
+        // Randomized, smooth error shaking effect
+        const errorImg = document.querySelector('.error-img');
+        if (errorImg) {
+            let lastUpdate = 0;
+            function shake(timestamp) {
+                if (!lastUpdate || timestamp - lastUpdate >= 45) { // update roughly every 45ms
+                    lastUpdate = timestamp;
+                    const shakeX = (Math.random() * 2.4 - 1.2).toFixed(2) + 'px';
+                    const shakeY = (Math.random() * 1.6 - 0.8).toFixed(2) + 'px';
+                    const shakeScale = (0.99 + Math.random() * 0.02).toFixed(3);
+                    const shakeRotate = (Math.random() * 0.4 - 0.2).toFixed(2) + 'deg';
+                    
+                    errorImg.style.setProperty('--shake-x', shakeX);
+                    errorImg.style.setProperty('--shake-y', shakeY);
+                    errorImg.style.setProperty('--shake-scale', shakeScale);
+                    errorImg.style.setProperty('--shake-rotate', shakeRotate);
+                }
+                requestAnimationFrame(shake);
+            }
+            requestAnimationFrame(shake);
+        }
     </script>
 </body>
 
