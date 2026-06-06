@@ -191,8 +191,6 @@
             pointer-events: none;
             display: inline-block;
             width: max-content;
-            font-family: "Inter", sans-serif;
-            font-weight: 500;
         }
 
         body.dark .drag404-A::after,
@@ -202,6 +200,24 @@
         body.dark .drag404-E::after,
         body.dark .drag404-F::after {
             color: #ffffff !important;
+        }
+
+        @media (max-width: 1024px) {
+            .drag404-A::after,
+            .drag404-B::after,
+            .drag404-C::after,
+            .drag404-D::after,
+            .drag404-E::after,
+            .drag404-F::after {
+                text-align: center !important;
+                white-space: normal !important;
+                font-size: 11px !important;
+                max-width: min(260px, 44vw) !important;
+                overflow-wrap: normal !important;
+                word-break: normal !important;
+                hyphens: none !important;
+                margin-top: 4px !important;
+            }
         }
 
         /* Specific creative text content for 404 folders */
@@ -410,10 +426,10 @@
                         <div class="c-col-6 creative-copy-col"
                             style="display: flex; flex-direction: column; justify-content: center; align-items: flex-start; margin-bottom: 0; position: relative; z-index: 3;">
                             <h1 class="creative-copy-title"
-                                style="font-size: clamp(2.2rem, 4.5vw + 0.8rem, 4.5rem); margin-bottom: 1.5rem; line-height: 1.1;">
+                                style="font-size: clamp(2.2rem, 4.5vw + 0.8rem, 4.5rem); margin-bottom: 1rem; line-height: 1.1;">
                                 Page Not Found
                             </h1>
-                            <p class="creative-copy-text" style="margin-bottom: 2.5rem; max-width: 90%;">
+                            <p class="creative-copy-text" style="margin-bottom: 40px; max-width: 90%;">
                                 The page you are looking for doesn't exist, has been moved, or is temporarily
                                 unavailable.
                             </p>

@@ -9397,8 +9397,8 @@ body.dark .works-page-content .blog-classic .post-cat {
     display: flex;
     flex-wrap: wrap;
     gap: 12px;
-    margin-top: clamp(40px, 6vw, 70px);
-    margin-bottom: clamp(40px, 6vw, 70px);
+    margin-top: clamp(40px, 6vw, 70px) !important;
+    margin-bottom: clamp(40px, 6vw, 70px) !important;
     font-family: "Neue", system-ui, sans-serif;
 }
 
@@ -9459,11 +9459,6 @@ body.dark .filter-btn.active {
     touch-action: pan-x !important;
     /* Prevents scroll hijacking on touch gestures */
     position: relative !important;
-    z-index: 10 !important;
-    /* Keeps container clickable and swipeable above overlays */
-    padding-bottom: 12px !important;
-    margin-top: clamp(25px, 4vw, 40px) !important;
-    margin-bottom: clamp(25px, 4vw, 40px) !important;
     scrollbar-width: none !important;
     -ms-overflow-style: none !important;
     cursor: -webkit-grab !important;
