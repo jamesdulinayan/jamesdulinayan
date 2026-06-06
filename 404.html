@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>404 | James Dulinayan</title>
+
+    <meta name="author" content="James Dulinayan">
+    <meta name="description" content="Page not found.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../../fonts.googleapis.com/css2fb67.css?family=Inter:wght@400;500;600;700&amp;display=swap"
+        rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.typekit.net/dht2lod.css">
+
+    <link rel="shortcut icon" href="img/favicon.png" />
+    <link rel="apple-touch-icon" href="img/favicon.png" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+
+    <style>
+        /* Custom overrides for the 404 page draggable folders */
+        .container .drag404-A,
+        .container .drag404-B,
+        .container .drag404-C,
+        .container .drag404-D,
+        .container .drag404-E,
+        .container .drag404-F {
+            position: absolute;
+            width: clamp(40px, 6vw, 70px);
+            height: clamp(40px, 6vw, 70px);
+            background: url('img/folder.png') no-repeat center !important;
+            background-size: contain !important;
+            cursor: grab;
+            z-index: 10;
+        }
+
+        .container .drag404-A:active,
+        .container .drag404-B:active,
+        .container .drag404-C:active,
+        .container .drag404-D:active,
+        .container .drag404-E:active,
+        .container .drag404-F:active {
+            cursor: grabbing;
+        }
+
+        /* Default scattered coordinates matching home page */
+        .container .drag404-A {
+            left: 77%;
+            top: 45%;
+        }
+
+        .container .drag404-B {
+            left: 50%;
+            top: 20%;
+        }
+
+        .container .drag404-C {
+            left: 70%;
+            top: 27%;
+        }
+
+        .container .drag404-D {
+            left: 7%;
+            top: 50%;
+        }
+
+        .container .drag404-E {
+            left: 30%;
+            top: 25%;
+        }
+
+        .container .drag404-F {
+            left: 10%;
+            top: 35%;
+        }
+
+        @media (max-width: 1024px) {
+            .container .drag404-A {
+                left: 80%;
+                top: 40%;
+            }
+
+            .container .drag404-B {
+                left: 55%;
+                top: 7%;
+            }
+
+            .container .drag404-C {
+                left: 70%;
+                top: 15%;
+            }
+
+            .container .drag404-D {
+                left: 15%;
+                top: 45%;
+            }
+
+            .container .drag404-E {
+                left: 35%;
+                top: 8%;
+            }
+
+            .container .drag404-F {
+                left: 14%;
+                top: 20%;
+            }
+        }
+
+        @media (max-width: 791px) {
+            .container .drag404-A {
+                left: 80%;
+                top: 39%;
+            }
+
+            .container .drag404-B {
+                left: 55%;
+                top: 8%;
+            }
+
+            .container .drag404-C {
+                left: 75%;
+                top: 15%;
+            }
+
+            .container .drag404-D {
+                left: 10%;
+                top: 40%;
+            }
+
+            .container .drag404-E {
+                left: 32%;
+                top: 8%;
+            }
+
+            .container .drag404-F {
+                left: 14%;
+                top: 20%;
+            }
+        }
+
+        @media (max-width: 591px) {
+            .container .drag404-A {
+                left: 81%;
+                top: 47%;
+            }
+
+            .container .drag404-B {
+                left: 58%;
+                top: 14%;
+            }
+
+            .container .drag404-C {
+                left: 75%;
+                top: 24%;
+            }
+
+            .container .drag404-D {
+                left: 10%;
+                top: 46%;
+            }
+
+            .container .drag404-E {
+                left: 33%;
+                top: 7%;
+            }
+
+            .container .drag404-F {
+                left: 13%;
+                top: 27%;
+            }
+        }
+
+        /* Shared layout properties for folder text labels */
+        .drag404-A::after,
+        .drag404-B::after,
+        .drag404-C::after,
+        .drag404-D::after,
+        .drag404-E::after,
+        .drag404-F::after {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translate(-50%, 4px);
+            white-space: nowrap;
+            font-size: clamp(8px, 1.5vw, 12px);
+            line-height: 1.2;
+            color: #000 !important;
+            pointer-events: none;
+            display: inline-block;
+            width: max-content;
+            font-family: "Inter", sans-serif;
+            font-weight: 500;
+        }
+
+        body.dark .drag404-A::after,
+        body.dark .drag404-B::after,
+        body.dark .drag404-C::after,
+        body.dark .drag404-D::after,
+        body.dark .drag404-E::after,
+        body.dark .drag404-F::after {
+            color: #ffffff !important;
+        }
+
+        /* Specific creative text content for 404 folders */
+        .drag404-A::after { content: "page_not_found" !important; }
+        .drag404-B::after { content: "err_connection_refused" !important; }
+        .drag404-C::after { content: "status_404" !important; }
+        .drag404-D::after { content: "bad_request" !important; }
+        .drag404-E::after { content: "broken_link" !important; }
+        .drag404-F::after { content: "access_denied" !important; }
+
+        /* Large 404 Watermark background */
+        .watermark-404 {
+            position: absolute;
+            font-size: clamp(8rem, 25vw, 22rem);
+            font-family: "Roboto Mono", ui-monospace, monospace;
+            font-weight: 700;
+            color: rgba(0, 0, 0, 0.08);
+            pointer-events: none;
+            user-select: none;
+            z-index: 1;
+            line-height: 1;
+            transition: color 0.3s ease;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        body.dark .watermark-404 {
+            color: rgba(255, 255, 255, 0.08);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 1024px) {
+            .creative-media-col {
+                min-height: 50vh !important;
+                height: 100cqw !important;
+            }
+        }
+
+        .go-back-link {
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 8px !important;
+            text-decoration: none !important;
+            position: relative !important;
+            padding-bottom: 4px !important;
+        }
+
+        .go-back-link::after {
+            content: '' !important;
+            position: absolute !important;
+            bottom: 0 !important;
+            left: 0 !important;
+            width: 100% !important;
+            height: 1px !important;
+            background-color: rgba(0, 0, 0, 0.35) !important;
+            transform: scaleX(0) !important;
+            transform-origin: right !important;
+            transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+        }
+
+        body.dark .go-back-link::after {
+            background-color: rgba(255, 255, 255, 0.35) !important;
+        }
+
+        .go-back-link:hover::after {
+            transform: scaleX(1) !important;
+            transform-origin: left !important;
+        }
+
+        .go-back-link .arrow-svg {
+            width: 14px;
+            height: 14px;
+            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+            display: inline-block !important;
+            will-change: transform !important;
+            backface-visibility: hidden !important;
+            -webkit-backface-visibility: hidden !important;
+        }
+
+        .go-back-link:hover .arrow-svg {
+            transform: translate3d(6px, 0, 0) !important;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('dark');
+            document.documentElement.classList.add('dark');
+        }
+    </script>
+
+    <header class="index-header">
+        <div class="index-logo-col">
+            <a href="/">
+                <img src="img/site-logo.png" alt="James Dulinayan" class="index-logo-img" draggable="false">
+            </a>
+        </div>
+        <div class="index-controls-col">
+            <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Dark Mode">
+                <i class="fa-solid fa-moon"></i>
+            </button>
+            <button id="index-hamburger" class="index-hamburger-btn" aria-label="Toggle Navigation Menu">
+                <div class="hamburger-inner">
+                    <span class="hamburger-line line-1"></span>
+                    <span class="hamburger-line line-2"></span>
+                    <span class="hamburger-line line-3"></span>
+                </div>
+            </button>
+        </div>
+    </header>
+
+    <!-- Custom Full-Page Overlay Menu -->
+    <div id="index-menu-overlay" class="index-menu-overlay grain">
+        <div class="index-menu-bg-grain"></div>
+        <div class="index-menu-content">
+            <!-- Navigation Links -->
+            <nav class="index-menu-nav">
+                <ul class="index-menu-list">
+                    <li class="index-menu-item" style="--item-index: 1;">
+                        <a href="/" class="index-menu-link">
+                            <span class="index-menu-text" data-hover="Home">Home</span>
+                        </a>
+                    </li>
+                    <li class="index-menu-item" style="--item-index: 2;">
+                        <a href="/about" class="index-menu-link">
+                            <span class="index-menu-text" data-hover="About">About</span>
+                        </a>
+                    </li>
+                    <li class="index-menu-item has-sparkle" style="--item-index: 3;">
+                        <a href="/projects" class="index-menu-link">
+                            <span class="index-menu-text" data-hover="Projects">Projects</span>
+                        </a>
+                    </li>
+                    <li class="index-menu-item" style="--item-index: 4;">
+                        <a href="/contact" class="index-menu-link">
+                            <span class="index-menu-text" data-hover="Contact">Contact</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Bottom Metadata Rows -->
+            <div class="index-menu-meta-row">
+                <div class="index-menu-meta-col">
+                    <span class="cta-footer__col-label">Social</span>
+                    <ul class="cta-footer__icon-row">
+                        <li>
+                            <a href="https://www.facebook.com/jamesdulinayan" target="_blank"
+                                class="cta-footer__icon-link" aria-label="Facebook">
+                                <i class="fa-brands fa-facebook-f" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.instagram.com/jamesdulinayan/" target="_blank"
+                                class="cta-footer__icon-link" aria-label="Instagram">
+                                <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://ph.linkedin.com/in/jamesdulinayan" target="_blank"
+                                class="cta-footer__icon-link" aria-label="LinkedIn">
+                                <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="index-menu-meta-col">
+                    <span class="cta-footer__col-label">Let's Connect</span>
+                    <a href="mailto:james.dulinayan@gmail.com"
+                        class="cta-footer__col-value">jamesdulinayan@gmail.com</a>
+                </div>
+                <div class="index-menu-meta-col">
+                    <span class="cta-footer__col-label">Contact</span>
+                    <a href="tel:+639563620905" class="cta-footer__col-value">+63 956 362 0905</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="page" data-barba="container">
+        <div id="content" class="page-content">
+            <section class="section section-creative creative-100vh grain">
+                <div class="wrapper-full creative-layout" style="margin: 0;">
+                    <div class="creative-layout__row">
+                        <!-- Left Column: Copy & Actions -->
+                        <div class="c-col-6 creative-copy-col"
+                            style="display: flex; flex-direction: column; justify-content: center; align-items: flex-start; margin-bottom: 0; position: relative; z-index: 3;">
+                            <h1 class="creative-copy-title"
+                                style="font-size: clamp(2.2rem, 4.5vw + 0.8rem, 4.5rem); margin-bottom: 1.5rem; line-height: 1.1;">
+                                Page Not Found
+                            </h1>
+                            <p class="creative-copy-text" style="margin-bottom: 2.5rem; max-width: 90%;">
+                                The page you are looking for doesn't exist, has been moved, or is temporarily
+                                unavailable.
+                            </p>
+                            <a href="/" class="go-back-link cta-footer__col-value">
+                                Go Back <svg class="arrow-svg" viewBox="0 0 16 16" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M1 8H15M15 8L10 3M15 8L10 13" stroke="currentColor" stroke-width="1.8"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </a>
+                        </div>
+
+                        <!-- Right Column: Interactive Canvas -->
+                        <div class="c-col-6 creative-media-col"
+                            style="box-sizing: border-box; margin-bottom: 0; padding: 0; position: relative; z-index: 1;">
+                            <div class="container" style="height: 100%; position: relative;">
+                                <img src="img/me-day.png" alt="James" class="center-me-img me-day-img"
+                                    draggable="false">
+                                <img src="img/me-night.png" alt="James" class="center-me-img me-night-img"
+                                    draggable="false">
+                                <img src="img/me-main-404.png" alt="James" class="center-me-img me-main-img"
+                                    draggable="false">
+                                <div class="watermark-404">404</div>
+                                <!-- Draggable Interactive Elements matching Home Page positions -->
+                                <div class="drag404-A"></div>
+                                <div class="drag404-B"></div>
+                                <div class="drag404-C"></div>
+                                <div class="drag404-D"></div>
+                                <div class="drag404-E"></div>
+                                <div class="drag404-F"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/barba.js"></script>
+    <script src="js/locomotive-scroll.min.js"></script>
+    <script src="js/gsap.js"></script>
+    <script src="js/scripts.js"></script>
+
+    <script src='https://draggabilly.desandro.com/draggabilly.pkgd.js'></script>
+    <script src="js/draggable-div-with-touch.js"></script>
+
+    <script>
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const body = document.body;
+
+        const currentTheme = localStorage.getItem('theme');
+        if (currentTheme === 'dark') {
+            body.classList.add('dark');
+            document.documentElement.classList.add('dark');
+            themeToggleBtn.innerHTML = '<i class="fa-solid fa-sun"></i>';
+        } else {
+            themeToggleBtn.innerHTML = '<i class="fa-solid fa-moon"></i>';
+        }
+
+        themeToggleBtn.addEventListener('click', () => {
+            body.classList.toggle('dark');
+            document.documentElement.toggle('dark');
+
+            if (body.classList.contains('dark')) {
+                localStorage.setItem('theme', 'dark');
+                themeToggleBtn.innerHTML = '<i class="fa-solid fa-sun"></i>';
+            } else {
+                localStorage.setItem('theme', 'light');
+                themeToggleBtn.innerHTML = '<i class="fa-solid fa-moon"></i>';
+            }
+        });
+
+        // Hamburger Toggling
+        const hamburgerBtn = document.getElementById('index-hamburger');
+        const menuOverlay = document.getElementById('index-menu-overlay');
+        const menuLinks = document.querySelectorAll('.index-menu-link');
+
+        function preventDefault(e) {
+            e.preventDefault();
+        }
+
+        const wheelOpt = { passive: false };
+        const wheelEvent = 'onwheel' in document.createElement('div') ? 'wheel' : 'mousewheel';
+
+        function openMenu() {
+            hamburgerBtn.classList.add('is-active');
+            menuOverlay.classList.add('is-open');
+            body.classList.add('menu-open-lock');
+            document.documentElement.classList.add('menu-open-lock');
+
+            window.addEventListener('DOMMouseScroll', preventDefault, false);
+            window.addEventListener(wheelEvent, preventDefault, wheelOpt);
+            window.addEventListener('touchmove', preventDefault, wheelOpt);
+        }
+
+        function closeMenu() {
+            hamburgerBtn.classList.remove('is-active');
+            menuOverlay.classList.remove('is-open');
+            body.classList.remove('menu-open-lock');
+            document.documentElement.classList.remove('menu-open-lock');
+
+            window.removeEventListener('DOMMouseScroll', preventDefault, false);
+            window.removeEventListener(wheelEvent, preventDefault, wheelOpt);
+            window.removeEventListener('touchmove', preventDefault, wheelOpt);
+        }
+
+        hamburgerBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (menuOverlay.classList.contains('is-open')) {
+                closeMenu();
+            } else {
+                openMenu();
+            }
+        });
+
+        menuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                closeMenu();
+            });
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && menuOverlay.classList.contains('is-open')) {
+                closeMenu();
+            }
+        });
+
+        // Initialize Draggabilly for 404 items matching home page classes
+        const draggables = ['.drag404-A', '.drag404-B', '.drag404-C', '.drag404-D', '.drag404-E', '.drag404-F'];
+        draggables.forEach(selector => {
+            const elem = document.querySelector(selector);
+            if (elem) {
+                new Draggabilly(elem, {
+                    containment: '.creative-media-col .container'
+                });
+            }
+        });
+
+        // Prevent right-click context menu specifically on images
+        document.addEventListener('contextmenu', (e) => {
+            const isMeImg = e.target.classList.contains('center-me-img');
+            if (isMeImg) {
+                e.preventDefault();
+            }
+        });
+    </script>
+</body>
+
+</html>
