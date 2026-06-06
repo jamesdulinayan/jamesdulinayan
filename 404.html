@@ -205,12 +205,29 @@
         }
 
         /* Specific creative text content for 404 folders */
-        .drag404-A::after { content: "page_not_found" !important; }
-        .drag404-B::after { content: "err_connection_refused" !important; }
-        .drag404-C::after { content: "status_404" !important; }
-        .drag404-D::after { content: "bad_request" !important; }
-        .drag404-E::after { content: "broken_link" !important; }
-        .drag404-F::after { content: "access_denied" !important; }
+        .drag404-A::after {
+            content: "broken_link" !important;
+        }
+
+        .drag404-B::after {
+            content: "status_404" !important;
+        }
+
+        .drag404-C::after {
+            content: "page_not_found" !important;
+        }
+
+        .drag404-D::after {
+            content: "bad_request" !important;
+        }
+
+        .drag404-E::after {
+            content: "err_connection_refused" !important;
+        }
+
+        .drag404-F::after {
+            content: "access_denied" !important;
+        }
 
         /* Large 404 Watermark background */
         .watermark-404 {
@@ -218,7 +235,7 @@
             font-size: clamp(8rem, 25vw, 22rem);
             font-family: "Roboto Mono", ui-monospace, monospace;
             font-weight: 700;
-            color: rgba(0, 0, 0, 0.08);
+            color: rgba(0, 0, 0, 0.10);
             pointer-events: none;
             user-select: none;
             z-index: 1;
@@ -230,7 +247,7 @@
         }
 
         body.dark .watermark-404 {
-            color: rgba(255, 255, 255, 0.08);
+            color: rgba(255, 255, 255, 0.12);
         }
 
         /* Responsive adjustments */
