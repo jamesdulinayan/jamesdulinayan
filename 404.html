@@ -274,6 +274,24 @@
             }
         }
 
+        /* Tablet specific size & placement */
+        @media (min-width: 592px) and (max-width: 1024px) {
+            .watermark-404 {
+                font-size: clamp(14rem, 40vw, 26rem) !important;
+                top: 36% !important;
+                transform: translate(-50%, -50%) !important;
+            }
+        }
+
+        /* Mobile specific size & placement */
+        @media (max-width: 591px) {
+            .watermark-404 {
+                font-size: clamp(9rem, 30vw, 15rem) !important;
+                top: 42% !important;
+                transform: translate(-50%, -50%) !important;
+            }
+        }
+
         .go-back-link {
             display: inline-flex !important;
             align-items: center !important;
