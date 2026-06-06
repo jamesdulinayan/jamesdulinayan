@@ -154,7 +154,170 @@ imagesImg.each(function(i){i++
 let $this=$(this),img=$this.children('img'),width=$this.outerWidth(),height=$this.outerHeight();gsap.set(img,{width:width,height:height})
 gsap.set($this,{width:0})
 $this.addClass('post_'+i)})}}
-function aliothProjectPage(){let projectHeader=$('.project-page-header'),projectImage=$('.project-featured-image'),projectImg=projectImage.children('img'),animate=projectHeader.data('animate'),title=projectHeader.find('.project-title'),cat=projectHeader.find('.project-cat'),other=projectHeader.find('.project-other h5'),summary=projectHeader.find('.meta-summary h5'),video=projectHeader.find('.project-featured-video'),nextVideo=$('.next-project-video');if(video.length){let pphEmbed=video.children('.pph-video')
+function aliothProjectPage(){
+    const ALL_PROJECTS = [
+        {
+            slug: 'summit-collective',
+            title: 'Summit Collective',
+            category: 'web-development-and-design',
+            img: '../img/projects/summit-collective/summit-featured.gif',
+            year: '2026'
+        },
+        {
+            slug: 'fleur',
+            title: 'fleur.',
+            category: 'web-development-and-design',
+            img: '../img/projects/fleur/fleur-featured.gif',
+            year: '2026'
+        },
+        {
+            slug: 'abe-group',
+            title: 'A.B.E Group',
+            category: 'web-development-and-design',
+            img: '../img/projects/abe-group/abe-featured.jpg',
+            year: '2025'
+        },
+        {
+            slug: 'caliz-music-studio',
+            title: 'Caliz Music Studio',
+            category: 'web-development-and-design',
+            img: '../img/projects/caliz-music-studio/caliz-featured.gif',
+            year: '2022'
+        },
+        {
+            slug: 'the-ocean-project',
+            title: 'The Ocean Project',
+            category: 'web-development-and-design',
+            img: '../img/projects/ocean-project/ocean-featured.png',
+            year: '2022'
+        },
+        {
+            slug: 'enuf-proj',
+            title: 'enuf-proj',
+            category: 'graphic-and-motion',
+            img: '../img/projects/enuf-proj/enuf-featured.jpg',
+            year: '2022'
+        },
+        {
+            slug: 'lqfclinic',
+            title: 'Lagman Family Clinic',
+            category: 'web-development-and-design',
+            img: '../img/projects/lqfclinic/lqfclinic-featured.png',
+            year: '2022'
+        },
+        {
+            slug: 'kapampangan-folk',
+            title: 'Kapampangan Folk',
+            category: 'graphic-and-motion',
+            img: '../img/projects/kapampangan-folk/kapampangan-folk-featured.png',
+            year: '2022'
+        },
+        {
+            slug: 'ad-infinitum',
+            title: 'Ad Infinitum',
+            category: 'graphic-and-motion',
+            img: '../img/projects/ad infinitum/infinitum-featured.png',
+            year: '2020'
+        },
+        {
+            slug: 'wreck-it-hau',
+            title: 'Wreck-It HAU',
+            category: 'graphic-and-motion',
+            img: '../img/projects/wreck-it-hau/wreck-it-hau-featured.gif',
+            year: '2020'
+        },
+        {
+            slug: 'kaleidoscope',
+            title: 'Kaleidoscope',
+            category: 'video-editing',
+            img: '../img/projects/kaleidoscope/kaleidoscope-featured.png',
+            year: '2020'
+        },
+        {
+            slug: 'hauwak-kamay',
+            title: 'HAUwak Kamay',
+            category: 'graphic-and-motion',
+            img: '../img/projects/hauwak-kamay/hauwak-kamay-featured.gif',
+            year: '2020'
+        },
+        {
+            slug: 'ivy-league',
+            title: 'I.V.Y. League',
+            category: 'graphic-and-motion',
+            img: '../img/projects/ivy-league/ivy-featured.png',
+            year: '2020'
+        }
+    ];
+
+    const otherProjectsWrapper = $('.project-page .project-separator + .wrapper-full');
+    if (otherProjectsWrapper.length > 0) {
+        const currentPath = window.location.pathname;
+        const currentSlug = currentPath.split('/').pop().replace('.html', '');
+        
+        const currentProj = ALL_PROJECTS.find(p => p.slug === currentSlug);
+        const currentCategory = currentProj ? currentProj.category : 'web-development-and-design';
+        
+        const availableProjects = ALL_PROJECTS.filter(p => p.slug !== currentSlug);
+        
+        const sameCategoryProjects = availableProjects.filter(p => p.category === currentCategory);
+        const otherCategoryProjects = availableProjects.filter(p => p.category !== currentCategory);
+        
+        function shuffle(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+        
+        const shuffledSame = shuffle([...sameCategoryProjects]);
+        const shuffledOthers = shuffle([...otherCategoryProjects]);
+        
+        const selectedProjects = [];
+        selectedProjects.push(...shuffledSame);
+        
+        if (selectedProjects.length < 3) {
+            selectedProjects.push(...shuffledOthers);
+        }
+        
+        const final3 = selectedProjects.slice(0, 3);
+        
+        otherProjectsWrapper.children().not(':first-child').remove();
+        
+        final3.forEach((proj, idx) => {
+            let cardClass = "c-col-4 c-col-4p";
+            if (idx === 0) {
+                cardClass += " project-first-card";
+            } else if (idx === 1) {
+                cardClass += " hide_tablet";
+            } else if (idx === 2) {
+                cardClass += " project-last-card";
+            }
+            
+            const cardHtml = `
+                <div class="${cardClass}">
+                    <div class="alioth-blog blog-classic">
+                        <div class="post alioth-post">
+                            <a href="/projects/${proj.slug}">
+                                <div class="post-image">
+                                    <img alt="Post Image" src="${proj.img}">
+                                </div>
+                                <div class="post-meta">
+                                    <div class="post-title">
+                                        <h3>${proj.title}</h3>
+                                    </div>
+                                    <h5 class="post-cat">${proj.year}</h5>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            `;
+            otherProjectsWrapper.append(cardHtml);
+        });
+    }
+
+    let projectHeader=$('.project-page-header'),projectImage=$('.project-featured-image'),projectImg=projectImage.children('img'),animate=projectHeader.data('animate'),title=projectHeader.find('.project-title'),cat=projectHeader.find('.project-cat'),other=projectHeader.find('.project-other h5'),summary=projectHeader.find('.meta-summary h5'),video=projectHeader.find('.project-featured-video'),nextVideo=$('.next-project-video');if(video.length){let pphEmbed=video.children('.pph-video')
 const pphVid=new Plyr(pphEmbed,{controls:false,autoplay:true,clickToPlay:false,muted:true,autopause:false,volume:0,loop:{active:true},quality:{default:1080}});}
 if(nextVideo.length){const npVid=new Plyr(nextVideo,{controls:false,autoplay:true,clickToPlay:false,muted:true,autopause:false,volume:0,loop:{active:true},quality:{default:1080}});}
 if(animate==true){let titleText=$('.project-title h1');new SplitText(titleText,{type:'chars, lines',charsClass:'tt-char',linesClass:'tt-line'})
