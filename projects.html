@@ -163,7 +163,7 @@
                                 </div>
                                 <div class="post-meta">
                                     <div class="post-title">
-                                        <h3>Summit Collective</h3>
+                                        <h3>Summit Collective <span class="project-category-inline">Web Development & Design</span></h3>
                                     </div>
                                     <h5 class="post-cat">2026</h5>
                                 </div>
@@ -185,7 +185,7 @@
                                 </div>
                                 <div class="post-meta">
                                     <div class="post-title">
-                                        <h3>fleur.</h3>
+                                        <h3>fleur. <span class="project-category-inline">Web Development & Design</span></h3>
                                     </div>
                                     <h5 class="post-cat">2026</h5>
                                 </div>
@@ -212,7 +212,7 @@
                                 <div class="post-meta">
 
                                     <div class="post-title">
-                                        <h3>A.B.E Group</h3>
+                                        <h3>A.B.E Group <span class="project-category-inline">Web Development & Design</span></h3>
                                     </div>
                                     <h5 class="post-cat">2025</h5>
 
@@ -242,7 +242,7 @@
                                 <div class="post-meta">
 
                                     <div class="post-title">
-                                        <h3>Caliz Music Studio</h3>
+                                        <h3>Caliz Music Studio <span class="project-category-inline">Web Development & Design</span></h3>
                                     </div>
                                     <h5 class="post-cat">2022</h5>
 
@@ -271,7 +271,7 @@
                                 <div class="post-meta">
 
                                     <div class="post-title">
-                                        <h3>The Ocean Project</h3>
+                                        <h3>The Ocean Project <span class="project-category-inline">Web Development & Design</span></h3>
                                     </div>
                                     <h5 class="post-cat">2022</h5>
 
@@ -301,7 +301,7 @@
                                 <div class="post-meta">
 
                                     <div class="post-title">
-                                        <h3>enuf-proj</h3>
+                                        <h3>enuf-proj <span class="project-category-inline">Graphic & Motion</span></h3>
                                     </div>
                                     <h5 class="post-cat">2022</h5>
 
@@ -334,7 +334,7 @@
                                 <div class="post-meta">
 
                                     <div class="post-title">
-                                        <h3>Lagman Family Clinic</h3>
+                                        <h3>Lagman Family Clinic <span class="project-category-inline">Web Development & Design</span></h3>
                                     </div>
                                     <h5 class="post-cat">2022</h5>
 
@@ -367,7 +367,7 @@
                                 <div class="post-meta">
 
                                     <div class="post-title">
-                                        <h3 class="post-works">Kapampangan Folk</h3>
+                                        <h3 class="post-works">Kapampangan Folk <span class="project-category-inline">Graphic & Motion</span></h3>
                                     </div>
                                     <h5 class="post-cat">2022</h5>
 
@@ -397,7 +397,7 @@
                                 <div class="post-meta">
 
                                     <div class="post-title">
-                                        <h3>Ad Infinitum</h3>
+                                        <h3>Ad Infinitum <span class="project-category-inline">Graphic & Motion</span></h3>
                                     </div>
                                     <h5 class="post-cat">2020</h5>
 
@@ -427,7 +427,7 @@
                                 <div class="post-meta">
 
                                     <div class="post-title">
-                                        <h3>Wreck-It HAU</h3>
+                                        <h3>Wreck-It HAU <span class="project-category-inline">Graphic & Motion</span></h3>
                                     </div>
                                     <h5 class="post-cat">2020</h5>
 
@@ -458,7 +458,7 @@
                                 <div class="post-meta">
 
                                     <div class="post-title">
-                                        <h3>Kaleidoscope</h3>
+                                        <h3>Kaleidoscope <span class="project-category-inline">Video Editing</span></h3>
                                     </div>
                                     <h5 class="post-cat">2020</h5>
 
@@ -488,7 +488,7 @@
                                 <div class="post-meta">
 
                                     <div class="post-title">
-                                        <h3>HAUwak Kamay</h3>
+                                        <h3>HAUwak Kamay <span class="project-category-inline">Graphic & Motion</span></h3>
                                     </div>
                                     <h5 class="post-cat">2020</h5>
 
@@ -518,7 +518,7 @@
                                 <div class="post-meta">
 
                                     <div class="post-title">
-                                        <h3>I.V.Y. League</h3>
+                                        <h3>I.V.Y. League <span class="project-category-inline">Graphic & Motion</span></h3>
                                     </div>
                                     <h5 class="post-cat">2020</h5>
 
@@ -685,6 +685,10 @@
 
             buttons.forEach(btn => {
                 btn.addEventListener('click', () => {
+                    if (btn.classList.contains('active')) {
+                        return;
+                    }
+
                     buttons.forEach(b => b.classList.remove('active'));
                     btn.classList.add('active');
 
@@ -700,12 +704,20 @@
                     window.history.pushState({}, '', url);
 
                     if (typeof gsap !== 'undefined') {
-                        // Smooth GSAP scaling transition
+                        // Smooth GSAP fade transition
                         gsap.to(items, {
-                            duration: 0.25,
+                            duration: 0.3,
                             opacity: 0,
-                            scale: 0.95,
+                            ease: 'CustomEase.create("cubic", "0.63,0.03,0.21,1")',
                             onComplete: () => {
+                                // Toggle visibility of category tags while cards are hidden (opacity: 0)
+                                const categoryInlineTags = document.querySelectorAll('.project-category-inline');
+                                if (filter === 'all') {
+                                    categoryInlineTags.forEach(el => el.style.setProperty('display', '', 'important'));
+                                } else {
+                                    categoryInlineTags.forEach(el => el.style.setProperty('display', 'none', 'important'));
+                                }
+
                                 items.forEach(item => {
                                     const cat = item.getAttribute('data-category');
                                     if (filter === 'all' || cat === filter) {
@@ -718,15 +730,21 @@
                                 updateGridGutters();
 
                                 gsap.to(items, {
-                                    duration: 0.35,
+                                    duration: 0.3,
                                     opacity: 1,
-                                    scale: 1,
-                                    clearProps: 'transform'
+                                    ease: 'CustomEase.create("cubic", "0.63,0.03,0.21,1")'
                                 });
                             }
                         });
                     } else {
                         // Instant fallback
+                        const categoryInlineTags = document.querySelectorAll('.project-category-inline');
+                        if (filter === 'all') {
+                            categoryInlineTags.forEach(el => el.style.setProperty('display', '', 'important'));
+                        } else {
+                            categoryInlineTags.forEach(el => el.style.setProperty('display', 'none', 'important'));
+                        }
+
                         items.forEach(item => {
                             const cat = item.getAttribute('data-category');
                             if (filter === 'all' || cat === filter) {

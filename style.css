@@ -9334,6 +9334,31 @@ body.dark .works-page-content .post-meta::after {
     font-weight: 500 !important;
     font-size: clamp(1.35rem, 1.2vw + 1.1rem, 2rem) !important;
     transition: color 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+}
+
+.works-page-content .post-title h3 span.project-category-inline {
+    font-size: clamp(0.75rem, 0.3vw + 0.7rem, 0.88rem) !important;
+    font-weight: 400 !important;
+    color: #8e8a8a !important;
+    transition: color 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    vertical-align: middle !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    margin-top: 0px !important;
+}
+
+.works-page-content .post-title h3 span.project-category-inline::before {
+    content: "" !important;
+    display: inline-block !important;
+    width: 14px !important;
+    height: 1px !important;
+    background-color: #8e8a8a !important;
+    margin: 0 6px 0 0 !important;
+    opacity: 0.6 !important;
+    vertical-align: middle !important;
 }
 
 .works-page-content .post.alioth-post a:hover .post-title h3 {
@@ -9343,6 +9368,14 @@ body.dark .works-page-content .post-meta::after {
 body.dark .works-page-content .post-title h3,
 body.dark .project-info-col .alioth-services.style_2 .post-title h3 {
     color: #bdbdbd !important;
+}
+
+body.dark .works-page-content .post-title h3 span.project-category-inline {
+    color: #808080 !important;
+}
+
+body.dark .works-page-content .post-title h3 span.project-category-inline::before {
+    background-color: #808080 !important;
 }
 
 body.dark .works-page-content .post.alioth-post a:hover .post-title h3 {
@@ -9398,6 +9431,8 @@ body.dark .works-page-content .blog-classic .post-cat {
     border-color: rgba(0, 0, 0, 0.35) !important;
     color: #1d1b1c;
     font-weight: 500;
+    pointer-events: none !important;
+    cursor: default !important;
 }
 
 /* Dark Mode Works Page Filters */
