@@ -140,13 +140,15 @@
                             </div>
 
                             <h2 class="creative-copy-text">
-                                This project centered on establishing a modern, highly accessible web platform for Lagman
+                                This project centered on establishing a modern, highly accessible web platform for
+                                Lagman
                                 Qualicare Family Clinic to streamline patient discoverability and booking workflows.
                                 <br><br>
                                 The main development goal was to transition the clinic’s services into a reassuring,
                                 clean, and fully responsive digital interface. I structured the custom frontend using
                                 intuitive service categorizations, seamless booking pathways, and a mobile-first layout
-                                to ensure patients can schedule appointments and locate critical medical updates effortlessly.
+                                to ensure patients can schedule appointments and locate critical medical updates
+                                effortlessly.
                             </h2>
 
                             <div style="margin-top: 40px;">
@@ -201,9 +203,9 @@
                 <div class="wrapper-full">
                     <div class="c-col-12 c-col-12p"
                         style="padding-left: 0 !important; margin-bottom: clamp(40px, 6vw, 70px)  !important;">
-                        <div class="post-title">
-                            <h3>Other Projects</h3>
-                        </div>
+                        <h1 class="creative-copy-title"
+                            style="margin-left: 0 !important; padding-left: 0 !important; margin-bottom: 0 !important;">
+                            Other Projects</h1>
                     </div>
                     <!-- Card: Caliz Music Studio -->
                     <div class="c-col-4 c-col-4p project-first-card">
@@ -313,7 +315,7 @@
             menuOverlay.classList.add('is-open');
             body.classList.add('menu-open-lock');
             document.documentElement.classList.add('menu-open-lock');
-            
+
             // Intercept scroll actions (mousewheel, touchmove, keys)
             window.addEventListener('DOMMouseScroll', preventDefault, false);
             window.addEventListener(wheelEvent, preventDefault, wheelOpt);
@@ -325,7 +327,7 @@
             menuOverlay.classList.remove('is-open');
             body.classList.remove('menu-open-lock');
             document.documentElement.classList.remove('menu-open-lock');
-            
+
             // Restore standard scrolling
             window.removeEventListener('DOMMouseScroll', preventDefault, false);
             window.removeEventListener(wheelEvent, preventDefault, wheelOpt);
@@ -355,7 +357,7 @@
 
 
 
-        
+
         // Close menu on Escape key press
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && menuOverlay.classList.contains('is-open')) {

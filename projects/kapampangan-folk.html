@@ -139,13 +139,18 @@
                             </div>
 
                             <h2 class="creative-copy-text">
-                                This project focuses on producing a distinct digital collage series designed to preserve and
+                                This project focuses on producing a distinct digital collage series designed to preserve
+                                and
                                 visually interpret the rich musical heritage of Kapampangan culture.
                                 <br><br>
-                                The primary goal of this digital collage series was to translate iconic local folk songs—such as
-                                'Atin Cu Pung Singsing', 'Dalumdum Ning Bengi', and 'Inyang Malati Ku'—into rich, multi-layered
-                                visual compositions. By merging vintage photography, organic textures, and surreal graphic structures,
-                                the resulting artworks bridge traditional folklore with modern design to keep local heritage alive.
+                                The primary goal of this digital collage series was to translate iconic local folk
+                                songs—such as
+                                'Atin Cu Pung Singsing', 'Dalumdum Ning Bengi', and 'Inyang Malati Ku'—into rich,
+                                multi-layered
+                                visual compositions. By merging vintage photography, organic textures, and surreal
+                                graphic structures,
+                                the resulting artworks bridge traditional folklore with modern design to keep local
+                                heritage alive.
                             </h2>
 
                             <div style="margin-top: 40px;">
@@ -199,9 +204,9 @@
                 <div class="wrapper-full">
                     <div class="c-col-12 c-col-12p"
                         style="padding-left: 0 !important; margin-bottom: clamp(40px, 6vw, 70px)  !important;">
-                        <div class="post-title">
-                            <h3>Other Projects</h3>
-                        </div>
+                        <h1 class="creative-copy-title"
+                            style="margin-left: 0 !important; padding-left: 0 !important; margin-bottom: 0 !important;">
+                            Other Projects</h1>
                     </div>
                     <!-- Card: enuf-proj -->
                     <div class="c-col-4 c-col-4p project-first-card">
@@ -311,7 +316,7 @@
             menuOverlay.classList.add('is-open');
             body.classList.add('menu-open-lock');
             document.documentElement.classList.add('menu-open-lock');
-            
+
             // Intercept scroll actions (mousewheel, touchmove, keys)
             window.addEventListener('DOMMouseScroll', preventDefault, false);
             window.addEventListener(wheelEvent, preventDefault, wheelOpt);
@@ -323,7 +328,7 @@
             menuOverlay.classList.remove('is-open');
             body.classList.remove('menu-open-lock');
             document.documentElement.classList.remove('menu-open-lock');
-            
+
             // Restore standard scrolling
             window.removeEventListener('DOMMouseScroll', preventDefault, false);
             window.removeEventListener(wheelEvent, preventDefault, wheelOpt);
@@ -353,7 +358,7 @@
 
 
 
-        
+
         // Close menu on Escape key press
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && menuOverlay.classList.contains('is-open')) {

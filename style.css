@@ -4422,8 +4422,6 @@ section:after {
 .c-col-6,
 .c-col-12 {
     float: left;
-    padding-left: 15px;
-    padding-right: 15px;
     margin-bottom: 30px;
     -webkit-box-sizing: border-box;
     box-sizing: border-box
@@ -8903,7 +8901,7 @@ body.dark .creative-copy-title {
     transition: color 0.2s ease, opacity 0.2s ease;
     border-bottom: none !important;
     /* Remove static border */
-    padding-bottom: 1px !important;
+    padding-bottom: 4px !important;
     /* Offset border height perfectly */
     position: relative !important;
     align-self: flex-start;
