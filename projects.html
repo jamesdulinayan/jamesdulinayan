@@ -99,7 +99,7 @@
             align-items: center;
             justify-content: center;
             box-sizing: border-box;
-            transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), left 0.6s cubic-bezier(0.16, 1, 0.3, 1), top 0.6s cubic-bezier(0.16, 1, 0.3, 1);
             overflow: hidden;
             background: transparent !important;
         }
@@ -127,7 +127,6 @@
         .portfolio-card.hidden-filter {
             opacity: 0.05 !important;
             pointer-events: none !important;
-            transform: scale(0.95) !important;
         }
 
         /* Floating Overlays - Light Mode styles */
@@ -631,18 +630,17 @@
 
                 const isMobile = window.innerWidth < 576;
                 const colsPerRow = isMobile ? 4 : 5;
-                const visibleCards = Array.from(cards).filter(card => card.style.display !== 'none');
-                const rowsCount = Math.ceil(visibleCards.length / colsPerRow);
+                const rowsCount = Math.ceil(cards.length / colsPerRow);
 
                 const positions = [];
-                for (let i = 0; i < visibleCards.length; i++) {
+                for (let i = 0; i < cards.length; i++) {
                     positions.push({
                         col: i % colsPerRow,
                         row: Math.floor(i / colsPerRow)
                     });
                 }
 
-                visibleCards.forEach((card, idx) => {
+                cards.forEach((card, idx) => {
                     const pos = positions[idx];
                     const left = margin + pos.col * step;
                     const top = margin + pos.row * step;
