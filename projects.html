@@ -151,14 +151,18 @@
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03) !important;
             white-space: nowrap;
             overflow-x: auto;
-            -webkit-overflow-scrolling: touch; /* Momentum scrolling on iOS */
+            -webkit-overflow-scrolling: touch;
+            /* Momentum scrolling on iOS */
             max-width: calc(100vw - 80px);
-            -ms-overflow-style: none; /* IE/Edge */
-            scrollbar-width: none;    /* Firefox */
+            -ms-overflow-style: none;
+            /* IE/Edge */
+            scrollbar-width: none;
+            /* Firefox */
         }
 
         .portfolio-filters-overlay .works-filter::-webkit-scrollbar {
-            display: none; /* Safari/Chrome */
+            display: none;
+            /* Safari/Chrome */
         }
 
         @media (max-width: 1024px) {
@@ -171,6 +175,7 @@
             .portfolio-filters-overlay {
                 bottom: clamp(16px, 4vw, 30px);
             }
+
             .portfolio-filters-overlay .works-filter {
                 max-width: calc(100vw - 2 * clamp(16px, 4vw, 30px));
             }
@@ -279,7 +284,6 @@
         body.dark .portfolio-info-overlay .info-category {
             color: rgba(255, 255, 255, 0.5);
         }
-
     </style>
 </head>
 
@@ -442,8 +446,8 @@
                         data-category-name="Web Dev & Design" style="background: #cccdc8;">
                         <a href="/projects/abe-group">
                             <div class="post-image">
-                                <img alt="A.B.E Group Project Thumbnail" src="img/projects/abe-group/abe-featured.jpg"
-                                    draggable="false">
+                                <img alt="A.B.E Group Project Thumbnail"
+                                    src="img/projects/abe-group/abe-featured-box.jpg" draggable="false">
                             </div>
                         </a>
                     </div>
@@ -467,7 +471,7 @@
                         <a href="/projects/the-ocean-project">
                             <div class="post-image">
                                 <img alt="The Ocean Project Thumbnail"
-                                    src="img/projects/ocean-project/ocean-featured.png" draggable="false">
+                                    src="img/projects/ocean-project/ocean-featured-box.jpg" draggable="false">
                             </div>
                         </a>
                     </div>
@@ -477,8 +481,8 @@
                         data-category-name="Graphic & Motion" style="background: #e3ded4;">
                         <a href="/projects/enuf-proj">
                             <div class="post-image">
-                                <img alt="enuf-proj Project Thumbnail" src="img/projects/enuf-proj/enuf-featured.jpg"
-                                    draggable="false">
+                                <img alt="enuf-proj Project Thumbnail"
+                                    src="img/projects/enuf-proj/enuf-featured-box.jpg" draggable="false">
                             </div>
                         </a>
                     </div>
@@ -490,7 +494,7 @@
                         <a href="/projects/lqfclinic">
                             <div class="post-image">
                                 <img alt="Lagman Family Clinic Thumbnail"
-                                    src="img/projects/lqfclinic/lqfclinic-featured.png" draggable="false">
+                                    src="img/projects/lqfclinic/lqfclinic-featured-box.jpg" draggable="false">
                             </div>
                         </a>
                     </div>
@@ -501,19 +505,19 @@
                         <a href="/projects/kapampangan-folk">
                             <div class="post-image">
                                 <img alt="Kapampangan Folk Project Thumbnail"
-                                    src="img/projects/kapampangan-folk/kapampangan-folk-featured.png" draggable="false">
+                                    src="img/projects/kapampangan-folk/kapampangan-folk-featured-box.jpg"
+                                    draggable="false">
                             </div>
                         </a>
                     </div>
 
                     <!-- Project Card 9: Ad Infinitum -->
                     <div class="portfolio-card card-light-bg" data-category="graphic-and-motion"
-                        data-title="Ad Infinitum" data-category-name="Graphic & Motion"
-                        style="background: #dfdfd9;">
+                        data-title="Ad Infinitum" data-category-name="Graphic & Motion" style="background: #dfdfd9;">
                         <a href="/projects/ad-infinitum">
                             <div class="post-image">
                                 <img alt="Ad Infinitum Project Thumbnail"
-                                    src="img/projects/ad infinitum/infinitum-featured.png" draggable="false">
+                                    src="img/projects/ad infinitum/infinitum-featured-box.jpg" draggable="false">
                             </div>
                         </a>
                     </div>
@@ -535,7 +539,7 @@
                         <a href="/projects/kaleidoscope">
                             <div class="post-image">
                                 <img alt="Kaleidoscope Project Thumbnail"
-                                    src="img/projects/kaleidoscope/kaleidoscope-featured.png" draggable="false">
+                                    src="img/projects/kaleidoscope/kaleidoscope-featured-box.jpg" draggable="false">
                             </div>
                         </a>
                     </div>
@@ -557,7 +561,7 @@
                         <a href="/projects/ivy-league">
                             <div class="post-image">
                                 <img alt="I.V.Y. League Project Thumbnail"
-                                    src="img/projects/ivy-league/ivy-featured.png" draggable="false">
+                                    src="img/projects/ivy-league/ivy-league-featured-box.jpg" draggable="false">
                             </div>
                         </a>
                     </div>
@@ -616,20 +620,20 @@
                 const cardSize = 380 * scale;
                 const cardGap = 57 * scale;
                 const margin = 100 * scale;
-                
+
                 const step = cardSize + cardGap;
-                
+
                 cards.forEach(card => {
                     card.style.width = cardSize + 'px';
                     card.style.height = cardSize + 'px';
                     card.style.borderRadius = (110 * scale) + 'px';
                 });
-                
+
                 const isMobile = window.innerWidth < 576;
                 const colsPerRow = isMobile ? 4 : 5;
                 const visibleCards = Array.from(cards).filter(card => card.style.display !== 'none');
                 const rowsCount = Math.ceil(visibleCards.length / colsPerRow);
-                
+
                 const positions = [];
                 for (let i = 0; i < visibleCards.length; i++) {
                     positions.push({
@@ -637,7 +641,7 @@
                         row: Math.floor(i / colsPerRow)
                     });
                 }
-                
+
                 visibleCards.forEach((card, idx) => {
                     const pos = positions[idx];
                     const left = margin + pos.col * step;
@@ -645,7 +649,7 @@
                     card.style.left = left + 'px';
                     card.style.top = top + 'px';
                 });
-                
+
                 canvasWidth = margin * 2 + colsPerRow * step - cardGap;
                 canvasHeight = margin * 2 + rowsCount * step - cardGap;
             };
