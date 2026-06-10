@@ -19,6 +19,268 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
         crossorigin="anonymous" referrerpolicy="no-referrer">
+    <style>
+        body.has-draggable-portfolio {
+            overflow: hidden !important;
+            height: 100vh !important;
+            width: 100vw !important;
+        }
+
+        .index-header {
+            z-index: 103 !important;
+        }
+
+        .index-menu-overlay {
+            z-index: 102 !important;
+        }
+
+        /* Light mode viewport background */
+        .portfolio-viewport {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            background: radial-gradient(circle at 50% 50%, #ffffff 0%, #e8e7e3 100%);
+            z-index: 5;
+            cursor: grab;
+            user-select: none;
+            -webkit-user-select: none;
+            transition: background 0.5s ease;
+        }
+
+        .portfolio-viewport.grabbing {
+            cursor: grabbing;
+        }
+
+        /* Light mode canvas background */
+        .portfolio-canvas {
+            position: absolute;
+            width: 3800px;
+            height: 2700px;
+            top: 0;
+            left: 0;
+            will-change: transform;
+            background: transparent;
+            transition: background 0.5s ease;
+            z-index: 2;
+        }
+
+        .viewport-grain {
+            animation: grain 8s steps(10) infinite;
+            background-image: url("https://assets.website-files.com/5dff182dc3faab4c98b08388/5dff21c5e65e0610a8d38b86_noisy-texture-100x100-o5-d10-c-FFFFFA-t1.png");
+            content: "";
+            height: 300%;
+            left: -50%;
+            position: fixed;
+            top: -100%;
+            width: 300%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Dark mode overrides for viewport and canvas */
+        body.dark .portfolio-viewport {
+            background: radial-gradient(circle at 50% 50%, #1a1a1c 0%, #0c0c0d 100%);
+        }
+
+        body.dark .portfolio-canvas {
+            background: transparent;
+        }
+
+        /* Portfolio Cards without text details or hover scaling */
+        .portfolio-card {
+            position: absolute;
+            width: 380px;
+            height: 380px;
+            border-radius: 110px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-sizing: border-box;
+            transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            overflow: hidden;
+            background: transparent !important;
+        }
+
+        .portfolio-card a {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        .portfolio-card .post-image {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .portfolio-card .post-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            draggable: false;
+        }
+
+        .portfolio-card.hidden-filter {
+            opacity: 0.05 !important;
+            pointer-events: none !important;
+            transform: scale(0.95) !important;
+        }
+
+        /* Floating Overlays - Light Mode styles */
+        .portfolio-filters-overlay {
+            position: fixed;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 100;
+        }
+
+        .portfolio-filters-overlay .works-filter {
+            margin: 0 !important;
+            display: flex;
+            flex-wrap: nowrap !important;
+            gap: 8px;
+            background: #ebebeb !important;
+            padding: 6px;
+            border-radius: 40px;
+            border: 1px solid rgba(0, 0, 0, 0.35) !important;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03) !important;
+            white-space: nowrap;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch; /* Momentum scrolling on iOS */
+            max-width: calc(100vw - 80px);
+            -ms-overflow-style: none; /* IE/Edge */
+            scrollbar-width: none;    /* Firefox */
+        }
+
+        .portfolio-filters-overlay .works-filter::-webkit-scrollbar {
+            display: none; /* Safari/Chrome */
+        }
+
+        @media (max-width: 1024px) {
+            .portfolio-filters-overlay {
+                bottom: 40px;
+            }
+        }
+
+        @media (max-width: 720px) {
+            .portfolio-filters-overlay {
+                bottom: clamp(16px, 4vw, 30px);
+            }
+            .portfolio-filters-overlay .works-filter {
+                max-width: calc(100vw - 2 * clamp(16px, 4vw, 30px));
+            }
+        }
+
+        .portfolio-filters-overlay .filter-btn {
+            font-family: "Neue", system-ui, sans-serif;
+            font-size: clamp(0.75rem, 0.4vw + 0.7rem, 0.9rem) !important;
+            font-weight: 500;
+            padding: clamp(6px, 0.5vw + 4px, 8px) clamp(12px, 1vw + 10px, 18px) !important;
+            border-radius: 30px;
+            color: rgba(0, 0, 0, 0.6) !important;
+            border: 1px solid transparent !important;
+            background: transparent !important;
+            transition: all 0.4s ease !important;
+            white-space: nowrap;
+        }
+
+        .portfolio-filters-overlay .filter-btn:hover {
+            color: #1d1b1c !important;
+            background-color: #f3f3f3 !important;
+        }
+
+        .portfolio-filters-overlay .filter-btn.active {
+            background: #ffffff !important;
+            border-color: transparent !important;
+            color: #1d1b1c !important;
+        }
+
+        /* Floating Overlays - Dark Mode styles */
+        body.dark .portfolio-filters-overlay .works-filter {
+            background: #131313 !important;
+            border: 1px solid rgba(255, 255, 255, 0.35) !important;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2) !important;
+        }
+
+        body.dark .portfolio-filters-overlay .filter-btn {
+            color: rgba(255, 255, 255, 0.6) !important;
+        }
+
+        body.dark .portfolio-filters-overlay .filter-btn:hover {
+            color: #ffffff !important;
+            background-color: #1a1a1a !important;
+        }
+
+        body.dark .portfolio-filters-overlay .filter-btn.active {
+            background: #252525 !important;
+            border-color: transparent !important;
+            color: #ffffff !important;
+        }
+
+        /* Bottom Info Overlay - Light Mode styles */
+        .portfolio-info-overlay {
+            position: fixed;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%) translateY(20px);
+            z-index: 100;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 18px 40px;
+            border-radius: 50px;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+        }
+
+        .portfolio-info-overlay.visible {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .portfolio-info-overlay .info-title {
+            font-family: "Neue", system-ui, sans-serif;
+            font-size: 1.45rem;
+            font-weight: 500;
+            color: #000000;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .portfolio-info-overlay .info-category {
+            font-family: "Roboto Mono", monospace;
+            font-size: 0.8rem;
+            color: rgba(0, 0, 0, 0.5);
+            margin-top: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+        }
+
+        /* Bottom Info Overlay - Dark Mode styles */
+        body.dark .portfolio-info-overlay {
+            background: rgba(13, 13, 13, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+        }
+
+        body.dark .portfolio-info-overlay .info-title {
+            color: #ffffff;
+        }
+
+        body.dark .portfolio-info-overlay .info-category {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+    </style>
 </head>
 
 <body>
@@ -134,409 +396,173 @@
 
 
 
-        <div id="content" class="page-content works-page-content">
+        <div id="content" class="page-content works-page-content" style="padding: 0 !important; margin: 0 !important;">
 
-            <h1 class="creative-copy-title">Featured Projects</h1>
-            <h2 class="creative-copy-text">
-                A curated collection of web experiences, visual concepts, motion graphics, and creative experiments
-                crafted through thoughtful design, precise development, and engaging storytelling. Each work is created
-                with a strong focus on creativity, functionality, and detail—blending modern aesthetics, smooth
-                interactions, and purposeful digital experiences.
-            </h2>
-
-            <div class="works-filter">
-                <button class="filter-btn active" data-filter="all">All</button>
-                <button class="filter-btn" data-filter="web-development-and-design">Web Development & Design</button>
-                <button class="filter-btn" data-filter="graphic-and-motion">Graphic & Motion</button>
-                <button class="filter-btn" data-filter="video-editing">Video Editing</button>
+            <!-- Floating overlays -->
+            <div class="portfolio-filters-overlay">
+                <div class="works-filter">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="web-development-and-design">Web Dev & Design</button>
+                    <button class="filter-btn" data-filter="graphic-and-motion">Graphic & Motion</button>
+                    <button class="filter-btn" data-filter="video-editing">Video Editing</button>
+                </div>
             </div>
 
-            <div class="wrapper-full">
+            <!-- Viewport and Canvas -->
+            <div class="portfolio-viewport" id="portfolio-viewport">
+                <div class="viewport-grain"></div>
+                <div class="portfolio-canvas" id="portfolio-canvas">
 
-                <div class="c-col-6 c-col-6p" data-category="web-development-and-design">
-                    <div class="alioth-blog blog-classic">
-                        <div class="post alioth-post">
-                            <a href="/projects/summit-collective">
-                                <div class="post-image">
-                                    <img alt="Summit Collective Project Thumbnail"
-                                        src="img/projects/summit-collective/summit-featured.gif" draggable="false">
-                                </div>
-                                <div class="post-meta">
-                                    <div class="post-title">
-                                        <h3>Summit Collective <span class="project-category-inline">Web Development & Design</span></h3>
-                                    </div>
-                                    <h5 class="post-cat">2026</h5>
-                                </div>
-                            </a>
-                        </div>
+
+                    <!-- Project Card 1: Summit Collective -->
+                    <div class="portfolio-card" data-category="web-development-and-design"
+                        data-title="Summit Collective" data-category-name="Web Dev & Design"
+                        style="background: #e5e5e0;">
+                        <a href="/projects/summit-collective">
+                            <div class="post-image">
+                                <img alt="Summit Collective Project Thumbnail"
+                                    src="img/projects/summit-collective/summit-featured.gif" draggable="false">
+                            </div>
+                        </a>
                     </div>
-                </div>
 
-
-
-
-                <div class="c-col-6 c-col-6p" data-category="web-development-and-design">
-                    <div class="alioth-blog blog-classic">
-                        <div class="post alioth-post">
-                            <a href="/projects/fleur">
-                                <div class="post-image">
-                                    <img alt="fleur. Project Thumbnail" src="img/projects/fleur/fleur-featured.gif"
-                                        draggable="false">
-                                </div>
-                                <div class="post-meta">
-                                    <div class="post-title">
-                                        <h3>fleur. <span class="project-category-inline">Web Development & Design</span></h3>
-                                    </div>
-                                    <h5 class="post-cat">2026</h5>
-                                </div>
-                            </a>
-                        </div>
+                    <!-- Project Card 2: fleur. -->
+                    <div class="portfolio-card" data-category="web-development-and-design" data-title="fleur."
+                        data-category-name="Web Dev & Design" style="background: #d9dcd6;">
+                        <a href="/projects/fleur">
+                            <div class="post-image">
+                                <img alt="fleur. Project Thumbnail" src="img/projects/fleur/fleur-featured.gif"
+                                    draggable="false">
+                            </div>
+                        </a>
                     </div>
-                </div>
 
-                <div class="c-col-6 c-col-6p" data-category="web-development-and-design">
-
-                    <div class="alioth-blog blog-classic">
-
-                        <div class="post alioth-post">
-
-                            <a href="/projects/abe-group">
-
-
-                                <div class="post-image">
-                                    <img alt="Post Image" src="img/projects/abe-group/abe-featured.jpg"
-                                        draggable="false">
-                                </div>
-
-
-                                <div class="post-meta">
-
-                                    <div class="post-title">
-                                        <h3>A.B.E Group <span class="project-category-inline">Web Development & Design</span></h3>
-                                    </div>
-                                    <h5 class="post-cat">2025</h5>
-
-                                </div>
-
-                            </a>
-                        </div>
-
+                    <!-- Project Card 3: A.B.E Group -->
+                    <div class="portfolio-card" data-category="web-development-and-design" data-title="A.B.E Group"
+                        data-category-name="Web Dev & Design" style="background: #cccdc8;">
+                        <a href="/projects/abe-group">
+                            <div class="post-image">
+                                <img alt="A.B.E Group Project Thumbnail" src="img/projects/abe-group/abe-featured.jpg"
+                                    draggable="false">
+                            </div>
+                        </a>
                     </div>
-                </div>
 
-                <div class="c-col-6 c-col-6p" data-category="web-development-and-design">
-
-                    <div class="alioth-blog blog-classic">
-
-                        <div class="post alioth-post">
-
-                            <a href="/projects/caliz-music-studio">
-
-
-                                <div class="post-image">
-                                    <img alt="Post Image" src="img/projects/caliz-music-studio/caliz-featured.gif"
-                                        draggable="false">
-                                </div>
-
-
-                                <div class="post-meta">
-
-                                    <div class="post-title">
-                                        <h3>Caliz Music Studio <span class="project-category-inline">Web Development & Design</span></h3>
-                                    </div>
-                                    <h5 class="post-cat">2022</h5>
-
-                                </div>
-
-                            </a>
-                        </div>
-
+                    <!-- Project Card 4: Caliz Music Studio -->
+                    <div class="portfolio-card" data-category="web-development-and-design"
+                        data-title="Caliz Music Studio" data-category-name="Web Dev & Design"
+                        style="background: #e8e4db;">
+                        <a href="/projects/caliz-music-studio">
+                            <div class="post-image">
+                                <img alt="Caliz Music Studio Project Thumbnail"
+                                    src="img/projects/caliz-music-studio/caliz-featured.gif" draggable="false">
+                            </div>
+                        </a>
                     </div>
-                </div>
 
-                <div class="c-col-6 c-col-6p" data-category="web-development-and-design">
-
-                    <div class="alioth-blog blog-classic">
-
-                        <div class="post alioth-post">
-
-                            <a href="/projects/the-ocean-project">
-
-                                <div class="post-image">
-                                    <img alt="Post Image" src="img/projects/ocean-project/ocean-featured.png"
-                                        draggable="false">
-                                </div>
-
-
-                                <div class="post-meta">
-
-                                    <div class="post-title">
-                                        <h3>The Ocean Project <span class="project-category-inline">Web Development & Design</span></h3>
-                                    </div>
-                                    <h5 class="post-cat">2022</h5>
-
-                                </div>
-
-                            </a>
-                        </div>
-
+                    <!-- Project Card 5: The Ocean Project -->
+                    <div class="portfolio-card" data-category="web-development-and-design"
+                        data-title="The Ocean Project" data-category-name="Web Dev & Design"
+                        style="background: #d2d3c9;">
+                        <a href="/projects/the-ocean-project">
+                            <div class="post-image">
+                                <img alt="The Ocean Project Thumbnail"
+                                    src="img/projects/ocean-project/ocean-featured.png" draggable="false">
+                            </div>
+                        </a>
                     </div>
-                </div>
 
-
-                <div class="c-col-6 c-col-6p" data-category="graphic-and-motion">
-
-                    <div class="alioth-blog blog-classic">
-
-                        <div class="post alioth-post">
-
-                            <a href="/projects/enuf-proj">
-
-                                <div class="post-image">
-                                    <img alt="Post Image" src="img/projects/enuf-proj/enuf-featured.jpg"
-                                        draggable="false">
-                                </div>
-
-
-                                <div class="post-meta">
-
-                                    <div class="post-title">
-                                        <h3>enuf-proj <span class="project-category-inline">Graphic & Motion</span></h3>
-                                    </div>
-                                    <h5 class="post-cat">2022</h5>
-
-                                </div>
-
-                            </a>
-                        </div>
-
+                    <!-- Project Card 6: enuf-proj -->
+                    <div class="portfolio-card" data-category="graphic-and-motion" data-title="enuf-proj"
+                        data-category-name="Graphic & Motion" style="background: #e3ded4;">
+                        <a href="/projects/enuf-proj">
+                            <div class="post-image">
+                                <img alt="enuf-proj Project Thumbnail" src="img/projects/enuf-proj/enuf-featured.jpg"
+                                    draggable="false">
+                            </div>
+                        </a>
                     </div>
-                </div>
 
-
-
-
-                <div class="c-col-6 c-col-6p" data-category="web-development-and-design">
-
-                    <div class="alioth-blog blog-classic">
-
-                        <div class="post alioth-post">
-
-                            <a href="/projects/lqfclinic">
-
-
-                                <div class="post-image">
-                                    <img alt="Post Image" src="img/projects/lqfclinic/lqfclinic-featured.png"
-                                        draggable="false">
-                                </div>
-
-
-                                <div class="post-meta">
-
-                                    <div class="post-title">
-                                        <h3>Lagman Family Clinic <span class="project-category-inline">Web Development & Design</span></h3>
-                                    </div>
-                                    <h5 class="post-cat">2022</h5>
-
-                                </div>
-
-                            </a>
-                        </div>
-
+                    <!-- Project Card 7: Lagman Family Clinic -->
+                    <div class="portfolio-card" data-category="web-development-and-design"
+                        data-title="Lagman Family Clinic" data-category-name="Web Dev & Design"
+                        style="background: #cfd2cd;">
+                        <a href="/projects/lqfclinic">
+                            <div class="post-image">
+                                <img alt="Lagman Family Clinic Thumbnail"
+                                    src="img/projects/lqfclinic/lqfclinic-featured.png" draggable="false">
+                            </div>
+                        </a>
                     </div>
-                </div>
 
-
-
-                <div class="c-col-6 c-col-6p" data-category="graphic-and-motion">
-
-                    <div class="alioth-blog blog-classic">
-
-                        <div class="post alioth-post">
-
-                            <a href="/projects/kapampangan-folk">
-
-
-                                <div class="post-image">
-                                    <img alt="Post Image"
-                                        src="img/projects/kapampangan-folk/kapampangan-folk-featured.png"
-                                        draggable="false">
-                                </div>
-
-
-                                <div class="post-meta">
-
-                                    <div class="post-title">
-                                        <h3 class="post-works">Kapampangan Folk <span class="project-category-inline">Graphic & Motion</span></h3>
-                                    </div>
-                                    <h5 class="post-cat">2022</h5>
-
-                                </div>
-
-                            </a>
-                        </div>
-
+                    <!-- Project Card 8: Kapampangan Folk -->
+                    <div class="portfolio-card" data-category="graphic-and-motion" data-title="Kapampangan Folk"
+                        data-category-name="Graphic & Motion" style="background: #c4c9c6;">
+                        <a href="/projects/kapampangan-folk">
+                            <div class="post-image">
+                                <img alt="Kapampangan Folk Project Thumbnail"
+                                    src="img/projects/kapampangan-folk/kapampangan-folk-featured.png" draggable="false">
+                            </div>
+                        </a>
                     </div>
-                </div>
 
-                <div class="c-col-6 c-col-6p" data-category="graphic-and-motion">
-
-                    <div class="alioth-blog blog-classic">
-
-                        <div class="post alioth-post">
-
-                            <a href="/projects/ad-infinitum">
-
-
-                                <div class="post-image">
-                                    <img alt="Post Image" src="img/projects/ad infinitum/infinitum-featured.png"
-                                        draggable="false">
-                                </div>
-
-
-                                <div class="post-meta">
-
-                                    <div class="post-title">
-                                        <h3>Ad Infinitum <span class="project-category-inline">Graphic & Motion</span></h3>
-                                    </div>
-                                    <h5 class="post-cat">2020</h5>
-
-                                </div>
-
-                            </a>
-                        </div>
-
+                    <!-- Project Card 9: Ad Infinitum -->
+                    <div class="portfolio-card card-light-bg" data-category="graphic-and-motion"
+                        data-title="Ad Infinitum" data-category-name="Graphic & Motion"
+                        style="background: #dfdfd9;">
+                        <a href="/projects/ad-infinitum">
+                            <div class="post-image">
+                                <img alt="Ad Infinitum Project Thumbnail"
+                                    src="img/projects/ad infinitum/infinitum-featured.png" draggable="false">
+                            </div>
+                        </a>
                     </div>
-                </div>
 
-                <div class="c-col-6 c-col-6p" data-category="graphic-and-motion">
-
-                    <div class="alioth-blog blog-classic">
-
-                        <div class="post alioth-post">
-
-                            <a href="/projects/wreck-it-hau">
-
-
-                                <div class="post-image">
-                                    <img alt="Post Image" src="img/projects/wreck-it-hau/wreck-it-hau-featured.gif"
-                                        draggable="false">
-                                </div>
-
-
-                                <div class="post-meta">
-
-                                    <div class="post-title">
-                                        <h3>Wreck-It HAU <span class="project-category-inline">Graphic & Motion</span></h3>
-                                    </div>
-                                    <h5 class="post-cat">2020</h5>
-
-                                </div>
-
-                            </a>
-                        </div>
-
+                    <!-- Project Card 10: Wreck-It HAU -->
+                    <div class="portfolio-card" data-category="graphic-and-motion" data-title="Wreck-It HAU"
+                        data-category-name="Graphic & Motion" style="background: #d0d6d4;">
+                        <a href="/projects/wreck-it-hau">
+                            <div class="post-image">
+                                <img alt="Wreck-It HAU Project Thumbnail"
+                                    src="img/projects/wreck-it-hau/wreck-it-hau-featured.gif" draggable="false">
+                            </div>
+                        </a>
                     </div>
-                </div>
 
-
-                <div class="c-col-6 c-col-6p" data-category="video-editing">
-
-                    <div class="alioth-blog blog-classic">
-
-                        <div class="post alioth-post">
-
-                            <a href="/projects/kaleidoscope">
-
-
-                                <div class="post-image">
-                                    <img alt="Post Image" src="img/projects/kaleidoscope/kaleidoscope-featured.png"
-                                        draggable="false">
-                                </div>
-
-
-                                <div class="post-meta">
-
-                                    <div class="post-title">
-                                        <h3>Kaleidoscope <span class="project-category-inline">Video Editing</span></h3>
-                                    </div>
-                                    <h5 class="post-cat">2020</h5>
-
-                                </div>
-
-                            </a>
-                        </div>
-
+                    <!-- Project Card 11: Kaleidoscope -->
+                    <div class="portfolio-card" data-category="video-editing" data-title="Kaleidoscope"
+                        data-category-name="Video Editing" style="background: #e1dbd6;">
+                        <a href="/projects/kaleidoscope">
+                            <div class="post-image">
+                                <img alt="Kaleidoscope Project Thumbnail"
+                                    src="img/projects/kaleidoscope/kaleidoscope-featured.png" draggable="false">
+                            </div>
+                        </a>
                     </div>
-                </div>
 
-                <div class="c-col-6 c-col-6p" data-category="graphic-and-motion">
-
-                    <div class="alioth-blog blog-classic">
-
-                        <div class="post alioth-post">
-
-                            <a href="/projects/hauwak-kamay">
-
-
-                                <div class="post-image">
-                                    <img alt="Post Image" src="img/projects/hauwak-kamay/hauwak-kamay-featured.gif"
-                                        draggable="false">
-                                </div>
-
-
-                                <div class="post-meta">
-
-                                    <div class="post-title">
-                                        <h3>HAUwak Kamay <span class="project-category-inline">Graphic & Motion</span></h3>
-                                    </div>
-                                    <h5 class="post-cat">2020</h5>
-
-                                </div>
-
-                            </a>
-                        </div>
-
+                    <!-- Project Card 12: HAUwak Kamay -->
+                    <div class="portfolio-card" data-category="graphic-and-motion" data-title="HAUwak Kamay"
+                        data-category-name="Graphic & Motion" style="background: #d3c8be;">
+                        <a href="/projects/hauwak-kamay">
+                            <div class="post-image">
+                                <img alt="HAUwak Kamay Project Thumbnail"
+                                    src="img/projects/hauwak-kamay/hauwak-kamay-featured.gif" draggable="false">
+                            </div>
+                        </a>
                     </div>
-                </div>
 
-                <div class="c-col-6 c-col-6p" data-category="graphic-and-motion">
-
-                    <div class="alioth-blog blog-classic">
-
-                        <div class="post alioth-post">
-
-                            <a href="/projects/ivy-league">
-
-
-                                <div class="post-image">
-                                    <img alt="Post Image" src="img/projects/ivy-league/ivy-featured.png"
-                                        draggable="false">
-                                </div>
-
-
-                                <div class="post-meta">
-
-                                    <div class="post-title">
-                                        <h3>I.V.Y. League <span class="project-category-inline">Graphic & Motion</span></h3>
-                                    </div>
-                                    <h5 class="post-cat">2020</h5>
-
-                                </div>
-
-                            </a>
-                        </div>
-
+                    <!-- Project Card 13: I.V.Y. League -->
+                    <div class="portfolio-card" data-category="graphic-and-motion" data-title="I.V.Y. League"
+                        data-category-name="Graphic & Motion" style="background: #c6c2ba;">
+                        <a href="/projects/ivy-league">
+                            <div class="post-image">
+                                <img alt="I.V.Y. League Project Thumbnail"
+                                    src="img/projects/ivy-league/ivy-featured.png" draggable="false">
+                            </div>
+                        </a>
                     </div>
+
                 </div>
-
-
-
-
-
-
-
-
             </div>
 
         </div>
@@ -556,143 +582,296 @@
     <script src="js/scripts.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
+            // Add scroll-lock class to body
+            document.body.classList.add('has-draggable-portfolio');
+
+            const viewport = document.getElementById('portfolio-viewport');
+            const canvas = document.getElementById('portfolio-canvas');
+            const cards = document.querySelectorAll('.portfolio-card');
             const buttons = document.querySelectorAll('.filter-btn');
-            const items = document.querySelectorAll('.works-page-content .wrapper-full > .c-col-6p');
 
-            // Horizontal Click-and-Drag / Swipe Scroll for Works Filter
-            const worksFilter = document.querySelector('.works-filter');
-            if (worksFilter && buttons.length > 0) {
-                let isDown = false;
-                let startX;
-                let scrollLeft;
+            // Create tooltip element (styled using existing stylesheet classes)
+            const tooltip = document.createElement('div');
+            tooltip.className = 'draggablee-tooltip';
+            document.body.appendChild(tooltip);
 
-                // Dynamic wrapping detection
-                function checkFilterWrap() {
-                    // Temporarily remove scrollable styling to measure natural flow
-                    worksFilter.classList.remove('is-scrollable');
+            let isDragging = false;
+            let startX = 0, startY = 0;
+            let currentX = 0, currentY = 0;
+            let targetX = 0, targetY = 0;
+            let velocityX = 0, velocityY = 0;
+            let lastMouseX = 0, lastMouseY = 0;
+            let lastTime = 0;
+            let rafId = null;
 
-                    const firstButton = buttons[0];
-                    const lastButton = buttons[buttons.length - 1];
+            let downX = 0, downY = 0;
+            let hasDragged = false;
 
-                    if (lastButton.offsetTop > firstButton.offsetTop) {
-                        // Elements would naturally wrap! Force them to scrollable single row
-                        worksFilter.classList.add('is-scrollable');
+            // Dimensions of the canvas area (mutable for responsive updates)
+            let canvasWidth = 3325;
+            let canvasHeight = 1834;
+
+            const calculateLayout = () => {
+                const scale = Math.max(0.35, window.innerWidth / 1920);
+                const cardSize = 380 * scale;
+                const cardGap = 57 * scale;
+                const margin = 100 * scale;
+                
+                const step = cardSize + cardGap;
+                
+                cards.forEach(card => {
+                    card.style.width = cardSize + 'px';
+                    card.style.height = cardSize + 'px';
+                    card.style.borderRadius = (110 * scale) + 'px';
+                });
+                
+                const isMobile = window.innerWidth < 576;
+                const colsPerRow = isMobile ? 4 : 5;
+                const visibleCards = Array.from(cards).filter(card => card.style.display !== 'none');
+                const rowsCount = Math.ceil(visibleCards.length / colsPerRow);
+                
+                const positions = [];
+                for (let i = 0; i < visibleCards.length; i++) {
+                    positions.push({
+                        col: i % colsPerRow,
+                        row: Math.floor(i / colsPerRow)
+                    });
+                }
+                
+                visibleCards.forEach((card, idx) => {
+                    const pos = positions[idx];
+                    const left = margin + pos.col * step;
+                    const top = margin + pos.row * step;
+                    card.style.left = left + 'px';
+                    card.style.top = top + 'px';
+                });
+                
+                canvasWidth = margin * 2 + colsPerRow * step - cardGap;
+                canvasHeight = margin * 2 + rowsCount * step - cardGap;
+            };
+
+            const getMinMax = () => {
+                return {
+                    minX: window.innerWidth - canvasWidth,
+                    maxX: 0,
+                    minY: window.innerHeight - canvasHeight,
+                    maxY: 0
+                };
+            };
+
+            const updateTransform = () => {
+                canvas.style.transform = `translate3d(${currentX}px, ${currentY}px, 0)`;
+
+                const centerX = window.innerWidth / 2;
+                const centerY = window.innerHeight / 2;
+
+                cards.forEach(card => {
+                    const rect = card.getBoundingClientRect();
+                    const cardCenterX = rect.left + rect.width / 2;
+                    const cardCenterY = rect.top + rect.height / 2;
+
+                    // Offset image in opposite direction to create 3D depth/parallax
+                    const offsetX = (cardCenterX - centerX) * -0.07;
+                    const offsetY = (cardCenterY - centerY) * -0.07;
+
+                    const img = card.querySelector('.post-image img');
+                    if (img) {
+                        img.style.transform = `translate3d(${offsetX}px, ${offsetY}px, 0) scale(1.3)`;
+                    }
+                });
+            };
+
+            // Start the view at the top-left (0, 0) so the first card is fully visible on load
+            const initPosition = () => {
+                targetX = 0;
+                targetY = 0;
+                currentX = targetX;
+                currentY = targetY;
+                updateTransform();
+            };
+
+            const onMouseDown = (e) => {
+                isDragging = true;
+                tooltip.classList.remove('is-visible');
+                viewport.classList.add('grabbing');
+                const pageX = e.pageX || (e.touches && e.touches[0].pageX);
+                const pageY = e.pageY || (e.touches && e.touches[0].pageY);
+                if (pageX === undefined || pageY === undefined) return;
+                startX = pageX - targetX;
+                startY = pageY - targetY;
+                downX = pageX;
+                downY = pageY;
+                lastMouseX = pageX;
+                lastMouseY = pageY;
+                lastTime = Date.now();
+                velocityX = 0;
+                velocityY = 0;
+                hasDragged = false;
+                if (rafId) cancelAnimationFrame(rafId);
+            };
+
+            const onMouseMove = (e) => {
+                if (!isDragging) return;
+                const pageX = e.pageX || (e.touches && e.touches[0].pageX);
+                const pageY = e.pageY || (e.touches && e.touches[0].pageY);
+                if (pageX === undefined || pageY === undefined) return;
+
+                const newTargetX = pageX - startX;
+                const newTargetY = pageY - startY;
+
+                // Boundary constraints with resistance (rubber band effect)
+                const bounds = getMinMax();
+                let x = newTargetX;
+                let y = newTargetY;
+
+                if (x > bounds.maxX) x = bounds.maxX + (x - bounds.maxX) * 0.3;
+                if (x < bounds.minX) x = bounds.minX + (x - bounds.minX) * 0.3;
+                if (y > bounds.maxY) y = bounds.maxY + (y - bounds.maxY) * 0.3;
+                if (y < bounds.minY) y = bounds.minY + (y - bounds.minY) * 0.3;
+
+                targetX = x;
+                targetY = y;
+
+                // Calculate velocity
+                const now = Date.now();
+                const dt = now - lastTime;
+                if (dt > 0) {
+                    velocityX = (pageX - lastMouseX) / dt * 16;
+                    velocityY = (pageY - lastMouseY) / dt * 16;
+                }
+                lastMouseX = pageX;
+                lastMouseY = pageY;
+                lastTime = now;
+
+                currentX = targetX;
+                currentY = targetY;
+                updateTransform();
+            };
+
+            const onMouseUp = (e) => {
+                if (!isDragging) return;
+                isDragging = false;
+                viewport.classList.remove('grabbing');
+
+                const pageX = e.pageX || (e.changedTouches && e.changedTouches[0].pageX);
+                const pageY = e.pageY || (e.changedTouches && e.changedTouches[0].pageY);
+                if (pageX !== undefined && pageY !== undefined) {
+                    const dist = Math.sqrt((pageX - downX) * (pageX - downX) + (pageY - downY) * (pageY - downY));
+                    if (dist > 5) {
+                        hasDragged = true;
                     }
                 }
 
-                // Run on layout resize and page load
-                window.addEventListener('resize', checkFilterWrap);
-                checkFilterWrap();
+                // Inertia tick
+                tick();
+            };
 
-                // Stop propagation of touch events to prevent Locomotive Scroll hijacking on mobile/tablet
-                const stopTouchPropagation = (e) => {
-                    if (worksFilter.classList.contains('is-scrollable')) {
+            const tick = () => {
+                if (isDragging) return;
+
+                // Apply inertia friction
+                targetX += velocityX;
+                targetY += velocityY;
+                velocityX *= 0.93;
+                velocityY *= 0.93;
+
+                // Bound snapping
+                const bounds = getMinMax();
+                let snapBack = false;
+
+                if (targetX > bounds.maxX) {
+                    targetX += (bounds.maxX - targetX) * 0.15;
+                    snapBack = true;
+                } else if (targetX < bounds.minX) {
+                    targetX += (bounds.minX - targetX) * 0.15;
+                    snapBack = true;
+                }
+
+                if (targetY > bounds.maxY) {
+                    targetY += (bounds.maxY - targetY) * 0.15;
+                    snapBack = true;
+                } else if (targetY < bounds.minY) {
+                    targetY += (bounds.minY - targetY) * 0.15;
+                    snapBack = true;
+                }
+
+                currentX += (targetX - currentX) * 0.15;
+                currentY += (targetY - currentY) * 0.15;
+                updateTransform();
+
+                const speed = Math.sqrt(velocityX * velocityX + velocityY * velocityY);
+                const distanceToTarget = Math.sqrt((targetX - currentX) * (targetX - currentX) + (targetY - currentY) * (targetY - currentY));
+
+                if (speed > 0.05 || distanceToTarget > 0.05 || snapBack) {
+                    rafId = requestAnimationFrame(tick);
+                } else {
+                    currentX = targetX;
+                    currentY = targetY;
+                    updateTransform();
+                }
+            };
+
+            // Event Listeners for Dragging
+            viewport.addEventListener('mousedown', onMouseDown);
+            window.addEventListener('mousemove', onMouseMove);
+            window.addEventListener('mouseup', onMouseUp);
+
+            viewport.addEventListener('touchstart', onMouseDown, { passive: true });
+            window.addEventListener('touchmove', onMouseMove, { passive: false });
+            window.addEventListener('touchend', onMouseUp, { passive: true });
+
+            // Prevent Touch Gestures from scrolling the page
+            viewport.addEventListener('touchmove', function (e) {
+                e.preventDefault();
+            }, { passive: false });
+
+            // Prevent link navigation if drag took place
+            const links = document.querySelectorAll('.portfolio-card a');
+            links.forEach(link => {
+                link.addEventListener('click', function (e) {
+                    if (hasDragged) {
+                        e.preventDefault();
                         e.stopPropagation();
                     }
-                };
-                worksFilter.addEventListener('touchstart', stopTouchPropagation, { passive: true });
-                worksFilter.addEventListener('touchmove', stopTouchPropagation, { passive: true });
-                worksFilter.addEventListener('touchend', stopTouchPropagation, { passive: true });
-
-                // Mouse Click-and-Drag Scroll (only if scrollable)
-                worksFilter.addEventListener('mousedown', (e) => {
-                    if (!worksFilter.classList.contains('is-scrollable')) return;
-                    isDown = true;
-                    worksFilter.classList.add('dragging');
-                    startX = e.pageX - worksFilter.offsetLeft;
-                    scrollLeft = worksFilter.scrollLeft;
+                });
+            });
+            // Card hover tooltip logic
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function (e) {
+                    if (isDragging) return;
+                    const title = this.getAttribute('data-title') || '';
+                    if (!title) return;
+                    tooltip.textContent = title;
+                    tooltip.classList.add('is-visible');
+                    tooltip.style.left = (e.clientX + 14) + 'px';
+                    tooltip.style.top = (e.clientY + 14) + 'px';
                 });
 
-                worksFilter.addEventListener('mouseleave', () => {
-                    isDown = false;
-                    worksFilter.classList.remove('dragging');
-                });
-
-                worksFilter.addEventListener('mouseup', () => {
-                    isDown = false;
-                    worksFilter.classList.remove('dragging');
-                });
-
-                worksFilter.addEventListener('mousemove', (e) => {
-                    if (!isDown || !worksFilter.classList.contains('is-scrollable')) return;
-                    e.preventDefault();
-                    const x = e.pageX - worksFilter.offsetLeft;
-                    const walk = (x - startX) * 1.5; // Drag speed multiplier
-                    worksFilter.scrollLeft = scrollLeft - walk;
-                });
-            }
-
-            function updateGridGutters() {
-                const visibleItems = Array.from(items).filter(item => item.style.display !== 'none');
-
-                let cols = 3;
-                if (window.innerWidth <= 720) {
-                    cols = 1;
-                } else if (window.innerWidth <= 1024) {
-                    cols = 2;
-                }
-
-                visibleItems.forEach((item, index) => {
-                    // Reset paddings and bottom margins
-                    item.style.paddingLeft = '';
-                    item.style.paddingRight = '';
-                    item.style.setProperty('margin-bottom', '', 'important');
-
-                    if (cols === 3) {
-                        const mod = index % 3;
-                        if (mod === 0) {
-                            item.style.setProperty('padding-left', '0px', 'important');
-                            item.style.setProperty('padding-right', '20px', 'important');
-                        } else if (mod === 1) {
-                            item.style.setProperty('padding-left', '10px', 'important');
-                            item.style.setProperty('padding-right', '10px', 'important');
-                        } else {
-                            item.style.setProperty('padding-right', '0px', 'important');
-                            item.style.setProperty('padding-left', '20px', 'important');
-                        }
-                    } else if (cols === 2) {
-                        const mod = index % 2;
-                        if (mod === 0) {
-                            item.style.setProperty('padding-left', '0px', 'important');
-                            item.style.setProperty('padding-right', '15px', 'important');
-                        } else {
-                            item.style.setProperty('padding-right', '0px', 'important');
-                            item.style.setProperty('padding-left', '15px', 'important');
-                        }
-                    } else {
-                        item.style.setProperty('padding-left', '0px', 'important');
-                        item.style.setProperty('padding-right', '0px', 'important');
-                    }
-                });
-
-                // Dynamically reset bottom margins on the last visible row
-                const len = visibleItems.length;
-                if (len > 0) {
-                    const lastRowStart = len - 1 - ((len - 1) % cols);
-                    for (let i = lastRowStart; i < len; i++) {
-                        visibleItems[i].style.setProperty('margin-bottom', '0px', 'important');
-                    }
-                }
-
-                // Notify Locomotive Scroll & ScrollTrigger to refresh heights
-                if (typeof locoScroll !== 'undefined' && locoScroll) {
-                    locoScroll.update();
-                }
-                if (typeof ScrollTrigger !== 'undefined') {
-                    ScrollTrigger.refresh();
-                }
-            }
-
-            buttons.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    if (btn.classList.contains('active')) {
+                card.addEventListener('mousemove', function (e) {
+                    if (isDragging) {
+                        tooltip.classList.remove('is-visible');
                         return;
                     }
+                    tooltip.style.left = (e.clientX + 14) + 'px';
+                    tooltip.style.top = (e.clientY + 14) + 'px';
+                });
 
+                card.addEventListener('mouseleave', function () {
+                    tooltip.classList.remove('is-visible');
+                });
+
+                card.addEventListener('mousedown', function () {
+                    tooltip.classList.remove('is-visible');
+                });
+            });
+            // Filter functionality
+            buttons.forEach(btn => {
+                btn.addEventListener('click', function (e) {
+                    e.stopPropagation();
                     buttons.forEach(b => b.classList.remove('active'));
-                    btn.classList.add('active');
+                    this.classList.add('active');
 
-                    const filter = btn.getAttribute('data-filter');
+                    const filter = this.getAttribute('data-filter');
 
                     // Update URL with filter parameter
                     const url = new URL(window.location);
@@ -703,64 +882,16 @@
                     }
                     window.history.pushState({}, '', url);
 
-                    if (typeof gsap !== 'undefined') {
-                        // Smooth GSAP fade transition
-                        gsap.to(items, {
-                            duration: 0.3,
-                            opacity: 0,
-                            ease: 'CustomEase.create("cubic", "0.63,0.03,0.21,1")',
-                            onComplete: () => {
-                                // Toggle visibility of category tags while cards are hidden (opacity: 0)
-                                const categoryInlineTags = document.querySelectorAll('.project-category-inline');
-                                if (filter === 'all') {
-                                    categoryInlineTags.forEach(el => el.style.setProperty('display', '', 'important'));
-                                } else {
-                                    categoryInlineTags.forEach(el => el.style.setProperty('display', 'none', 'important'));
-                                }
-
-                                items.forEach(item => {
-                                    const cat = item.getAttribute('data-category');
-                                    if (filter === 'all' || cat === filter) {
-                                        item.style.display = 'block';
-                                    } else {
-                                        item.style.display = 'none';
-                                    }
-                                });
-
-                                updateGridGutters();
-
-                                gsap.to(items, {
-                                    duration: 0.3,
-                                    opacity: 1,
-                                    ease: 'CustomEase.create("cubic", "0.63,0.03,0.21,1")'
-                                });
-                            }
-                        });
-                    } else {
-                        // Instant fallback
-                        const categoryInlineTags = document.querySelectorAll('.project-category-inline');
-                        if (filter === 'all') {
-                            categoryInlineTags.forEach(el => el.style.setProperty('display', '', 'important'));
+                    cards.forEach(card => {
+                        const cat = card.getAttribute('data-category');
+                        if (filter === 'all' || cat === filter) {
+                            card.classList.remove('hidden-filter');
                         } else {
-                            categoryInlineTags.forEach(el => el.style.setProperty('display', 'none', 'important'));
+                            card.classList.add('hidden-filter');
                         }
-
-                        items.forEach(item => {
-                            const cat = item.getAttribute('data-category');
-                            if (filter === 'all' || cat === filter) {
-                                item.style.display = 'block';
-                            } else {
-                                item.style.display = 'none';
-                            }
-                        });
-                        updateGridGutters();
-                    }
+                    });
                 });
             });
-
-            // Run gutter styling on first load and window resize
-            updateGridGutters();
-            window.addEventListener('resize', updateGridGutters);
 
             // Parse URL filter parameter if present to auto-trigger the category
             const urlParams = new URLSearchParams(window.location.search);
@@ -770,12 +901,20 @@
                 if (targetBtn) {
                     targetBtn.click();
                 }
-            } else {
-                const activeBtn = document.querySelector('.filter-btn.active');
-                if (activeBtn) {
-                    activeBtn.click();
-                }
             }
+
+            // Handle initial layout and resize centering
+            calculateLayout();
+            initPosition();
+            window.addEventListener('resize', () => {
+                calculateLayout();
+                const bounds = getMinMax();
+                targetX = Math.max(bounds.minX, Math.min(bounds.maxX, targetX));
+                targetY = Math.max(bounds.minY, Math.min(bounds.maxY, targetY));
+                currentX = targetX;
+                currentY = targetY;
+                updateTransform();
+            });
         });
     </script>
 

@@ -8042,7 +8042,7 @@ html.draggabilly-grabbing * {
 }
 
 .draggableA::after {
-    content: "about me";
+    content: "About Me";
     position: absolute;
     top: 100%;
     left: 50%;
@@ -8055,7 +8055,7 @@ html.draggabilly-grabbing * {
 }
 
 .draggableB::after {
-    content: "resumé";
+    content: "Resumé";
     position: absolute;
     top: 100%;
     left: 50%;
@@ -8069,7 +8069,7 @@ html.draggabilly-grabbing * {
 
 
 .draggableC::after {
-    content: "graphic & motion";
+    content: "Graphic & Motion";
     position: absolute;
     top: 100%;
     left: 50%;
@@ -8083,7 +8083,7 @@ html.draggabilly-grabbing * {
 
 
 .draggableD::after {
-    content: "video editing";
+    content: "Video Editing";
     position: absolute;
     top: 100%;
     left: 50%;
@@ -8096,7 +8096,7 @@ html.draggabilly-grabbing * {
 }
 
 .draggableE::after {
-    content: "web development & design";
+    content: "Web Development & Design";
     position: absolute;
     top: 100%;
     left: 50%;
@@ -8109,7 +8109,7 @@ html.draggabilly-grabbing * {
 }
 
 .draggableF::after {
-    content: "contact";
+    content: "Contact";
     position: absolute;
     top: 100%;
     left: 50%;
@@ -8168,16 +8168,16 @@ body.dark .draggableF::after {
     left: 0;
     z-index: 9999;
     padding: 4px 8px;
-    border: 1px solid rgba(255, 184, 0, 0.7);
+    border: 1px solid rgba(0, 0, 0, 0.35);
     border-radius: 12px;
-    background: rgba(255, 248, 230, 0.95);
+    background: #ebebeb;
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
-    color: #3a2a00;
+    color: #1d1b1c;
     font-size: 12px;
     letter-spacing: 0.02em;
     white-space: nowrap;
-    box-shadow: 0 10px 28px rgba(80, 56, 0, 0.15);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
     pointer-events: none;
     opacity: 0;
     visibility: hidden;
@@ -8187,6 +8187,13 @@ body.dark .draggableF::after {
 .draggablee-tooltip.is-visible {
     opacity: 1;
     visibility: visible;
+}
+
+body.dark .draggablee-tooltip {
+    color: #ffffff;
+    background: #131313;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.3);
 }
 
 .draggableA,

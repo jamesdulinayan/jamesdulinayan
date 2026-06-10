@@ -176,7 +176,7 @@ $(document).ready(function () {
   });
 
   // Tooltip element creation (shared across desktop hover and mobile touch)
-  var $tooltip = $('<div class="draggablee-tooltip">click to open</div>');
+  var $tooltip = $('<div class="draggablee-tooltip">Click to Open</div>');
   $('body').append($tooltip);
 
   function updateTooltipPosition(clientX, clientY) {
