@@ -42,12 +42,12 @@
             width: 100vw;
             height: 100vh;
             overflow: hidden;
-            background: radial-gradient(circle at 50% 50%, #ffffff 0%, #e8e7e3 100%);
+            background-color: #ffffff;
             z-index: 5;
             cursor: grab;
             user-select: none;
             -webkit-user-select: none;
-            transition: background 0.5s ease;
+            transition: background-color 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .portfolio-viewport.grabbing {
@@ -82,24 +82,24 @@
 
         /* Dark mode overrides for viewport and canvas */
         body.dark .portfolio-viewport {
-            background: radial-gradient(circle at 50% 50%, #1a1a1c 0%, #0c0c0d 100%);
+            background-color: #000000;
         }
 
         body.dark .portfolio-canvas {
             background: transparent;
         }
 
-        /* Portfolio Cards without text details or hover scaling */
         .portfolio-card {
             position: absolute;
             width: 380px;
             height: 380px;
             border-radius: 110px;
+            clip-path: inset(0 round 110px);
             display: flex;
             align-items: center;
             justify-content: center;
             box-sizing: border-box;
-            transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), left 0.6s cubic-bezier(0.16, 1, 0.3, 1), top 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), left 0.6s cubic-bezier(0.16, 1, 0.3, 1), top 0.6s cubic-bezier(0.16, 1, 0.3, 1);
             overflow: hidden;
             background: transparent !important;
         }
@@ -122,10 +122,11 @@
             object-fit: cover;
             display: block;
             draggable: false;
+            pointer-events: none;
         }
 
         .portfolio-card.hidden-filter {
-            opacity: 0.05 !important;
+            opacity: 0.05;
             pointer-events: none !important;
         }
 
@@ -625,7 +626,9 @@
                 cards.forEach(card => {
                     card.style.width = cardSize + 'px';
                     card.style.height = cardSize + 'px';
-                    card.style.borderRadius = (110 * scale) + 'px';
+                    const radius = (110 * scale) + 'px';
+                    card.style.borderRadius = radius;
+                    card.style.clipPath = `inset(0 round ${radius})`;
                 });
 
                 const isMobile = window.innerWidth < 576;
@@ -827,10 +830,40 @@
                 e.preventDefault();
             }, { passive: false });
 
-            // Prevent link navigation if drag took place
+            // Prevent link preview/drag behavior by dynamically removing href on mousedown/touchstart
             const links = document.querySelectorAll('.portfolio-card a');
             links.forEach(link => {
+                link.addEventListener('mousedown', function (e) {
+                    if (e.button !== 0) return; // Only prevent preview for left-click drags
+                    const href = this.getAttribute('href');
+                    if (href) {
+                        this.setAttribute('data-temp-href', href);
+                        this.removeAttribute('href');
+                    }
+                });
+
+                link.addEventListener('touchstart', function () {
+                    const href = this.getAttribute('href');
+                    if (href) {
+                        this.setAttribute('data-temp-href', href);
+                        this.removeAttribute('href');
+                    }
+                }, { passive: true });
+
+                const restoreHref = function () {
+                    const tempHref = this.getAttribute('data-temp-href');
+                    if (tempHref) {
+                        this.setAttribute('href', tempHref);
+                        this.removeAttribute('data-temp-href');
+                    }
+                };
+
+                link.addEventListener('mouseup', restoreHref);
+                link.addEventListener('touchend', restoreHref);
+                link.addEventListener('mouseleave', restoreHref);
+
                 link.addEventListener('click', function (e) {
+                    restoreHref.call(this);
                     if (hasDragged) {
                         e.preventDefault();
                         e.stopPropagation();
