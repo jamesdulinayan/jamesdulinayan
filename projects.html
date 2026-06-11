@@ -116,7 +116,8 @@
             overflow: hidden;
         }
 
-        .portfolio-card .post-image img {
+        .portfolio-card .post-image img,
+        .portfolio-card .post-image video {
             width: 100%;
             height: 100%;
             object-fit: cover;
@@ -284,6 +285,40 @@
         body.dark .portfolio-info-overlay .info-category {
             color: rgba(255, 255, 255, 0.5);
         }
+
+        /* Floating Category Badge Inside Card when Filter is "All" */
+        .card-category-badge {
+            position: absolute;
+            bottom: clamp(15px, 5%, 25px);
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 4px 8px;
+            font-family: "Neue", system-ui, sans-serif;
+            font-size: 12px;
+            font-weight: 500;
+            line-height: 1;
+            border-radius: 12px;
+            background-color: #f1f1f1;
+            border: 1px solid #e1e1e1;
+            color: #393334;
+            letter-spacing: 0.02em;
+            pointer-events: none;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: 10;
+        }
+
+        .filter-active-all .card-category-badge {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        body.dark .card-category-badge {
+            background-color: #27282a;
+            border-color: #3c3d3f;
+            color: #ebe9e9;
+        }
     </style>
 </head>
 
@@ -406,44 +441,48 @@
             <div class="portfolio-filters-overlay">
                 <div class="works-filter">
                     <button class="filter-btn active" data-filter="all">All</button>
-                    <button class="filter-btn" data-filter="web-development-and-design">Web Dev & Design</button>
+                    <button class="filter-btn" data-filter="web-development-and-design">Web Development &
+                        Design</button>
                     <button class="filter-btn" data-filter="graphic-and-motion">Graphic & Motion</button>
                     <button class="filter-btn" data-filter="video-editing">Video Editing</button>
                 </div>
             </div>
 
             <!-- Viewport and Canvas -->
-            <div class="portfolio-viewport" id="portfolio-viewport">
+            <div class="portfolio-viewport filter-active-all" id="portfolio-viewport">
                 <div class="viewport-grain"></div>
                 <div class="portfolio-canvas" id="portfolio-canvas">
 
 
                     <!-- Project Card 1: Summit Collective -->
                     <div class="portfolio-card" data-category="web-development-and-design"
-                        data-title="Summit Collective" data-category-name="Web Dev & Design"
+                        data-title="Summit Collective" data-category-name="Web Development & Design"
                         style="background: #e5e5e0;">
                         <a href="/projects/summit-collective">
                             <div class="post-image">
-                                <img alt="Summit Collective Project Thumbnail"
-                                    src="img/projects/summit-collective/summit-featured.gif" draggable="false">
+                                <video autoplay loop muted playsinline draggable="false">
+                                    <source src="img/projects/summit-collective/summit-featured-box.mp4"
+                                        type="video/mp4">
+                                </video>
                             </div>
                         </a>
                     </div>
 
                     <!-- Project Card 2: fleur. -->
                     <div class="portfolio-card" data-category="web-development-and-design" data-title="fleur."
-                        data-category-name="Web Dev & Design" style="background: #d9dcd6;">
+                        data-category-name="Web Development & Design" style="background: #d9dcd6;">
                         <a href="/projects/fleur">
                             <div class="post-image">
-                                <img alt="fleur. Project Thumbnail" src="img/projects/fleur/fleur-featured.gif"
-                                    draggable="false">
+                                <video autoplay loop muted playsinline draggable="false">
+                                    <source src="img/projects/fleur/fleur-featured-box.mp4" type="video/mp4">
+                                </video>
                             </div>
                         </a>
                     </div>
 
                     <!-- Project Card 3: A.B.E Group -->
                     <div class="portfolio-card" data-category="web-development-and-design" data-title="A.B.E Group"
-                        data-category-name="Web Dev & Design" style="background: #cccdc8;">
+                        data-category-name="Web Development & Design" style="background: #cccdc8;">
                         <a href="/projects/abe-group">
                             <div class="post-image">
                                 <img alt="A.B.E Group Project Thumbnail"
@@ -454,19 +493,19 @@
 
                     <!-- Project Card 4: Caliz Music Studio -->
                     <div class="portfolio-card" data-category="web-development-and-design"
-                        data-title="Caliz Music Studio" data-category-name="Web Dev & Design"
+                        data-title="Caliz Music Studio" data-category-name="Web Development & Design"
                         style="background: #e8e4db;">
                         <a href="/projects/caliz-music-studio">
                             <div class="post-image">
                                 <img alt="Caliz Music Studio Project Thumbnail"
-                                    src="img/projects/caliz-music-studio/caliz-featured.gif" draggable="false">
+                                    src="img/projects/caliz-music-studio/caliz-featured-box.jpg" draggable="false">
                             </div>
                         </a>
                     </div>
 
                     <!-- Project Card 5: The Ocean Project -->
                     <div class="portfolio-card" data-category="web-development-and-design"
-                        data-title="The Ocean Project" data-category-name="Web Dev & Design"
+                        data-title="The Ocean Project" data-category-name="Web Development & Design"
                         style="background: #d2d3c9;">
                         <a href="/projects/the-ocean-project">
                             <div class="post-image">
@@ -489,7 +528,7 @@
 
                     <!-- Project Card 7: Lagman Family Clinic -->
                     <div class="portfolio-card" data-category="web-development-and-design"
-                        data-title="Lagman Family Clinic" data-category-name="Web Dev & Design"
+                        data-title="Lagman Family Clinic" data-category-name="Web Development & Design"
                         style="background: #cfd2cd;">
                         <a href="/projects/lqfclinic">
                             <div class="post-image">
@@ -527,8 +566,10 @@
                         data-category-name="Graphic & Motion" style="background: #d0d6d4;">
                         <a href="/projects/wreck-it-hau">
                             <div class="post-image">
-                                <img alt="Wreck-It HAU Project Thumbnail"
-                                    src="img/projects/wreck-it-hau/wreck-it-hau-featured.gif" draggable="false">
+                                <video autoplay loop muted playsinline draggable="false">
+                                    <source src="img/projects/wreck-it-hau/wreck-it-hau-featured-box.mp4"
+                                        type="video/mp4">
+                                </video>
                             </div>
                         </a>
                     </div>
@@ -549,8 +590,10 @@
                         data-category-name="Graphic & Motion" style="background: #d3c8be;">
                         <a href="/projects/hauwak-kamay">
                             <div class="post-image">
-                                <img alt="HAUwak Kamay Project Thumbnail"
-                                    src="img/projects/hauwak-kamay/hauwak-kamay-featured.gif" draggable="false">
+                                <video autoplay loop muted playsinline draggable="false">
+                                    <source src="img/projects/hauwak-kamay/hauwak-kamay-featured-box.mp4"
+                                        type="video/mp4">
+                                </video>
                             </div>
                         </a>
                     </div>
@@ -593,6 +636,24 @@
             const canvas = document.getElementById('portfolio-canvas');
             const cards = document.querySelectorAll('.portfolio-card');
             const buttons = document.querySelectorAll('.filter-btn');
+
+            // Generate stable randomized indices once on load to prevent reshuffling on window resize
+            const shuffledIndices = Array.from({ length: cards.length }, (_, i) => i);
+            for (let i = shuffledIndices.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [shuffledIndices[i], shuffledIndices[j]] = [shuffledIndices[j], shuffledIndices[i]];
+            }
+
+            // Dynamically create category badges for cards
+            cards.forEach(card => {
+                const catName = card.getAttribute('data-category-name');
+                if (catName) {
+                    const badge = document.createElement('div');
+                    badge.className = 'card-category-badge';
+                    badge.textContent = catName;
+                    card.appendChild(badge);
+                }
+            });
 
             // Create tooltip element (styled using existing stylesheet classes)
             const tooltip = document.createElement('div');
@@ -644,7 +705,7 @@
                 }
 
                 cards.forEach((card, idx) => {
-                    const pos = positions[idx];
+                    const pos = positions[shuffledIndices[idx]];
                     const left = margin + pos.col * step;
                     const top = margin + pos.row * step;
                     card.style.left = left + 'px';
@@ -679,9 +740,17 @@
                     const offsetX = (cardCenterX - centerX) * -0.07;
                     const offsetY = (cardCenterY - centerY) * -0.07;
 
-                    const img = card.querySelector('.post-image img');
-                    if (img) {
-                        img.style.transform = `translate3d(${offsetX}px, ${offsetY}px, 0) scale(1.3)`;
+                    const media = card.querySelector('.post-image img, .post-image video');
+                    if (media) {
+                        media.style.transform = `translate3d(${offsetX}px, ${offsetY}px, 0) scale(1.3)`;
+                    }
+
+                    const badge = card.querySelector('.card-category-badge');
+                    if (badge) {
+                        // Offset badge slightly in opposite direction (+0.03) of image to create foreground floating depth
+                        const badgeOffsetX = (cardCenterX - centerX) * 0.03;
+                        const badgeOffsetY = (cardCenterY - centerY) * 0.03;
+                        badge.style.transform = `translate3d(calc(-50% + ${badgeOffsetX}px), ${badgeOffsetY}px, 0)`;
                     }
                 });
             };
@@ -916,6 +985,13 @@
                         url.searchParams.set('filter', filter);
                     }
                     window.history.pushState({}, '', url);
+
+                    // Toggle filter-active-all class on viewport
+                    if (filter === 'all') {
+                        viewport.classList.add('filter-active-all');
+                    } else {
+                        viewport.classList.remove('filter-active-all');
+                    }
 
                     cards.forEach(card => {
                         const cat = card.getAttribute('data-category');

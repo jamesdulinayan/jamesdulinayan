@@ -4528,7 +4528,8 @@ section:after {
 }
 
 .post-image,
-.post-image img {
+.post-image img,
+.post-image video {
     width: 100%;
     height: 50vh;
     -o-object-fit: cover;
@@ -4557,7 +4558,8 @@ body.light .post-cat {
     height: auto !important;
 }
 
-.blog-classic .post-image img {
+.blog-classic .post-image img,
+.blog-classic .post-image video {
     width: 100%;
     aspect-ratio: 14 / 9 !important;
     -o-object-fit: cover;
@@ -10103,7 +10105,9 @@ body.dark .contact-col-right {
 }
 
 .project-page .blog-classic .post-image img,
-.works-page-content .blog-classic .post-image img {
+.project-page .blog-classic .post-image video,
+.works-page-content .blog-classic .post-image img,
+.works-page-content .blog-classic .post-image video {
     width: 100% !important;
     aspect-ratio: 14 / 9 !important;
     -o-object-fit: cover !important;
