@@ -741,7 +741,10 @@
             };
 
             const onMouseDown = (e) => {
-                isDragging = true;
+                const isTouch = e.type === 'touchstart';
+                if (!isTouch) {
+                    isDragging = true;
+                }
                 tooltip.classList.remove('is-visible');
                 viewport.classList.add('grabbing');
                 const pageX = e.pageX || (e.touches && e.touches[0].pageX);
@@ -761,6 +764,10 @@
             };
 
             const onMouseMove = (e) => {
+                const isTouch = e.type === 'touchmove';
+                if (!isDragging && isTouch) {
+                    isDragging = true;
+                }
                 if (!isDragging) return;
                 const pageX = e.pageX || (e.touches && e.touches[0].pageX);
                 const pageY = e.pageY || (e.touches && e.touches[0].pageY);
@@ -799,9 +806,9 @@
             };
 
             const onMouseUp = (e) => {
+                viewport.classList.remove('grabbing');
                 if (!isDragging) return;
                 isDragging = false;
-                viewport.classList.remove('grabbing');
 
                 const pageX = e.pageX || (e.changedTouches && e.changedTouches[0].pageX);
                 const pageY = e.pageY || (e.changedTouches && e.changedTouches[0].pageY);
