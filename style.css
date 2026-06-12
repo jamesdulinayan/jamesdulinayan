@@ -8219,7 +8219,7 @@ body.dark .draggablee-tooltip {
     position: absolute;
     width: clamp(40px, 6vw, 70px);
     height: clamp(40px, 6vw, 70px);
-    background: url(img/404/folder.png);
+    background: url(img/home/folder.png);
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
@@ -8232,7 +8232,7 @@ body.dark .draggablee-tooltip {
     position: absolute;
     width: clamp(40px, 6vw, 70px);
     height: clamp(40px, 6vw, 70px);
-    background: url(img/about/about-me.png);
+    background: url(img/home/about-me.png);
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
@@ -8258,7 +8258,7 @@ body.dark .draggablee-tooltip {
     position: absolute;
     width: clamp(40px, 6vw, 70px);
     height: clamp(40px, 6vw, 70px);
-    background: url(img/contact/contact.png);
+    background: url(img/home/contact.png);
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
