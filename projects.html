@@ -902,9 +902,14 @@
                 });
             });
             // Card hover tooltip logic
+            let lastTouchTime = 0;
+            const isTouchEventRecently = () => (Date.now() - lastTouchTime) < 1000;
+            let touchStartX = 0;
+            let touchStartY = 0;
+
             cards.forEach(card => {
                 card.addEventListener('mouseenter', function (e) {
-                    if (isDragging) return;
+                    if (isTouchEventRecently() || isDragging) return;
                     const title = this.getAttribute('data-title') || '';
                     if (!title) return;
                     tooltip.textContent = title;
@@ -914,6 +919,7 @@
                 });
 
                 card.addEventListener('mousemove', function (e) {
+                    if (isTouchEventRecently()) return;
                     if (isDragging) {
                         tooltip.classList.remove('is-visible');
                         return;
@@ -927,6 +933,47 @@
                 });
 
                 card.addEventListener('mousedown', function () {
+                    tooltip.classList.remove('is-visible');
+                });
+
+                // Touch events for mobile/tablet devices
+                card.addEventListener('touchstart', function (e) {
+                    lastTouchTime = Date.now();
+                    const touch = e.touches[0];
+                    if (!touch) return;
+                    touchStartX = touch.clientX;
+                    touchStartY = touch.clientY;
+
+                    if (isDragging) return;
+                    const title = this.getAttribute('data-title') || '';
+                    if (!title) return;
+                    tooltip.textContent = title;
+                    tooltip.classList.add('is-visible');
+                    tooltip.style.left = (touch.clientX + 14) + 'px';
+                    tooltip.style.top = (touch.clientY + 14) + 'px';
+                }, { passive: true });
+
+                card.addEventListener('touchmove', function (e) {
+                    lastTouchTime = Date.now();
+                    const touch = e.touches[0];
+                    if (!touch) return;
+
+                    // If they move their finger more than 10px, they are dragging/scrolling, so hide the tooltip
+                    if (Math.abs(touch.clientX - touchStartX) > 10 || Math.abs(touch.clientY - touchStartY) > 10) {
+                        tooltip.classList.remove('is-visible');
+                    } else if (!isDragging) {
+                        tooltip.style.left = (touch.clientX + 14) + 'px';
+                        tooltip.style.top = (touch.clientY + 14) + 'px';
+                    }
+                }, { passive: true });
+
+                card.addEventListener('touchend', function () {
+                    lastTouchTime = Date.now();
+                    tooltip.classList.remove('is-visible');
+                });
+
+                card.addEventListener('touchcancel', function () {
+                    lastTouchTime = Date.now();
                     tooltip.classList.remove('is-visible');
                 });
             });
