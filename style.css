@@ -3286,7 +3286,7 @@ body.dark p {
 h1 {
     font-size: 42px;
     line-height: normal;
-    letter-spacing: -1.5px;
+    letter-spacing: -2px;
     color: #393334;
     text-transform: uppercase;
 }
@@ -10602,7 +10602,7 @@ body.dark .index-menu-link {
     font-family: "Syne", sans-serif;
     font-weight: 700;
     line-height: 1.1;
-    letter-spacing: -1.5px;
+    letter-spacing: -2px;
     text-transform: uppercase !important;
     color: #474343 !important;
     /* Faded inactive base color in light mode matching social links */
