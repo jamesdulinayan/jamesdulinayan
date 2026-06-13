@@ -148,7 +148,7 @@
         /* Floating Overlays - Light Mode styles */
         .portfolio-filters-overlay {
             position: fixed;
-            bottom: 20px;
+            bottom: clamp(16px, 1vw + 12px, 24px);
             left: 50%;
             transform: translateX(-50%);
             z-index: 100;
@@ -181,19 +181,9 @@
             /* Safari/Chrome */
         }
 
-        @media (max-width: 1024px) {
-            .portfolio-filters-overlay {
-                bottom: 15px;
-            }
-        }
-
         @media (max-width: 720px) {
-            .portfolio-filters-overlay {
-                bottom: 12px;
-            }
-
             .portfolio-filters-overlay .works-filter {
-                max-width: calc(100vw - 24px);
+                max-width: calc(100vw - 32px);
             }
         }
 
