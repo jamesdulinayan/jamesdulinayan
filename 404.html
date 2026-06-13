@@ -217,6 +217,7 @@
         }
 
         @media (max-width: 1024px) {
+
             .drag404-A::after,
             .drag404-B::after,
             .drag404-C::after,
@@ -288,7 +289,7 @@
         .watermark-404 {
             position: absolute;
             font-size: clamp(8rem, 25vw, 22rem);
-            font-family: "Roboto Mono", ui-monospace, monospace;
+            font-family: "Syne", sans-serif;
             font-weight: 700;
             color: rgba(0, 0, 0, 0.10);
             pointer-events: none;
@@ -439,7 +440,7 @@
             <!-- Bottom Metadata Rows -->
             <div class="index-menu-meta-row">
                 <div class="index-menu-meta-col">
-                    <span class="cta-footer__col-label">Social</span>
+                    <span class="cta-footer__col-label">Socials</span>
                     <ul class="cta-footer__icon-row">
                         <li>
                             <a href="https://www.facebook.com/jamesdulinayan" target="_blank"
@@ -462,7 +463,7 @@
                     </ul>
                 </div>
                 <div class="index-menu-meta-col">
-                    <span class="cta-footer__col-label">Let's Connect</span>
+                    <span class="cta-footer__col-label">Get in Touch</span>
                     <a href="mailto:james.dulinayan@gmail.com"
                         class="cta-footer__col-value">jamesdulinayan@gmail.com</a>
                 </div>
@@ -484,7 +485,7 @@
                             style="display: flex; flex-direction: column; justify-content: center; align-items: flex-start; margin-bottom: 0; position: relative; z-index: 3;">
                             <h1 class="creative-copy-title"
                                 style="font-size: clamp(2.2rem, 4.5vw + 0.8rem, 4.5rem); margin-bottom: 1rem; line-height: 1.1;">
-                                Page Not Found
+                                Not Found
                             </h1>
                             <p class="creative-copy-text" style="margin-bottom: 40px; max-width: 90%;">
                                 The page you are looking for doesn't exist, has been moved, or is temporarily
@@ -648,7 +649,7 @@
                     const shakeY = (Math.random() * 1.6 - 0.8).toFixed(2) + 'px';
                     const shakeScale = (0.99 + Math.random() * 0.02).toFixed(3);
                     const shakeRotate = (Math.random() * 0.4 - 0.2).toFixed(2) + 'deg';
-                    
+
                     errorImg.style.setProperty('--shake-x', shakeX);
                     errorImg.style.setProperty('--shake-y', shakeY);
                     errorImg.style.setProperty('--shake-scale', shakeScale);

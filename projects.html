@@ -173,6 +173,7 @@
             /* IE/Edge */
             scrollbar-width: none;
             /* Firefox */
+            cursor: grab;
         }
 
         .portfolio-filters-overlay .works-filter::-webkit-scrollbar {
@@ -277,7 +278,8 @@
         }
 
         .portfolio-info-overlay .info-category {
-            font-family: "Roboto Mono", monospace;
+            font-family: "Syne", sans-serif;
+            font-weight: 700;
             font-size: 0.8rem;
             color: rgba(0, 0, 0, 0.5);
             margin-top: 6px;
@@ -365,7 +367,7 @@
             <!-- Bottom Metadata Rows -->
             <div class="index-menu-meta-row">
                 <div class="index-menu-meta-col">
-                    <span class="cta-footer__col-label">Social</span>
+                    <span class="cta-footer__col-label">Socials</span>
                     <ul class="cta-footer__icon-row">
                         <li>
                             <a href="https://www.facebook.com/jamesdulinayan" target="_blank"
@@ -388,7 +390,7 @@
                     </ul>
                 </div>
                 <div class="index-menu-meta-col">
-                    <span class="cta-footer__col-label">Let's Connect
+                    <span class="cta-footer__col-label">Get in Touch
                     </span>
                     <a href="mailto:james.dulinayan@gmail.com"
                         class="cta-footer__col-value">jamesdulinayan@gmail.com</a>
@@ -632,6 +634,7 @@
             document.body.appendChild(tooltip);
 
             let isDragging = false;
+            let isPointerDown = false;
             let startX = 0, startY = 0;
             let currentX = 0, currentY = 0;
             let targetX = 0, targetY = 0;
@@ -742,6 +745,7 @@
 
             const onMouseDown = (e) => {
                 const isTouch = e.type === 'touchstart';
+                isPointerDown = true;
                 if (!isTouch) {
                     isDragging = true;
                     tooltip.classList.remove('is-visible');
@@ -765,6 +769,7 @@
 
             const onMouseMove = (e) => {
                 const isTouch = e.type === 'touchmove';
+                if (isTouch && !isPointerDown) return;
                 if (!isDragging && isTouch) {
                     isDragging = true;
                     tooltip.classList.remove('is-visible');
@@ -807,6 +812,7 @@
             };
 
             const onMouseUp = (e) => {
+                isPointerDown = false;
                 viewport.classList.remove('grabbing');
                 if (!isDragging) return;
                 isDragging = false;
@@ -1057,6 +1063,57 @@
                 currentY = targetY;
                 updateTransform();
             });
+
+            // Desktop horizontal scrolling for the category filter
+            const filterContainer = document.querySelector('.works-filter');
+            if (filterContainer) {
+                // 1. Convert vertical wheel scroll to horizontal
+                filterContainer.addEventListener('wheel', (e) => {
+                    if (e.deltaY !== 0) {
+                        e.preventDefault();
+                        filterContainer.scrollLeft += e.deltaY;
+                    }
+                }, { passive: false });
+
+                // 2. Click-and-drag scrolling
+                let isDragScroll = false;
+                let startX, scrollLeft;
+                let dragMoved = false;
+
+                filterContainer.addEventListener('mousedown', (e) => {
+                    isDragScroll = true;
+                    dragMoved = false;
+                    startX = e.pageX - filterContainer.offsetLeft;
+                    scrollLeft = filterContainer.scrollLeft;
+                    filterContainer.style.cursor = 'grabbing';
+                });
+
+                window.addEventListener('mouseup', () => {
+                    if (isDragScroll) {
+                        isDragScroll = false;
+                        filterContainer.style.cursor = 'grab';
+                    }
+                });
+
+                window.addEventListener('mousemove', (e) => {
+                    if (!isDragScroll) return;
+                    const x = e.pageX - filterContainer.offsetLeft;
+                    const walk = (x - startX) * 1.5; // Drag speed multiplier
+                    if (Math.abs(walk) > 5) {
+                        dragMoved = true;
+                        e.preventDefault();
+                    }
+                    filterContainer.scrollLeft = scrollLeft - walk;
+                });
+
+                // Prevent click triggers on buttons if dragged
+                filterContainer.addEventListener('click', (e) => {
+                    if (dragMoved) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                    }
+                }, true);
+            }
         });
     </script>
 

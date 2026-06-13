@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@700&display=swap');
+
 /*!locomotive-scroll v4.1.1 | MIT License | https://github.com/locomotivemtl/locomotive-scroll*/
 html.has-scroll-smooth {
     overflow: hidden
@@ -3717,7 +3719,8 @@ span.apl-background {
 }
 
 .menu-item {
-    font-family: "Roboto Mono", ui-monospace, monospace;
+    font-family: "Syne", sans-serif;
+    font-weight: 700;
     text-transform: uppercase;
 }
 
@@ -8727,7 +8730,8 @@ body.dark .about-page .creative-media-col {
 
 .creative-copy-title {
     font-size: clamp(1.75rem, 2vw + 0.8rem, 2.8rem);
-    font-family: "Roboto Mono", ui-monospace, monospace;
+    font-family: "Syne", sans-serif;
+    font-weight: 700;
     line-height: 1.1;
     margin-bottom: 1rem;
 }
@@ -10595,7 +10599,8 @@ body.dark .index-menu-link {
 
 .index-menu-text {
     font-size: clamp(2.75rem, 3vw + 1.8rem, 3.8rem);
-    font-family: "Roboto Mono", ui-monospace, monospace;
+    font-family: "Syne", sans-serif;
+    font-weight: 700;
     line-height: 1.1;
     letter-spacing: -1.5px;
     text-transform: uppercase !important;
