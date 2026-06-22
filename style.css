@@ -8931,14 +8931,13 @@ body.dark .creative-copy-title {
     background-color: rgba(0, 0, 0, 0.35) !important;
     /* Soft semi-transparent black matching original light mode design */
     transform: scaleX(0) !important;
-    transform-origin: right !important;
+    transform-origin: left !important;
     transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
     /* Fast snappy timing */
 }
 
 a.cta-footer__col-value:hover::after {
     transform: scaleX(1) !important;
-    transform-origin: left !important;
 }
 
 body.dark .cta-footer__col-label {

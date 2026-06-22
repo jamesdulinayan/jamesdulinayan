@@ -263,7 +263,7 @@
         .portfolio-info-overlay .cta-footer__col-value {
             display: block !important;
             margin: 0 auto !important;
-            padding-bottom: 2px !important;
+            padding-bottom: 4px !important;
             line-height: 1.1 !important;
             opacity: 0;
             transform: translateY(15px);
@@ -284,6 +284,10 @@
 
         .portfolio-info-overlay.visible .info-category {
             transition-delay: 0.08s !important;
+        }
+
+        .portfolio-info-overlay.category-hidden .info-category {
+            display: none !important;
         }
 
         /* Bottom Info Overlay - Dark Mode styles */
@@ -1075,8 +1079,10 @@
                     // Toggle filter-active-all class on viewport
                     if (filter === 'all') {
                         viewport.classList.add('filter-active-all');
+                        infoOverlay.classList.remove('category-hidden');
                     } else {
                         viewport.classList.remove('filter-active-all');
+                        infoOverlay.classList.add('category-hidden');
                     }
 
                     cards.forEach(card => {
