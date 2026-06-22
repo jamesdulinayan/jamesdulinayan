@@ -7,22 +7,26 @@
     <title>Projects | James Dulinayan</title>
 
     <meta name="author" content="James Dulinayan">
-    <meta name="description" content="Explore the creative portfolio of James Dulinayan, showcasing featured projects in web development, front-end design, motion graphics, and video post-production.">
-    <meta name="keywords" content="portfolio, personal website, web developer, designer, video editor, creative, James Dulinayan">
+    <meta name="description"
+        content="Explore the creative portfolio of James Dulinayan, showcasing featured projects in web development, front-end design, motion graphics, and video post-production.">
+    <meta name="keywords"
+        content="portfolio, personal website, web developer, designer, video editor, creative, James Dulinayan">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://jamesdulinayan.com/projects">
     <meta property="og:title" content="Projects | James Dulinayan">
-    <meta property="og:description" content="Explore the creative portfolio of James Dulinayan, showcasing featured projects in web development, front-end design, motion graphics, and video post-production.">
+    <meta property="og:description"
+        content="Explore the creative portfolio of James Dulinayan, showcasing featured projects in web development, front-end design, motion graphics, and video post-production.">
     <meta property="og:image" content="https://jamesdulinayan.com/img/featured-images/screenshot-projects.png">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://jamesdulinayan.com/projects">
     <meta property="twitter:title" content="Projects | James Dulinayan">
-    <meta property="twitter:description" content="Explore the creative portfolio of James Dulinayan, showcasing featured projects in web development, front-end design, motion graphics, and video post-production.">
+    <meta property="twitter:description"
+        content="Explore the creative portfolio of James Dulinayan, showcasing featured projects in web development, front-end design, motion graphics, and video post-production.">
     <meta property="twitter:image" content="https://jamesdulinayan.com/img/featured-images/screenshot-projects.png">
     <link href="../../fonts.googleapis.com/css2fb67.css?family=Inter:wght@400;500;600;700&amp;display=swap"
         rel="stylesheet">
@@ -301,7 +305,6 @@
         body.dark .portfolio-info-overlay .info-category {
             color: rgba(255, 255, 255, 0.5);
         }
-
     </style>
 </head>
 
@@ -666,7 +669,14 @@
                 // Scale to cover both viewport width and height
                 const scaleX = window.innerWidth / 1920;
                 const scaleY = window.innerHeight / baseCanvasHeight;
-                const scale = Math.max(0.35, scaleX, scaleY);
+                let scale = Math.max(0.45, scaleX, scaleY);
+                if (isMobile) {
+                    scale = Math.max(0.55, scale);
+                } else if (isTablet) {
+                    scale = Math.max(0.75, scale);
+                } else {
+                    scale = scale * 1.05;
+                }
 
                 const cardSize = baseCardSize * scale;
                 const cardGap = baseCardGap * scale;
