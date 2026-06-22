@@ -38,6 +38,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
         crossorigin="anonymous" referrerpolicy="no-referrer">
     <style>
+        :root {
+            --portfolio-filters-bottom: clamp(16px, 4vw, 40px);
+        }
+
         body.has-draggable-portfolio {
             overflow: hidden !important;
             height: 100vh !important;
@@ -152,7 +156,7 @@
         /* Floating Overlays - Light Mode styles */
         .portfolio-filters-overlay {
             position: fixed;
-            bottom: 40px;
+            bottom: var(--portfolio-filters-bottom);
             left: 50%;
             transform: translateX(-50%);
             z-index: 100;
@@ -185,17 +189,7 @@
             /* Safari/Chrome */
         }
 
-        @media (max-width: 1024px) {
-            .portfolio-filters-overlay {
-                bottom: 40px;
-            }
-        }
-
         @media (max-width: 720px) {
-            .portfolio-filters-overlay {
-                bottom: clamp(16px, 4vw, 30px);
-            }
-
             .portfolio-filters-overlay .works-filter {
                 max-width: calc(100vw - 40px);
             }
@@ -250,60 +244,58 @@
         /* Bottom Info Overlay - Light Mode styles */
         .portfolio-info-overlay {
             position: fixed;
-            bottom: 40px;
+            bottom: calc(var(--portfolio-filters-bottom) + clamp(65px, 6vw, 85px));
             left: 50%;
-            transform: translateX(-50%) translateY(20px);
+            transform: translateX(-50%);
             z-index: 100;
             text-align: center;
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            padding: 18px 40px;
-            border-radius: 50px;
-            border: 1px solid rgba(0, 0, 0, 0.06);
             opacity: 0;
             pointer-events: none;
-            transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+            transition: opacity 0.15s ease;
+            width: 100%;
+            max-width: 90vw;
         }
 
         .portfolio-info-overlay.visible {
             opacity: 1;
-            transform: translateX(-50%) translateY(0);
         }
 
-        .portfolio-info-overlay .info-title {
-            font-family: "Neue", system-ui, sans-serif;
-            font-size: 1.45rem;
-            font-weight: 500;
-            color: #000000;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
+        .portfolio-info-overlay .cta-footer__col-value {
+            display: block !important;
+            margin: 0 auto !important;
+            padding-bottom: 2px !important;
+            line-height: 1.1 !important;
+            opacity: 0;
+            transform: translateY(15px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .portfolio-info-overlay.visible .cta-footer__col-value {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
         }
 
         .portfolio-info-overlay .info-category {
-            font-family: "Syne", sans-serif;
-            font-weight: 700;
-            font-size: 0.8rem;
-            color: rgba(0, 0, 0, 0.5);
-            margin-top: 6px;
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
+            font-weight: 400 !important;
+            margin-top: 0 !important;
+            font-size: clamp(0.75rem, 0.3vw + 0.7rem, 0.88rem) !important;
+            color: rgba(0, 0, 0, 0.6) !important;
+        }
+
+        .portfolio-info-overlay.visible .info-category {
+            transition-delay: 0.08s !important;
         }
 
         /* Bottom Info Overlay - Dark Mode styles */
-        body.dark .portfolio-info-overlay {
-            background: rgba(13, 13, 13, 0.8);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
-        }
-
-        body.dark .portfolio-info-overlay .info-title {
-            color: #ffffff;
-        }
-
         body.dark .portfolio-info-overlay .info-category {
-            color: rgba(255, 255, 255, 0.5);
+            color: rgba(255, 255, 255, 0.6) !important;
+        }
+
+        /* Tablet-only spacing override (retaining others) */
+        @media (min-width: 576px) and (max-width: 1024px) {
+            .portfolio-info-overlay {
+                bottom: calc(var(--portfolio-filters-bottom) + 78px) !important;
+            }
         }
     </style>
 </head>
@@ -432,6 +424,12 @@
                     <button class="filter-btn" data-filter="graphic-and-motion">Graphic & Motion</button>
                     <button class="filter-btn" data-filter="video-editing">Video Editing</button>
                 </div>
+            </div>
+
+            <!-- Bottom Info Overlay -->
+            <div class="portfolio-info-overlay" id="portfolio-info-overlay">
+                <div class="cta-footer__col-value" id="info-title"></div>
+                <div class="cta-footer__col-value info-category" id="info-category"></div>
             </div>
 
             <!-- Viewport and Canvas -->
@@ -631,10 +629,10 @@
             }
 
 
-            // Create tooltip element (styled using existing stylesheet classes)
-            const tooltip = document.createElement('div');
-            tooltip.className = 'draggablee-tooltip';
-            document.body.appendChild(tooltip);
+            // Get reference to the bottom info overlay elements
+            const infoOverlay = document.getElementById('portfolio-info-overlay');
+            const infoTitle = document.getElementById('info-title');
+            const infoCategory = document.getElementById('info-category');
 
             let isDragging = false;
             let isPointerDown = false;
@@ -758,7 +756,7 @@
                 isPointerDown = true;
                 if (!isTouch) {
                     isDragging = true;
-                    tooltip.classList.remove('is-visible');
+                    infoOverlay.classList.remove('visible');
                 }
                 viewport.classList.add('grabbing');
                 const pageX = e.pageX || (e.touches && e.touches[0].pageX);
@@ -782,7 +780,7 @@
                 if (isTouch && !isPointerDown) return;
                 if (!isDragging && isTouch) {
                     isDragging = true;
-                    tooltip.classList.remove('is-visible');
+                    infoOverlay.classList.remove('visible');
                 }
                 if (!isDragging) return;
                 const pageX = e.pageX || (e.touches && e.touches[0].pageX);
@@ -939,39 +937,87 @@
                     }
                 });
             });
-            // Card hover tooltip logic
+            // Card hover info overlay logic
             let lastTouchTime = 0;
             const isTouchEventRecently = () => (Date.now() - lastTouchTime) < 1000;
             let touchStartX = 0;
             let touchStartY = 0;
 
+            let overlayTimeout = null;
+            let fadeOutTimeout = null;
+            let currentActiveCard = null;
+            let isOverlayActive = false;
+
+            const updateOverlayText = (title, category) => {
+                infoTitle.textContent = title;
+                infoCategory.textContent = category;
+            };
+
+            const showOverlay = (card, title, category) => {
+                currentActiveCard = card;
+
+                if (overlayTimeout) {
+                    clearTimeout(overlayTimeout);
+                    overlayTimeout = null;
+                }
+                if (fadeOutTimeout) {
+                    clearTimeout(fadeOutTimeout);
+                    fadeOutTimeout = null;
+                }
+
+                if (isOverlayActive) {
+                    // It is either visible or currently fading out.
+                    // Force hide it first.
+                    infoOverlay.classList.remove('visible');
+
+                    // Wait for the exit animation to finish before showing the new text
+                    overlayTimeout = setTimeout(() => {
+                        if (currentActiveCard === card) {
+                            updateOverlayText(title, category);
+                            infoOverlay.classList.add('visible');
+                            isOverlayActive = true;
+                        }
+                    }, 150); // 150ms matches the 0.15s parent ease fade out
+                } else {
+                    // It was completely hidden, show it immediately
+                    updateOverlayText(title, category);
+                    infoOverlay.classList.add('visible');
+                    isOverlayActive = true;
+                }
+            };
+
+            const hideOverlay = (card) => {
+                if (!card || currentActiveCard === card) {
+                    currentActiveCard = null;
+                    if (overlayTimeout) {
+                        clearTimeout(overlayTimeout);
+                        overlayTimeout = null;
+                    }
+                    infoOverlay.classList.remove('visible');
+
+                    if (fadeOutTimeout) {
+                        clearTimeout(fadeOutTimeout);
+                    }
+                    fadeOutTimeout = setTimeout(() => {
+                        isOverlayActive = false;
+                    }, 150);
+                }
+            };
+
             cards.forEach(card => {
                 card.addEventListener('mouseenter', function (e) {
                     if (isTouchEventRecently() || isDragging) return;
                     const title = this.getAttribute('data-title') || '';
-                    if (!title) return;
-                    tooltip.textContent = title;
-                    tooltip.classList.add('is-visible');
-                    tooltip.style.left = (e.clientX + 14) + 'px';
-                    tooltip.style.top = (e.clientY + 14) + 'px';
-                });
-
-                card.addEventListener('mousemove', function (e) {
-                    if (isTouchEventRecently()) return;
-                    if (isDragging) {
-                        tooltip.classList.remove('is-visible');
-                        return;
-                    }
-                    tooltip.style.left = (e.clientX + 14) + 'px';
-                    tooltip.style.top = (e.clientY + 14) + 'px';
+                    const category = this.getAttribute('data-category-name') || '';
+                    showOverlay(this, title, category);
                 });
 
                 card.addEventListener('mouseleave', function () {
-                    tooltip.classList.remove('is-visible');
+                    hideOverlay(this);
                 });
 
                 card.addEventListener('mousedown', function () {
-                    tooltip.classList.remove('is-visible');
+                    hideOverlay(null);
                 });
 
                 // Touch events for mobile/tablet devices
@@ -984,11 +1030,8 @@
 
                     if (isDragging) return;
                     const title = this.getAttribute('data-title') || '';
-                    if (!title) return;
-                    tooltip.textContent = title;
-                    tooltip.classList.add('is-visible');
-                    tooltip.style.left = (touch.clientX + 14) + 'px';
-                    tooltip.style.top = (touch.clientY + 14) + 'px';
+                    const category = this.getAttribute('data-category-name') || '';
+                    showOverlay(this, title, category);
                 }, { passive: true });
 
                 card.addEventListener('touchmove', function (e) {
@@ -996,23 +1039,19 @@
                     const touch = e.touches[0];
                     if (!touch) return;
 
-                    // If they move their finger more than 10px, they are dragging/scrolling, so hide the tooltip
+                    // If they move their finger more than 10px, they are dragging/scrolling, so hide the overlay
                     if (Math.abs(touch.clientX - touchStartX) > 10 || Math.abs(touch.clientY - touchStartY) > 10) {
-                        tooltip.classList.remove('is-visible');
-                    } else if (!isDragging) {
-                        tooltip.style.left = (touch.clientX + 14) + 'px';
-                        tooltip.style.top = (touch.clientY + 14) + 'px';
+                        hideOverlay(null);
                     }
                 }, { passive: true });
 
                 card.addEventListener('touchend', function () {
                     lastTouchTime = Date.now();
-                    tooltip.classList.remove('is-visible');
                 });
 
                 card.addEventListener('touchcancel', function () {
                     lastTouchTime = Date.now();
-                    tooltip.classList.remove('is-visible');
+                    hideOverlay(null);
                 });
             });
             // Filter functionality
