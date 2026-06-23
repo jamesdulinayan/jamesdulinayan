@@ -8983,7 +8983,7 @@ body.dark .cta-footer__inner {
 @media (max-width: 1024px) {
 
     .creative-copy-col {
-        padding: clamp(80px, 8vh, 100px) 40px 40px 40px;
+        padding: clamp(100px, 10vh, 120px) 40px 40px 40px;
     }
 
     .creative-media-col {
@@ -9044,7 +9044,7 @@ body.dark .cta-footer__inner {
 @media (max-width: 720px) {
 
     .creative-copy-col {
-        padding: clamp(70px, 8vh, 90px) clamp(16px, 4vw, 30px) 40px clamp(16px, 4vw, 30px);
+        padding: clamp(85px, 9vh, 100px) clamp(16px, 4vw, 30px) 40px clamp(16px, 4vw, 30px);
     }
 
     .creative-media-col {
