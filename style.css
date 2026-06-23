@@ -9327,13 +9327,13 @@ body.dark .works-page-content .post-meta::after {
 
 @media (max-width: 1024px) {
     .works-page-content {
-        padding: clamp(80px, 8vh, 100px) 40px clamp(30px, 3vh, 50px) 40px !important;
+        padding: clamp(100px, 10vh, 120px) 40px clamp(30px, 3vh, 50px) 40px !important;
     }
 }
 
 @media (max-width: 720px) {
     .works-page-content {
-        padding: clamp(70px, 8vh, 90px) clamp(16px, 4vw, 30px) clamp(30px, 3vh, 40px) clamp(16px, 4vw, 30px) !important;
+        padding: clamp(85px, 9vh, 100px) clamp(16px, 4vw, 30px) clamp(30px, 3vh, 40px) clamp(16px, 4vw, 30px) !important;
     }
 }
 
