@@ -28,13 +28,100 @@
     about: "James is a versatile digital creator specializing in building immersive web experiences, crafting beautiful designs, and editing impactful videos. He blends technical development with artistic vision."
   };
 
+  // Response builders used by suggested pills and keyword matching
+  function getBackgroundResponse() {
+    return `James Dulinayan is a ${PORTFOLIO_DATA.role} based in the Philippines.<br><br>
+            He is passionate about bridging the gap between elegant aesthetics and functional, clean code. Whether it is building interactive web experiences or editing cinematic video narratives, he focuses on delivering visual excellence.<br><br>
+            Read his full background and story on the <a href="/about" target="_blank">About Page</a>.`;
+  }
+
+  function getSkillsResponse() {
+    return `James specializes in crafting high-end digital experiences across three core disciplines:<br><br>
+            • Web Development & Design: building responsive, interactive, and SEO-optimized sites using <em>${PORTFOLIO_DATA.skills.development.slice(0, 4).join(", ")}</em>, and custom WordPress animations.<br><br>
+            • Graphic & Motion Design: custom UI/UX, branding identities, and smooth motion graphics.<br><br>
+            • Video Editing: high-performance post-production, cinematic editing, and color grading.<br><br>
+            You can view all his technical skills on the <a href="/about" target="_blank">About Page</a> or view live projects on the <a href="/projects" target="_blank">Projects Page</a>.`;
+  }
+
+  function getProjectsResponse() {
+    const projectsList = [
+      { name: "Summit Collective", url: "/projects/summit-collective.html", cat: "Web Development", desc: "High-performance agency site" },
+      { name: "fleur.", url: "/projects/fleur.html", cat: "Web Development", desc: "Premium front-end layout" },
+      { name: "A.B.E Group", url: "/projects/abe-group.html", cat: "Web Development & Design", desc: "Engineering product showcase" },
+      { name: "Caliz Music Studio", url: "/projects/caliz-music-studio.html", cat: "Web Development", desc: "Music school landing page" },
+      { name: "enuf-proj", url: "/projects/enuf-proj.html", cat: "Graphic Design", desc: "Branding & art direction" },
+      { name: "Kapampangan Folk", url: "/projects/kapampangan-folk.html", cat: "Graphic Design", desc: "Digital illustration" },
+      { name: "Ad Infinitum", url: "/projects/ad-infinitum.html", cat: "Motion Graphics", desc: "Motion graphic visual" },
+      { name: "Kaleidoscope", url: "/projects/kaleidoscope.html", cat: "Video Editing", desc: "Cinematic narrative edits" }
+    ];
+
+    const shuffled = projectsList.sort(() => 0.5 - Math.random());
+    const selected = shuffled.slice(0, 3);
+
+    let projectHtml = "James has worked on several exciting projects. Here is a selection from his portfolio:<br><br>";
+    selected.forEach(p => {
+      projectHtml += `• <a href="${p.url}" target="_blank">${p.name}</a> (${p.cat}) - <em>${p.desc}</em><br>`;
+    });
+    projectHtml += `<br>Explore the interactive layout of all his works on the <a href="/projects.html" target="_blank">Projects Page</a>.`;
+
+    return projectHtml;
+  }
+
+  function getContactResponse() {
+    return `I can help you connect with James. Here are the best ways to get in touch:<br><br>
+            • Email: <a href="mailto:${PORTFOLIO_DATA.contact.email}" target="_blank">${PORTFOLIO_DATA.contact.email}</a><br>
+            • Phone/WhatsApp: <a href="tel:${PORTFOLIO_DATA.contact.phone}" target="_blank">${PORTFOLIO_DATA.contact.phone}</a><br>
+            • LinkedIn: <a href="${PORTFOLIO_DATA.contact.linkedin}" target="_blank">linkedin.com/in/jamesdulinayan</a><br><br>
+            You can also check his dedicated <a href="/contact" target="_blank">Contact Page</a>.`;
+  }
+
+  function getPricingResponse() {
+    return `James customizes every project based on its unique scope, timeline, and complexity to deliver optimal value.<br><br>
+            To get a customized quote for your project (whether it is web development, graphic design, or video editing), please reach out directly with details via the <a href="/contact" target="_blank">Contact Page</a> or drop an email to <a href="mailto:${PORTFOLIO_DATA.contact.email}" target="_blank">${PORTFOLIO_DATA.contact.email}</a>.`;
+  }
+
+  function getProcessResponse() {
+    return `James follows a structured 4-step creative process to ensure project success:<br><br>
+            1. Discovery: aligning on project goals, design directions, and technical requirements.<br>
+            2. Design & Prototype: creating wireframes and mockups (in Figma/Adobe) to lock in the visual aesthetic.<br>
+            3. Development: writing clean, responsive code and integrating animations.<br>
+            4. Launch & Review: thorough quality assurance, speed optimization, and final deployment.`;
+  }
+
+  const SUGGESTED_QUERY_RESPONSES = {
+    "what's his background?": getBackgroundResponse,
+    "what are his skills?": getSkillsResponse,
+    "show me some projects": getProjectsResponse,
+    "how do i get in touch?": getContactResponse,
+    "how does pricing work?": getPricingResponse,
+    "what's his process?": getProcessResponse
+  };
+
   // Helper to generate context-aware mock AI responses
   function getAIResponse(userMessage) {
     const msg = userMessage.toLowerCase().trim();
 
+    if (SUGGESTED_QUERY_RESPONSES[msg]) {
+      return SUGGESTED_QUERY_RESPONSES[msg]();
+    }
+
+    // About the assistant
+    if (msg.includes("who are you") || msg.match(/\bwho is this\b/)) {
+      return `I'm James' AI assistant — a custom helper built for this portfolio. I can answer questions about his work, skills, projects, rates, and how to get in touch. What would you like to know?`;
+    }
+
+    if (msg.includes("what can you help") || msg.includes("what can you do") || msg.includes("how can you help")) {
+      return `I can help you explore James' portfolio and find what you need:<br><br>
+              • Learn about his skills and services<br>
+              • Browse featured projects<br>
+              • Understand his process and rates<br>
+              • Get contact details or link you to the contact form<br><br>
+              Just ask, or tap one of the suggestions below.`;
+    }
+
     // Quick greetings
     if (msg.match(/\b(hi|hello|hey|greetings|hola|yo|good morning|good afternoon|good evening)\b/)) {
-      return "Hello! I'm your digital assistant. I can guide you through the work, share skills, or help you get in touch. What are you looking to create today?";
+      return "Hello! I'm James' AI assistant. I can help you learn about his work, skills, and projects, or point you to the best way to get in touch. What would you like to explore?";
     }
 
     // Specific WordPress queries
@@ -86,60 +173,33 @@
     }
 
     // Contact Info
-    if (msg.includes("contact") || msg.includes("email") || msg.includes("phone") || msg.includes("hire") || msg.includes("call") || msg.includes("reach") || msg.includes("message") || msg.includes("mail")) {
-      return `I can help you connect with James. Here are the best ways to get in touch:<br><br>
-              • Email: <a href="mailto:${PORTFOLIO_DATA.contact.email}" target="_blank">${PORTFOLIO_DATA.contact.email}</a><br>
-              • Phone/WhatsApp: <a href="tel:${PORTFOLIO_DATA.contact.phone}" target="_blank">${PORTFOLIO_DATA.contact.phone}</a><br>
-              • LinkedIn: <a href="${PORTFOLIO_DATA.contact.linkedin}" target="_blank">linkedin.com/in/jamesdulinayan</a><br><br>
-              You can also fill out the quick contact form on his dedicated <a href="/contact" target="_blank">Contact Page</a>.`;
+    if (msg.includes("contact") || msg.includes("email") || msg.includes("phone") || msg.includes("hire") || msg.includes("call") || msg.includes("reach") || msg.includes("touch") || msg.includes("message") || msg.includes("mail")) {
+      return getContactResponse();
+    }
+
+    // Pricing / Rates / Services (before skills to avoid "work" false matches)
+    if (msg.includes("price") || msg.includes("pricing") || msg.includes("cost") || msg.includes("rate") || msg.includes("charge") || msg.includes("fee") || msg.includes("budget")) {
+      return getPricingResponse();
     }
 
     // Skills & services
-    if (msg.includes("skill") || msg.includes("do") || msg.includes("offer") || msg.includes("service") || msg.includes("work") || msg.includes("technology") || msg.includes("tech") || msg.includes("code")) {
-      return `James specializes in crafting high-end digital experiences across three core disciplines:<br><br>
-              • Web Development & Design: building responsive, interactive, and SEO-optimized sites using <em>${PORTFOLIO_DATA.skills.development.slice(0, 4).join(", ")}</em>, and custom WordPress animations.<br><br>
-              • Graphic & Motion Design: custom UI/UX, branding identities, and smooth motion graphics.<br><br>
-              • Video Editing: high-performance post-production, cinematic editing, and color grading.<br><br>
-              You can view all his technical skills on the <a href="/about" target="_blank">About Page</a> or view live projects on the <a href="/projects" target="_blank">Projects Page</a>.`;
+    if (msg.includes("skill") || msg.includes("offer") || msg.includes("service") || msg.includes("technology") || msg.includes("tech") || msg.includes("code")) {
+      return getSkillsResponse();
     }
 
     // About James / background
     if (msg.includes("who is") || msg.includes("about") || msg.includes("james") || msg.includes("background") || msg.includes("experience") || msg.includes("bio")) {
-      return `James Dulinayan is a ${PORTFOLIO_DATA.role} based in the Philippines.<br><br>
-              He is passionate about bridging the gap between elegant aesthetics and functional, clean code. Whether it is building interactive web experiences or editing cinematic video narratives, he focuses on delivering visual excellence.<br><br>
-              Read his full background and story on the <a href="/about" target="_blank">About Page</a>.`;
+      return getBackgroundResponse();
     }
 
     // Projects / Works
-    if (msg.includes("project") || msg.includes("work") || msg.includes("portfolio") || msg.includes("example") || msg.includes("showcase") || msg.includes("website")) {
-      const projectsList = [
-        { name: "Summit Collective", url: "/projects/summit-collective.html", cat: "Web Development", desc: "High-performance agency site" },
-        { name: "fleur.", url: "/projects/fleur.html", cat: "Web Development", desc: "Premium front-end layout" },
-        { name: "A.B.E Group", url: "/projects/abe-group.html", cat: "Web Development & Design", desc: "Engineering product showcase" },
-        { name: "Caliz Music Studio", url: "/projects/caliz-music-studio.html", cat: "Web Development", desc: "Music school landing page" },
-        { name: "enuf-proj", url: "/projects/enuf-proj.html", cat: "Graphic Design", desc: "Branding & art direction" },
-        { name: "Kapampangan Folk", url: "/projects/kapampangan-folk.html", cat: "Graphic Design", desc: "Digital illustration" },
-        { name: "Ad Infinitum", url: "/projects/ad-infinitum.html", cat: "Motion Graphics", desc: "Motion graphic visual" },
-        { name: "Kaleidoscope", url: "/projects/kaleidoscope.html", cat: "Video Editing", desc: "Cinematic narrative edits" }
-      ];
-      
-      // Shuffle projects and pick 3
-      const shuffled = projectsList.sort(() => 0.5 - Math.random());
-      const selected = shuffled.slice(0, 3);
-      
-      let projectHtml = "James has worked on several exciting projects. Here is a selection from his portfolio:<br><br>";
-      selected.forEach(p => {
-        projectHtml += `• <a href="${p.url}" target="_blank">${p.name}</a> (${p.cat}) - <em>${p.desc}</em><br>`;
-      });
-      projectHtml += `<br>Explore the interactive layout of all his works on the <a href="/projects.html" target="_blank">Projects Page</a>.`;
-      
-      return projectHtml;
+    if (msg.includes("project") || msg.includes("portfolio") || msg.includes("example") || msg.includes("showcase") || msg.includes("website") || msg.match(/\bwork\b/)) {
+      return getProjectsResponse();
     }
 
-    // Pricing / Rates / Services
-    if (msg.includes("price") || msg.includes("cost") || msg.includes("rate") || msg.includes("charge") || msg.includes("fee") || msg.includes("budget")) {
-      return `James customizes every project based on its unique scope, timeline, and complexity to deliver optimal value.<br><br>
-              To get a customized quote for your project (whether it is web development, graphic design, or video editing), please reach out directly with details via the <a href="/contact" target="_blank">Contact Page</a> or drop an email to <a href="mailto:${PORTFOLIO_DATA.contact.email}" target="_blank">${PORTFOLIO_DATA.contact.email}</a>.`;
+    // Workflow / Process / How do you work
+    if (msg.includes("process") || msg.includes("workflow") || msg.includes("how do you work") || msg.includes("steps") || msg.includes("collaborate")) {
+      return getProcessResponse();
     }
 
     // Availability / Freelance / Job
@@ -149,7 +209,7 @@
     }
 
     // Resume / CV
-    if (msg.includes("resume") || msg.includes("cv") || msg.includes("experience") || msg.includes("history")) {
+    if (msg.includes("resume") || msg.includes("cv") || msg.includes("history")) {
       return `You can view James' background and skills on his <a href="/about" target="_blank">About Page</a>.<br><br>
               For a direct copy of his credentials or to request his official CV, please send a quick request to <a href="mailto:${PORTFOLIO_DATA.contact.email}" target="_blank">${PORTFOLIO_DATA.contact.email}</a>.`;
     }
@@ -159,14 +219,6 @@
       return `James is based in the Philippines and works with clients globally. Remote collaborations are fully supported and seamlessly managed across different time zones.`;
     }
 
-    // Workflow / Process / How do you work
-    if (msg.includes("process") || msg.includes("workflow") || msg.includes("how do you work") || msg.includes("steps") || msg.includes("collaborate")) {
-      return `James follows a structured 4-step creative process to ensure project success:<br><br>
-              1. Discovery: aligning on project goals, design directions, and technical requirements.<br>
-              2. Design & Prototype: creating wireframes and mockups (in Figma/Adobe) to lock in the visual aesthetic.<br>
-              3. Development: writing clean, responsive code and integrating animations.<br>
-              4. Launch & Review: thorough quality assurance, speed optimization, and final deployment.`;
-    }
 
     // Easter Egg / About the Chatbot
     if (msg.includes("bot") || msg.includes("chatbot") || msg.includes("who created") || msg.includes("who made")) {
@@ -174,7 +226,7 @@
     }
 
     // Help or default
-    return "I'm here to help you navigate the creative space. Feel free to ask any question or request information.";
+    return "I'm James' AI assistant — ask me about his portfolio, skills, rates, or how to reach him.";
   }
 
   // Initialize Chatbot when DOM is ready
@@ -217,12 +269,12 @@
         </div>
       </div>
       <div class="chat-suggestions">
-        <button class="chat-suggest-btn" data-query="Who are you?">Who are you?</button>
-        <button class="chat-suggest-btn" data-query="What can you do?">What can you do?</button>
-        <button class="chat-suggest-btn" data-query="Tell me about your work">Tell me about your work</button>
-        <button class="chat-suggest-btn" data-query="How can I get in touch?">How can I get in touch?</button>
-        <button class="chat-suggest-btn" data-query="What are the pricing options?">What are the pricing options?</button>
-        <button class="chat-suggest-btn" data-query="What is the process?">What is the process?</button>
+        <button class="chat-suggest-btn" data-query="What's his background?">What's his background?</button>
+        <button class="chat-suggest-btn" data-query="What are his skills?">What are his skills?</button>
+        <button class="chat-suggest-btn" data-query="Show me some projects">Show me some projects</button>
+        <button class="chat-suggest-btn" data-query="How do I get in touch?">How do I get in touch?</button>
+        <button class="chat-suggest-btn" data-query="How does pricing work?">How does pricing work?</button>
+        <button class="chat-suggest-btn" data-query="What's his process?">What's his process?</button>
       </div>
       <button class="chat-toggle-btn" aria-label="Toggle Chatbot">
         <i class="fa-solid fa-comment chat-icon-message"></i>
@@ -259,7 +311,7 @@
       if (chatHistory.length === 0) {
         chatHistory.push({
           sender: 'bot',
-          text: "Hey! Got a question? I'm here to help — ask me anything.",
+          text: "Hey! I'm James' AI assistant. Ask me about his work, projects, rates, or how to get in touch.",
           time: new Date().getTime()
         });
         saveHistory();
