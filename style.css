@@ -3973,7 +3973,7 @@ body.loading span.toggle-line {
     display: block;
     clear: both;
     background: #efefec;
-    border-top: 1px rgba(0, 0, 0, 0.5) solid !important;
+    border-top: 1px rgba(0, 0, 0, 0.35) solid !important;
     /* Muted transparent black outline */
     margin-bottom: 0;
     padding: 75px 0 1px;
@@ -3983,7 +3983,7 @@ body.loading span.toggle-line {
 
 #footer.dark {
     background: #131313;
-    border-top: 1px solid #9a9a9a !important;
+    border-top: 1px rgba(255, 255, 255, 0.35) solid !important;
     /* Visible silver-grey top border in dark mode */
 }
 
@@ -7036,7 +7036,7 @@ body.dark a.circular-button:hover {
     display: block;
     width: 100%;
     height: 1px;
-    background: rgba(25, 27, 29, .2);
+    background: rgba(0, 0, 0, 0.35);
     position: absolute;
     bottom: 0
 }
@@ -7075,7 +7075,7 @@ body.dark .alioth-services .service-title,
 
 body.dark .alioth-services .service::after,
 .alioth-services.style_2.dark .service::after {
-    background: hsla(0, 0%, 100%, .2)
+    background: rgba(255, 255, 255, 0.35)
 }
 
 body.dark .alioth-services .service-wrap::before,
@@ -8486,7 +8486,7 @@ body.dark .draggablee-tooltip {
 
 .creative-media-col {
     border-top: 0;
-    border-left: 1px solid rgba(0, 0, 0, 0.5) !important;
+    border-left: 1px solid rgba(0, 0, 0, 0.35) !important;
     /* Muted transparent black outline */
     border-right: 0;
 }
@@ -8648,7 +8648,7 @@ body.dark .draggablee-tooltip {
 
 @media (max-width: 1024px) {
     .creative-media-col {
-        border-top: 1px solid rgba(0, 0, 0, 0.5) !important;
+        border-top: 1px solid rgba(0, 0, 0, 0.35) !important;
         /* Muted transparent black outline */
         border-left: 0;
     }
@@ -8656,7 +8656,7 @@ body.dark .draggablee-tooltip {
 
 /* Dark Mode Layout Borders for Homepage Columns */
 body.dark .creative-media-col {
-    border-left: 1px solid #9a9a9a !important;
+    border-left: 1px solid rgba(255, 255, 255, 0.35) !important;
     /* Premium silver grey border outline */
     border-top: 0 !important;
 }
@@ -8668,7 +8668,7 @@ body.dark .about-page .creative-media-col {
 
 @media (max-width: 1024px) {
     body.dark .creative-media-col {
-        border-top: 1px solid #9a9a9a !important;
+        border-top: 1px solid rgba(255, 255, 255, 0.35) !important;
         /* Premium silver grey border outline */
         border-left: 0 !important;
     }
@@ -9575,18 +9575,18 @@ body.dark .filter-btn.active {
     font-size: clamp(1.35rem, 1.2vw + 1.1rem, 2rem) !important;
     font-weight: 500 !important;
     line-height: 1.2 !important;
-    color: #474343 !important;
+    color: #1d1b1c !important;
     transition: color 0.8s cubic-bezier(0.16, 1, 0.3, 1);
     margin: 0 !important;
     /* Resets base margin so it aligns vertically */
 }
 
 .project-info-col .alioth-services.style_2 .service:hover .post-title h3 {
-    color: #1d1b1c !important;
+    color: #474343 !important;
 }
 
 .project-info-col .alioth-services.style_2 .service.active .post-title h3 {
-    color: #1d1b1c !important;
+    color: #474343 !important;
 }
 
 body.dark .project-info-col .post-title h3 {
@@ -9595,15 +9595,15 @@ body.dark .project-info-col .post-title h3 {
 }
 
 body.dark .project-info-col .alioth-services.style_2 .post-title h3 {
-    color: #bdbdbd !important;
+    color: #eeeeee !important;
 }
 
 body.dark .project-info-col .alioth-services.style_2 .service:hover .post-title h3 {
-    color: #eeeeee !important;
+    color: #bdbdbd !important;
 }
 
 body.dark .project-info-col .alioth-services.style_2 .service.active .post-title h3 {
-    color: #eeeeee !important;
+    color: #bdbdbd !important;
 }
 
 .meta-pill {
@@ -9756,13 +9756,13 @@ body.dark .meta-pill::before {
 .project-separator {
     clear: both !important;
     width: 100% !important;
-    border-top: 1px solid rgba(0, 0, 0, 0.5) !important;
+    border-top: 1px solid rgba(0, 0, 0, 0.35) !important;
     margin-top: clamp(60px, 8vw, 100px) !important;
     margin-bottom: clamp(60px, 8vw, 100px) !important;
 }
 
 body.dark .project-separator {
-    border-top: 1px solid #9a9a9a !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.35) !important;
 }
 
 
@@ -9867,8 +9867,6 @@ body.dark .project-separator {
     font-weight: 500 !important;
     font-size: clamp(1.35rem, 1.2vw + 1.1rem, 2rem) !important;
     transition: color 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-    cursor: text !important;
-    /* Text selection cursor for static heading */
 }
 
 /* Restore pointer cursor specifically for clickable accordion list item headers */
@@ -9877,7 +9875,7 @@ body.dark .project-separator {
 }
 
 .project-page .post.alioth-post a:hover .post-title h3 {
-    color: #1d1b1c !important;
+    color: #474343 !important;
 }
 
 body.dark .project-page .post-title h3 {
@@ -9886,7 +9884,7 @@ body.dark .project-page .post-title h3 {
 }
 
 body.dark .project-page .post.alioth-post a:hover .post-title h3 {
-    color: #eeeeee !important;
+    color: #bdbdbd !important;
 }
 
 .project-page .post-title a,
@@ -10172,7 +10170,11 @@ body:not(.dark) .me-night-img {
 /* About Page Services Accordion Scaling Override */
 .project-info-col .alioth-services.style_2,
 .creative-copy-col .alioth-services.style_2 {
-    border-top: 1px solid rgba(128, 128, 128, 0.2);
+    border-top: 1px solid rgba(0, 0, 0, 0.35) !important;
+}
+body.dark .project-info-col .alioth-services.style_2,
+body.dark .creative-copy-col .alioth-services.style_2 {
+    border-top: 1px solid rgba(255, 255, 255, 0.35) !important;
 }
 
 .project-info-col .alioth-services.style_2 .service,
@@ -10209,22 +10211,22 @@ body:not(.dark) .me-night-img {
     font-weight: 500 !important;
     font-family: "Neue" !important;
     cursor: pointer !important;
-    color: #474343 !important;
+    color: #1d1b1c !important;
     transition: color 0.8s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
 body.dark .creative-copy-col .alioth-services.style_2 .post-title h3 {
-    color: #bdbdbd !important;
+    color: #eeeeee !important;
 }
 
 .project-info-col .alioth-services.style_2 .service:hover .post-title h3,
 .creative-copy-col .alioth-services.style_2 .service:hover .post-title h3 {
-    color: #1d1b1c !important;
+    color: #474343 !important;
 }
 
 body.dark .project-info-col .alioth-services.style_2 .service:hover .post-title h3,
 body.dark .creative-copy-col .alioth-services.style_2 .service:hover .post-title h3 {
-    color: #eeeeee !important;
+    color: #bdbdbd !important;
 }
 
 .project-info-col .alioth-services.style_2 .service-toggle,
@@ -10241,6 +10243,47 @@ body.dark .creative-copy-col .alioth-services.style_2 .service:hover .post-title
     font-size: clamp(16px, 1.5vw + 4px, 20px) !important;
     display: block !important;
     float: none !important;
+    color: #1d1b1c !important;
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), color 0.8s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+body.dark .project-info-col .alioth-services.style_2 .service-toggle i,
+body.dark .creative-copy-col .alioth-services.style_2 .service-toggle i {
+    color: #eeeeee !important;
+}
+
+/* Hover effect on accordion toggle icon when hovering the item row */
+.project-info-col .alioth-services.style_2 .service:hover .service-toggle i,
+.creative-copy-col .alioth-services.style_2 .service:hover .service-toggle i {
+    color: #474343 !important;
+}
+
+body.dark .project-info-col .alioth-services.style_2 .service:hover .service-toggle i,
+body.dark .creative-copy-col .alioth-services.style_2 .service:hover .service-toggle i {
+    color: #bdbdbd !important;
+}
+
+/* Smooth 180deg rotation and color change when accordion dropdown is active/open */
+.project-info-col .alioth-services.style_2 .service.active .service-toggle i,
+.creative-copy-col .alioth-services.style_2 .service.active .service-toggle i {
+    transform: rotate(180deg) !important;
+    color: #474343 !important;
+}
+
+body.dark .project-info-col .alioth-services.style_2 .service.active .service-toggle i,
+body.dark .creative-copy-col .alioth-services.style_2 .service.active .service-toggle i {
+    color: #bdbdbd !important;
+}
+
+/* Ensure active/open accordion title texts use the hovered/faded color */
+.project-info-col .alioth-services.style_2 .service.active .post-title h3,
+.creative-copy-col .alioth-services.style_2 .service.active .post-title h3 {
+    color: #474343 !important;
+}
+
+body.dark .project-info-col .alioth-services.style_2 .service.active .post-title h3,
+body.dark .creative-copy-col .alioth-services.style_2 .service.active .post-title h3 {
+    color: #bdbdbd !important;
 }
 
 .project-info-col .alioth-services.style_2 .service-wrap,
@@ -10420,10 +10463,9 @@ body.dark .index-logo-img {
     display: block;
     height: 2px;
     width: 100%;
-    background-color: #1d1b1c !important;
+    background-color: #474343 !important;
     border-radius: 2px;
     transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.8s cubic-bezier(0.16, 1, 0.3, 1) !important;
-    /* background-color handled by global theme block */
 }
 
 /* Dark Mode styles for Hamburger */
@@ -10434,18 +10476,18 @@ body.dark .index-hamburger-btn {
 }
 
 body.dark .hamburger-line {
-    background-color: #eeeeee !important;
+    background-color: #bdbdbd !important;
 }
 
 /* Hamburger Hover states with high specificity to override !important base values */
 body .index-hamburger-btn:hover .hamburger-line {
-    background-color: #474343 !important;
-    /* Elegant color transition to faded dark on hover matching social links */
+    background-color: #1d1b1c !important;
+    /* Highlight to solid charcoal */
 }
 
 body.dark .index-hamburger-btn:hover .hamburger-line {
-    background-color: #bdbdbd !important;
-    /* Elegant color transition to faded light on hover matching social links */
+    background-color: #eeeeee !important;
+    /* Highlight to warm white */
 }
 
 /* Hamburger Active / Morph Transitions */

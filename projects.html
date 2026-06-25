@@ -31,6 +31,7 @@
     <link href="../../fonts.googleapis.com/css2fb67.css?family=Inter:wght@400;500;600;700&amp;display=swap"
         rel="stylesheet">
     <link href="style.css" rel="stylesheet">
+    <link href="chatbot.css" rel="stylesheet">
     <link rel="shortcut icon" href="img/favicon.png" />
     <link rel="apple-touch-icon" href="img/favicon.png" />
     <link rel="stylesheet" href="https://use.typekit.net/dht2lod.css">
@@ -656,10 +657,24 @@
             let canvasHeight = 1834;
 
             const calculateLayout = () => {
+                const activeBtn = document.querySelector('.filter-btn.active');
+                const filter = activeBtn ? activeBtn.getAttribute('data-filter') : 'all';
+                const isFiltered = filter !== 'all';
+
                 const isMobile = window.innerWidth < 576;
                 const isTablet = window.innerWidth >= 576 && window.innerWidth <= 1024;
                 const colsPerRow = (isMobile || isTablet) ? 4 : 5;
-                const rowsCount = Math.ceil(cards.length / colsPerRow);
+
+                // Count visible cards
+                let visibleCount = 0;
+                cards.forEach(card => {
+                    const cat = card.getAttribute('data-category');
+                    if (!isFiltered || cat === filter) {
+                        visibleCount++;
+                    }
+                });
+
+                const rowsCount = Math.ceil(visibleCount / colsPerRow);
 
                 // Base dimensions at reference scale
                 const baseCardSize = 380;
@@ -720,15 +735,27 @@
                     });
                 }
 
+                let visibleIndex = 0;
                 cards.forEach((card, idx) => {
-                    const pos = positions[shuffledIndices[idx]];
-                    const left = marginX + pos.col * step;
-                    const top = marginTop + pos.row * step;
-                    card.style.left = left + 'px';
-                    card.style.top = top + 'px';
+                    const cat = card.getAttribute('data-category');
+                    const isVisible = !isFiltered || cat === filter;
+
+                    if (isVisible) {
+                        card.style.display = 'flex';
+                        // If filtered, show sequentially (visibleIndex). If unfiltered, show randomized.
+                        const posIndex = isFiltered ? visibleIndex : shuffledIndices[idx];
+                        const pos = positions[posIndex];
+                        const left = marginX + pos.col * step;
+                        const top = marginTop + pos.row * step;
+                        card.style.left = left + 'px';
+                        card.style.top = top + 'px';
+                        visibleIndex++;
+                    } else {
+                        card.style.display = 'none';
+                    }
                 });
 
-                canvasWidth = marginX * 2 + colsPerRow * step - cardGap;
+                canvasWidth = marginX * 2 + (visibleCount > 0 ? Math.min(visibleCount, colsPerRow) : 0) * step - cardGap;
                 canvasHeight = marginTop + marginBottom + rowsCount * step - cardGap;
             };
 
@@ -1111,6 +1138,9 @@
                             card.classList.add('hidden-filter');
                         }
                     });
+
+                    calculateLayout();
+                    initPosition();
                 });
             });
 
@@ -1301,6 +1331,7 @@
             lastScrollY = currentScrollY;
         });
     </script>
+    <script src="js/chatbot.js" defer></script>
 </body>
 
 </html>
