@@ -277,7 +277,7 @@
         <button class="chat-suggest-btn" data-query="What's his process?">What's his process?</button>
       </div>
       <button class="chat-toggle-btn" aria-label="Toggle Chatbot">
-        <i class="fa-solid fa-comment chat-icon-message"></i>
+        <i class="fa-solid fa-message chat-icon-message"></i>
         <i class="fa-solid fa-xmark chat-icon-close"></i>
         <span class="chat-badge" style="display: none;">1</span>
       </button>

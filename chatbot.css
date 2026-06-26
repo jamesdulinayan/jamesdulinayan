@@ -25,7 +25,7 @@
   --chat-secondary-btn-border: rgba(0, 0, 0, 0.35);
   --chat-secondary-btn-color: #1d1b1c;
   --chat-secondary-btn-hover-bg: #f3f3f3;
-  --chat-secondary-btn-hover-border: rgba(0, 0, 0, 0.35);
+  --chat-secondary-btn-hover-border: rgba(0, 0, 0, 0.5);
 }
 
 body.dark {
@@ -51,7 +51,7 @@ body.dark {
   --chat-secondary-btn-border: rgba(255, 255, 255, 0.35);
   --chat-secondary-btn-color: #eeeeee;
   --chat-secondary-btn-hover-bg: #1a1a1a;
-  --chat-secondary-btn-hover-border: rgba(255, 255, 255, 0.35);
+  --chat-secondary-btn-hover-border: #9a9a9a;
 }
 
 /* Container for all chatbot elements to isolate them */
@@ -77,20 +77,35 @@ body.dark {
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  background: var(--chat-btn-bg);
-  color: var(--chat-btn-color);
-  border: none;
+  background: var(--chat-secondary-btn-bg);
+  color: var(--chat-secondary-btn-color);
+  border: 1px solid var(--chat-secondary-btn-border);
   box-shadow: var(--chat-shadow);
   cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 22px;
-  transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), background-color 0.3s ease;
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
   z-index: 10;
 }
 
+.chat-toggle-btn:hover {
+  background-color: var(--chat-secondary-btn-hover-bg);
+  border-color: var(--chat-secondary-btn-hover-border);
+  color: var(--chat-secondary-btn-color);
+}
+
+#ai-chat-widget.is-open .chat-toggle-btn {
+  background-color: var(--chat-secondary-btn-hover-bg);
+  border-color: var(--chat-secondary-btn-hover-border);
+  color: var(--chat-secondary-btn-color);
+}
+
+.chat-toggle-btn i {
+  color: inherit;
+}
 
 .chat-toggle-btn .chat-icon-close {
   display: none;
@@ -449,8 +464,7 @@ body.dark .chat-send-btn:hover {
   height: 16px;
   object-fit: contain;
   opacity: 0.85;
-  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-              filter 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: color 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .chat-send-btn:hover .chat-send-icon {
