@@ -264,7 +264,7 @@
         <div class="chat-input-area">
           <input type="text" class="chat-input" placeholder="Ask a question..." aria-label="Type your message">
           <button class="chat-send-btn" aria-label="Send message">
-            <img src="img/send_17524267.png" alt="Send" class="chat-send-icon">
+            <i class="fa-solid fa-paper-plane chat-send-icon" aria-hidden="true"></i>
           </button>
         </div>
       </div>
