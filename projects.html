@@ -43,6 +43,18 @@
             --portfolio-filters-bottom: clamp(16px, 4vw, 40px);
         }
 
+        @media (max-width: 1024px) and (min-width: 769px) {
+            #ai-chat-widget {
+                bottom: calc(var(--portfolio-filters-bottom) + 60px) !important;
+            }
+        }
+
+        @media (max-width: 768px) {
+            #ai-chat-widget {
+                bottom: calc(var(--portfolio-filters-bottom) + 60px) !important;
+            }
+        }
+
         body.has-draggable-portfolio {
             overflow: hidden !important;
             height: 100vh !important;

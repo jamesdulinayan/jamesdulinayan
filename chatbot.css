@@ -74,8 +74,8 @@ body.dark {
 
 /* Floating Action Button */
 .chat-toggle-btn {
-  width: 60px;
-  height: 60px;
+  width: clamp(48px, 8vw, 64px);
+  height: clamp(48px, 8vw, 64px);
   border-radius: 50%;
   background: var(--chat-secondary-btn-bg);
   color: var(--chat-secondary-btn-color);
@@ -85,7 +85,7 @@ body.dark {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 22px;
+  font-size: clamp(16px, 3vw, 22px);
   transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
   z-index: 10;
@@ -487,6 +487,10 @@ body.dark .chat-send-icon {
     width: calc(100vw - 40px);
     height: 70vh;
     max-height: 480px;
+  }
+
+  .chat-suggestions {
+    display: none !important;
   }
 }
 
