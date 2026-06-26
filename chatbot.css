@@ -210,6 +210,12 @@ body.dark {
   font-size: 18px;
 }
 
+/* Make avatar non-interactive: keep toggle button as the single control */
+#ai-chat-widget .chat-avatar {
+  pointer-events: none;
+  cursor: default;
+}
+
 .chat-header-info {
   display: flex;
   flex-direction: column;
