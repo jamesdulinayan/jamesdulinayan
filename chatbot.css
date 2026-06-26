@@ -69,6 +69,23 @@ body.dark {
 
 #ai-chat-widget * {
   box-sizing: border-box;
+}
+
+/* Allow pointer events only where necessary.
+   - `chat-toggle-btn` and `chat-avatar` must remain clickable at all times.
+   - Other interactive elements should accept events only when widget is open. */
+#ai-chat-widget .chat-toggle-btn,
+#ai-chat-widget .chat-avatar {
+  pointer-events: auto;
+}
+
+#ai-chat-widget.is-open .chat-window,
+#ai-chat-widget.is-open .chat-suggestions,
+#ai-chat-widget.is-open .chat-suggest-btn,
+#ai-chat-widget.is-open .chat-input-area,
+#ai-chat-widget.is-open .chat-send-btn,
+#ai-chat-widget.is-open .chat-clear-btn,
+#ai-chat-widget.is-open .chat-bubble {
   pointer-events: auto;
 }
 
