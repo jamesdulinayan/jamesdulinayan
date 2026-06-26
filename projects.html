@@ -31,7 +31,6 @@
     <link href="../../fonts.googleapis.com/css2fb67.css?family=Inter:wght@400;500;600;700&amp;display=swap"
         rel="stylesheet">
     <link href="style.css" rel="stylesheet">
-     <link href="chatbot.css" rel="stylesheet">
     <link rel="shortcut icon" href="img/favicon.png" />
     <link rel="apple-touch-icon" href="img/favicon.png" />
     <link rel="stylesheet" href="https://use.typekit.net/dht2lod.css">
@@ -657,12 +656,11 @@
             let canvasHeight = 1834;
 
             const calculateLayout = () => {
-                
                 const isMobile = window.innerWidth < 576;
                 const isTablet = window.innerWidth >= 576 && window.innerWidth <= 1024;
- const colsPerRow = (isMobile || isTablet) ? 4 : 5;
+                const colsPerRow = (isMobile || isTablet) ? 4 : 5;
                 const rowsCount = Math.ceil(cards.length / colsPerRow);
-           
+
                 // Base dimensions at reference scale
                 const baseCardSize = 380;
                 const baseCardGap = 57;
@@ -723,15 +721,14 @@
                 }
 
                 cards.forEach((card, idx) => {
- const pos = positions[shuffledIndices[idx]];
+                    const pos = positions[shuffledIndices[idx]];
                     const left = marginX + pos.col * step;
                     const top = marginTop + pos.row * step;
                     card.style.left = left + 'px';
                     card.style.top = top + 'px';
-                    
                 });
 
-                  canvasWidth = marginX * 2 + colsPerRow * step - cardGap;
+                canvasWidth = marginX * 2 + colsPerRow * step - cardGap;
                 canvasHeight = marginTop + marginBottom + rowsCount * step - cardGap;
             };
 
@@ -1114,7 +1111,6 @@
                             card.classList.add('hidden-filter');
                         }
                     });
-
                 });
             });
 
@@ -1305,7 +1301,6 @@
             lastScrollY = currentScrollY;
         });
     </script>
-     <script src="js/chatbot.js" defer></script>
 </body>
 
 </html>
