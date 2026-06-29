@@ -238,9 +238,9 @@
     const widget = document.createElement('div');
     widget.id = 'ai-chat-widget';
 
-    // Check previous open state; auto-open on first load of session
+    // Check previous open state; do not auto-open on first load of session
     const hasSession = sessionStorage.getItem('ai_chat_open') !== null;
-    const isOpen = hasSession ? sessionStorage.getItem('ai_chat_open') === 'true' : true;
+    const isOpen = hasSession ? sessionStorage.getItem('ai_chat_open') === 'true' : false;
     if (isOpen) {
       widget.classList.add('is-open');
     }
