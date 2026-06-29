@@ -106,11 +106,11 @@
     }
 
     // About the assistant
-    if (msg.includes("who are you") || msg.match(/\bwho is this\b/)) {
+    if (msg.includes("who are you") || msg.match(/\bwho is this\b/) || msg.includes("your name")) {
       return `I'm James' AI assistant — a custom helper built for this portfolio. I can answer questions about his work, skills, projects, rates, and how to get in touch. What would you like to know?`;
     }
-
-    if (msg.includes("what can you help") || msg.includes("what can you do") || msg.includes("how can you help")) {
+ 
+    if (msg.includes("what can you help") || msg.includes("what can you do") || msg.includes("how can you help") || msg.match(/\b(help|guide|options|commands|menu|features)\b/)) {
       return `I can help you explore James' portfolio and find what you need:<br><br>
               • Learn about his skills and services<br>
               • Browse featured projects<br>
@@ -118,20 +118,119 @@
               • Get contact details or link you to the contact form<br><br>
               Just ask, or tap one of the suggestions below.`;
     }
-
+ 
     // Quick greetings
-    if (msg.match(/\b(hi|hello|hey|greetings|hola|yo|good morning|good afternoon|good evening)\b/)) {
+    if (msg.match(/\b(hi|hello|hey|greetings|hola|yo|good morning|good afternoon|good evening|sup|what's up)\b/)) {
       return "Hello! I'm James' AI assistant. I can help you learn about his work, skills, and projects, or point you to the best way to get in touch. What would you like to explore?";
+    }    // Project-Specific Queries
+    if (msg.includes("summit") || msg.includes("collective")) {
+      return `<strong>Summit Collective</strong> is a premium, high-performance digital agency website.<br><br>
+              • <strong>Role:</strong> Web Development & GSAP Animations<br>
+              • <strong>Tech Stack:</strong> Next.js, React, GSAP (GreenSock), ScrollTrigger<br>
+              • <strong>Details:</strong> Features extremely smooth animations, page transitions, and a highly responsive grid layout.<br><br>
+              Explore the <a href="/projects/summit-collective.html" target="_blank">Summit Collective Project</a>.`;
     }
 
+    if (msg.includes("fleur")) {
+      return `<strong>fleur.</strong> is a high-end front-end web layout showcase.<br><br>
+              • <strong>Role:</strong> Creative Front-End Development<br>
+              • <strong>Tech Stack:</strong> HTML, CSS, JavaScript, ScrollTrigger Animations<br>
+              • <strong>Details:</strong> Focused on layout aesthetics, high-end editorial typography, and interactive hover details.<br><br>
+              Explore the <a href="/projects/fleur.html" target="_blank">fleur. Project</a>.`;
+    }
+
+    if (msg.includes("abe") || msg.includes("a.b.e")) {
+      return `<strong>A.B.E Group</strong> is a product showcase site built for an engineering group.<br><br>
+              • <strong>Role:</strong> WordPress Development & Custom Styling<br>
+              • <strong>Tech Stack:</strong> WordPress, Elementor, Custom CSS<br>
+              • <strong>Details:</strong> Designed to display mechanical systems and structural products clean and professionally.<br><br>
+              Explore the <a href="/projects/abe-group.html" target="_blank">A.B.E Group Project</a>.`;
+    }
+
+    if (msg.includes("caliz") || msg.includes("music studio") || msg.includes("music-studio")) {
+      return `<strong>Caliz Music Studio</strong> is a web landing page for a premium music academy.<br><br>
+              • <strong>Role:</strong> Web Development & Design<br>
+              • <strong>Tech Stack:</strong> WordPress, Custom Themes<br>
+              • <strong>Details:</strong> Focuses on engaging layout aesthetics and seamless navigation to book courses and view classes.<br><br>
+              Explore the <a href="/projects/caliz-music-studio.html" target="_blank">Caliz Music Studio Project</a>.`;
+    }
+
+    if (msg.includes("enuf")) {
+      return `<strong>enuf-proj</strong> is a branding and graphic design case study.<br><br>
+              • <strong>Role:</strong> Graphic Design & Art Direction<br>
+              • <strong>Details:</strong> Represents minimalist packaging designs, curated brand guidelines, and visual communication materials.<br><br>
+              Explore the <a href="/projects/enuf-proj.html" target="_blank">enuf-proj Project</a>.`;
+    }
+
+    if (msg.includes("kapampangan") || msg.includes("folk")) {
+      return `<strong>Kapampangan Folk</strong> is a digital illustration and culture project.<br><br>
+              • <strong>Role:</strong> Digital Illustration & Layout<br>
+              • <strong>Details:</strong> A series of illustrated posters celebrating Kapampangan cultural identity, folklore, and local heritage.<br><br>
+              Explore the <a href="/projects/kapampangan-folk.html" target="_blank">Kapampangan Folk Project</a>.`;
+    }
+
+    if (msg.includes("infinitum") || msg.includes("ad-infinitum")) {
+      return `<strong>Ad Infinitum</strong> is a high-energy motion design showcase.<br><br>
+              • <strong>Role:</strong> Motion Graphic Design & Animation<br>
+              • <strong>Tech Stack:</strong> Adobe After Effects, Illustrator<br>
+              • <strong>Details:</strong> Merges graphic patterns with kinetic typography and audio sync for a stylized motion video.<br><br>
+              Explore the <a href="/projects/ad-infinitum.html" target="_blank">Ad Infinitum Project</a>.`;
+    }
+
+    if (msg.includes("kaleidoscope") || msg.includes("kaleid")) {
+      return `<strong>Kaleidoscope</strong> is a cinematic narrative video editing showcase.<br><br>
+              • <strong>Role:</strong> Video Editing & Sound Design<br>
+              • <strong>Tech Stack:</strong> Adobe Premiere Pro, DaVinci Resolve, Audition<br>
+              • <strong>Details:</strong> An emphasis on color grading, audio post-production, seamless pacing, and narrative storytelling.<br><br>
+              Explore the <a href="/projects/kaleidoscope.html" target="_blank">Kaleidoscope Project</a>.`;
+    }
+    if (msg.includes("hauwak") || msg.includes("kamay")) {
+      return `<strong>Hauwak Kamay</strong> is a digital graphic design and brand illustration project.<br><br>
+              • <strong>Role:</strong> Graphic Design & Illustration<br>
+              • <strong>Details:</strong> Celebrating local community values and cultural storytelling through custom vector art styles.<br><br>
+              Explore the <a href="/projects/hauwak-kamay.html" target="_blank">Hauwak Kamay Project</a>.`;
+    }
+
+    if (msg.includes("ivy") || msg.includes("league")) {
+      return `<strong>Ivy League</strong> is a premium collegiate-themed landing page layout.<br><br>
+              • <strong>Role:</strong> Web Design & Front-End Development<br>
+              • <strong>Tech Stack:</strong> HTML, CSS, JavaScript, ScrollTrigger Animations<br>
+              • <strong>Details:</strong> Clean grid structures, high-end typography, and subtle scroll indicators.<br><br>
+              Explore the <a href="/projects/ivy-league.html" target="_blank">Ivy League Project</a>.`;
+    }
+
+    if (msg.includes("lqf") || msg.includes("clinic")) {
+      return `<strong>LQF Clinic</strong> is a custom development project for a medical clinic client.<br><br>
+              • <strong>Role:</strong> Web Development & Design<br>
+              • <strong>Tech Stack:</strong> WordPress, Custom Styling<br>
+              • <strong>Details:</strong> Responsive design designed for medical clients, enabling patient information access and services display.<br><br>
+              Explore the <a href="/projects/lqfclinic.html" target="_blank">LQF Clinic Project</a>.`;
+    }
+
+    if (msg.includes("ocean")) {
+      return `<strong>The Ocean Project</strong> is an interactive web showcase highlighting conservation.<br><br>
+              • <strong>Role:</strong> Front-End Development & UI Design<br>
+              • <strong>Details:</strong> Parallax scrolling and smooth transitions showcasing underwater ecology and conservation awareness.<br><br>
+              Explore the <a href="/projects/the-ocean-project.html" target="_blank">The Ocean Project Page</a>.`;
+    }
+
+    if (msg.includes("wreck")) {
+      return `<strong>Wreck-It Hau</strong> is a playful student-centric gaming event website.<br><br>
+              • <strong>Role:</strong> Web Development & Event Branding<br>
+              • <strong>Tech Stack:</strong> HTML, CSS, JavaScript, Custom Animations<br>
+              • <strong>Details:</strong> An interactive site built for an IT student event at Holy Angel University, featuring retro arcade aesthetics.<br><br>
+              Explore the <a href="/projects/wreck-it-hau.html" target="_blank">Wreck-It Hau Project</a>.`;
+    }
+
+ 
     // Specific WordPress queries
-    if (msg.includes("wordpress") || msg.includes("elementor")) {
+    if (msg.includes("wordpress") || msg.includes("elementor") || msg.match(/\bwp\b/)) {
       return `James is highly experienced in WordPress Development. Custom, high-performance themes, customized product showcases, and page speed optimization are a core focus. He uses Elementor, custom CSS, and GSAP animations to make WordPress sites feel custom and premium, not generic.<br><br>
               Key WordPress Projects:<br>
               • <a href="/projects/abe-group.html" target="_blank">A.B.E Group</a> (Engineering product showcase)<br>
               • <a href="/projects/caliz-music-studio.html" target="_blank">Caliz Music Studio</a> (Music school landing page)`;
     }
-
+ 
     // Specific React / Next.js queries
     if (msg.includes("react") || msg.includes("next") || msg.includes("nextjs") || msg.includes("frontend") || msg.includes("front-end")) {
       return `For interactive and complex web applications, James uses React and Next.js combined with modern animation libraries like GSAP (GreenSock). This allows him to create Single Page Application (SPA) experiences with high-performance routing and dynamic state management.<br><br>
@@ -139,15 +238,15 @@
               • <a href="/projects/summit-collective.html" target="_blank">Summit Collective</a> (High-performance agency site)<br>
               • <a href="/projects/fleur.html" target="_blank">fleur.</a> (Premium front-end layout)`;
     }
-
+ 
     // Specific Animation queries
-    if (msg.includes("animation") || msg.includes("gsap") || msg.includes("scrolltrigger") || msg.includes("motion")) {
+    if (msg.includes("animation") || msg.includes("animate") || msg.includes("gsap") || msg.includes("scrolltrigger") || msg.includes("motion")) {
       return `James specializes in micro-animations and ScrollTrigger transitions. Using GSAP (GreenSock) and LottieFiles, he creates interactive visual storytelling on websites, making user interaction feel responsive, playful, and alive. Check out the draggable folder layouts on his <a href="/" target="_blank">Home</a> and <a href="/404" target="_blank">404</a> pages!<br><br>
               Key Animated Sites:<br>
               • <a href="/projects/summit-collective.html" target="_blank">Summit Collective</a> (GSAP transitions)<br>
               • <a href="/projects/fleur.html" target="_blank">fleur.</a> (Custom scroll triggers)`;
     }
-
+ 
     // Specific Video Editing / Premiere / After Effects queries
     if (msg.includes("video") || msg.includes("edit") || msg.includes("premiere") || msg.includes("after effects") || msg.includes("davinci") || msg.includes("vfx") || msg.includes("grading")) {
       return `James has a deep background in Video Editing and Post-Production:<br><br>
@@ -159,9 +258,9 @@
               • <a href="/projects/kaleidoscope.html" target="_blank">Kaleidoscope</a> (Cinematic narrative edits)<br>
               • Explore other video works on the <a href="/projects.html" target="_blank">Projects Page</a>.`;
     }
-
+ 
     // Specific Graphic Design / Figma / UI UX queries
-    if (msg.includes("design") || msg.includes("graphic") || msg.includes("figma") || msg.includes("photoshop") || msg.includes("illustrator") || msg.includes("ui") || msg.includes("ux")) {
+    if (msg.includes("design") || msg.includes("graphic") || msg.includes("figma") || msg.includes("photoshop") || msg.includes("illustrat") || msg.includes("ui") || msg.includes("ux")) {
       return `James handles the end-to-end creative lifecycle. His Design Skills include:<br><br>
               • UI/UX Design: prototyping interactive layouts in Figma/Adobe XD.<br>
               • Brand & Identity: logo design, guidelines, typography, and illustration.<br>
@@ -171,58 +270,150 @@
               • <a href="/projects/kapampangan-folk.html" target="_blank">Kapampangan Folk</a> (Digital illustration)<br>
               • <a href="/projects/ad-infinitum.html" target="_blank">Ad Infinitum</a> (Motion graphic visual)`;
     }
-
+ 
     // Contact Info
-    if (msg.includes("contact") || msg.includes("email") || msg.includes("phone") || msg.includes("hire") || msg.includes("call") || msg.includes("reach") || msg.includes("touch") || msg.includes("message") || msg.includes("mail")) {
+    if (msg.includes("contact") || msg.includes("email") || msg.includes("phone") || msg.includes("hire") || msg.includes("call") || msg.includes("reach") || msg.includes("touch") || msg.includes("message") || msg.includes("mail") || msg.includes("social")) {
       return getContactResponse();
     }
-
+ 
     // Pricing / Rates / Services (before skills to avoid "work" false matches)
-    if (msg.includes("price") || msg.includes("pricing") || msg.includes("cost") || msg.includes("rate") || msg.includes("charge") || msg.includes("fee") || msg.includes("budget")) {
+    if (msg.includes("price") || msg.includes("pricing") || msg.includes("cost") || msg.includes("rate") || msg.includes("charge") || msg.includes("fee") || msg.includes("budget") || msg.includes("payment") || msg.includes("pay")) {
       return getPricingResponse();
     }
-
+ 
     // Skills & services
-    if (msg.includes("skill") || msg.includes("offer") || msg.includes("service") || msg.includes("technology") || msg.includes("tech") || msg.includes("code")) {
+    if (msg.includes("skill") || msg.includes("offer") || msg.includes("service") || msg.includes("technology") || msg.includes("technologies") || msg.includes("tech") || msg.includes("code") || msg.includes("expert") || msg.includes("abilit")) {
       return getSkillsResponse();
     }
-
+ 
     // About James / background
-    if (msg.includes("who is") || msg.includes("about") || msg.includes("james") || msg.includes("background") || msg.includes("experience") || msg.includes("bio")) {
+    if (msg.includes("who is") || msg.includes("about") || msg.includes("james") || msg.includes("background") || msg.includes("experience") || msg.includes("bio") || msg.includes("history")) {
       return getBackgroundResponse();
     }
-
+ 
     // Projects / Works
-    if (msg.includes("project") || msg.includes("portfolio") || msg.includes("example") || msg.includes("showcase") || msg.includes("website") || msg.match(/\bwork\b/)) {
+    if (msg.includes("project") || msg.includes("portfolio") || msg.includes("example") || msg.includes("showcase") || msg.includes("website") || msg.match(/\bworks?\b/)) {
       return getProjectsResponse();
     }
-
+ 
     // Workflow / Process / How do you work
-    if (msg.includes("process") || msg.includes("workflow") || msg.includes("how do you work") || msg.includes("steps") || msg.includes("collaborate")) {
+    if (msg.includes("process") || msg.includes("workflow") || msg.includes("how do you work") || msg.includes("step") || msg.includes("collaborat")) {
       return getProcessResponse();
     }
-
+ 
     // Availability / Freelance / Job
     if (msg.includes("availab") || msg.includes("freelance") || msg.includes("hire") || msg.includes("contract") || msg.includes("full time") || msg.includes("job")) {
       return `James is currently available for select freelance projects, contract opportunities, and collaborations.<br><br>
               If you have an interesting project or a role you'd like to discuss, feel free to get in touch on <a href="${PORTFOLIO_DATA.contact.linkedin}" target="_blank">LinkedIn</a> or send a request through the <a href="/contact" target="_blank">Contact Page</a>.`;
     }
-
-    // Resume / CV
-    if (msg.includes("resume") || msg.includes("cv") || msg.includes("history")) {
-      return `You can view James' background and skills on his <a href="/about" target="_blank">About Page</a>.<br><br>
-              For a direct copy of his credentials or to request his official CV, please send a quick request to <a href="mailto:${PORTFOLIO_DATA.contact.email}" target="_blank">${PORTFOLIO_DATA.contact.email}</a>.`;
+ 
+    // Resume / CV / Career Summary
+    if (msg.match(/\b(resume|cv|history|career|employment|experience|work|shoreagents|filam|job|intern|internship)\b/)) {
+      return `James Dulinayan is a Web Developer & Designer with 4+ years of professional experience:<br><br>
+              • <strong>Web Developer & Designer</strong> @ <strong>ShoreAgents Inc.</strong> (Sept 2022 – Feb 2026)<br>
+              Developed responsive WordPress websites and landing pages using Elementor, custom PHP, and CSS based on Figma designs. Built custom plugins, optimized site performance/Core Web Vitals, and managed server/hosting deployments.<br><br>
+              • <strong>Web Developer Intern</strong> @ <strong>FilAm Software Technology Inc.</strong> (Sept 2021 – Dec 2021)<br>
+              Supported client website development using WordPress and GravCMS based on UI/UX design requirements.<br><br>
+              You can view his full credentials on the <a href="/about" target="_blank">About Page</a> or drop a line to <a href="mailto:${PORTFOLIO_DATA.contact.email}">${PORTFOLIO_DATA.contact.email}</a> to request his official CV document.`;
     }
 
+    // Education / Degree / College
+    if (msg.match(/\b(education|college|university|school|degree|study|studied|graduat|holy angel|hau|bsit)\b/)) {
+      return `James graduated with a <strong>Bachelor of Science in Information Technology (BSIT)</strong> from <strong>Holy Angel University</strong> (June 2018 – June 2022).`;
+    }
+ 
     // Location
     if (msg.includes("location") || msg.includes("where") || msg.includes("live") || msg.includes("country") || msg.includes("based")) {
       return `James is based in the Philippines and works with clients globally. Remote collaborations are fully supported and seamlessly managed across different time zones.`;
     }
 
+    // WooCommerce / E-Commerce
+    if (msg.includes("ecommerce") || msg.includes("e-commerce") || msg.includes("shop") || msg.includes("store") || msg.includes("woocommerce") || msg.includes("cart") || msg.includes("checkout")) {
+      return `James develops fully customized e-commerce solutions using WordPress, WooCommerce, and custom checkout flows. He ensures your store is optimized for speed, fully responsive, and styled to match your unique brand identity instead of using generic templates.`;
+    }
 
+    // Social Handles / Channels / Links
+    if (msg.includes("social") || msg.includes("instagram") || msg.includes("facebook") || msg.includes("linkedin") || msg.includes("profile") || msg.includes("handle") || msg.includes("link")) {
+      return `You can find and follow James across his professional and creative social media channels:<br><br>
+              • LinkedIn: <a href="${PORTFOLIO_DATA.contact.linkedin}" target="_blank">LinkedIn Profile</a><br>
+              • Instagram: <a href="${PORTFOLIO_DATA.contact.instagram}" target="_blank">Instagram Profile</a><br>
+              • Facebook: <a href="${PORTFOLIO_DATA.contact.facebook}" target="_blank">Facebook Page</a>`;
+    }
+
+    // Software & Tools (Figma, Photoshop, etc.)
+    if (msg.includes("tool") || msg.includes("software") || msg.includes("figma") || msg.includes("photoshop") || msg.includes("illustrator") || msg.includes("premiere") || msg.includes("after effects") || msg.includes("davinci") || msg.includes("lottie")) {
+      return `James is proficient with industry-standard creative tools, including:<br><br>
+              • Design & UI/UX: Figma, Adobe Photoshop, Adobe Illustrator, Adobe XD, LottieFiles.<br>
+              • Video & Sound: Adobe Premiere Pro, Adobe After Effects, Adobe Audition, DaVinci Resolve.`;
+    }
+ 
     // Easter Egg / About the Chatbot
     if (msg.includes("bot") || msg.includes("chatbot") || msg.includes("who created") || msg.includes("who made")) {
       return `I am a custom-designed, persistent helper built specifically for James Dulinayan's portfolio website to assist visitors like you.`;
+    }
+
+    // Small Talk: How are you
+    if (msg.includes("how are you") || msg.includes("how is it going") || msg.includes("how's it going") || msg.includes("are you ok")) {
+      return `I'm doing great, thank you! I'm ready to help you explore James' portfolio. How can I assist you today?`;
+    }
+
+    // Gratitude / Polite closings
+    if (msg.match(/\b(thanks|thank you|awesome|perfect|cool|great|nice|ty)\b/)) {
+      return `You're very welcome! Let me know if there's anything else I can help you find.`;
+    }
+
+    if (msg.match(/\b(bye|goodbye|see you|adios|exit)\b/)) {
+      return `Goodbye! Thank you for visiting. Feel free to open me back up if you have any more questions!`;
+    }
+
+    // SEO & Website Optimization
+    if (msg.match(/\b(seo|performance|speed|caching|optimization|lazy load|core web vitals|analytics|ranking|gtmetrix|pagespeed)\b/)) {
+      return `James specializes in website speed and SEO optimization. During his time at ShoreAgents, he dramatically improved Core Web Vitals using advanced caching, lazy loading, asset minification, and image optimization techniques. Every site he builds is structured with SEO best practices in mind.`;
+    }
+
+    // Hobbies / Personal Info
+    if (msg.match(/\b(hobby|hobbies|interest|free time|fun|like to do|creative|personal)\b/)) {
+      return `Beyond development and design, James is passionate about visual storytelling, editing video content, exploring modern design concepts, and keeping up with the latest web technologies and creative media trends.`;
+    }
+
+    // Age / Identity details
+    if (msg.match(/\b(age|old|how old|birthday|born)\b/)) {
+      return `James is a digital professional who graduated college in 2022 and has been working in the creative dev space for over 4 years.`;
+    }
+
+    // Timelines & Duration
+    if (msg.match(/\b(timeline|duration|how long|timeframe|days|weeks|month)\b/)) {
+      return `Project timelines vary depending on scope: simple landing pages can take 1–2 weeks, while custom WordPress projects or complex React web apps usually take 3–6 weeks. Contact James directly to discuss your project's timeline!`;
+    }
+
+    // Git & GitHub
+    if (msg.includes("git") || msg.includes("github") || msg.includes("version control") || msg.includes("repo")) {
+      return `James uses Git and GitHub for version control, ensuring all web development projects have safe backup histories, clear change tracking, and streamlined production deployments.`;
+    }
+
+    // AI Integration & Coding workflows
+    if (msg.match(/\b(ai|artificial intelligence|claude|chatgpt|gemini|cursor|copilot|prompt)\b/)) {
+      return `James actively integrates AI-assisted development tools (such as Claude, Cursor AI, and Google Gemini) into his coding and debugging workflows to accelerate plugin development, script writing, and troubleshooting.`;
+    }
+
+    // CMS & GravCMS
+    if (msg.match(/\b(cms|grav|gravcms|headless)\b/)) {
+      return `While WordPress is James' primary CMS platform, he also has experience with flat-file content management systems like GravCMS (which he used to build and support client sites during his internship at FilAm).`;
+    }
+
+    // Server, hosting, DNS, domains
+    if (msg.match(/\b(deploy|host|server|domain|dns|cpanel|setup|launch|dns configuration|nameserver)\b/)) {
+      return `James is fully comfortable managing the launch cycle of websites: setting up server environments, linking domains, editing DNS records, and launching production releases securely.`;
+    }
+
+    // QA and Testing
+    if (msg.match(/\b(test|qa|quality assurance|safari|chrome|firefox|mobile friendly|responsive check|bug|debug|cross-browser)\b/)) {
+      return `Every website James builds undergoes rigorous cross-browser and cross-device QA testing to ensure that layouts, visual styles, and complex GSAP animation effects work smoothly across Chrome, Safari, Firefox, iOS, and Android.`;
+    }
+
+    // Agile & Team collaboration
+    if (msg.match(/\b(agile|scrum|team|sprint|standup|jira|trello|collaborat)\b/)) {
+      return `James has strong experience working in Agile team environments (collaborating closely with UI/UX designers, marketers, and developers on scheduled sprints and tasks to deliver projects successfully).`;
     }
 
     // Help or default
