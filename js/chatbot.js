@@ -627,10 +627,38 @@
     }
 
     // Event Listeners
+    const iconMsg = toggleBtn.querySelector('.chat-icon-message');
+    const iconClose = toggleBtn.querySelector('.chat-icon-close');
+
+    const ANIM_OPTS = { duration: 400, fill: 'forwards', easing: 'cubic-bezier(0.16, 1, 0.3, 1)' };
+
+    function animateIconsOpen() {
+      iconMsg.animate([
+        { opacity: 1, transform: 'translate(-50%, -50%) scale(1)' },
+        { opacity: 0, transform: 'translate(-50%, -50%) scale(0.4)' }
+      ], ANIM_OPTS);
+      iconClose.animate([
+        { opacity: 0, transform: 'translate(-50%, -50%) scale(0.4)' },
+        { opacity: 1, transform: 'translate(-50%, -50%) scale(1)' }
+      ], ANIM_OPTS);
+    }
+
+    function animateIconsClosed() {
+      iconMsg.animate([
+        { opacity: 0, transform: 'translate(-50%, -50%) scale(0.4)' },
+        { opacity: 1, transform: 'translate(-50%, -50%) scale(1)' }
+      ], ANIM_OPTS);
+      iconClose.animate([
+        { opacity: 1, transform: 'translate(-50%, -50%) scale(1)' },
+        { opacity: 0, transform: 'translate(-50%, -50%) scale(0.4)' }
+      ], ANIM_OPTS);
+    }
+
     toggleBtn.addEventListener('click', () => {
       const isCurrentlyOpen = widget.classList.toggle('is-open');
       sessionStorage.setItem('ai_chat_open', isCurrentlyOpen);
       if (isCurrentlyOpen) {
+        animateIconsOpen();
         badge.style.display = 'none';
         setTimeout(scrollToBottom, 50);
         // Stagger-animate suggestion chips in, one by one
@@ -640,6 +668,7 @@
           setTimeout(() => chip.classList.add('is-visible'), 120 + i * 80);
         });
       } else {
+        animateIconsClosed();
         // Reset chip animations with reverse stagger so they animate out sequentially
         const chips = [...widget.querySelectorAll('.chat-suggest-btn')].filter(b => !b.classList.contains('is-hidden'));
         // reverse order for exit animation
