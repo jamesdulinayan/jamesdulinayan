@@ -534,6 +534,14 @@
 
     sendBtn.addEventListener('click', sendMessage);
 
+    // If user clicks a link inside the chat window, set state to closed for the target page
+    widget.querySelector('.chat-window').addEventListener('click', (e) => {
+      const link = e.target.closest('a');
+      if (link) {
+        sessionStorage.setItem('ai_chat_open', 'false');
+      }
+    });
+
     // Initial Load
     loadHistory();
 
